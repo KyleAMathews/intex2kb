@@ -43,7 +43,7 @@ public class batchBackupRepair {
                 // select transactionline using repair revenuesource id
                 PreparedStatement txlinePS = conn.prepareStatement("SELECT * FROM \"transactionline\" WHERE \"revenuesourceid\" = ?");
                 //txlinePS.clearParameters();
-                txlinePS.setString(1, rs.getString("id")); //subtract num of miliseconds in 30 days from current time
+                txlinePS.setString(1, rs.getString("id")); //subtract 30 days of miliseconds from current time
                 ResultSet txlineRS = txlinePS.executeQuery();
                 txlineRS.next();
                 // use transaction id to get customer's email
@@ -64,17 +64,36 @@ public class batchBackupRepair {
             System.out.println(repairEmails);
             
             // select backup services which are within 7 days of expiring
-            PreparedStatement psbk = conn.prepareStatement("SELECT * FROM \"membership\" WHERE \"backupExpDate\" <= ?");
-            psbk.setLong(1, (System.currentTimeMillis() - (long)(7*24*60*60*1000))); //subtract num of miliseconds in 30 days from current time
+            PreparedStatement psbk = conn.prepareStatement("SELECT * FROM \"membership\" WHERE \"ccExpiration\" <= ?");
+            psbk.setLong(1, (System.currentTimeMillis() - (long)(7*24*60*60*1000))); //subtract 7 days of miliseconds from current time
             ResultSet rsbk = psbk.executeQuery();
-            
+            rsbk.next();
+            System.out.println(rsbk.getString("id"));
             while(rsbk.next()){
+                System.out.println("inside while");
+                Membership m = MembershipDAO.getInstance().read(rsbk.getString("id"));
+                // check if credit card for member is expired
+                if (Long.valueOf(m.getCcExpiration()) < System.currentTimeMillis()){
+                    // if expired -- email customer // else charge card
+                    System.out.println("email " + m.getCustomer().getFname() + " to update his credit card info.");
+                }
                 
+                // create new transaction of 100 days for member
+                Transaction txbackup = TransactionDAO.getInstance().create();
+                txbackup.setCustomer(m.getCustomer());
+                txbackup.setStatus("pending");
+                txbackup.setType("ba");
+                List<TransactionLine> txLineList = new LinkedList<TransactionLine>();
+                TransactionLine txline = TransactionLineDAO.getInstance().create(txbackup, "ba");
+                txLineList.add(txline);
+                
+                // set backup size + length on new revenueSource
+                ((backup)txbackup.getTxLines().get(0).getRevenueSource()).setSize(m.getBackupSize());
+                ((backup)txbackup.getTxLines().get(0).getRevenueSource()).setLengthOfBackup(100);
+                
+                txbackup.setPayment(PaymentDAO.getInstance().create(txbackup, txbackup.calculateTotal(), "ba"));
+                UpdateController.getInstance().saveTransaction(txbackup);
             }
-            
-            // check if credit card for member is expired
-            
-            // if expired -- email customer // else charge card
             
             
             // release the connection
@@ -96,6 +115,8 @@ public class batchBackupRepair {
             }
             
             throw new DataException("   :   " + e);
+        }catch(Exception e2){
+            System.out.println(e2 + " in backupbatch");
         }
         
     }
