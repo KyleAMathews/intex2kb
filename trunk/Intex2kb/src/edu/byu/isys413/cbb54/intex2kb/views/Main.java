@@ -38,6 +38,8 @@ public class Main extends javax.swing.JFrame {
         initComponents();
         model = new TableModel();
         jTable1.setModel(model);
+        
+        setVisible(2);
     }
     
     /** This method is called from within the constructor to
@@ -51,6 +53,11 @@ public class Main extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         Sale = new javax.swing.JPanel();
         Conversion = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox();
+        jLabel3 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
         PrintOrder = new javax.swing.JPanel();
         Backup = new javax.swing.JPanel();
         Rental = new javax.swing.JPanel();
@@ -90,15 +97,48 @@ public class Main extends javax.swing.JFrame {
         Conversion.setBackground(new java.awt.Color(255, 255, 255));
         Conversion.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         Conversion.setMinimumSize(new java.awt.Dimension(250, 0));
+        jLabel2.setText("Conversion Type:");
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "VHS to DVD", "Film to CD" }));
+
+        jLabel3.setText("Number of Minutes:");
+
+        jLabel4.setFont(new java.awt.Font("Lucida Grande", 1, 18));
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel4.setText("Conversion Order");
+
         org.jdesktop.layout.GroupLayout ConversionLayout = new org.jdesktop.layout.GroupLayout(Conversion);
         Conversion.setLayout(ConversionLayout);
         ConversionLayout.setHorizontalGroup(
             ConversionLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 271, Short.MAX_VALUE)
+            .add(ConversionLayout.createSequentialGroup()
+                .addContainerGap()
+                .add(ConversionLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(jLabel4, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 231, Short.MAX_VALUE)
+                    .add(ConversionLayout.createSequentialGroup()
+                        .add(ConversionLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
+                            .add(jLabel3)
+                            .add(jLabel2))
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(ConversionLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
+                            .add(jTextField1)
+                            .add(jComboBox1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap())
         );
         ConversionLayout.setVerticalGroup(
             ConversionLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 442, Short.MAX_VALUE)
+            .add(ConversionLayout.createSequentialGroup()
+                .addContainerGap()
+                .add(jLabel4, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 38, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .add(26, 26, 26)
+                .add(ConversionLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(jLabel2)
+                    .add(jComboBox1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(ConversionLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(jLabel3)
+                    .add(jTextField1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(307, Short.MAX_VALUE))
         );
         jPanel2.add(Conversion, "card5");
 
@@ -295,7 +335,11 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JPanel Repair;
     private javax.swing.JPanel Return;
     private javax.swing.JPanel Sale;
+    private javax.swing.JComboBox jComboBox1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -305,6 +349,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JTable jTable1;
+    private javax.swing.JTextField jTextField1;
     private javax.swing.JScrollPane table;
     // End of variables declaration//GEN-END:variables
     
