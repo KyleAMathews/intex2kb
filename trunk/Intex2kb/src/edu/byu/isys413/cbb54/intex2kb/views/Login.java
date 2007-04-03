@@ -1,25 +1,20 @@
 /*
  * Login.java
  *
- * Created on April 2, 2007, 7:08 PM
+ * Created on April 2, 2007, 11:19 PM
  */
 
 package edu.byu.isys413.cbb54.intex2kb.views;
 
-import edu.byu.isys413.cbb54.intex2kb.data.EmployeeDAO;
-import edu.byu.isys413.cbb54.intex2kb.data.Session;
-import edu.byu.isys413.cbb54.intex2kb.data.StoreDAO;
-
 /**
  *
- * @author  tylerf
+ * @author  Cameron
  */
 public class Login extends javax.swing.JFrame {
     
     /** Creates new form Login */
     public Login() {
         initComponents();
-        System.out.println("starting login");
     }
     
     /** This method is called from within the constructor to
@@ -30,91 +25,91 @@ public class Login extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc=" Generated Code ">//GEN-BEGIN:initComponents
     private void initComponents() {
         jPanel1 = new javax.swing.JPanel();
-        title = new javax.swing.JLabel();
-        emailLabel = new javax.swing.JLabel();
-        emailInput = new javax.swing.JTextField();
-        passwordLabel = new javax.swing.JLabel();
-        passwordInput = new javax.swing.JPasswordField();
         login = new javax.swing.JButton();
+        jPanel2 = new javax.swing.JPanel();
+        email = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        password = new javax.swing.JPasswordField();
+        jPanel3 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        title.setFont(new java.awt.Font("Lucida Grande", 1, 24));
-        title.setText("MyStuff Digital Photography");
-
-        emailLabel.setText("E-mail Address:");
-
-        emailInput.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                emailInputActionPerformed(evt);
-            }
-        });
-
-        passwordLabel.setText("Password:");
-
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("MyStuff");
+        setBackground(new java.awt.Color(255, 255, 255));
+        setMinimumSize(new java.awt.Dimension(500, 300));
+        jPanel1.setPreferredSize(new java.awt.Dimension(100, 50));
         login.setText("Login");
-        login.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                loginActionPerformed(evt);
-            }
-        });
 
-        org.jdesktop.layout.GroupLayout jPanel1Layout = new org.jdesktop.layout.GroupLayout(jPanel1);
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jPanel1Layout.createSequentialGroup()
-                .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(jPanel1Layout.createSequentialGroup()
-                        .add(46, 46, 46)
-                        .add(title))
-                    .add(jPanel1Layout.createSequentialGroup()
-                        .add(78, 78, 78)
-                        .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                            .add(emailLabel)
-                            .add(passwordLabel))
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                        .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING, false)
-                            .add(org.jdesktop.layout.GroupLayout.LEADING, login, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .add(org.jdesktop.layout.GroupLayout.LEADING, passwordInput)
-                            .add(org.jdesktop.layout.GroupLayout.LEADING, emailInput, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 166, Short.MAX_VALUE))))
-                .add(65, 65, 65))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .add(title)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(emailLabel)
-                    .add(emailInput, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(passwordLabel)
-                    .add(passwordInput, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(login)
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(333, Short.MAX_VALUE)
+                .addComponent(login)
                 .addContainerGap())
         );
-        add(jPanel1);
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(16, Short.MAX_VALUE)
+                .addComponent(login)
+                .addContainerGap())
+        );
+        getContentPane().add(jPanel1, java.awt.BorderLayout.SOUTH);
 
+        jPanel2.setMinimumSize(new java.awt.Dimension(200, 100));
+        jPanel2.setPreferredSize(new java.awt.Dimension(300, 200));
+        email.setColumns(20);
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14));
+        jLabel2.setText("Email");
+
+        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14));
+        jLabel3.setText("Password");
+
+        password.setColumns(20);
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(68, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(email, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(password, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(104, 104, 104))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(55, 55, 55)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(email, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
+                .addGap(14, 14, 14)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(password, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(102, Short.MAX_VALUE))
+        );
+        getContentPane().add(jPanel2, java.awt.BorderLayout.CENTER);
+
+        jPanel3.setMinimumSize(new java.awt.Dimension(176, 45));
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24));
+        jLabel1.setText("Employee Login");
+        jPanel3.add(jLabel1);
+
+        getContentPane().add(jPanel3, java.awt.BorderLayout.NORTH);
+
+        pack();
     }// </editor-fold>//GEN-END:initComponents
-    
-    private void loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginActionPerformed
-        try {
-            // TODO add your handling code here:
-            Session s = new Session(StoreDAO.getInstance().create(),EmployeeDAO.getInstance().create());
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
-        this.setVisible(false);
-        MainGUI mg = new MainGUI();
-        mg.setVisible(true);
-    }//GEN-LAST:event_loginActionPerformed
-    
-    private void emailInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emailInputActionPerformed
-// TODO add your handling code here:
-    }//GEN-LAST:event_emailInputActionPerformed
     
     /**
      * @param args the command line arguments
@@ -127,15 +122,16 @@ public class Login extends javax.swing.JFrame {
         });
     }
     
-    
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField emailInput;
-    private javax.swing.JLabel emailLabel;
+    private javax.swing.JTextField email;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JButton login;
-    private javax.swing.JPasswordField passwordInput;
-    private javax.swing.JLabel passwordLabel;
-    private javax.swing.JLabel title;
+    private javax.swing.JPasswordField password;
     // End of variables declaration//GEN-END:variables
     
 }
