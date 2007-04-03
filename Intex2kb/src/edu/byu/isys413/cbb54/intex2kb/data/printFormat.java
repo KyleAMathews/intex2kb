@@ -10,8 +10,8 @@
 package edu.byu.isys413.cbb54.intex2kb.data;
 
 /**
- *
- * @author kyle
+ * printFormat
+ * @author Tyler
  */
 public class printFormat {
     
@@ -25,58 +25,107 @@ public class printFormat {
     
     /**
      * Creates a new instance of printFormat
+     * @param id GUID
      */
     public printFormat(String id) {
         this.id = id;
     }
 
+    /**
+     * getID
+     * @return ID
+     */
     public String getId() {
         return id;
     }
 
+    /**
+     * getSize
+     * @return size
+     */
     public String getSize() {
         return size;
     }
 
+    /**
+     * setSize
+     * @param size size
+     */
     public void setSize(String size) {
         this.size = size;
         this.dirty = true;
     }
 
+    /**
+     * getPaperType
+     * @return paperType
+     */
     public String getPaperType() {
         return paperType;
     }
 
+    /**
+     * setPaperType
+     * @param paperType paperType
+     */
     public void setPaperType(String paperType) {
         this.paperType = paperType;
         this.dirty = true;
     }
 
+    /**
+     * getSourceType
+     * @return sourceType
+     */
     public String getSourceType() {
         return sourceType;
     }
 
+    /**
+     * setSourceType
+     * @param sourceType sourceType
+     */
     public void setSourceType(String sourceType) {
         this.sourceType = sourceType;
         this.dirty = true;
     }
 
+    /**
+     * getIsInDB
+     * @return boolean IsInDB
+     */
     public boolean getIsInDB() {
         return inDB;
     }
 
+    /**
+     * setInDB
+     * @param inDB inDB
+     */
     public void setInDB(boolean inDB) {
         this.inDB = inDB;
     }
 
+    /**
+     * isDirty
+     * @return isDirty
+     */
     public boolean isDirty() {
         return dirty;
     }
 
+    /**
+     * getPrice
+     * @return Price
+     */
     public double getPrice() {
         return price;
     }
 
+    /**
+     * setPrice
+     * @param price price
+     */
     public void setPrice(double price) {
         this.price = price;
         this.dirty = true;
