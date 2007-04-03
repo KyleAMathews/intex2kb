@@ -332,7 +332,7 @@ public class tester {
              * TESTING TRANSACTIONLINE
              *
              */
-            /*
+            
             System.out.println("Creating a new backup TransactionLine");
             TransactionLine txLine1 = TransactionLineDAO.getInstance().create(tx, "ba");
             
@@ -361,7 +361,7 @@ public class tester {
              * TESTING REVENUESOURCE
              *
              */
-            /*
+            
             System.out.println("\n\nTESTING REVENUESOURCE\n");
             System.out.println("\n");
             //System.out.println("Read backupRS = orignal: " + (txLine1.getRevenueSource().getId() == ((RevenueSource)Cache.getInstance().get(txLine1.getRevenueSource())).getId()));
@@ -373,7 +373,7 @@ public class tester {
             
             txLine1.getRevenueSource().setPrice(12);
             System.out.println("Saving backupRS: "); RevenueSourceDAO.getInstance().save(txLine1.getRevenueSource());
-            */
+            
             /**
              *TESTING PrintOrder (includes PhotoSet, PrintFormat)
              *
@@ -469,270 +469,7 @@ public class tester {
             RevenueSourceDAO.getInstance().save(conv);
             
             
-//             /**
-//              *
-//              * TESTING COUPON
-//              *
-//              */
-//
-//             System.out.println("Creating a new Coupon");
-//
-//             Coupon c = CouponDAO.getInstance().create();
-//             c.setAmount(0.50);
-//
-//             System.out.println("Apply coupon to transaction => txLine1");
-//             txLine1.setCoupon(c);
-//
-//      /**
-//       *
-//       *    TESTING THE CALCULATION METHODS
-//       *
-//       */
-//
-//      double subtotal = Math.floor( tx.calculateSubtotal() * 100 + .5) / 100;
-//      double tax = Math.floor( tx.calculateTax() * 100 + .5) / 100;
-//      double total = tax + subtotal;
-//      System.out.println("Subtotal = \t$" + fmt(subtotal));
-//      System.out.println("Tax = \t\t$" + fmt(tax));
-//      System.out.println("Total = \t$" + fmt(total));
-//
-//            /**
-//             *
-//             *  TESTING PAYMENT
-//             *
-//             */
-//
-//             System.out.println("\nCreating a new Payment");
-//             Payment p = PaymentDAO.getInstance().create(tx, 15.00, "cash");
-//
-//             System.out.println("Payment Amount:\t$" + fmt(p.getAmount()));
-//             System.out.println("Change:\t\t$" + fmt(p.getChange()));
-//
-//             System.out.println("Setting payment to Transaction");
-//             tx.setPayment(p);
-//
-//             tx.setStatus("complete");
-//      UpdateController.getInstance().saveTransaction(tx);
-//
-//
-//
-//
-//
-//      /**
-//       *
-//       * TESTING THE TRANSACTION HOLD
-//       *
-//       */
-//
-//      System.out.println("\n\nTRANSACTION HOLD\n");
-//      System.out.println("Creating new Transaction");
-//
-//      Transaction txH = TransactionDAO.getInstance().create();
-//      txH.setCustomer(cust1);
-//      txH.setEmployee(session.getEmployee());
-//      txH.setStore(session.getStore());
-//      txH.setStatus("pending");
-//      txH.setType("Sale");
-//
-//            /**
-//             *
-//             * TESTING REVENUESOURCE
-//             *
-//             */
-//
-//             System.out.println("Creating a new RevenueSource");
-//             //RevenueSource rsH = new RevenueSource("00000111760997ae0166c80a0446dd");
-//
-//             /**
-//              *
-//              * TESTING TRANSACTIONLINE
-//              *
-//              */
-//
-//             System.out.println("Creating a new TransactionLine");
-//             TransactionLine txHLine1 = TransactionLineDAO.getInstance().create(txH);
-//             //txHLine1.setRevenueSource(rs);
-//
-//             System.out.println("Adding TransactionLines to Transaction");
-//             List<TransactionLine> txHLineList = new LinkedList<TransactionLine>();
-//
-//             txHLineList.add(txHLine1);
-//
-//             txH.setTxLines(txHLineList);
-//
-//      /**
-//       *
-//       *    TESTING THE CALCULATION METHODS
-//       *
-//       */
-//
-//      double subtotalH = Math.floor( txH.calculateSubtotal() * 100 + .5) / 100;
-//      double taxH = Math.floor( txH.calculateTax() * 100 + .5) / 100;
-//      double totalH = taxH + subtotalH;
-//      System.out.println("Subtotal = \t$" + fmt(subtotalH));
-//      System.out.println("Tax = \t\t$" + fmt(taxH));
-//      System.out.println("Total = \t$" + fmt(totalH));
-//
-//      System.out.println("Saving transaction Hold");
-//
-//      UpdateController.getInstance().saveTransaction(txH);
-//
-//
-//      System.out.println("\n\nRetrieving the hold Transaction");
-//      Transaction txH1 = TransactionDAO.getInstance().read(txH.getId());
-//
-//      double subtotalH1 = Math.floor( txH1.calculateSubtotal() * 100 + .5) / 100;
-//      double taxH1 = Math.floor( txH1.calculateTax() * 100 + .5) / 100;
-//      double totalH1 = taxH1 + subtotalH1;
-//      System.out.println("Subtotal = \t$" + fmt(subtotalH1));
-//      System.out.println("Tax = \t\t$" + fmt(taxH1));
-//      System.out.println("Total = \t$" + fmt(totalH1));
-//
-//
-//        /**
-//         *
-//         *  TESTING PAYMENT
-//         *
-//         */
-//
-//         System.out.println("\nCreating a new Payment");
-//         Payment pH = PaymentDAO.getInstance().create(txH1, 3.00, "Cash");
-//
-//         System.out.println("Setting payment to Transaction");
-//         tx.setPayment(pH);
-//
-//         System.out.println("Payment Amount:\t$" + fmt(pH.getAmount()));
-//         System.out.println("Change:\t\t$" + fmt(pH.getChange()));
-//
-//         txH1.setStatus("complete");
-//      UpdateController.getInstance().saveTransaction(txH1);
-//
-//
-//       /**
-//       *
-//       * TESTING THE TRANSACTION VOID
-//       *
-//       */
-//
-//      System.out.println("\n\nTRANSACTION VOID\n");
-//      System.out.println("Creating new Transaction");
-//
-//      Transaction txV = TransactionDAO.getInstance().create();
-//      txV.setCustomer(cust1);
-//      txV.setEmployee(session.getEmployee());
-//      txV.setStore(session.getStore());
-//      txV.setStatus("pending");
-//      txV.setType("Sale");
-//
-//            /**
-//             *
-//             * TESTING REVENUESOURCE
-//             *
-//             */
-//
-//             System.out.println("Creating a new RevenueSource");
-//             //RevenueSource rsV = new RevenueSource("00000111760997ae0166c80a0446dd");
-//
-//             /**
-//              *
-//              * TESTING TRANSACTIONLINE
-//              *
-//              */
-//
-//             System.out.println("Creating a new TransactionLine");
-//             TransactionLine txLineV = TransactionLineDAO.getInstance().create(txV);
-//             //txLineV.setRevenueSource(rs);
-//
-//             System.out.println("Adding TransactionLines to Transaction");
-//             List<TransactionLine> txLineListV = new LinkedList<TransactionLine>();
-//
-//             txLineListV.add(txLineV);
-//
-//
-//             txV.setTxLines(txLineListV);
-//
-//      /**
-//       *
-//       *    TESTING THE CALCULATION METHODS
-//       *
-//       */
-//
-//      double subtotalV = Math.floor( txV.calculateSubtotal() * 100 + .5) / 100;
-//      double taxV = Math.floor( txV.calculateTax() * 100 + .5) / 100;
-//      double totalV = taxV + subtotalV;
-//      System.out.println("Subtotal = \t$" + fmt(subtotalV));
-//      System.out.println("Tax = \t\t$" + fmt(taxV));
-//      System.out.println("Total = \t$" + fmt(totalV));
-//
-//      System.out.println("Setting the transaction as VOID");
-//      txV.setStatus("void");
-//      System.out.println("Saving transaction Void");
-//
-//      UpdateController.getInstance().saveTransaction(txV);
-//
-//      /**
-//       * RETURN TEST
-//       *
-//       */
-//
-//      System.out.println("\n\nReturn Test");
-//      Transaction org = TransactionDAO.getInstance().read(txH1.getId());
-//
-//      Transaction rtn = TransactionDAO.getInstance().create(org);
-//
-//      System.out.println("Returning transactionLine #1");
-//      TransactionLine orl = rtn.getOrig().getTxLines().get(0);
-//      TransactionLine rtl = TransactionLineDAO.getInstance().create(rtn);
-//
-//      System.out.println("Creating new Return RevenueSource");
-//      //RevenueSource rrs = new RevenueSource("9874928374982374");
-//      //rrs.setType("return");
-//      double origPrice = -orl.getRevenueSource().getPrice();
-//      //rrs.setPrice(origPrice);
-//
-//      System.out.println("Applying return RevenueSource to return TransactionLine");
-//      //rtl.setRevenueSource(rrs);
-//
-//      System.out.println("Applying the TransactionLine to the Transaction");
-//      List<TransactionLine> txLineListR = new LinkedList<TransactionLine>();
-//      txLineListR.add(rtl);
-//      rtn.setTxLines(txLineListR);
-//
-//      double subtotalR = Math.floor( rtn.calculateSubtotal() * 100 + .5) / 100;
-//      double taxR = Math.floor( rtn.calculateTax() * 100 + .5) / 100;
-//      double totalR = taxR + subtotalR;
-//      System.out.println("Subtotal = \t$" + fmt(subtotalR));
-//      System.out.println("Tax = \t\t$" + fmt(taxR));
-//      System.out.println("Total = \t$" + fmt(totalR));
-//
-//      System.out.println("\nCreating a new Payment");
-//        Payment pr = PaymentDAO.getInstance().create(rtn, totalR, "Cash");
-//
-//        System.out.println("Setting payment to Transaction");
-//        rtn.setPayment(pr);
-//
-//        System.out.println("Payment Amount:\t$" + fmt(pr.getAmount()));
-//        System.out.println("Change:\t\t$" + fmt(pr.getChange()));
-//
-//
-//      //System.out.println("Setting the transaction as VOID");
-//      System.out.println("Saving return transaction");
-//
-//      rtn.setStatus("complete");
-//      UpdateController.getInstance().saveTransaction(rtn);
-            
-            
-            
-            
-            
-//      /**
-//       *
-//       * TIME TEST
-//       *
-//       */
-//      System.out.println("\n\nCURRENT DAY");
-//      SimpleDateFormat fmt = new SimpleDateFormat("dd-MMM-yy", Locale.US);
-//      System.out.println(fmt.format(System.currentTimeMillis()) + " ");
+
             
             
         }catch(Exception e) {
