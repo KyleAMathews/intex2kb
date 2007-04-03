@@ -55,13 +55,10 @@ public class customerCreate extends javax.swing.JFrame {
         membershipAdd = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(384, 318));
         jLabel1.setFont(new java.awt.Font("Arial", 1, 14));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Create New Customer");
         getContentPane().add(jLabel1, java.awt.BorderLayout.NORTH);
-
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jLabel2.setText("First Name");
@@ -161,7 +158,7 @@ public class customerCreate extends javax.swing.JFrame {
                     .addComponent(jLabel8))
                 .addContainerGap())
         );
-        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 360, 220));
+        jPanel1.add(jPanel3);
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
 
