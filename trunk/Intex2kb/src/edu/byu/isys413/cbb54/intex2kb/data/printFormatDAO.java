@@ -15,8 +15,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 /**
- *
- * @author kyle
+ * printFormatDAO
+ * @author Tyler
  */
 public class printFormatDAO{
     
@@ -43,6 +43,11 @@ public class printFormatDAO{
     ///////////////////////////////////////////
     /// Create
     
+    /**
+     * create PrintOrder
+     * @return printOrder
+     * @throws java.lang.Exception SQLException
+     */
     public printFormat create() throws Exception{
         String id = GUID.generate();
         printFormat printFormat = new printFormat(id);
@@ -56,6 +61,12 @@ public class printFormatDAO{
     
     ///////////////////////////////////////////
     /// Read
+    /**
+     * read printOrder
+     * @return printOrder
+     * @param id GUID
+     * @throws java.lang.Exception Exception
+     */
     public printFormat read(String id) throws Exception {
         printFormat po = null;
         
@@ -90,6 +101,13 @@ public class printFormatDAO{
         return po;
     }
     
+    /**
+     * read printOrder with existing connection
+     * @param conn connection
+     * @param id GUID
+     * @throws java.lang.Exception Exception
+     * @return printOrder
+     */
     public printFormat read(String id, Connection conn) throws Exception {
         printFormat po = null;
         
@@ -127,6 +145,13 @@ public class printFormatDAO{
 ///////////////////////////////////////////
 /// Save
     
+    /**
+     * save printOrder
+     * @param ps printOrder
+     * @param conn connection
+     * @throws java.sql.SQLException SQLException
+     * @throws java.lang.Exception Exception
+     */
     public synchronized void save(printFormat ps, Connection conn) throws SQLException, Exception {
         if (ps.getIsInDB() == true) {
             if (ps.isDirty() == true){
@@ -137,6 +162,12 @@ public class printFormatDAO{
         }
     }
     
+    /**
+     * save printFormat
+     * @param ps printFormat
+     * @throws java.sql.SQLException SQLException
+     * @throws java.lang.Exception Exception
+     */
     public synchronized void save(printFormat ps) throws SQLException, Exception {
         if (ps.getIsInDB() == true) {
             if (ps.isDirty() == true){
