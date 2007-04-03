@@ -468,9 +468,29 @@ public class tester {
             conv.setPrice((conv.getQuantity() * conv.getConversionType().getPrice()));
             RevenueSourceDAO.getInstance().save(conv);
             
+           /*
+             *Testing Rentals
+             */ 
             
-
+             System.out.println();
+             System.out.println();
+            System.out.println("Testing Rentals");
+            System.out.println();
             
+            System.out.println("Creating a new Rental TransactionLine");
+            TransactionLine txLine10 = TransactionLineDAO.getInstance().create(tx, "rn");
+            
+            Rental rn = (Rental) RentalDAO.getInstance().create();
+            rn.setDateOut(87654);
+            rn.setDateDue(97654);
+            RevenueSourceDAO.getInstance().save(rn);
+            
+            String test = ForRentDAO.getInstance().getBySerial("5543256543565");
+            System.out.println(test);
+            RentalReturn rr = RentalReturnDAO.getInstance().create(test);
+            rr.setDatein(14321432);
+            RentalReturnDAO.getInstance().save(rr);
+            System.out.println("rental return save complete");
             
         }catch(Exception e) {
             e.printStackTrace();

@@ -28,6 +28,7 @@ DROP TABLE "conversionorder";
 DROP TABLE "conversiontype";
 DROP TABLE "conceptual";
 DROP TABLE "product";
+DROP TABLE "rentalreturn";
 
 
 
@@ -228,6 +229,14 @@ create table "rental"
 
 );
 
+create table "rentalreturn"
+(
+    "id" varchar(40) not null primary key,
+    "rentalid" varchar(40),
+    "datein" bigint
+
+);
+
 create table "physical"
 (
     "id" varchar(40) not null primary key,
@@ -289,6 +298,8 @@ INSERT INTO "revenuesource" VALUES('000001117284553c0014b50a500442','Sale');
 INSERT INTO "backup" VALUES('1234', 1, 100, .89);
 
 INSERT INTO "rental" VALUES('3245643212342', 4321789, 432143);
+
+INSERT INTO "rentalreturn" VALUES('4432435432543', '3245643212342', 432193);
 
 INSERT INTO "physical" VALUES('321423421', '543254', 'shelf 31', 1);
 INSERT INTO "physical" VALUES('54322345', '5543256543565', 'shelf 32', 0);

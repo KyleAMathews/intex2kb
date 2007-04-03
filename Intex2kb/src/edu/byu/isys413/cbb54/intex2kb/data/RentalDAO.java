@@ -112,6 +112,7 @@ public class RentalDAO extends RSDAO{
             
             // set the dirty flag to false now that we've saved it
             rsbo.setDirty(false);
+            System.out.println("Rental object saved");
             
         }
     }
