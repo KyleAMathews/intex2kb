@@ -32,28 +32,29 @@ public class batchBackupRepair {
         try {
             // retrieve a database connection from the pool
             conn = ConnectionPool.getInstance().get();
-            System.out.println(System.currentTimeMillis() - (long)(30*24*60*60*1000));
+            
             // select repair transactions which are 30 days old and send email
             PreparedStatement ps = conn.prepareStatement("SELECT * FROM \"serviceRepair\" WHERE \"dateEnded\" <= ?");
-            System.out.println(ps);
             ps.setLong(1, (System.currentTimeMillis() - (long)(30*24*60*60*1000))); //subtract num of miliseconds in 30 days from current time
             ResultSet rs = ps.executeQuery();
             
             
             while(rs.next()){
-                System.out.println(rs.getString("id"));
                 // select transactionline using repair revenuesource id
-                //ps.clearParameters();
                 PreparedStatement txlinePS = conn.prepareStatement("SELECT * FROM \"transactionline\" WHERE \"revenuesourceid\" = ?");
-                txlinePS.clearParameters();
+                //txlinePS.clearParameters();
                 txlinePS.setString(1, rs.getString("id")); //subtract num of miliseconds in 30 days from current time
-                ResultSet txlineRS = ps.executeQuery();
+                ResultSet txlineRS = txlinePS.executeQuery();
                 txlineRS.next();
-                System.out.println(txlineRS.getString("id")+ " txlineRS");
                 // use transaction id to get customer's email
-                Transaction trans = TransactionDAO.getInstance().read(txlineRS.getString("transactionid"));
-                Customer cust = CustomerDAO.getInstance().read(trans.getCustomer().getId());
+                Transaction trans = new Transaction(txlineRS.getString("transactionid"));
+                trans.setCustomer(new Customer("00000109123b9144eb018b64001000"));
                 
+                // needs real data to work
+                //Transaction trans2 = TransactionDAO.getInstance().read(txlineRS.getString("transactionid"), conn);
+                
+                Customer cust = CustomerDAO.getInstance().read(trans.getCustomer().getId(), conn);
+                System.out.println(cust.getEmail());
                 //add email of customer to list
                 repairEmails.add(cust.getEmail());
             }
@@ -62,6 +63,18 @@ public class batchBackupRepair {
             
             System.out.println(repairEmails);
             
+            // select backup services which are within 7 days of expiring
+            PreparedStatement psbk = conn.prepareStatement("SELECT * FROM \"membership\" WHERE \"backupExpDate\" <= ?");
+            psbk.setLong(1, (System.currentTimeMillis() - (long)(7*24*60*60*1000))); //subtract num of miliseconds in 30 days from current time
+            ResultSet rsbk = psbk.executeQuery();
+            
+            while(rsbk.next()){
+                
+            }
+            
+            // check if credit card for member is expired
+            
+            // if expired -- email customer // else charge card
             
             
             // release the connection
@@ -84,14 +97,6 @@ public class batchBackupRepair {
             
             throw new DataException("   :   " + e);
         }
-        
-        
-        
-// select backup services which are within 7 days of expiring
-        
-// check if credit card for member is expired
-        
-// if expired -- email customer // else charge card
         
     }
 }

@@ -152,8 +152,8 @@ public class TransactionDAO {
                 Cache.getInstance().put(id, trans);
                 
                 
-                trans.setCustomer(CustomerDAO.getInstance().read(rs.getString("customerid"), conn));
-                trans.setEmployee(EmployeeDAO.getInstance().read(rs.getString("employeeid"), conn));
+                trans.setCustomer(CustomerDAO.getInstance().read(rs.getString("custid"), conn));
+                trans.setEmployee(EmployeeDAO.getInstance().read(rs.getString("empid"), conn));
                 trans.setStore(StoreDAO.getInstance().read(rs.getString("storeid"), conn));
                 trans.setPayment(PaymentDAO.getInstance().read(rs.getString("paymentid"),trans, conn));
                 if(rs.getString("origtx") == null){
