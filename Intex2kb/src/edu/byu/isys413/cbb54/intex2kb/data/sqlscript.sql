@@ -339,3 +339,18 @@ INSERT INTO "forsale" VALUES('321423421', 1);
 INSERT INTO "serviceRepair" VALUES('1234', 123145124314, 124125123123, 'What a mess it was fixing that guys widget -- a nightmare', 10, '2342352342354234', 1241, 151.21); 
 
 INSERT INTO "sale" VALUES('903945804395834958ui', 1, '321423421','p');
+
+INSERT INTO "printorder" VALUES ('111','222',3,'111','111',.25);
+INSERT INTO "printorder" VALUES ('222','333',5,'222','222',.5);
+
+INSERT INTO "printformat" VALUES ('111','4x6','Matte','Film',.4);
+INSERT INTO "printformat" VALUES ('222','5x7','Glossy','Digital',.25);
+
+INSERT INTO "photoset" VALUES ('111','Test Photoset 1',4);
+INSERT INTO "photoset" VALUES ('222','Test Photoset 2',6);
+
+INSERT INTO "conversionorder" VALUES ('111','111',4,2.5);
+INSERT INTO "conversionorder" VALUES ('222','222',60,6);
+
+INSERT INTO "conversiontype" VALUES ('111','Film','CD',.55);
+INSERT INTO "conversiontype" VALUES ('222','VHS','DVD',.1);
