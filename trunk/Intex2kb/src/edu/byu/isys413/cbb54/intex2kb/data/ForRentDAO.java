@@ -42,7 +42,7 @@ public class ForRentDAO {
      * This method is called when the physical product that is going to be available for rent is initially set aside as
      * a for rent object
      */
-    public synchronized void create(String id){
+    public synchronized void create(String id) throws DataException{
         Connection conn = null;
         
         try {
@@ -84,16 +84,21 @@ public class ForRentDAO {
      * This is the public read statement.  It loads an existing record
      * from the database.
      */
-    public synchronized List<String> read(String id) throws DataException {
-        List<String> forRentList = new LinkedList<String>();
-        Connection conn = null;
+    public synchronized ForRent read(String id) throws DataException {
+        ForRent fr = null;
+         // check to see if id in the cache
+        // if so, return it immediately
+        if(Cache.getInstance().containsKey(id)){
+            fr = (ForRent)Cache.getInstance().get(id);
+        }else{        
+            Connection conn = null;
 
             try {
                 // retrieve a database connection from the pool
                 conn = ConnectionPool.getInstance().get();
 
                 // call read with a connection (the other read method in this class)
-                forRentList = this.read(id, conn);
+                fr = this.read(id, conn);
 
                 // release the connection
                 conn.commit();
@@ -115,7 +120,8 @@ public class ForRentDAO {
 
                 throw new DataException("Could not retrieve record for id=" + id, e);
             }
-        return forRentList;
+        }
+        return fr;
     }
     
     /** 
@@ -124,9 +130,8 @@ public class ForRentDAO {
      *  to use.  The user (controller) code never calls this one directly, since
      *  it can't know about Connection objects or SQLExceptions.
      */
-    synchronized List<String> read(String id, Connection conn) throws SQLException, DataException {
-        List<String> forRentList = new LinkedList<String>();
-        
+    synchronized ForRent read(String id, Connection conn) throws SQLException, DataException {
+            ForRent fr = null;
             // if not in the cache, get a result set from 
             // a SELECT * FROM table WHERE id=guid
            try{ 
@@ -138,8 +143,9 @@ public class ForRentDAO {
             
         
             while(rs.next()){
-                forRentList.add(rs.getString("timesrented"));
-                forRentList.add(rs.getString("currentrental"));
+                fr = new ForRent(rs.getString("id"));
+                fr.setTimesrented(rs.getInt("timesrented"));
+                fr.setCurrentrental(rs.getString("currentrental"));
             }
                 
                 // Close prepared statement
@@ -159,9 +165,8 @@ public class ForRentDAO {
             throw new DataException("Could not retrieve customer records form the database",  e);
         }
         
-        
         // return the Store
-        return forRentList;
+        return fr;
     }
     
     //////////////////////////////////
@@ -172,7 +177,7 @@ public class ForRentDAO {
      * the user (controller) code wants to save or update an object
      * into the database.
      */
-    public synchronized void save(List list) throws DataException {
+    public synchronized void save(ForRent fr) throws DataException {
         
         Connection conn = null;
         
@@ -182,7 +187,7 @@ public class ForRentDAO {
             conn = ConnectionPool.getInstance().get();
             
             // call save with a connection (the other save method in this class)
-            save(list, conn);
+            save(fr, conn);
             
             // release the connection
             ConnectionPool.getInstance().release(conn);
@@ -222,11 +227,11 @@ public class ForRentDAO {
      *  them directly from another DAO, this DAO can't decide whether it's
      *  object needs to be inserted or updated.
      */
-     synchronized void save(List list, Connection conn) throws SQLException, DataException {
+     synchronized void save(ForRent fr, Connection conn) throws SQLException, DataException {
         // check the dirty flag in the object.  if it is dirty, 
         // run update or insert
         
-                update(list, conn);
+                update(fr, conn);
         }
     
     /**
@@ -235,14 +240,14 @@ public class ForRentDAO {
      * to isolate the SQL udpate statement and make it more readable.  But
      * logically, it's really just a part of save.
      */
-    private synchronized void update(List list, Connection conn) throws SQLException, DataException {
+    private synchronized void update(ForRent fr, Connection conn) throws SQLException, DataException {
         // do the update statement
         PreparedStatement update = conn.prepareStatement(
             "UPDATE \"forrent\"" +
                 "SET \"timesrented\" = ?, \"currentrental\" = ? WHERE \"id\" = ?");
-        update.setInt(1, list.get(0));
-        update.setString(2, list.get(1).toString());
-        update.setString(3, list.get(2).toString());
+        update.setInt(1, fr.getTimesrented());
+        update.setString(2, fr.getCurrentrental());
+        update.setString(3, fr.getId());
         
         // execute and commit the query
         update.executeUpdate();
@@ -282,6 +287,51 @@ public class ForRentDAO {
     
     //////////////////////////////
     ///  SEARCH methods
-    
+    public String getBySerial(String serial) throws DataException {
+         ForRent fr = null;
+        
+        // get the connection
+        Connection conn = null;
+        try{
+            // retrieve a database connection from the pool
+            conn = ConnectionPool.getInstance().get();
+            
+            // sql the names, phone, and ids
+            PreparedStatement read = conn.prepareStatement(
+                "SELECT * FROM \"physical\" WHERE \"serialnum\" = ? ");
+            read.setString(1, serial);
+            ResultSet rs = read.executeQuery();
+
+            // while loop to populate the list from the results
+            while(rs.next()) {
+               fr = ForRentDAO.getInstance().read(rs.getString("id"), conn);
+                }  
+            // release the connection
+            conn.commit();
+            ConnectionPool.getInstance().release(conn);
+            
+              
+
+        }catch (ConnectionPoolException e){
+            throw new DataException("Could not get a connection to the database.");
+
+        }catch (SQLException e) {
+            // rollback
+            try {
+                conn.rollback();
+                ConnectionPool.getInstance().release(conn);
+            }catch (ConnectionPoolException ce){
+                throw new DataException("There was an error with the connection to the database", ce);
+            }catch (SQLException e2) {
+                throw new DataException("Big error: could not even release the connection", e2);
+            }
+
+            throw new DataException("Could not retrieve customer records form the database",  e);
+        }
+       
+        // return the list of customer lists
+        String id = fr.getCurrentrental();
+        return id;
+    }
     
 }
