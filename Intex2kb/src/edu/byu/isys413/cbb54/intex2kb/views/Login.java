@@ -6,6 +6,8 @@
 
 package edu.byu.isys413.cbb54.intex2kb.views;
 
+import org.jdesktop.layout.GroupLayout;
+
 /**
  *
  * @author  Cameron
