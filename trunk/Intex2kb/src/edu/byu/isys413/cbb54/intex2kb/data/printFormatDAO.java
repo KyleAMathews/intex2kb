@@ -44,8 +44,8 @@ public class printFormatDAO{
     /// Create
     
     /**
-     * create PrintOrder
-     * @return printOrder
+     * create PrintFormat
+     * @return printFormat
      * @throws java.lang.Exception SQLException
      */
     public printFormat create() throws Exception{
@@ -62,8 +62,8 @@ public class printFormatDAO{
     ///////////////////////////////////////////
     /// Read
     /**
-     * read printOrder
-     * @return printOrder
+     * read printFormat
+     * @return printFormat
      * @param id GUID
      * @throws java.lang.Exception Exception
      */
@@ -102,11 +102,11 @@ public class printFormatDAO{
     }
     
     /**
-     * read printOrder with existing connection
+     * read printFormat with existing connection
      * @param conn connection
      * @param id GUID
      * @throws java.lang.Exception Exception
-     * @return printOrder
+     * @return printFormat
      */
     public printFormat read(String id, Connection conn) throws Exception {
         printFormat po = null;
@@ -146,8 +146,8 @@ public class printFormatDAO{
 /// Save
     
     /**
-     * save printOrder
-     * @param ps printOrder
+     * save printFormat
+     * @param ps printFormat
      * @param conn connection
      * @throws java.sql.SQLException SQLException
      * @throws java.lang.Exception Exception
