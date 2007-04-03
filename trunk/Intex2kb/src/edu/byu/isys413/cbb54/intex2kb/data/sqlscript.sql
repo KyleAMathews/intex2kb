@@ -54,7 +54,7 @@ create table "membership"
     "startDate" VARCHAR(30),
     "endDate" VARCHAR(30),
     "creditCard" VARCHAR(16),
-    "ccExpiration" VARCHAR(10),
+    "ccExpiration" VARCHAR(45),
     "newsletter" SMALLINT,
     "backupSize" VARCHAR(15),
     "backupExpDate" VARCHAR(40)
@@ -62,7 +62,7 @@ create table "membership"
 
 create table "backupservice"
 (
-    "price" VARCHAR(20) not null primary key
+    "price" double not null primary key
 );
 
 create table "interest"
@@ -286,11 +286,12 @@ create table "product"
     "productType" varchar(30)
 );
 
+INSERT INTO "backupservice" VALUES (.99);
 INSERT INTO "customer" VALUES ('00000109123b9144eb018b64001000', 'Cameron', 'Burgon', '851 Wymount Terrace', '', 'Provo', 'Utah', '84602', '8013786198', 'wherever@sd.com');
 INSERT INTO "customer" VALUES ('00000109123b925d16688bc2001000', 'Jamie', 'Burgon', '851 Wymount Terrace', '', 'Provo', 'Utah', '84604', '8013786189', 'wherever@sd.com');
 INSERT INTO "customer" VALUES ('00000109123b8e75a1ce5a33001000', 'John', 'Doe', '123 Somewhere', '', 'Nowhere', 'Nevada', '87839', '3418394854', 'wherever@sd.com');
 INSERT INTO "customer" VALUES ('00000109123b8e75a1ce5a34001000', 'Jane', 'Doe', '123 Somewhere', '', 'Nowhere', 'Nevada', '87839', '3418394854', 'wherever@sd.com');
-
+INSERT INTO "membership" VALUES ('00000109123b8e75a1ce5a34001000', '00000109123b8e75a1ce5a33001000', '23123', '12313', '123132', '12311175098508472',21, '123123', '123123');
 INSERT INTO "memberinterests" VALUES('00000109123b925d16688bc2001000','0000011105caf55500f1fec0a80204');
 
 INSERT INTO "transactionline" VALUES('00000111728454ec00e60e0a500442','1234','000001117284553c0014af0a500442', 'backup');
