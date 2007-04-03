@@ -492,6 +492,17 @@ public class tester {
             RentalReturnDAO.getInstance().save(rr);
             System.out.println("rental return save complete");
             
+            /*
+             *Testing Batch
+             */ 
+            System.out.println();
+             System.out.println();
+            System.out.println("TESTING RENTAL BATCH");
+            System.out.println();
+            
+            RentalBatch.getInstance().movetosale();
+            
+            
         }catch(Exception e) {
             e.printStackTrace();
         }

@@ -29,6 +29,7 @@ DROP TABLE "conversiontype";
 DROP TABLE "conceptual";
 DROP TABLE "product";
 DROP TABLE "rentalreturn";
+DROP TABLE "conceptualrental";
 
 
 
@@ -242,7 +243,9 @@ create table "physical"
     "id" varchar(40) not null primary key,
     "serialnum" varchar(40),
     "shelflocation" varchar(40),
+    "conceptualproduct" varchar(40),
     "forsale" smallint
+    
 );
 
 create table "conceptual"
@@ -251,6 +254,16 @@ create table "conceptual"
     "name" varchar(60),
     "description" varchar(120),
     "avgCost" double
+);
+
+create table "conceptualrental"
+(
+    "id" varchar(40) not null primary key,
+    "price" double,
+    "cost" double,
+    "late" double,
+    "maxrent" int,
+    "maxlate" int
 );
 
 create table "forrent"
@@ -301,10 +314,25 @@ INSERT INTO "rental" VALUES('3245643212342', 4321789, 432143);
 
 INSERT INTO "rentalreturn" VALUES('4432435432543', '3245643212342', 432193);
 
-INSERT INTO "physical" VALUES('321423421', '543254', 'shelf 31', 1);
-INSERT INTO "physical" VALUES('54322345', '5543256543565', 'shelf 32', 0);
+INSERT INTO "physical" VALUES('321423421', '543254', 'shelf 31', '7432182347891234', 1);
+INSERT INTO "physical" VALUES('54322345', '5543256543565', 'shelf 32', '1234waf3q4wrea', 0);
+INSERT INTO "physical" VALUES('6543643', '5543256543566', 'shelf 32', '8okij7u6hy', 0);
+INSERT INTO "physical" VALUES('5jy4354wet', '5543256543567', 'shelf 32', '1234waf3q4wrea', 0);
+INSERT INTO "physical" VALUES('fds890h4oqt', '5543256543568', 'shelf 32', '214ra3q4wrae', 0);
+INSERT INTO "physical" VALUES('tgfdsgrewgfdgwe', '5543256543569', 'shelf 32', '6jhy53gtryjmun', 0);
+INSERT INTO "physical" VALUES('asdfasdfw4s4', '5543256543570', 'shelf 32', '8okij7u6hy', 0);
+
+INSERT INTO "conceptualrental" VALUES('1234waf3q4wrea', 29.99, 249.99, 14.99, 5, 10);
+INSERT INTO "conceptualrental" VALUES('214ra3q4wrae', 19.99, 229.99, 9.99, 5, 10);
+INSERT INTO "conceptualrental" VALUES('6jhy53gtryjmun', 9.99, 49.99, 4.99, 5, 10);
+INSERT INTO "conceptualrental" VALUES('8okij7u6hy', 99.99, 11249.99, 44.99, 5, 10);
 
 INSERT INTO "forrent" VALUES('54322345', 3, '3245643212342');
+INSERT INTO "forrent" VALUES('6543643', 5, '');
+INSERT INTO "forrent" VALUES('5jy4354wet', 4, '');
+INSERT INTO "forrent" VALUES('fds890h4oqt', 5, '');
+INSERT INTO "forrent" VALUES('tgfdsgrewgfdgwe', 5, '');
+INSERT INTO "forrent" VALUES('asdfasdfw4s4', 2, '');
 
 INSERT INTO "forsale" VALUES('321423421', 1);
 
