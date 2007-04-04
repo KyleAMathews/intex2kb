@@ -189,6 +189,13 @@ public class conversionTypeDAO{
     
 // for business reasons we're not supporting deleting
     
-    
+    public conversionTypeBO getConversionType(String conversionType) throws Exception {
+        conversionTypeBO conv = null;
+        
+        Connection conn = ConnectionPool.getInstance().get();
+        
+        PreparedStatement ps = conn.prepareStatement("select * from \"conversiontype\" where ");
+        
+    }
 }
 //test
