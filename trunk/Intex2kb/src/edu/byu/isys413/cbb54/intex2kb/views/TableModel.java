@@ -3,10 +3,12 @@
  *
  * Created on November 8, 2006, 2:22 PM
  * Author: Cameron Burgon  cameronb62@byu.edu
- * 
+ *
  */
 
 package edu.byu.isys413.cbb54.intex2kb.views;
+import edu.byu.isys413.cbb54.intex2kb.data.*;
+
 
 
 import java.io.File;
@@ -31,7 +33,7 @@ public class TableModel extends AbstractTableModel{
     static Connection conn = connection();
     static Statement stmt = null;
     boolean change = false;
-
+    
     public static Connection connection(){
         try{
             Class.forName("org.apache.derby.jdbc.ClientDriver").newInstance();
@@ -49,40 +51,56 @@ public class TableModel extends AbstractTableModel{
     public TableModel() {
         
 //        checkTable();
-
+        
         // Set column headings
         header.add("#");
         header.add("Description");
         header.add("Qty");
         header.add("Price");
         
+        
+        
 //        try{
-//            
+//
 //
 //            stmt = conn.createStatement();
 //            ResultSet srs = stmt.executeQuery("SELECT * FROM data");
-//            
+//
 //            while (srs.next()) {
 //                List<String> list = new LinkedList<String>();
 //                list.add(srs.getString("guid"));
 //                list.add(srs.getString("title"));
 //                list.add(srs.getString("artist"));
 //                list.add(srs.getString("album"));
-//                    
+//
 //                addRow(list);
 //            }
-//            
+//
 //             stmt.close();
 //        } catch (Exception c){
 //            c.printStackTrace();
 //        }
-
-
+        
+        
+    }
+    
+    public void updateTable(Transaction tx){
+        List<TransactionLine> txlnList = tx.getTxLines();
+        
+        for (int i = 0;i < txlnList.size();i++){
+            List<String> temp = new LinkedList<String>();
+            temp.add(txlnList.get(i).getId());
+            temp.add(txlnList.get(i).getRsType());
+            //temp.add(Double.valueOf(txlnList.get(i).getRevenueSource().getPrice()));
+        }
+        
+        data.add(txlnList);
+        fireTableRowsInserted(0,data.size());
     }
     
 //    public void checkTable(){
 //        boolean tableExists = false;
-//        
+//
 //        try {
 //            // Gets the database metadata
 //            DatabaseMetaData dbmd = conn.getMetaData();
@@ -95,21 +113,21 @@ public class TableModel extends AbstractTableModel{
 //            while (resultSet.next()) {
 //                // Get the table name
 //                String tableName = resultSet.getString(3);
-//                
+//
 //                // Set tableExists to TRUE if it exists
 //                if(tableName.equals("DATA")){
 //                    tableExists = true;
 //                }
 //            }
-//            
+//
 //            // If table does not exists, create table and sample data
-//            if(tableExists == false){             
+//            if(tableExists == false){
 //                PreparedStatement create = conn.prepareStatement("CREATE TABLE data(guid varchar(30),title varchar(30),artist varchar(30),album varchar(30) )");
-//                
+//
 //                create.executeUpdate();
 //                conn.commit();
 //                create.close();
-//                
+//
 //                PreparedStatement insert = conn.prepareStatement("INSERT INTO data VALUES" +
 //                        "('0000010f283e9daf000000c0a80264','Oh Very Young','Cat Stevens','Greatest Hits')," +
 //                        "('0000010f283e9daf000001c0a80264','Running Out of Days','3 Doors Down','Away from the Sun')," +
@@ -120,23 +138,23 @@ public class TableModel extends AbstractTableModel{
 //                        "('0000010f283e9daf000006c0a80264','Summertime','Lonestar','Let''s Be Us Again')," +
 //                        "('0000010f283e9daf000007c0a80264','See Groove','Nickelback','Curb')," +
 //                        "('0000010f283e9daf000008c0a80264','Carry Me','Katherine Nelson','Sometimes He Lets It Rain')");
-//                
+//
 //                insert.executeUpdate();
 //                conn.commit();
 //                insert.close();
 //            }
-//               
-//            
+//
+//
 //        } catch (SQLException e) {
 //            JOptionPane.showMessageDialog(null,"There was an error creating the sample data.");
 //        }
 //
 //    }
-
+    
     public int getRowCount() {
         return data.size();
     }
-
+    
     public int getColumnCount() {
         return header.size();
     }
@@ -144,33 +162,33 @@ public class TableModel extends AbstractTableModel{
     public String getColumnName(int col) {
         return header.get(col);
     }
-
+    
     public Object getValueAt(int rowIndex, int columnIndex) {
         return data.get(rowIndex).get(columnIndex);
     }
     
     public void setValueAt(Object value, int row, int col) {
         data.get(row).set(col, value);
-        fireTableCellUpdated(row, col);        
+        fireTableCellUpdated(row, col);
     }
-
-
-    // addRow() 
+    
+    
+    // addRow()
 //    public void addRow() throws SQLException, Exception{
 //        // Create list to add
 //        List<String> temp = new LinkedList();
-//        
+//
 //
 //        String title = JOptionPane.showInputDialog("Enter song title");
 //        String artist = JOptionPane.showInputDialog("Enter artist name");
 //        String album = JOptionPane.showInputDialog("Enter album name");
 //        String guid = GUID.generate();
-//        
-//        
+//
+//
 //        try{
 //            PreparedStatement insert = conn.prepareStatement(
 //                "INSERT INTO data(guid,title,artist,album) VALUES(?,?,?,?)");
-//            insert.setString(1, guid); 
+//            insert.setString(1, guid);
 //            insert.setString(2, title);
 //            insert.setString(3, artist);
 //            insert.setString(4, album);
@@ -190,7 +208,7 @@ public class TableModel extends AbstractTableModel{
 //            conn.rollback();
 //            throw e;
 //        }
-//        
+//
 //    }
     
     // addRow() for constructor()
@@ -200,18 +218,18 @@ public class TableModel extends AbstractTableModel{
         data.add(song);
         fireTableRowsInserted(0,data.size());
     }
-
+    
     public void deleteRow(int row) throws SQLException {
         
         // Retrieve the GUID of the row to be deleted
         String guid = getValueAt(row,0).toString().trim();
-
+        
         // Prepare delete statement and execute
         try{
             PreparedStatement delete = conn.prepareStatement(
-                "DELETE FROM data WHERE guid = ?");
+                    "DELETE FROM data WHERE guid = ?");
             delete.setString(1, guid);
-            delete.executeUpdate(); 
+            delete.executeUpdate();
             conn.commit();
             delete.close();
             
@@ -222,12 +240,12 @@ public class TableModel extends AbstractTableModel{
             throw e;
         }
     }
-
+    
     
     public boolean isCellEditable(int row, int col){
         return true;
     }
-
+    
     public void updateRow(int oldLine) throws SQLException {
         
         // Retrieve the value from the data list
@@ -239,7 +257,7 @@ public class TableModel extends AbstractTableModel{
         // Prepare the update statement using the variables above and execute
         try{
             PreparedStatement update = conn.prepareStatement(
-                "UPDATE data SET title=?, artist=?, album=? WHERE guid=?");
+                    "UPDATE data SET title=?, artist=?, album=? WHERE guid=?");
             update.setString(1, title);
             update.setString(2, artist);
             update.setString(3, album);
@@ -255,6 +273,6 @@ public class TableModel extends AbstractTableModel{
     
     
     
-   
-
+    
+    
 }
