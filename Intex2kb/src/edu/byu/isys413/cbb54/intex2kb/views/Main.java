@@ -56,10 +56,17 @@ public class Main extends javax.swing.JFrame {
      */
     // <editor-fold defaultstate="collapsed" desc=" Generated Code ">//GEN-BEGIN:initComponents
     private void initComponents() {
+        jButton1 = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         Sale = new javax.swing.JPanel();
+        jPanel9 = new javax.swing.JPanel();
         jLabel12 = new javax.swing.JLabel();
+        jPanel10 = new javax.swing.JPanel();
+        SaleQty = new javax.swing.JTextField();
+        jLabel17 = new javax.swing.JLabel();
+        jPanel11 = new javax.swing.JPanel();
+        submitSale = new javax.swing.JButton();
         Conversion = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox();
@@ -108,32 +115,62 @@ public class Main extends javax.swing.JFrame {
         Rep = new javax.swing.JButton();
         Sal = new javax.swing.JButton();
 
+        jButton1.setText("jButton1");
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         jPanel5.setLayout(new javax.swing.BoxLayout(jPanel5, javax.swing.BoxLayout.X_AXIS));
 
         jPanel2.setLayout(new java.awt.CardLayout());
 
+        Sale.setLayout(new java.awt.BorderLayout());
+
         Sale.setBackground(new java.awt.Color(255, 255, 255));
         Sale.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         Sale.setMinimumSize(new java.awt.Dimension(250, 0));
+        jPanel9.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel12.setFont(new java.awt.Font("Tahoma", 0, 14));
         jLabel12.setText("Sale");
+        jPanel9.add(jLabel12);
 
-        org.jdesktop.layout.GroupLayout SaleLayout = new org.jdesktop.layout.GroupLayout(Sale);
-        Sale.setLayout(SaleLayout);
-        SaleLayout.setHorizontalGroup(
-            SaleLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(SaleLayout.createSequentialGroup()
-                .add(115, 115, 115)
-                .add(jLabel12)
-                .addContainerGap(163, Short.MAX_VALUE))
+        Sale.add(jPanel9, java.awt.BorderLayout.NORTH);
+
+        jPanel10.setBackground(new java.awt.Color(255, 255, 255));
+        SaleQty.setFont(new java.awt.Font("Tahoma", 0, 12));
+        SaleQty.setText("1");
+
+        jLabel17.setFont(new java.awt.Font("Tahoma", 0, 12));
+        jLabel17.setText("Quantity");
+
+        org.jdesktop.layout.GroupLayout jPanel10Layout = new org.jdesktop.layout.GroupLayout(jPanel10);
+        jPanel10.setLayout(jPanel10Layout);
+        jPanel10Layout.setHorizontalGroup(
+            jPanel10Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jPanel10Layout.createSequentialGroup()
+                .add(103, 103, 103)
+                .add(jLabel17)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(SaleQty, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 33, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(111, Short.MAX_VALUE))
         );
-        SaleLayout.setVerticalGroup(
-            SaleLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(SaleLayout.createSequentialGroup()
-                .addContainerGap()
-                .add(jLabel12)
-                .addContainerGap(417, Short.MAX_VALUE))
+        jPanel10Layout.setVerticalGroup(
+            jPanel10Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jPanel10Layout.createSequentialGroup()
+                .add(47, 47, 47)
+                .add(jPanel10Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(SaleQty, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(jLabel17))
+                .addContainerGap(314, Short.MAX_VALUE))
         );
+        Sale.add(jPanel10, java.awt.BorderLayout.CENTER);
+
+        jPanel11.setBackground(new java.awt.Color(255, 255, 255));
+        submitSale.setText("Submit Sale");
+        submitSale.setMaximumSize(new java.awt.Dimension(50, 23));
+        submitSale.setMinimumSize(new java.awt.Dimension(50, 23));
+        jPanel11.add(submitSale);
+
+        Sale.add(jPanel11, java.awt.BorderLayout.SOUTH);
+
         jPanel2.add(Sale, "card2");
 
         Conversion.setBackground(new java.awt.Color(255, 255, 255));
@@ -647,7 +684,9 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JPanel Return;
     private javax.swing.JButton Sal;
     private javax.swing.JPanel Sale;
+    private javax.swing.JTextField SaleQty;
     private javax.swing.JButton addPrintOrder;
+    private javax.swing.JButton jButton1;
     private javax.swing.JComboBox jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -657,6 +696,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -666,6 +706,8 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel10;
+    private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
@@ -673,6 +715,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
+    private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
@@ -682,6 +725,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JTextField printTypeInput;
     private javax.swing.JTextField quantityInput;
     private javax.swing.JTextField sizeInput;
+    private javax.swing.JButton submitSale;
     private javax.swing.JScrollPane table;
     // End of variables declaration//GEN-END:variables
     
