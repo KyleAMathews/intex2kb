@@ -393,14 +393,12 @@
                               <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                  <Component id="quantityInput" alignment="0" min="0" pref="0" max="32767" attributes="1"/>
-                                  <Component id="numPhotosInput" alignment="0" min="-2" pref="37" max="-2" attributes="1"/>
-                              </Group>
-                              <Component id="sizeInput" min="-2" max="-2" attributes="0"/>
-                              <Component id="paperTypeInput" min="-2" max="-2" attributes="0"/>
-                              <Component id="printTypeInput" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="quantityInput" alignment="0" min="0" pref="0" max="32767" attributes="1"/>
+                              <Component id="paperTypeInput" alignment="0" max="32767" attributes="1"/>
+                              <Component id="printTypeInput" alignment="0" max="32767" attributes="1"/>
+                              <Component id="sizeInput" alignment="0" max="32767" attributes="1"/>
+                              <Component id="numPhotosInput" alignment="0" max="32767" attributes="1"/>
                           </Group>
                           <EmptySpace pref="227" max="32767" attributes="0"/>
                       </Group>
