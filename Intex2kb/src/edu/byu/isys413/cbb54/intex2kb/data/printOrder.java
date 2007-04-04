@@ -35,6 +35,8 @@ public class printOrder extends RevenueSource {
      */
     public void setTotalPrice(int q, double pfPrice, int numPhotos){
         double totalPrice = q * numPhotos * pfPrice;
+        formatNumber f = new formatNumber();
+        totalPrice = Double.valueOf(f.fmt(totalPrice));
         super.setPrice(totalPrice);
     }
     
