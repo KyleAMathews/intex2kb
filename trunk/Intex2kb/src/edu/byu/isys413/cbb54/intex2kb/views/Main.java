@@ -650,6 +650,9 @@ public class Main extends javax.swing.JFrame {
             po.setPOID(GUID.generate());
             po.setPrintFormat(pf);
             po.setQuantity(Integer.valueOf(quantityInput.getText()));
+            System.out.println(po.getQuantity());
+            po.setTotalPrice(po.getQuantity(),pf.getPrice());
+            System.out.println(po.getPrice());
             
             //set PhotoSet values
             ps.setDescription(photosetDesc.getText());
