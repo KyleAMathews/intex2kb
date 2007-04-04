@@ -57,6 +57,16 @@ public class printFormatDAO{
         c.put(printFormat.getId(),printFormat);
         
         return printFormat;
+    } 
+    
+    public printFormat create(String id) throws Exception{
+        printFormat printFormat = new printFormat(id);
+        
+        //put RS into Cache
+        Cache c = Cache.getInstance();
+        c.put(printFormat.getId(),printFormat);
+        
+        return printFormat;
     }
     
     ///////////////////////////////////////////
@@ -118,16 +128,19 @@ public class printFormatDAO{
             //if not in cache, create connection and Member objects
             
             try {
-                //if not in cache, retrieve DB connection
-                conn = ConnectionPool.getInstance().get();
-                
                 //get a result set from a SELECT SQL statement
                 PreparedStatement ps = conn.prepareStatement("select * from \"printformat\" where \"id\" = '" + id + "'");
                 ResultSet result = ps.executeQuery();
+                if(result.next()){
+                    po = printFormatDAO.getInstance().create(result.getString("id"));
+                    po.setPaperType(result.getString("papertype"));
+                    po.setSize(result.getString("size"));
+                    po.setSourceType(result.getString("sourcetype"));
+                    result.close();
+                    ps.close();
+                    
+                }
                 
-                po.setPaperType(result.getString("papertype"));
-                po.setSize(result.getString("size"));
-                po.setSourceType(result.getString("sourcetype"));
                 
             } catch (Exception e){
                 e.printStackTrace();
@@ -225,6 +238,21 @@ public class printFormatDAO{
     
 // for business reasons we're not supporting deleting
     
-    
+    public printFormat getPrintFormat(String size, String paperType, String sourceType) throws Exception {
+        printFormat pf = null;
+        Connection conn = ConnectionPool.getInstance().get();
+        PreparedStatement ps = conn.prepareStatement("select * from \"printformat\" where \"size\" = '" + size +
+                "' and \"papertype\" = '" + paperType + "' and \"sourcetype\" = '" + sourceType + "'");
+        ResultSet rs = ps.executeQuery();
+        if(rs.next()){
+            pf = printFormatDAO.getInstance().read(rs.getString("id"),conn);
+        }
+        
+        rs.close();
+        ps.close();
+        ConnectionPool.getInstance().release(conn);
+        
+        return pf;
+    }
 }
 
