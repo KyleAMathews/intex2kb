@@ -9,6 +9,7 @@
 
 package edu.byu.isys413.cbb54.intex2kb.data;
 
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -42,6 +43,7 @@ public class Transaction {
         this.employee = orig.getEmployee();
         this.store = orig.getStore();
         this.orig = orig;
+        this.txLines = new LinkedList<TransactionLine>();
         this.type = "return";
     }
 
@@ -56,6 +58,11 @@ public class Transaction {
     public void setTxLines(List<TransactionLine> txLines) {
         this.dirty = true;
         this.txLines = txLines;
+    }
+    
+    public void addTxLine(TransactionLine txln){
+        this.txLines.add(txln);
+        this.dirty = true;
     }
 
     public Payment getPayment() {
