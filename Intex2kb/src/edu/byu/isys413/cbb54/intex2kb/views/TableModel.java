@@ -91,8 +91,7 @@ public class TableModel extends AbstractTableModel{
         for (int i = 0;i < txlnList.size();i++){
             temp.add(txlnList.get(i).getId());
             temp.add(txlnList.get(i).getRsType());
-            
-            temp.add(Double.valueOf(txlnList.get(i).getRevenueSource().getPrice()));
+            temp.add(Double.toString(txlnList.get(i).getRevenueSource().getPrice()));
         }
         
         data.add(temp);
