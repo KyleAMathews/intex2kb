@@ -645,7 +645,7 @@ public class Main extends javax.swing.JFrame {
             conversionBO conv = (conversionBO)ConversionDAO.getInstance().create();
             
             //Read conversionType from DB and create object
-            Connection conn = ConnectionPool.getInstance().get();
+            
             
             String conversionType = conversionTypeInput.getSelectedItem().toString();
             System.out.println(conversionType);
@@ -690,13 +690,14 @@ public class Main extends javax.swing.JFrame {
             po.setPOID(GUID.generate());
             po.setPrintFormat(pf);
             po.setQuantity(Integer.valueOf(quantityInput.getText()));
-            System.out.println(po.getQuantity());
-            po.setTotalPrice(po.getQuantity(),pf.getPrice(),po.getPhotoSet().getNumPhotos());
-            System.out.println(po.getPrice());
             
             //set PhotoSet values
             ps.setDescription(photosetDesc.getText());
+            System.out.println(numPhotosInput.getText());
             ps.setNumPhotos(Integer.valueOf(numPhotosInput.getText()));
+            
+            //set total price in RSBO
+            po.setTotalPrice(po.getQuantity(),pf.getPrice(),ps.getNumPhotos());
             
             //Create TX-Line
             TransactionLine txln = TransactionLineDAO.getInstance().create(tx,po.getId());
