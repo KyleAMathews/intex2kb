@@ -98,6 +98,7 @@ public class printFormatDAO{
                 po.setPaperType(result.getString("papertype"));
                 po.setSize(result.getString("size"));
                 po.setSourceType(result.getString("sourcetype"));
+                po.setPrice(result.getDouble("price"));
                 
             } catch (Exception e){
                 e.printStackTrace();
@@ -136,6 +137,7 @@ public class printFormatDAO{
                     po.setPaperType(result.getString("papertype"));
                     po.setSize(result.getString("size"));
                     po.setSourceType(result.getString("sourcetype"));
+                    po.setPrice(result.getDouble("price"));
                     result.close();
                     ps.close();
                     

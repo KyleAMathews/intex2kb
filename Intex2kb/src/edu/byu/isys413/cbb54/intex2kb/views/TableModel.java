@@ -55,7 +55,6 @@ public class TableModel extends AbstractTableModel{
         // Set column headings
         header.add("#");
         header.add("Description");
-        header.add("Qty");
         header.add("Price");
         
         
@@ -84,17 +83,20 @@ public class TableModel extends AbstractTableModel{
         
     }
     
-    public void updateTable(Transaction tx){
+    public void updateTable(Transaction tx) throws Exception {
+        data.clear();
+        
         List<TransactionLine> txlnList = tx.getTxLines();
-        List<String> temp = new LinkedList<String>();
+        
         
         for (int i = 0;i < txlnList.size();i++){
-            temp.add(txlnList.get(i).getId());
+            List<String> temp = new LinkedList<String>();
+            temp.add(Integer.toString(i+1));
             temp.add(txlnList.get(i).getRsType());
             temp.add(Double.toString(txlnList.get(i).getRevenueSource().getPrice()));
+            data.add(temp);
         }
         
-        data.add(temp);
         fireTableRowsInserted(0,data.size());
     }
     
