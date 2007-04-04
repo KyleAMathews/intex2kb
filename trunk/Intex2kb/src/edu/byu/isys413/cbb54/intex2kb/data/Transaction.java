@@ -33,6 +33,7 @@ public class Transaction {
     /** Creates a new instance of Transaction */
     public Transaction(String id) {
         this.id = id;
+        this.txLines = new LinkedList<TransactionLine>();
         this.orig = null;
     }
     
@@ -43,7 +44,6 @@ public class Transaction {
         this.employee = orig.getEmployee();
         this.store = orig.getStore();
         this.orig = orig;
-        this.txLines = new LinkedList<TransactionLine>();
         this.type = "return";
     }
 

@@ -86,15 +86,16 @@ public class TableModel extends AbstractTableModel{
     
     public void updateTable(Transaction tx){
         List<TransactionLine> txlnList = tx.getTxLines();
+        List<String> temp = new LinkedList<String>();
         
         for (int i = 0;i < txlnList.size();i++){
-            List<String> temp = new LinkedList<String>();
             temp.add(txlnList.get(i).getId());
             temp.add(txlnList.get(i).getRsType());
-            //temp.add(Double.valueOf(txlnList.get(i).getRevenueSource().getPrice()));
+            
+            temp.add(Double.valueOf(txlnList.get(i).getRevenueSource().getPrice()));
         }
         
-        data.add(txlnList);
+        data.add(temp);
         fireTableRowsInserted(0,data.size());
     }
     
