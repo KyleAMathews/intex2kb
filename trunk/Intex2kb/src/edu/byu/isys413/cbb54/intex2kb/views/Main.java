@@ -630,8 +630,17 @@ public class Main extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void addConversionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addConversionActionPerformed
-        String conversionType = conversionTypeInput.getSelectedItem().toString();
-        System.out.println(conversionType);
+        try {
+            conversionBO conv = (conversionBO)ConversionDAO.getInstance().create();
+            
+            //Read conversionType from DB and create object
+            Connection conn = ConnectionPool.getInstance().get();
+            
+            String conversionType = conversionTypeInput.getSelectedItem().toString();
+            System.out.println(conversionType);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
     }//GEN-LAST:event_addConversionActionPerformed
 
     private void SalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalActionPerformed
@@ -728,6 +737,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JButton addPrintOrder;
     private javax.swing.JComboBox conversionTypeInput;
     private javax.swing.JButton jButton1;
+    private javax.swing.JComboBox jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -738,6 +748,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
