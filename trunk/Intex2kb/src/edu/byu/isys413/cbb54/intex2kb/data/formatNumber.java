@@ -22,9 +22,8 @@ public class formatNumber {
         
     }
     
-    private String fmt(double number) {
+    public String fmt(double number) {
         DecimalFormat formatter = new DecimalFormat("###,##0.00");
         return formatter.format(number);
-        
     }
 }
