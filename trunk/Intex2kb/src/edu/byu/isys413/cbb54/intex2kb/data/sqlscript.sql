@@ -350,7 +350,7 @@ INSERT INTO "printformat" VALUES ('444','4X6','Matte','Digital',.2);
 INSERT INTO "printformat" VALUES ('555','4x6','Glossy','Digital',.3);
 INSERT INTO "printformat" VALUES ('222','5x7','Matte','Film',.25);
 INSERT INTO "printformat" VALUES ('666','5x7','Glossy','Film',.35);
-INSERT INTO "printformat" VALUES ('777','5x7','Matte','Digital',..1);
+INSERT INTO "printformat" VALUES ('777','5x7','Matte','Digital',.1);
 INSERT INTO "printformat" VALUES ('888','5x7','Glossy','Digital',.2);
 
 INSERT INTO "photoset" VALUES ('111','Test Photoset 1',4);
