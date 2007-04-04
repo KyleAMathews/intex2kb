@@ -651,7 +651,7 @@ public class Main extends javax.swing.JFrame {
             po.setPrintFormat(pf);
             po.setQuantity(Integer.valueOf(quantityInput.getText()));
             System.out.println(po.getQuantity());
-            po.setTotalPrice(po.getQuantity(),pf.getPrice());
+            po.setTotalPrice(po.getQuantity(),pf.getPrice(),po.getPhotoSet().getNumPhotos());
             System.out.println(po.getPrice());
             
             //set PhotoSet values

@@ -33,8 +33,8 @@ public class printOrder extends RevenueSource {
      *@param q Quantity
      *@param pfPrice PrintFormat Price
      */
-    public void setTotalPrice(int q, double pfPrice){
-        double totalPrice = q * pfPrice;
+    public void setTotalPrice(int q, double pfPrice, int numPhotos){
+        double totalPrice = q * numPhotos * pfPrice;
         super.setPrice(totalPrice);
     }
     
