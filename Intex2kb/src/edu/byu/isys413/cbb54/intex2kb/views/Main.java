@@ -5,6 +5,7 @@
  */
 
 package edu.byu.isys413.cbb54.intex2kb.views;
+import edu.byu.isys413.cbb54.intex2kb.data.*;
 
 import java.awt.Color;
 import java.util.Map;
@@ -18,6 +19,7 @@ import javax.swing.UIManager;
 public class Main extends javax.swing.JFrame {
     
     private TableModel model;
+    private Transaction tx;
     
     /** Creates new form Main */
     public Main() {
@@ -38,8 +40,13 @@ public class Main extends javax.swing.JFrame {
         initComponents();
         model = new TableModel();
         jTable1.setModel(model);
-        
-        setVisible(2);
+        setVisible(8);
+        try {
+            tx = TransactionDAO.getInstance().create();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+
     }
     
     /** This method is called from within the constructor to
@@ -52,6 +59,7 @@ public class Main extends javax.swing.JFrame {
         jPanel5 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         Sale = new javax.swing.JPanel();
+        jLabel12 = new javax.swing.JLabel();
         Conversion = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox();
@@ -62,18 +70,26 @@ public class Main extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jComboBox2 = new javax.swing.JComboBox();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        photosetDesc = new javax.swing.JTextArea();
         jLabel8 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        numPhotosInput = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
-        addToTX = new javax.swing.JButton();
+        quantityInput = new javax.swing.JTextField();
+        addPrintOrder = new javax.swing.JButton();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        sizeInput = new javax.swing.JTextField();
+        paperTypeInput = new javax.swing.JTextField();
+        printTypeInput = new javax.swing.JTextField();
         Backup = new javax.swing.JPanel();
+        jLabel13 = new javax.swing.JLabel();
         Rental = new javax.swing.JPanel();
+        jLabel14 = new javax.swing.JLabel();
         Return = new javax.swing.JPanel();
+        jLabel15 = new javax.swing.JLabel();
         Repair = new javax.swing.JPanel();
+        jLabel16 = new javax.swing.JLabel();
         Default = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
@@ -100,15 +116,23 @@ public class Main extends javax.swing.JFrame {
         Sale.setBackground(new java.awt.Color(255, 255, 255));
         Sale.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         Sale.setMinimumSize(new java.awt.Dimension(250, 0));
+        jLabel12.setText("Sale");
+
         org.jdesktop.layout.GroupLayout SaleLayout = new org.jdesktop.layout.GroupLayout(Sale);
         Sale.setLayout(SaleLayout);
         SaleLayout.setHorizontalGroup(
             SaleLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 298, Short.MAX_VALUE)
+            .add(SaleLayout.createSequentialGroup()
+                .add(115, 115, 115)
+                .add(jLabel12)
+                .addContainerGap(163, Short.MAX_VALUE))
         );
         SaleLayout.setVerticalGroup(
             SaleLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 442, Short.MAX_VALUE)
+            .add(SaleLayout.createSequentialGroup()
+                .addContainerGap()
+                .add(jLabel12)
+                .addContainerGap(417, Short.MAX_VALUE))
         );
         jPanel2.add(Sale, "card2");
 
@@ -169,28 +193,36 @@ public class Main extends javax.swing.JFrame {
 
         jLabel6.setText("PhotoSet Description");
 
-        jLabel7.setText("Print Format:");
+        jLabel7.setText("Size:");
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "4x6, Glossy, Film", "4x6, Glossy, Digital", "4x6, Matte, Film", "4x6, Matte, Digital", "5x7, Glossy, Film", "5x7, Glossy, Digital", "5x7, Matte, Film", "5x7, Matte, Digital" }));
-
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        photosetDesc.setColumns(20);
+        photosetDesc.setRows(5);
+        jScrollPane1.setViewportView(photosetDesc);
 
         jLabel8.setText("Number of Photos:");
 
-        jTextField2.setText("#");
+        numPhotosInput.setText("3");
 
         jLabel9.setText("Quantity:");
 
-        jTextField3.setText("#");
+        quantityInput.setText("2");
 
-        addToTX.setText("Add to TX");
-        addToTX.addActionListener(new java.awt.event.ActionListener() {
+        addPrintOrder.setText("Add to TX");
+        addPrintOrder.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                addToTXActionPerformed(evt);
+                addPrintOrderActionPerformed(evt);
             }
         });
+
+        jLabel10.setText("Paper Type:");
+
+        jLabel11.setText("Print Type:");
+
+        sizeInput.setText("4x6");
+
+        paperTypeInput.setText("Matte");
+
+        printTypeInput.setText("Film");
 
         org.jdesktop.layout.GroupLayout PrintOrderLayout = new org.jdesktop.layout.GroupLayout(PrintOrder);
         PrintOrder.setLayout(PrintOrderLayout);
@@ -207,27 +239,28 @@ public class Main extends javax.swing.JFrame {
                         .addContainerGap(188, Short.MAX_VALUE))
                     .add(org.jdesktop.layout.GroupLayout.TRAILING, PrintOrderLayout.createSequentialGroup()
                         .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 218, Short.MAX_VALUE)
-                        .add(70, 70, 70))
-                    .add(PrintOrderLayout.createSequentialGroup()
-                        .add(PrintOrderLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                            .add(org.jdesktop.layout.GroupLayout.TRAILING, PrintOrderLayout.createSequentialGroup()
-                                .add(jLabel7)
-                                .add(14, 14, 14))
-                            .add(PrintOrderLayout.createSequentialGroup()
-                                .add(PrintOrderLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
-                                    .add(jLabel9)
-                                    .add(jLabel8))
-                                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)))
-                        .add(PrintOrderLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                            .add(jComboBox2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                            .add(PrintOrderLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING, false)
-                                .add(org.jdesktop.layout.GroupLayout.LEADING, jTextField3, 0, 0, Short.MAX_VALUE)
-                                .add(org.jdesktop.layout.GroupLayout.LEADING, jTextField2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 37, Short.MAX_VALUE)))
-                        .add(77, 77, 77))))
+                        .add(70, 70, 70))))
             .add(PrintOrderLayout.createSequentialGroup()
                 .add(104, 104, 104)
-                .add(addToTX)
+                .add(addPrintOrder)
                 .addContainerGap(115, Short.MAX_VALUE))
+            .add(PrintOrderLayout.createSequentialGroup()
+                .addContainerGap()
+                .add(PrintOrderLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
+                    .add(jLabel11)
+                    .add(jLabel10)
+                    .add(jLabel9)
+                    .add(jLabel8)
+                    .add(jLabel7))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(PrintOrderLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(PrintOrderLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING, false)
+                        .add(org.jdesktop.layout.GroupLayout.LEADING, quantityInput, 0, 0, Short.MAX_VALUE)
+                        .add(org.jdesktop.layout.GroupLayout.LEADING, numPhotosInput, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 37, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                    .add(sizeInput, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(paperTypeInput, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(printTypeInput, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(157, Short.MAX_VALUE))
         );
         PrintOrderLayout.setVerticalGroup(
             PrintOrderLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -237,21 +270,29 @@ public class Main extends javax.swing.JFrame {
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(PrintOrderLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(jLabel7)
-                    .add(jComboBox2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                    .add(sizeInput, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(PrintOrderLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(jLabel10)
+                    .add(paperTypeInput, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(PrintOrderLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(jLabel11)
+                    .add(printTypeInput, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .add(24, 24, 24)
+                .add(PrintOrderLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(jLabel8)
-                    .add(jTextField2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                    .add(numPhotosInput, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(PrintOrderLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(jLabel9)
-                    .add(jTextField3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .add(54, 54, 54)
+                    .add(quantityInput, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jLabel6)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jScrollPane1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 111, Short.MAX_VALUE)
-                .add(addToTX)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 89, Short.MAX_VALUE)
+                .add(addPrintOrder)
                 .addContainerGap())
         );
         jPanel2.add(PrintOrder, "card3");
@@ -259,60 +300,92 @@ public class Main extends javax.swing.JFrame {
         Backup.setBackground(new java.awt.Color(255, 255, 255));
         Backup.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         Backup.setMinimumSize(new java.awt.Dimension(250, 0));
+        jLabel13.setText("Backup");
+
         org.jdesktop.layout.GroupLayout BackupLayout = new org.jdesktop.layout.GroupLayout(Backup);
         Backup.setLayout(BackupLayout);
         BackupLayout.setHorizontalGroup(
             BackupLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 298, Short.MAX_VALUE)
+            .add(BackupLayout.createSequentialGroup()
+                .add(116, 116, 116)
+                .add(jLabel13)
+                .addContainerGap(148, Short.MAX_VALUE))
         );
         BackupLayout.setVerticalGroup(
             BackupLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 442, Short.MAX_VALUE)
+            .add(BackupLayout.createSequentialGroup()
+                .addContainerGap()
+                .add(jLabel13)
+                .addContainerGap(417, Short.MAX_VALUE))
         );
         jPanel2.add(Backup, "card4");
 
         Rental.setBackground(new java.awt.Color(255, 255, 255));
         Rental.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         Rental.setMinimumSize(new java.awt.Dimension(250, 0));
+        jLabel14.setText("Rental");
+
         org.jdesktop.layout.GroupLayout RentalLayout = new org.jdesktop.layout.GroupLayout(Rental);
         Rental.setLayout(RentalLayout);
         RentalLayout.setHorizontalGroup(
             RentalLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 298, Short.MAX_VALUE)
+            .add(RentalLayout.createSequentialGroup()
+                .add(127, 127, 127)
+                .add(jLabel14)
+                .addContainerGap(140, Short.MAX_VALUE))
         );
         RentalLayout.setVerticalGroup(
             RentalLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 442, Short.MAX_VALUE)
+            .add(RentalLayout.createSequentialGroup()
+                .addContainerGap()
+                .add(jLabel14)
+                .addContainerGap(417, Short.MAX_VALUE))
         );
         jPanel2.add(Rental, "card6");
 
         Return.setBackground(new java.awt.Color(255, 255, 255));
         Return.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         Return.setMinimumSize(new java.awt.Dimension(250, 0));
+        jLabel15.setText("Return");
+
         org.jdesktop.layout.GroupLayout ReturnLayout = new org.jdesktop.layout.GroupLayout(Return);
         Return.setLayout(ReturnLayout);
         ReturnLayout.setHorizontalGroup(
             ReturnLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 298, Short.MAX_VALUE)
+            .add(ReturnLayout.createSequentialGroup()
+                .add(123, 123, 123)
+                .add(jLabel15)
+                .addContainerGap(142, Short.MAX_VALUE))
         );
         ReturnLayout.setVerticalGroup(
             ReturnLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 442, Short.MAX_VALUE)
+            .add(ReturnLayout.createSequentialGroup()
+                .addContainerGap()
+                .add(jLabel15)
+                .addContainerGap(417, Short.MAX_VALUE))
         );
         jPanel2.add(Return, "card7");
 
         Repair.setBackground(new java.awt.Color(255, 255, 255));
         Repair.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         Repair.setMinimumSize(new java.awt.Dimension(250, 0));
+        jLabel16.setText("Repair");
+
         org.jdesktop.layout.GroupLayout RepairLayout = new org.jdesktop.layout.GroupLayout(Repair);
         Repair.setLayout(RepairLayout);
         RepairLayout.setHorizontalGroup(
             RepairLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 298, Short.MAX_VALUE)
+            .add(RepairLayout.createSequentialGroup()
+                .add(122, 122, 122)
+                .add(jLabel16)
+                .addContainerGap(145, Short.MAX_VALUE))
         );
         RepairLayout.setVerticalGroup(
             RepairLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 442, Short.MAX_VALUE)
+            .add(RepairLayout.createSequentialGroup()
+                .addContainerGap()
+                .add(jLabel16)
+                .addContainerGap(417, Short.MAX_VALUE))
         );
         jPanel2.add(Repair, "card8");
 
@@ -407,16 +480,46 @@ public class Main extends javax.swing.JFrame {
         });
 
         PrintO.setText("PrintOrder");
+        PrintO.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PrintOActionPerformed(evt);
+            }
+        });
 
         Back.setText("Backup");
+        Back.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BackActionPerformed(evt);
+            }
+        });
 
         Rent.setText("Rental");
+        Rent.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RentActionPerformed(evt);
+            }
+        });
 
         Ret.setText("Return");
+        Ret.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RetActionPerformed(evt);
+            }
+        });
 
         Rep.setText("Repair");
+        Rep.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RepActionPerformed(evt);
+            }
+        });
 
         Sal.setText("Sale");
+        Sal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SalActionPerformed(evt);
+            }
+        });
 
         org.jdesktop.layout.GroupLayout jPanel4Layout = new org.jdesktop.layout.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -458,9 +561,60 @@ public class Main extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void addToTXActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addToTXActionPerformed
-        
-    }//GEN-LAST:event_addToTXActionPerformed
+    private void SalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalActionPerformed
+        setVisible(7);
+    }//GEN-LAST:event_SalActionPerformed
+
+    private void RepActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RepActionPerformed
+        setVisible(5);
+    }//GEN-LAST:event_RepActionPerformed
+
+    private void RetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RetActionPerformed
+        setVisible(6);
+    }//GEN-LAST:event_RetActionPerformed
+
+    private void RentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RentActionPerformed
+        setVisible(4);
+    }//GEN-LAST:event_RentActionPerformed
+
+    private void BackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackActionPerformed
+        setVisible(1);
+    }//GEN-LAST:event_BackActionPerformed
+
+    private void PrintOActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PrintOActionPerformed
+        setVisible(3);
+    }//GEN-LAST:event_PrintOActionPerformed
+
+    private void addPrintOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addPrintOrderActionPerformed
+        try {
+            printOrder po = (printOrder)PrintOrderDAO.getInstance().create();
+            PhotoSet ps = (PhotoSet)PhotoSetDAO.getInstance().create();
+            
+            //read printFormat
+            printFormat pf = printFormatDAO.getInstance().getPrintFormat(sizeInput.getText(),paperTypeInput.getText(),printTypeInput.getText());
+            
+            //set PrintOrder values
+            po.setPOID(GUID.generate());
+            po.setPrintFormat(pf);
+            po.setQuantity(Integer.valueOf(quantityInput.getText()));
+            
+            //set PhotoSet values
+            ps.setDescription(photosetDesc.getText());
+            ps.setNumPhotos(Integer.valueOf(numPhotosInput.getText()));
+            
+            //Create TX-Line
+            TransactionLine txln = TransactionLineDAO.getInstance().create(tx,po.getId());
+            txln.setRevenueSource(po);
+            txln.setRsType("PrintOrder");
+            tx.addTxLine(txln);
+            
+            //Add TX-Line to GUI
+            model.updateTable(tx);
+            
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }//GEN-LAST:event_addPrintOrderActionPerformed
 
     private void ConvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConvActionPerformed
         setVisible(2);
@@ -493,10 +647,16 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JPanel Return;
     private javax.swing.JButton Sal;
     private javax.swing.JPanel Sale;
-    private javax.swing.JButton addToTX;
+    private javax.swing.JButton addPrintOrder;
     private javax.swing.JComboBox jComboBox1;
-    private javax.swing.JComboBox jComboBox2;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -515,10 +675,13 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel8;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField numPhotosInput;
+    private javax.swing.JTextField paperTypeInput;
+    private javax.swing.JTextArea photosetDesc;
+    private javax.swing.JTextField printTypeInput;
+    private javax.swing.JTextField quantityInput;
+    private javax.swing.JTextField sizeInput;
     private javax.swing.JScrollPane table;
     // End of variables declaration//GEN-END:variables
     
