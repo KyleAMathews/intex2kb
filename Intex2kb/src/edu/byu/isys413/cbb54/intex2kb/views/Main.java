@@ -69,13 +69,15 @@ public class Main extends javax.swing.JFrame {
         jTextField2 = new javax.swing.JTextField();
         jPanel11 = new javax.swing.JPanel();
         submitSale = new javax.swing.JButton();
-        Conversion = new javax.swing.JPanel();
+        destinationInput = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         conversionTypeInput = new javax.swing.JComboBox();
         jLabel3 = new javax.swing.JLabel();
         numMinutesInput = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         addConversion = new javax.swing.JButton();
+        jLabel19 = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox();
         PrintOrder = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
@@ -163,7 +165,7 @@ public class Main extends javax.swing.JFrame {
                 .add(jPanel10Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(jTextField2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(SaleQty, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 33, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(33, Short.MAX_VALUE))
+                .addContainerGap(105, Short.MAX_VALUE))
         );
         jPanel10Layout.setVerticalGroup(
             jPanel10Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -190,12 +192,12 @@ public class Main extends javax.swing.JFrame {
 
         jPanel2.add(Sale, "card2");
 
-        Conversion.setBackground(new java.awt.Color(255, 255, 255));
-        Conversion.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        Conversion.setMinimumSize(new java.awt.Dimension(250, 0));
-        jLabel2.setText("Conversion Type:");
+        destinationInput.setBackground(new java.awt.Color(255, 255, 255));
+        destinationInput.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        destinationInput.setMinimumSize(new java.awt.Dimension(250, 0));
+        jLabel2.setText("Source Type:");
 
-        conversionTypeInput.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "VHS to DVD", "Film to CD" }));
+        conversionTypeInput.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "VHS", "Film" }));
 
         jLabel3.setText("Number of Minutes:");
 
@@ -210,47 +212,61 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
-        org.jdesktop.layout.GroupLayout ConversionLayout = new org.jdesktop.layout.GroupLayout(Conversion);
-        Conversion.setLayout(ConversionLayout);
-        ConversionLayout.setHorizontalGroup(
-            ConversionLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(ConversionLayout.createSequentialGroup()
+        jLabel19.setText("Destination Type:");
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "DVD", "CD" }));
+
+        org.jdesktop.layout.GroupLayout destinationInputLayout = new org.jdesktop.layout.GroupLayout(destinationInput);
+        destinationInput.setLayout(destinationInputLayout);
+        destinationInputLayout.setHorizontalGroup(
+            destinationInputLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(destinationInputLayout.createSequentialGroup()
                 .addContainerGap()
-                .add(ConversionLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(ConversionLayout.createSequentialGroup()
-                        .add(ConversionLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                            .add(jLabel4, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 283, Short.MAX_VALUE)
-                            .add(ConversionLayout.createSequentialGroup()
-                                .add(ConversionLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
-                                    .add(jLabel3)
-                                    .add(jLabel2))
-                                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                                .add(ConversionLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
-                                    .add(numMinutesInput)
-                                    .add(conversionTypeInput, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))))
-                        .addContainerGap())
-                    .add(org.jdesktop.layout.GroupLayout.TRAILING, ConversionLayout.createSequentialGroup()
+                .add(destinationInputLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(org.jdesktop.layout.GroupLayout.TRAILING, destinationInputLayout.createSequentialGroup()
                         .add(addConversion)
-                        .add(103, 103, 103))))
+                        .add(103, 103, 103))
+                    .add(destinationInputLayout.createSequentialGroup()
+                        .add(destinationInputLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
+                            .add(jLabel2)
+                            .add(jLabel19)
+                            .add(jLabel3))
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(destinationInputLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                            .add(destinationInputLayout.createSequentialGroup()
+                                .add(conversionTypeInput, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                                .add(jLabel4, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 210, Short.MAX_VALUE)
+                                .addContainerGap())
+                            .add(destinationInputLayout.createSequentialGroup()
+                                .add(numMinutesInput, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 94, Short.MAX_VALUE)
+                                .add(173, 173, 173))
+                            .add(destinationInputLayout.createSequentialGroup()
+                                .add(jComboBox1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap())))))
         );
-        ConversionLayout.setVerticalGroup(
-            ConversionLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(ConversionLayout.createSequentialGroup()
+        destinationInputLayout.setVerticalGroup(
+            destinationInputLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(destinationInputLayout.createSequentialGroup()
                 .addContainerGap()
                 .add(jLabel4, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 38, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .add(26, 26, 26)
-                .add(ConversionLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jLabel2)
-                    .add(conversionTypeInput, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .add(destinationInputLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(conversionTypeInput, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(jLabel2))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(ConversionLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                .add(destinationInputLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(jLabel19)
+                    .add(jComboBox1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .add(9, 9, 9)
+                .add(destinationInputLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(jLabel3)
                     .add(numMinutesInput, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 277, Short.MAX_VALUE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 246, Short.MAX_VALUE)
                 .add(addConversion)
                 .add(20, 20, 20))
         );
-        jPanel2.add(Conversion, "card5");
+        jPanel2.add(destinationInput, "card5");
 
         PrintOrder.setBackground(new java.awt.Color(255, 255, 255));
         PrintOrder.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -301,17 +317,17 @@ public class Main extends javax.swing.JFrame {
                 .add(PrintOrderLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(PrintOrderLayout.createSequentialGroup()
                         .add(jLabel5, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 231, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(62, Short.MAX_VALUE))
+                        .addContainerGap(134, Short.MAX_VALUE))
                     .add(PrintOrderLayout.createSequentialGroup()
                         .add(jLabel6)
-                        .addContainerGap(193, Short.MAX_VALUE))
+                        .addContainerGap(265, Short.MAX_VALUE))
                     .add(org.jdesktop.layout.GroupLayout.TRAILING, PrintOrderLayout.createSequentialGroup()
-                        .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 223, Short.MAX_VALUE)
+                        .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 295, Short.MAX_VALUE)
                         .add(70, 70, 70))))
             .add(PrintOrderLayout.createSequentialGroup()
                 .add(104, 104, 104)
                 .add(addPrintOrder)
-                .addContainerGap(120, Short.MAX_VALUE))
+                .addContainerGap(192, Short.MAX_VALUE))
             .add(PrintOrderLayout.createSequentialGroup()
                 .addContainerGap()
                 .add(PrintOrderLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
@@ -328,7 +344,7 @@ public class Main extends javax.swing.JFrame {
                     .add(sizeInput, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(paperTypeInput, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(printTypeInput, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(144, Short.MAX_VALUE))
+                .addContainerGap(216, Short.MAX_VALUE))
         );
         PrintOrderLayout.setVerticalGroup(
             PrintOrderLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -377,7 +393,7 @@ public class Main extends javax.swing.JFrame {
             .add(BackupLayout.createSequentialGroup()
                 .add(116, 116, 116)
                 .add(jLabel13)
-                .addContainerGap(153, Short.MAX_VALUE))
+                .addContainerGap(225, Short.MAX_VALUE))
         );
         BackupLayout.setVerticalGroup(
             BackupLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -400,7 +416,7 @@ public class Main extends javax.swing.JFrame {
             .add(RentalLayout.createSequentialGroup()
                 .add(127, 127, 127)
                 .add(jLabel14)
-                .addContainerGap(145, Short.MAX_VALUE))
+                .addContainerGap(217, Short.MAX_VALUE))
         );
         RentalLayout.setVerticalGroup(
             RentalLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -423,7 +439,7 @@ public class Main extends javax.swing.JFrame {
             .add(ReturnLayout.createSequentialGroup()
                 .add(123, 123, 123)
                 .add(jLabel15)
-                .addContainerGap(147, Short.MAX_VALUE))
+                .addContainerGap(219, Short.MAX_VALUE))
         );
         ReturnLayout.setVerticalGroup(
             ReturnLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -446,7 +462,7 @@ public class Main extends javax.swing.JFrame {
             .add(RepairLayout.createSequentialGroup()
                 .add(122, 122, 122)
                 .add(jLabel16)
-                .addContainerGap(150, Short.MAX_VALUE))
+                .addContainerGap(222, Short.MAX_VALUE))
         );
         RepairLayout.setVerticalGroup(
             RepairLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -463,7 +479,7 @@ public class Main extends javax.swing.JFrame {
         Default.setLayout(DefaultLayout);
         DefaultLayout.setHorizontalGroup(
             DefaultLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 303, Short.MAX_VALUE)
+            .add(0, 375, Short.MAX_VALUE)
         );
         DefaultLayout.setVerticalGroup(
             DefaultLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -720,7 +736,6 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JButton Back;
     private javax.swing.JPanel Backup;
     private javax.swing.JButton Conv;
-    private javax.swing.JPanel Conversion;
     private javax.swing.JPanel Default;
     private javax.swing.JButton PrintO;
     private javax.swing.JPanel PrintOrder;
@@ -736,6 +751,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JButton addConversion;
     private javax.swing.JButton addPrintOrder;
     private javax.swing.JComboBox conversionTypeInput;
+    private javax.swing.JPanel destinationInput;
     private javax.swing.JButton jButton1;
     private javax.swing.JComboBox jComboBox1;
     private javax.swing.JLabel jLabel1;
