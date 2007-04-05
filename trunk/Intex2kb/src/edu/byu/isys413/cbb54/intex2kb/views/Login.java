@@ -116,7 +116,6 @@ public class Login extends javax.swing.JFrame {
             boolean pass = false;
             
             try {
-                
                 pass = validateLogin.getInstance().validate(emailInput.getText(),passwordInput.getText());
             } catch (Exception ex) {
                 ex.printStackTrace();
