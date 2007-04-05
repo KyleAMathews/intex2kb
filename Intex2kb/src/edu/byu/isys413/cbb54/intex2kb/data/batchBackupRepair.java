@@ -25,10 +25,10 @@ public class batchBackupRepair {
     /** Creates a new instance of batchBackupRepair */
     public batchBackupRepair() {
     }
-    public static void main(String[] args) throws DataException {
+    public static void backup() throws DataException {
         Connection conn = null;
         List<String> repairEmails = new LinkedList<String>();
-        
+        System.out.println("testing batchBackupRepair");
         try {
             // retrieve a database connection from the pool
             conn = ConnectionPool.getInstance().get();

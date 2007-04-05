@@ -133,9 +133,7 @@ public void save(RevenueSource rsbo, Connection conn) throws Exception{
 
 public void insert(RevenueSource rsbo, Connection conn) throws Exception{
     rsbo.setInDB(true);
-    System.out.println("inserting backup");
     backup bkup = (backup)rsbo;
-    System.out.println("backup price: " + bkup.getPrice());
     PreparedStatement insert = conn.prepareStatement(
             "INSERT INTO \"backup\" VALUES (?,?,?,?)");
     insert.clearParameters();
