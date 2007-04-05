@@ -39,6 +39,7 @@ public class validateLogin {
         boolean pass = false;
         
         Connection conn = ConnectionPool.getInstance().get();
+        System.out.println("attempting login processing");
         
         PreparedStatement ps = conn.prepareStatement("select * from \"login\" where \"email\" = '" +
                 email + "' and \"password\" = '" + password + "'");
@@ -52,7 +53,7 @@ public class validateLogin {
         rs.close();
         
         ConnectionPool.getInstance().release(conn);
-        
+        System.out.println("login processed");
         return pass;
     }
 }
