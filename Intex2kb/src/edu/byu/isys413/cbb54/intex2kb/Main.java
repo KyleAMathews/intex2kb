@@ -28,10 +28,11 @@ public class Main {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        new tester().main(args);
+        //new tester().main(args);
         //Login lo = new Login();
         //lo.setVisible(true);
         //new Login().setVisible(true);//creates and loads the gui
+        //new NewJFrame().setVisible(true);
         
     }
     
