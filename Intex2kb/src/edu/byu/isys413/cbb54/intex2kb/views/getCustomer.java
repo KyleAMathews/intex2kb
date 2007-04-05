@@ -82,6 +82,8 @@ public class getCustomer extends javax.swing.JFrame {
             try{
                 custList.get(0);
                 Main m = new Main(empid, storeid, custList.get(0));
+                this.dispose();
+                m.setVisible(true);
             }catch (Exception e){
                 custPhoneInput.setText("No customer found");
             }

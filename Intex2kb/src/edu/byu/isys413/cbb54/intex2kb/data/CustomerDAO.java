@@ -56,7 +56,7 @@ public class CustomerDAO {
         c.put(cust.getId(), cust);
         return cust;
     }
-
+    
     /////////////////////////////////////
     ///   READ
     
@@ -74,22 +74,22 @@ public class CustomerDAO {
         // if so, return it immediately
         if(Cache.getInstance().containsKey(id)){
             cust = (Customer)Cache.getInstance().get(id);
-        }else{        
+        }else{
             Connection conn = null;
             try {
                 // retrieve a database connection from the pool
                 conn = ConnectionPool.getInstance().get();
-
+                
                 // call read with a connection (the other read method in this class)
                 cust = this.read(id, conn);
-
+                
                 // release the connection
                 conn.commit();
                 ConnectionPool.getInstance().release(conn);
-
+                
             }catch (ConnectionPoolException e){
                 throw new DataException("Could not get a connection to the database.");
-
+                
             }catch (SQLException e) {
                 // rollback
                 try {
@@ -100,14 +100,14 @@ public class CustomerDAO {
                 }catch (SQLException e2) {
                     throw new DataException("Big error: could not even release the connection", e2);
                 }
-
+                
                 throw new DataException("Could not retrieve record for id=" + id, e);
             }
         }
         return cust;
     }
     
-    /** 
+    /**
      *  This is a package method that is called by the public read (above) or
      *  by another DAO.  Either way we already have a connection to the database
      *  to use.  The user (controller) code never calls this one directly, since
@@ -115,24 +115,24 @@ public class CustomerDAO {
      */
     synchronized Customer read(String id, Connection conn) throws SQLException, DataException {
         Customer cust = null;
-            
+        
         // check again if the id is in the cache, and if so,
         // just get it from the cache.  we need to check again
         // because this method might be called directly from
         // another DAO rather than from read above.
         if(Cache.getInstance().containsKey(id)){
             cust = (Customer)Cache.getInstance().get(id);
-        }else{ 
-            // if not in the cache, get a result set from 
+        }else{
+            // if not in the cache, get a result set from
             // a SELECT * FROM table WHERE id=guid
             
             PreparedStatement read = conn.prepareStatement(
-                "SELECT * FROM \"customer\" WHERE \"id\" = ?");
-            read.setString(1, id); 
+                    "SELECT * FROM \"customer\" WHERE \"id\" = ?");
+            read.setString(1, id);
             ResultSet rs = read.executeQuery();
             conn.commit();
             
-        
+            
             if (rs.next()) {
                 cust = new Customer(id);
                 cust.setFname(rs.getString("fname"));
@@ -147,7 +147,7 @@ public class CustomerDAO {
                 cust.setIsInDB(true);
                 cust.setDirty(false);
                 
-
+                
                 // save to the cache
                 Cache.getInstance().put(id, cust);
                 
@@ -183,7 +183,7 @@ public class CustomerDAO {
         Connection conn = null;
         
         try {
-   
+            
             // retrieve a database connection from the pool
             conn = ConnectionPool.getInstance().get();
             
@@ -212,9 +212,9 @@ public class CustomerDAO {
         }
         
     } // End of first Save()
-
     
-    /** 
+    
+    /**
      *  This is a package method that is called by the public save (above) or
      *  by another DAO.  Either way we already have a connection to the database
      *  to use.  The user (controller) code never calls this one directly, since
@@ -228,8 +228,8 @@ public class CustomerDAO {
      *  them directly from another DAO, this DAO can't decide whether it's
      *  object needs to be inserted or updated.
      */
-     synchronized void save(Customer cust, Connection conn) throws SQLException, DataException {
-        // check the dirty flag in the object.  if it is dirty, 
+    synchronized void save(Customer cust, Connection conn) throws SQLException, DataException {
+        // check the dirty flag in the object.  if it is dirty,
         // run update or insert
         if (cust.isDirty()) {
             if (cust.isInDB()) {
@@ -261,7 +261,7 @@ public class CustomerDAO {
     private synchronized void update(Customer cust, Connection conn) throws SQLException, DataException {
         // do the update statement
         PreparedStatement update = conn.prepareStatement(
-            "UPDATE \"customer\"" +
+                "UPDATE \"customer\"" +
                 "SET \"fname\" = ?, \"lname\" = ?, \"address1\" = ?, \"address2\" = ?," +
                 "\"city\" = ?, \"state\" = ?, \"zip\" = ?, \"phone\" = ?, \"email\" = ?" +
                 "WHERE \"id\" = ?");
@@ -299,7 +299,7 @@ public class CustomerDAO {
     private synchronized void insert(Customer cust, Connection conn) throws SQLException, DataException {
         // do the insert SQL statement
         PreparedStatement insert = conn.prepareStatement(
-            "INSERT INTO \"customer\" VALUES(?,?,?,?,?,?,?,?,?,?)");
+                "INSERT INTO \"customer\" VALUES(?,?,?,?,?,?,?,?,?,?)");
         insert.setString(1, cust.getId());
         insert.setString(2, cust.getFname());
         insert.setString(3, cust.getLname());
@@ -310,7 +310,7 @@ public class CustomerDAO {
         insert.setString(8, cust.getZip());
         insert.setString(9, cust.getPhone());
         insert.setString(10, cust.getEmail());
-
+        
         
         // execute and commit the query
         insert.executeUpdate();
@@ -321,7 +321,7 @@ public class CustomerDAO {
         
         // put Customer object into cache
         Cache.getInstance().put(cust.getId(),cust);
-
+        
     }
     
     
@@ -352,7 +352,7 @@ public class CustomerDAO {
             
             // sql the names, phone, and ids
             PreparedStatement read = conn.prepareStatement(
-                "SELECT \"id\", \"fname\", \"lname\", \"phone\" FROM \"customer\" ");
+                    "SELECT \"id\", \"fname\", \"lname\", \"phone\" FROM \"customer\" ");
             ResultSet rs = read.executeQuery();
             
             // release the connection
@@ -368,11 +368,11 @@ public class CustomerDAO {
                 clist.add(rs.getString("lname"));
                 clist.add(rs.getString("phone"));
                 list.add(clist);
-            }    
-
+            }
+            
         }catch (ConnectionPoolException e){
             throw new DataException("Could not get a connection to the database.");
-
+            
         }catch (SQLException e) {
             // rollback
             try {
@@ -383,10 +383,10 @@ public class CustomerDAO {
             }catch (SQLException e2) {
                 throw new DataException("Big error: could not even release the connection", e2);
             }
-
+            
             throw new DataException("Could not retrieve customer records form the database",  e);
         }
-       
+        
         // return the list of customer lists
         return list;
     }
@@ -409,11 +409,11 @@ public class CustomerDAO {
             
             // sql the names, phone, and ids
             PreparedStatement read = conn.prepareStatement(
-                "SELECT * FROM \"customer\" WHERE \"fname\" = ? AND \"lname\" = ?");
+                    "SELECT * FROM \"customer\" WHERE \"fname\" = ? AND \"lname\" = ?");
             read.setString(1, fname);
             read.setString(2, lname);
             ResultSet rs = read.executeQuery();
-
+            
             // release the connection
             conn.commit();
             ConnectionPool.getInstance().release(conn);
@@ -421,8 +421,8 @@ public class CustomerDAO {
             // while loop to populate the list from the results
             while(rs.next()) {
                 if(Cache.getInstance().containsKey(rs.getString("id"))){
-                   Customer cust = (Customer)Cache.getInstance().get(rs.getString("id")); 
-                   list.add(cust);
+                    Customer cust = (Customer)Cache.getInstance().get(rs.getString("id"));
+                    list.add(cust);
                 }else{
                     Customer cust = new Customer(rs.getString("id"));
                     cust.setFname(rs.getString("fname"));
@@ -437,11 +437,11 @@ public class CustomerDAO {
                     cust.setDirty(false);
                     list.add(cust);
                 }
-            }    
-
+            }
+            
         }catch (ConnectionPoolException e){
             throw new DataException("Could not get a connection to the database.");
-
+            
         }catch (SQLException e) {
             // rollback
             try {
@@ -452,10 +452,10 @@ public class CustomerDAO {
             }catch (SQLException e2) {
                 throw new DataException("Big error: could not even release the connection", e2);
             }
-
+            
             throw new DataException("Could not retrieve customer records form the database",  e);
         }
-       
+        
         // return the list of customer lists
         return list;
     }
@@ -477,17 +477,17 @@ public class CustomerDAO {
             
             // sql the names, phone, and ids
             PreparedStatement read = conn.prepareStatement(
-                "SELECT * FROM \"customer\" WHERE \"phone\" = ?");
+                    "SELECT * FROM \"customer\" WHERE \"phone\" = ?");
             read.setString(1, phone);
             ResultSet rs = read.executeQuery();
-
-
+            
+            
             
             // while loop to populate the list from the results
             while(rs.next()) {
                 if(Cache.getInstance().containsKey(rs.getString("id"))){
-                   Customer cust = (Customer)Cache.getInstance().get(rs.getString("id")); 
-                   list.add(cust);
+                    Customer cust = (Customer)Cache.getInstance().get(rs.getString("id"));
+                    list.add(cust);
                 }else{
                     Customer cust = new Customer(rs.getString("id"));
                     cust.setFname(rs.getString("fname"));
@@ -504,14 +504,15 @@ public class CustomerDAO {
                     list.add(cust);
                 }
                 
-                //release the connection
-                conn.commit();
-                ConnectionPool.getInstance().release(conn);
-            }    
-
+            }
+            
+            //release the connection
+            conn.commit();
+            ConnectionPool.getInstance().release(conn);
+            
         }catch (ConnectionPoolException e){
             throw new DataException("Could not get a connection to the database.");
-
+            
         }catch (SQLException e) {
             // rollback
             try {
@@ -522,10 +523,10 @@ public class CustomerDAO {
             }catch (SQLException e2) {
                 throw new DataException("Big error: could not even release the connection", e2);
             }
-
+            
             throw new DataException("Could not retrieve customer records form the database",  e);
         }
-       
+        
         // return the list of customer lists
         return list;
     }

@@ -39,9 +39,11 @@ public class validateLogin {
         boolean pass = false;
         
         Connection conn = ConnectionPool.getInstance().get();
+        
         PreparedStatement ps = conn.prepareStatement("select * from \"login\" where \"email\" = '" +
                 email + "' and \"password\" = '" + password + "'");
         ResultSet rs = ps.executeQuery();
+        
         if(rs.next()){
             pass = true;
         }
