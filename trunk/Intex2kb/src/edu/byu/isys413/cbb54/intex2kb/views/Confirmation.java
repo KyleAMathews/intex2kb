@@ -22,7 +22,7 @@ public class Confirmation extends javax.swing.JFrame {
     private Transaction tx;
     
     /** Creates new form Main */
-    public Confirmation(Transaction tx1,TableModel model1) {
+    public Confirmation(Transaction tx1,TableModel model1) throws DataException {
         //        frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
         
         // Set the selection background to yellow
@@ -45,7 +45,7 @@ public class Confirmation extends javax.swing.JFrame {
         
         //set summary fields
         custName.setText(tx.getCustomer().getFname() + " " + tx.getCustomer().getLname());
-        double txTotalDbl = TransactionDAO.getInstance().getTransactionTotal(tx);
+        double txTotalDbl = tx.calculateTotal();
         txTotal.setText(Double.toString(txTotalDbl));
         pmtAmount.setText(Double.toString((tx.getPayment().getAmount())));
         change.setText(Double.toString(tx.getPayment().getChange()));
