@@ -60,7 +60,7 @@ public class EmployeeDAO {
         c.put(employee.getId(), employee);
         return employee;
     }
-
+    
     /////////////////////////////////////
     ///   READ
     
@@ -79,22 +79,22 @@ public class EmployeeDAO {
         // if so, return it immediately
         if(Cache.getInstance().containsKey(id)){
             employee = (Employee)Cache.getInstance().get(id);
-        }else{        
+        }else{
             Connection conn = null;
             try {
                 // retrieve a database connection from the pool
                 conn = ConnectionPool.getInstance().get();
-
+                
                 // call read with a connection (the other read method in this class)
                 employee = this.read(id, conn);
-
+                
                 // release the connection
                 conn.commit();
                 ConnectionPool.getInstance().release(conn);
-
+                
             }catch (ConnectionPoolException e){
                 throw new DataException("Could not get a connection to the database.");
-
+                
             }catch (SQLException e) {
                 // rollback
                 try {
@@ -105,14 +105,14 @@ public class EmployeeDAO {
                 }catch (SQLException e2) {
                     throw new DataException("Big error: could not even release the connection", e2);
                 }
-
+                
                 throw new DataException("Could not retrieve record for id=" + id, e);
             }
         }
         return employee;
     }
     
-    /** 
+    /**
      *  This is a package method that is called by the public read (above) or
      *  by another DAO.  Either way we already have a connection to the database
      *  to use.  The user (controller) code never calls this one directly, since
@@ -120,24 +120,24 @@ public class EmployeeDAO {
      */
     synchronized Employee read(String id, Connection conn) throws SQLException, DataException {
         Employee employee = null;
-            
+        
         // check again if the id is in the cache, and if so,
         // just get it from the cache.  we need to check again
         // because this method might be called directly from
         // another DAO rather than from read above.
         if(Cache.getInstance().containsKey(id)){
             employee = (Employee)Cache.getInstance().get(id);
-        }else{ 
-            // if not in the cache, get a result set from 
+        }else{
+            // if not in the cache, get a result set from
             // a SELECT * FROM table WHERE id=guid
             
             PreparedStatement read = conn.prepareStatement(
-                "SELECT * FROM \"employee\" WHERE \"id\" = ?");
-            read.setString(1, id); 
+                    "SELECT * FROM \"employee\" WHERE \"id\" = ?");
+            read.setString(1, id);
             ResultSet rs = read.executeQuery();
             conn.commit();
             
-        
+            
             if (rs.next()) {
                 employee = new Employee(id);
                 employee.setFname(rs.getString("fname"));
@@ -156,13 +156,13 @@ public class EmployeeDAO {
                 employee.setInDB(true);
                 employee.setDirty(false);
                 
-
+                
                 // save to the cache
                 Cache.getInstance().put(id, employee);
                 
                 // Close prepared statement
                 read.close();
-
+                
             }else{
                 throw new DataException("Object was not found in the database.");
             }
@@ -185,7 +185,7 @@ public class EmployeeDAO {
         Connection conn = null;
         
         try {
-   
+            
             // retrieve a database connection from the pool
             conn = ConnectionPool.getInstance().get();
             
@@ -214,9 +214,9 @@ public class EmployeeDAO {
         }
         
     } // End of first Save()
-
     
-    /** 
+    
+    /**
      *  This is a package method that is called by the public save (above) or
      *  by another DAO.  Either way we already have a connection to the database
      *  to use.  The user (controller) code never calls this one directly, since
@@ -230,8 +230,8 @@ public class EmployeeDAO {
      *  them directly from another DAO, this DAO can't decide whether it's
      *  object needs to be inserted or updated.
      */
-     synchronized void save(Employee employee, Connection conn) throws SQLException, DataException {
-        // check the dirty flag in the object.  if it is dirty, 
+    synchronized void save(Employee employee, Connection conn) throws SQLException, DataException {
+        // check the dirty flag in the object.  if it is dirty,
         // run update or insert
         if (employee.isDirty()) {
             if (employee.isInDB()) {
@@ -259,7 +259,7 @@ public class EmployeeDAO {
     private synchronized void update(Employee employee, Connection conn) throws SQLException, DataException {
         // do the update statement
         PreparedStatement update = conn.prepareStatement(
-            "UPDATE \"store\"" +
+                "UPDATE \"store\"" +
                 "SET \"fname\" = ?, \"lname\" = ?, \"address1\" = ?, \"address2\" = ?," +
                 "\"city\" = ?, \"state\" = ?, \"zip\" = ?, \"phone\" = ?" +
                 "\"email\" = ?, \"ssnumber\" = ?, \"hiredate\" = ?, \"salary\" = ?, \"storeid\" = ?" +
@@ -278,7 +278,7 @@ public class EmployeeDAO {
         update.setDouble(12, employee.getSalary());
         update.setString(13, employee.getStoreID());
         update.setString(14, employee.getId());
-
+        
         
         // execute and commit the query
         update.executeUpdate();
@@ -298,7 +298,7 @@ public class EmployeeDAO {
     private synchronized void insert(Employee employee, Connection conn) throws SQLException, DataException {
         // do the insert SQL statement
         PreparedStatement insert = conn.prepareStatement(
-            "INSERT INTO \"employee\" VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+                "INSERT INTO \"employee\" VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
         insert.setString(1, employee.getId());
         insert.setString(2, employee.getFname());
         insert.setString(3, employee.getLname());
@@ -314,7 +314,7 @@ public class EmployeeDAO {
         insert.setDouble(13, employee.getSalary());
         insert.setString(14, employee.getStoreID());
         
-
+        
         
         // execute and commit the query
         insert.executeUpdate();
@@ -326,7 +326,7 @@ public class EmployeeDAO {
         
         // put Store object into cache
         Cache.getInstance().put(employee.getId(),employee);
-
+        
     }
     
     
@@ -340,11 +340,11 @@ public class EmployeeDAO {
 //        PreparedStatement insert = conn.prepareStatement(
 //            "DELETE FROM \"employee\" WHERE id = ?");
 //        insert.setString(1, employee.getId());
-//        
+//
 //        // execute and commit the query
 //        insert.executeUpdate();
 //        conn.commit();
-//        
+//
 //        // remove Store object into cache
 //        Cache.getInstance().remove(employee.getId());
 //
@@ -372,7 +372,7 @@ public class EmployeeDAO {
             
             // sql the names, phone, and ids
             PreparedStatement read = conn.prepareStatement(
-                "SELECT * FROM \"employee\" ");
+                    "SELECT * FROM \"employee\" ");
             ResultSet rs = read.executeQuery();
             
             // release the connection
@@ -397,11 +397,11 @@ public class EmployeeDAO {
                 employee.setSalary(rs.getDouble("salary"));
                 employee.setStoreID(rs.getString("storeid"));
                 list.add(employee);
-            }    
-
+            }
+            
         }catch (ConnectionPoolException e){
             throw new DataException("Could not get a connection to the database.");
-
+            
         }catch (SQLException e) {
             // rollback
             try {
@@ -412,10 +412,10 @@ public class EmployeeDAO {
             }catch (SQLException e2) {
                 throw new DataException("Big error: could not even release the connection", e2);
             }
-
+            
             throw new DataException("Could not retrieve employee records form the database",  e);
         }
-       
+        
         // return the list of store lists
         return list;
     }
@@ -437,10 +437,10 @@ public class EmployeeDAO {
             
             // sql the names, phone, and ids
             PreparedStatement read = conn.prepareStatement(
-                "SELECT * FROM \"employee\" WHERE \"lname\" = ? ");
+                    "SELECT * FROM \"employee\" WHERE \"lname\" = ? ");
             read.setString(1, name);
             ResultSet rs = read.executeQuery();
-
+            
             // release the connection
             conn.commit();
             ConnectionPool.getInstance().release(conn);
@@ -448,8 +448,8 @@ public class EmployeeDAO {
             // while loop to populate the list from the results
             while(rs.next()) {
                 if(Cache.getInstance().containsKey(rs.getString("id"))){
-                   Employee employee= (Employee)Cache.getInstance().get(rs.getString("id")); 
-                   list.add(employee);
+                    Employee employee= (Employee)Cache.getInstance().get(rs.getString("id"));
+                    list.add(employee);
                 }else{
                     Employee employee= new Employee(rs.getString("id"));
                     employee.setFname(rs.getString("fname"));
@@ -467,11 +467,11 @@ public class EmployeeDAO {
                     employee.setStoreID(rs.getString("storeid"));
                     list.add(employee);
                 }
-            }    
-
+            }
+            
         }catch (ConnectionPoolException e){
             throw new DataException("Could not get a connection to the database.");
-
+            
         }catch (SQLException e) {
             // rollback
             try {
@@ -482,10 +482,10 @@ public class EmployeeDAO {
             }catch (SQLException e2) {
                 throw new DataException("Big error: could not even release the connection", e2);
             }
-
+            
             throw new DataException("Could not retrieve employee records form the database",  e);
         }
-       
+        
         // return the list of customer lists
         return list;
     }
@@ -507,17 +507,17 @@ public class EmployeeDAO {
             
             // sql the names, phone, and ids
             PreparedStatement read = conn.prepareStatement(
-                "SELECT * FROM \"employee\" WHERE \"ssnumber\" = ?");
+                    "SELECT * FROM \"employee\" WHERE \"ssnumber\" = ?");
             read.setString(1, ssNumber);
             ResultSet rs = read.executeQuery();
-
-
+            
+            
             
             // while loop to populate the list from the results
             while(rs.next()) {
                 if(Cache.getInstance().containsKey(rs.getString("id"))){
-                   Employee employee = (Employee)Cache.getInstance().get(rs.getString("id")); 
-                   list.add(employee);
+                    Employee employee = (Employee)Cache.getInstance().get(rs.getString("id"));
+                    list.add(employee);
                 }else{
                     Employee employee= new Employee(rs.getString("id"));
                     employee.setFname(rs.getString("fname"));
@@ -539,11 +539,11 @@ public class EmployeeDAO {
                 //release the connection
                 conn.commit();
                 ConnectionPool.getInstance().release(conn);
-            }    
-
+            }
+            
         }catch (ConnectionPoolException e){
             throw new DataException("Could not get a connection to the database.");
-
+            
         }catch (SQLException e) {
             // rollback
             try {
@@ -554,12 +554,82 @@ public class EmployeeDAO {
             }catch (SQLException e2) {
                 throw new DataException("Big error: could not even release the connection", e2);
             }
-
+            
             throw new DataException("Could not retrieve employee records form the database",  e);
         }
-       
+        
         // return the list of stores
         return list;
     }
+    /**
+     * Returns an Employee with the matching social security number
+     * @param ssNumber String
+     * @return Employee
+     * @throws DataException Thrown when there was an error making a database connection, executing the SQL, or when there isn't an Employee with that Social Security Number
+     */
+    public Employee getEmail(String email) throws DataException {
+        Employee employee = null;
+        
+        // get the connection
+        Connection conn = null;
+        try{
+            // retrieve a database connection from the pool
+            conn = ConnectionPool.getInstance().get();
+            
+            // sql the names, phone, and ids
+            PreparedStatement read = conn.prepareStatement(
+                    "SELECT * FROM \"employee\" WHERE \"email\" = ?");
+            read.setString(1, email);
+            ResultSet rs = read.executeQuery();
+            
+            
+            
+            // while loop to populate the list from the results
+            if(rs.next()) {
+                if(Cache.getInstance().containsKey(rs.getString("id"))){
+                    employee = (Employee)Cache.getInstance().get(rs.getString("id"));
+                }else{
+                    employee = new Employee(rs.getString("id"));
+                    employee.setFname(rs.getString("fname"));
+                    employee.setLname(rs.getString("lname"));
+                    employee.setAddress1(rs.getString("address1"));
+                    employee.setAddress2(rs.getString("address2"));
+                    employee.setCity(rs.getString("city"));
+                    employee.setState(rs.getString("state"));
+                    employee.setZip(rs.getString("zip"));
+                    employee.setPhone(rs.getString("phone"));
+                    employee.setEmail(rs.getString("email"));
+                    employee.setSsNumber(rs.getString("ssnumber"));
+                    employee.setHireDate(rs.getString("hiredate"));
+                    employee.setSalary(rs.getDouble("salary"));
+                    employee.setStoreID(rs.getString("storeid"));
+                }
+            }
+            
+            //release the connection
+            conn.commit();
+            ConnectionPool.getInstance().release(conn);
+            
+        }catch (ConnectionPoolException e){
+            throw new DataException("Could not get a connection to the database.");
+            
+        }catch (SQLException e) {
+            // rollback
+            try {
+                conn.rollback();
+                ConnectionPool.getInstance().release(conn);
+            }catch (ConnectionPoolException ce){
+                throw new DataException("There was an error with the connection to the database", ce);
+            }catch (SQLException e2) {
+                throw new DataException("Big error: could not even release the connection", e2);
+            }
+            
+            throw new DataException("Could not retrieve employee records form the database",  e);
+        }
+        
+        // return the list of stores
+        return employee;
+    }
+    
     
 }

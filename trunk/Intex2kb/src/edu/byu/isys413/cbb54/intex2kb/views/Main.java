@@ -20,14 +20,20 @@ public class Main extends javax.swing.JFrame {
     
     private TableModel model;
     private Transaction tx;
+    private String empid = null;
+    private String storeid = null;
+    private Customer cust = null;
     
     /** Creates new form Main */
-    public Main() {
+    public Main(String empid1, String storeid1, Customer cust1) {
         //        frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
         
         // Set the selection background to yellow
         UIManager.put("Table.selectionBackground",Color.yellow );
         
+        empid = empid1;
+        storeid = storeid1;
+        cust = cust1;
         
         // Set the look and feel to the system's default
         try {
@@ -43,6 +49,9 @@ public class Main extends javax.swing.JFrame {
         setVisible(8);
         try {
             tx = TransactionDAO.getInstance().create();
+            tx.setEmployee(EmployeeDAO.getInstance().read(empid));
+            tx.setStore(StoreDAO.getInstance().read(storeid));
+            tx.setCustomer(cust);
         } catch (Exception ex) {
             ex.printStackTrace();
         }
@@ -747,16 +756,17 @@ public class Main extends javax.swing.JFrame {
         setVisible(2);
     }//GEN-LAST:event_ConvActionPerformed
     
+    
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
+    /*public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Main().setVisible(true);
             }
         });
-    }
+    }*/
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Back;
