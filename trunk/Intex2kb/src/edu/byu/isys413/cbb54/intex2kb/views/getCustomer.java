@@ -24,6 +24,7 @@ public class getCustomer extends javax.swing.JFrame {
         
         initComponents();
         createCust.setVisible(false);
+        custPhoneInput.setText("8013786198");
     }
     
     /** This method is called from within the constructor to
