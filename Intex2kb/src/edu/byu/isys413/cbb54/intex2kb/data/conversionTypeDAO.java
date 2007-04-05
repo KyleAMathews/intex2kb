@@ -205,7 +205,7 @@ public class conversionTypeDAO{
         Connection conn = ConnectionPool.getInstance().get();
         
         PreparedStatement ps = conn.prepareStatement("select * from \"conversiontype\" where \"sourcetype\" = '" + sourceType + "'" +
-                " and \"destinationType\" = '" + destinationType + "'");
+                " and \"destinationtype\" = '" + destinationType + "'");
         ResultSet rs = ps.executeQuery();
         if(rs.next()){
             conv = conversionTypeDAO.getInstance().create(rs.getString("id"));
@@ -215,6 +215,10 @@ public class conversionTypeDAO{
             conv.setInDB(true);
             conv.setPrice(rs.getDouble("price"));
         }
+        
+        ps.close();
+        rs.close();
+        ConnectionPool.getInstance().release(conn);
         
         return conv;
     }
