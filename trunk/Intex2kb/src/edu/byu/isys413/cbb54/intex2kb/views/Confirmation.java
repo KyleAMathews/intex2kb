@@ -16,21 +16,21 @@ import javax.swing.UIManager;
  *
  * @author  Cameron
  */
-public class PmtGUI extends javax.swing.JFrame {
+public class Confirmation extends javax.swing.JFrame {
     
     private TableModel model;
     private Transaction tx;
-    private Main m;
     
     /** Creates new form Main */
-    public PmtGUI(Transaction tx1, Main m1, TableModel model1) {
+    public Confirmation(Transaction tx1,TableModel model1) {
         //        frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
         
         // Set the selection background to yellow
         UIManager.put("Table.selectionBackground",Color.yellow );
         tx = tx1;
-        m = m1;
         model = model1;
+        
+        
         
         // Set the look and feel to the system's default
         try {
@@ -43,6 +43,12 @@ public class PmtGUI extends javax.swing.JFrame {
         initComponents();
         jTable1.setModel(model);
         
+        //set summary fields
+        custName.setText(tx.getCustomer().getFname() + " " + tx.getCustomer().getLname());
+        double txTotalDbl = TransactionDAO.getInstance().getTransactionTotal(tx);
+        txTotal.setText(Double.toString(txTotalDbl));
+        pmtAmount.setText(Double.toString((tx.getPayment().getAmount())));
+        change.setText(Double.toString(tx.getPayment().getChange()));
     }
     
     /** This method is called from within the constructor to
@@ -56,14 +62,10 @@ public class PmtGUI extends javax.swing.JFrame {
         jPanel5 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         Default = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        paymentTypeInput = new javax.swing.JComboBox();
-        jLabel3 = new javax.swing.JLabel();
-        paymentAmountInput = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
-        ccNumInput = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
-        ccExpInput = new javax.swing.JTextField();
+        custName = new javax.swing.JLabel();
+        txTotal = new javax.swing.JLabel();
+        pmtAmount = new javax.swing.JLabel();
+        change = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -74,7 +76,6 @@ public class PmtGUI extends javax.swing.JFrame {
         jPanel8 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         finish = new javax.swing.JButton();
-        cancel = new javax.swing.JButton();
 
         jButton1.setText("jButton1");
 
@@ -85,15 +86,13 @@ public class PmtGUI extends javax.swing.JFrame {
 
         Default.setBackground(new java.awt.Color(255, 255, 255));
         Default.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jLabel2.setText("Payment Type:");
+        custName.setText("jLabel2");
 
-        paymentTypeInput.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Cash", "Credit Card" }));
+        txTotal.setText("jLabel2");
 
-        jLabel3.setText("Payment Amount:");
+        pmtAmount.setText("jLabel2");
 
-        jLabel4.setText("Credit Card #:");
-
-        jLabel5.setText("Credit Card Exp:");
+        change.setText("jLabel2");
 
         org.jdesktop.layout.GroupLayout DefaultLayout = new org.jdesktop.layout.GroupLayout(Default);
         Default.setLayout(DefaultLayout);
@@ -101,40 +100,25 @@ public class PmtGUI extends javax.swing.JFrame {
             DefaultLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(DefaultLayout.createSequentialGroup()
                 .addContainerGap()
-                .add(DefaultLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
-                    .add(jLabel5)
-                    .add(jLabel4)
-                    .add(jLabel3)
-                    .add(jLabel2))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(DefaultLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(DefaultLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
-                        .add(paymentTypeInput, 0, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .add(paymentAmountInput, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 106, Short.MAX_VALUE))
-                    .add(ccNumInput, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 220, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(ccExpInput, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 107, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(186, Short.MAX_VALUE))
+                    .add(custName)
+                    .add(txTotal)
+                    .add(pmtAmount)
+                    .add(change))
+                .addContainerGap(482, Short.MAX_VALUE))
         );
         DefaultLayout.setVerticalGroup(
             DefaultLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(DefaultLayout.createSequentialGroup()
-                .add(47, 47, 47)
-                .add(DefaultLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jLabel2)
-                    .add(paymentTypeInput, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .add(34, 34, 34)
+                .add(custName)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(DefaultLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jLabel3)
-                    .add(paymentAmountInput, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .add(txTotal)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(DefaultLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jLabel4)
-                    .add(ccNumInput, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .add(pmtAmount)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(DefaultLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jLabel5)
-                    .add(ccExpInput, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(278, Short.MAX_VALUE))
+                .add(change)
+                .addContainerGap(320, Short.MAX_VALUE))
         );
         jPanel2.add(Default, "card9");
 
@@ -215,22 +199,12 @@ public class PmtGUI extends javax.swing.JFrame {
             }
         });
 
-        cancel.setFont(new java.awt.Font("Lucida Grande", 1, 18));
-        cancel.setText("Cancel");
-        cancel.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cancelActionPerformed(evt);
-            }
-        });
-
         org.jdesktop.layout.GroupLayout jPanel4Layout = new org.jdesktop.layout.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addContainerGap(598, Short.MAX_VALUE)
-                .add(cancel)
-                .add(16, 16, 16)
+                .addContainerGap(705, Short.MAX_VALUE)
                 .add(finish)
                 .addContainerGap())
         );
@@ -238,42 +212,20 @@ public class PmtGUI extends javax.swing.JFrame {
             jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel4Layout.createSequentialGroup()
                 .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .add(jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(finish)
-                    .add(cancel))
+                .add(finish)
                 .addContainerGap())
         );
         getContentPane().add(jPanel4, java.awt.BorderLayout.SOUTH);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void cancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelActionPerformed
-        this.dispose();
-        m.setVisible(true);
-    }//GEN-LAST:event_cancelActionPerformed
     
     private void finishActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_finishActionPerformed
-        try {
-            Payment p = PaymentDAO.getInstance().create(tx);
-            p.setAmount(Double.valueOf(paymentAmountInput.getText()));
-            p.setCcExpiration(ccExpInput.getText());
-            p.setCcNumber(ccNumInput.getText());
-            p.setType(paymentTypeInput.getSelectedItem().toString());
-            double change = p.getAmount() - TransactionDAO.getInstance().getTransactionTotal(tx);
-            p.setChange(change);
-            tx.setPayment(p);
-            tx.setStatus("complete");
-            tx.setType("instore");
-            UpdateController.getInstance().saveTransaction(tx);
-            this.dispose();
-            Confirmation conf = new Confirmation(tx, model);
-            conf.setVisible(true);
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
+        this.dispose();
+        getCustomer g = new getCustomer(tx.getEmployee().getId(),tx.getStore().getId());
+        g.setVisible(true);
     }//GEN-LAST:event_finishActionPerformed
-                                        
+    
     /**
      * @param args the command line arguments
      */
@@ -287,16 +239,11 @@ public class PmtGUI extends javax.swing.JFrame {
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Default;
-    private javax.swing.JButton cancel;
-    private javax.swing.JTextField ccExpInput;
-    private javax.swing.JTextField ccNumInput;
+    private javax.swing.JLabel change;
+    private javax.swing.JLabel custName;
     private javax.swing.JButton finish;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -306,9 +253,9 @@ public class PmtGUI extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTextField paymentAmountInput;
-    private javax.swing.JComboBox paymentTypeInput;
+    private javax.swing.JLabel pmtAmount;
     private javax.swing.JScrollPane table;
+    private javax.swing.JLabel txTotal;
     // End of variables declaration//GEN-END:variables
     
     
