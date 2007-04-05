@@ -20,6 +20,8 @@ public class Login extends javax.swing.JFrame {
     /** Creates new form Login */
     public Login() {
         initComponents();
+        emailInput.setText("");
+        passwordInput.setText("");
     }
     
     /** This method is called from within the constructor to
@@ -112,7 +114,12 @@ public class Login extends javax.swing.JFrame {
     
     private void loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginActionPerformed
         try {
-            empid = EmployeeDAO.getInstance().getEmail(emailInput.getText()).getId();
+            System.out.println("Email Input: " + emailInput.getText());
+            if(emailInput.getText() != null){
+                empid = EmployeeDAO.getInstance().getEmail(emailInput.getText()).getId();
+            }else{
+                emailInput.setText("Please enter e-mail address");
+            }
             boolean pass = false;
             
             try {

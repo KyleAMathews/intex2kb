@@ -127,7 +127,6 @@ public class printFormatDAO{
             po = (printFormat)Cache.getInstance().get(id);
         }else {
             //if not in cache, create connection and Member objects
-            
             try {
                 //get a result set from a SELECT SQL statement
                 PreparedStatement ps = conn.prepareStatement("select * from \"printformat\" where \"id\" = '" + id + "'");

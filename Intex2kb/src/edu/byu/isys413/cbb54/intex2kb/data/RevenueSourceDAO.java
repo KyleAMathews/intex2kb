@@ -192,6 +192,54 @@ public class RevenueSourceDAO {
         return;
     }
     
+        public void save(RevenueSource rs, Connection conn1) throws DataException{
+      
+        String id = rs.getId();
+        Connection conn = conn1;
+        try {
+            
+            // check first digit if backup/rental/used/repair/printOrder/sale
+            String type = String.valueOf(id.charAt(0)) + String.valueOf(id.charAt(1));
+            
+            // grab DAO from map
+            RSDAO dao = DAOmap.get(type);
+            System.out.println("saving rs");
+            System.out.println(id + " " + type + " " + rs.isDirty() + " " + rs.isInDB);
+            // save rs using a connection on selected DAO
+            dao.save(rs, conn);
+            System.out.println("saved rs");
+            // clean up rs
+            rs.setDirty(false);
+            
+            // touch cache
+            Cache c = Cache.getInstance();
+            c.touch(rs.getId());
+
+            // release the connection
+            conn.commit();
+            ConnectionPool.getInstance().release(conn);
+            
+        }catch (ConnectionPoolException e){
+            throw new DataException("Could not get a connection to the database.");
+            
+        }catch (SQLException e) {
+            // rollback
+            try {
+                conn.rollback();
+                ConnectionPool.getInstance().release(conn);
+            }catch (ConnectionPoolException ce){
+                throw new DataException("There was an error with the connection to the database", ce);
+            }catch (SQLException e2) {
+                throw new DataException("Big error: could not even release the connection", e2);
+            }
+            
+            throw new DataException("Could not retrieve record for id=" + id, e);
+        }catch (Exception e){
+            throw new DataException("Caught yet another exception in the RevenueSourceDAO " + e);
+        }
+        
+        return;
+    }
     
     ///////////////////////////////////////////
     /// Delete

@@ -248,7 +248,12 @@ public class TransactionDAO {
                 List txLines = tx.getTxLines();
                 for(int i = 0; txLines.size() > i; i++){
                     TransactionLineDAO.getInstance().save((TransactionLine)txLines.get(i), conn);
+                    TransactionLine txln = (TransactionLine)txLines.get(i);
+                    RevenueSourceDAO.getInstance().save(txln.getRevenueSource(),conn);
                 }
+                
+                PaymentDAO.getInstance().save(tx.getPayment(),conn);
+                
             }
             
             // set the dirty flag to false now that we've saved it
