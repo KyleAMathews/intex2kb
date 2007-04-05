@@ -109,4 +109,5 @@ public class RentalBatch {
         //compare the max late days with days late of the specific rental
         //create replacement charge on items that have reached max late days
     }
+    
 }
