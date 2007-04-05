@@ -38,7 +38,7 @@
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.DesignCardLayout"/>
           <SubComponents>
-            <Container class="javax.swing.JPanel" name="pmtTypeInput">
+            <Container class="javax.swing.JPanel" name="Default">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -58,57 +58,62 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="1" attributes="0">
                               <Component id="jLabel5" alignment="1" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel4" alignment="1" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel3" alignment="1" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel2" alignment="1" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="jComboBox1" max="32767" attributes="1"/>
-                                  <Component id="pmtAmountInput" alignment="0" max="32767" attributes="1"/>
+                                  <Component id="paymentTypeInput" max="32767" attributes="1"/>
+                                  <Component id="jTextField1" alignment="0" pref="106" max="32767" attributes="1"/>
                               </Group>
-                              <Component id="ccNumInput" min="-2" pref="180" max="-2" attributes="0"/>
-                              <Component id="ccNumExpInput" alignment="0" min="-2" pref="44" max="-2" attributes="0"/>
+                              <Component id="jTextField2" min="-2" pref="220" max="-2" attributes="0"/>
+                              <Component id="jTextField3" alignment="0" min="-2" pref="107" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="235" max="32767" attributes="0"/>
+                          <EmptySpace pref="186" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jComboBox1" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="paymentTypeInput" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="pmtAmountInput" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jTextField1" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="ccNumInput" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jTextField2" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="ccNumExpInput" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jTextField3" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="284" max="32767" attributes="0"/>
+                          <EmptySpace pref="278" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Component class="javax.swing.JComboBox" name="jComboBox1">
+                <Component class="javax.swing.JLabel" name="jLabel2">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Payment Type:"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JComboBox" name="paymentTypeInput">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="2">
@@ -118,31 +123,26 @@
                     </Property>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel2">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Payment Type:"/>
-                  </Properties>
-                </Component>
                 <Component class="javax.swing.JLabel" name="jLabel3">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Payment Amount:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="pmtAmountInput">
+                <Component class="javax.swing.JTextField" name="jTextField1">
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel4">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Credit Card #:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="ccNumInput">
+                <Component class="javax.swing.JTextField" name="jTextField2">
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel5">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Credit Card Exp:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="ccNumExpInput">
+                <Component class="javax.swing.JTextField" name="jTextField3">
                 </Component>
               </SubComponents>
             </Container>
@@ -290,29 +290,32 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace pref="371" max="32767" attributes="0"/>
-                  <Component id="completeTX" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="273" max="-2" attributes="0"/>
+                  <EmptySpace pref="705" max="32767" attributes="0"/>
+                  <Component id="finish" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
+              <Group type="102" alignment="1" attributes="0">
+                  <EmptySpace max="32767" attributes="0"/>
+                  <Component id="finish" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="completeTX" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="12" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JButton" name="completeTX">
+        <Component class="javax.swing.JButton" name="finish">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Complete Transaction"/>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Lucida Grande" size="18" style="1"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="FINISH"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="completeTXActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="finishActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>
