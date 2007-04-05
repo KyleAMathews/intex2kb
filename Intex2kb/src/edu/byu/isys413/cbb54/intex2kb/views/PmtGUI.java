@@ -23,7 +23,7 @@ public class PmtGUI extends javax.swing.JFrame {
     private Main m;
     
     /** Creates new form Main */
-    public PmtGUI(Transaction tx1, Main m1, TableModel model1) {
+    public PmtGUI(Transaction tx1, Main m1, TableModel model1) throws DataException {
         //        frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
         
         // Set the selection background to yellow
@@ -32,6 +32,7 @@ public class PmtGUI extends javax.swing.JFrame {
         m = m1;
         model = model1;
         
+     
         // Set the look and feel to the system's default
         try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
@@ -42,6 +43,9 @@ public class PmtGUI extends javax.swing.JFrame {
         // Insert the TableModel
         initComponents();
         jTable1.setModel(model);
+        subtotalAmountInput.setText(Double.toString(tx.calculateSubtotal()));
+        taxtAmountInput.setText(Double.toString(tx.calculateTax()));
+        paymentAmountInput.setText(Double.toString(tx.calculateTotal()));
         
     }
     
@@ -59,11 +63,15 @@ public class PmtGUI extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         paymentTypeInput = new javax.swing.JComboBox();
         jLabel3 = new javax.swing.JLabel();
-        paymentAmountInput = new javax.swing.JTextField();
+        subtotalAmountInput = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         ccNumInput = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         ccExpInput = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        taxtAmountInput = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        paymentAmountInput = new javax.swing.JTextField();
         jPanel6 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -89,11 +97,15 @@ public class PmtGUI extends javax.swing.JFrame {
 
         paymentTypeInput.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Cash", "Credit Card" }));
 
-        jLabel3.setText("Payment Amount:");
+        jLabel3.setText("Payment Subtotal:");
 
         jLabel4.setText("Credit Card #:");
 
         jLabel5.setText("Credit Card Exp:");
+
+        jLabel6.setText("TAX:");
+
+        jLabel7.setText("Payment Total:");
 
         org.jdesktop.layout.GroupLayout DefaultLayout = new org.jdesktop.layout.GroupLayout(Default);
         Default.setLayout(DefaultLayout);
@@ -102,17 +114,21 @@ public class PmtGUI extends javax.swing.JFrame {
             .add(DefaultLayout.createSequentialGroup()
                 .addContainerGap()
                 .add(DefaultLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
-                    .add(jLabel5)
                     .add(jLabel4)
+                    .add(jLabel6)
                     .add(jLabel3)
-                    .add(jLabel2))
+                    .add(jLabel2)
+                    .add(jLabel5)
+                    .add(jLabel7))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(DefaultLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(paymentAmountInput, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 106, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(ccExpInput, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 107, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(DefaultLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
                         .add(paymentTypeInput, 0, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .add(paymentAmountInput, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 106, Short.MAX_VALUE))
-                    .add(ccNumInput, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 220, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(ccExpInput, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 107, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                        .add(subtotalAmountInput, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 106, Short.MAX_VALUE))
+                    .add(taxtAmountInput, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 106, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(ccNumInput, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 220, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(186, Short.MAX_VALUE))
         );
         DefaultLayout.setVerticalGroup(
@@ -125,16 +141,24 @@ public class PmtGUI extends javax.swing.JFrame {
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(DefaultLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(jLabel3)
-                    .add(paymentAmountInput, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                    .add(subtotalAmountInput, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(DefaultLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(jLabel6)
+                    .add(taxtAmountInput, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .add(4, 4, 4)
+                .add(DefaultLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(paymentAmountInput, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(jLabel7))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(DefaultLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
                     .add(jLabel4)
                     .add(ccNumInput, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(DefaultLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jLabel5)
-                    .add(ccExpInput, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(278, Short.MAX_VALUE))
+                    .add(ccExpInput, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(jLabel5))
+                .addContainerGap(250, Short.MAX_VALUE))
         );
         jPanel2.add(Default, "card9");
 
@@ -228,7 +252,7 @@ public class PmtGUI extends javax.swing.JFrame {
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addContainerGap(598, Short.MAX_VALUE)
+                .addContainerGap(600, Short.MAX_VALUE)
                 .add(cancel)
                 .add(16, 16, 16)
                 .add(finish)
@@ -260,7 +284,7 @@ public class PmtGUI extends javax.swing.JFrame {
             p.setCcExpiration(ccExpInput.getText());
             p.setCcNumber(ccNumInput.getText());
             p.setType(paymentTypeInput.getSelectedItem().toString());
-            double change = p.getAmount() - TransactionDAO.getInstance().getTransactionTotal(tx);
+            double change = p.getAmount() - tx.calculateTotal();
             p.setChange(change);
             tx.setPayment(p);
             tx.setStatus("complete");
@@ -297,6 +321,8 @@ public class PmtGUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -308,7 +334,9 @@ public class PmtGUI extends javax.swing.JFrame {
     private javax.swing.JTable jTable1;
     private javax.swing.JTextField paymentAmountInput;
     private javax.swing.JComboBox paymentTypeInput;
+    private javax.swing.JTextField subtotalAmountInput;
     private javax.swing.JScrollPane table;
+    private javax.swing.JTextField taxtAmountInput;
     // End of variables declaration//GEN-END:variables
     
     
