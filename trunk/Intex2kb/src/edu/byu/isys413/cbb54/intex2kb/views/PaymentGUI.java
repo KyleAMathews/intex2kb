@@ -8,8 +8,6 @@ package edu.byu.isys413.cbb54.intex2kb.views;
 import edu.byu.isys413.cbb54.intex2kb.data.*;
 
 import java.awt.Color;
-import java.util.Map;
-import java.util.TreeMap;
 import javax.swing.UIManager;
 
 /**
@@ -204,7 +202,6 @@ public class PaymentGUI extends javax.swing.JFrame {
 
         jPanel4.setMinimumSize(new java.awt.Dimension(100, 30));
         jPanel4.setPreferredSize(new java.awt.Dimension(100, 50));
-        completeTX.setFont(new java.awt.Font("Lucida Grande", 1, 18));
         completeTX.setText("Complete Transaction");
         completeTX.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -217,31 +214,26 @@ public class PaymentGUI extends javax.swing.JFrame {
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addContainerGap(384, Short.MAX_VALUE)
+                .addContainerGap(371, Short.MAX_VALUE)
                 .add(completeTX)
-                .add(194, 194, 194))
+                .add(273, 273, 273))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
                 .add(completeTX)
-                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(12, Short.MAX_VALUE))
         );
         getContentPane().add(jPanel4, java.awt.BorderLayout.SOUTH);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-        
+
     private void completeTXActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_completeTXActionPerformed
-        try {
-            //Payment pmt = PaymentDAO.getInstance().create(tx);
-            
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
+        Payment pmt = (Payment)PaymentDAO.getInstance().create(tx);
     }//GEN-LAST:event_completeTXActionPerformed
-    
+            
     /**
      * @param args the command line arguments
      */
