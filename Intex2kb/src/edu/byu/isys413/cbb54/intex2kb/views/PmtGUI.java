@@ -19,16 +19,17 @@ public class PmtGUI extends javax.swing.JFrame {
     
     private TableModel model;
     private Transaction tx;
-    Main m;
+    private Main m;
     
     /** Creates new form Main */
-    public PmtGUI(Transaction tx1, Main m1) {
+    public PmtGUI(Transaction tx1, Main m1, TableModel model1) {
         //        frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
         
         // Set the selection background to yellow
         UIManager.put("Table.selectionBackground",Color.yellow );
         tx = tx1;
         m = m1;
+        model = model1;
         
         // Set the look and feel to the system's default
         try {
@@ -39,7 +40,6 @@ public class PmtGUI extends javax.swing.JFrame {
         
         // Insert the TableModel
         initComponents();
-        model = new TableModel();
         jTable1.setModel(model);
         
     }
@@ -253,7 +253,7 @@ public class PmtGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_cancelActionPerformed
     
     private void finishActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_finishActionPerformed
-        Payment p = PaymentDAO.getInstance().create(tx);
+        //Payment p = (Payment)PaymentDAO.getInstance().create(tx);
     }//GEN-LAST:event_finishActionPerformed
                                         
     /**

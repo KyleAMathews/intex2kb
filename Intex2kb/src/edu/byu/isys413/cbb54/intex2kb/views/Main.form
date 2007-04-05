@@ -395,7 +395,7 @@
                               <Component id="sizeInput" alignment="0" max="32767" attributes="1"/>
                               <Component id="numPhotosInput" alignment="0" max="32767" attributes="1"/>
                           </Group>
-                          <EmptySpace pref="312" max="32767" attributes="0"/>
+                          <EmptySpace pref="348" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
