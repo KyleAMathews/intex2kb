@@ -59,11 +59,15 @@ public class Payment extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
-        Default = new javax.swing.JPanel();
+        pmtTypeInput = new javax.swing.JPanel();
+        jComboBox1 = new javax.swing.JComboBox();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        pmtAmountInput = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
+        ccNumInput = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
+        ccNumExpInput = new javax.swing.JTextField();
         jPanel6 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -82,44 +86,60 @@ public class Payment extends javax.swing.JFrame {
 
         jPanel2.setLayout(new java.awt.CardLayout());
 
-        Default.setBackground(new java.awt.Color(255, 255, 255));
-        Default.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jLabel2.setText("Payment Amount:");
+        pmtTypeInput.setBackground(new java.awt.Color(255, 255, 255));
+        pmtTypeInput.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Cash", "Credit Card" }));
 
-        jLabel3.setText("Credit Card #:");
+        jLabel2.setText("Payment Type:");
 
-        jLabel4.setText("Credit Card Exp:");
+        jLabel3.setText("Payment Amount:");
 
-        jLabel5.setText("jLabel5");
+        jLabel4.setText("Credit Card #:");
 
-        org.jdesktop.layout.GroupLayout DefaultLayout = new org.jdesktop.layout.GroupLayout(Default);
-        Default.setLayout(DefaultLayout);
-        DefaultLayout.setHorizontalGroup(
-            DefaultLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(DefaultLayout.createSequentialGroup()
+        jLabel5.setText("Credit Card Exp:");
+
+        org.jdesktop.layout.GroupLayout pmtTypeInputLayout = new org.jdesktop.layout.GroupLayout(pmtTypeInput);
+        pmtTypeInput.setLayout(pmtTypeInputLayout);
+        pmtTypeInputLayout.setHorizontalGroup(
+            pmtTypeInputLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(pmtTypeInputLayout.createSequentialGroup()
                 .addContainerGap()
-                .add(DefaultLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(jLabel3)
+                .add(pmtTypeInputLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
                     .add(jLabel5)
-                    .add(DefaultLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
-                        .add(jLabel2)
-                        .add(jLabel4)))
-                .addContainerGap(486, Short.MAX_VALUE))
+                    .add(jLabel4)
+                    .add(jLabel2)
+                    .add(jLabel3))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(pmtTypeInputLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(pmtTypeInputLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
+                        .add(jComboBox1, 0, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .add(pmtAmountInput))
+                    .add(ccNumInput, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 180, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(ccNumExpInput, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 44, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(235, Short.MAX_VALUE))
         );
-        DefaultLayout.setVerticalGroup(
-            DefaultLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(DefaultLayout.createSequentialGroup()
-                .add(135, 135, 135)
-                .add(jLabel2)
+        pmtTypeInputLayout.setVerticalGroup(
+            pmtTypeInputLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(pmtTypeInputLayout.createSequentialGroup()
+                .add(41, 41, 41)
+                .add(pmtTypeInputLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(jLabel2)
+                    .add(jComboBox1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jLabel3)
+                .add(pmtTypeInputLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(pmtAmountInput, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(jLabel3))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jLabel4)
+                .add(pmtTypeInputLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(jLabel4)
+                    .add(ccNumInput, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jLabel5)
-                .addContainerGap(219, Short.MAX_VALUE))
+                .add(pmtTypeInputLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(jLabel5)
+                    .add(ccNumExpInput, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(284, Short.MAX_VALUE))
         );
-        jPanel2.add(Default, "card9");
+        jPanel2.add(pmtTypeInput, "card9");
 
         jPanel5.add(jPanel2);
 
@@ -240,9 +260,11 @@ public class Payment extends javax.swing.JFrame {
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel Default;
+    private javax.swing.JTextField ccNumExpInput;
+    private javax.swing.JTextField ccNumInput;
     private javax.swing.JButton completeTX;
     private javax.swing.JButton jButton1;
+    private javax.swing.JComboBox jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -257,6 +279,8 @@ public class Payment extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JTable jTable1;
+    private javax.swing.JTextField pmtAmountInput;
+    private javax.swing.JPanel pmtTypeInput;
     private javax.swing.JScrollPane table;
     // End of variables declaration//GEN-END:variables
     
