@@ -70,10 +70,10 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                   <Component id="paymentTypeInput" max="32767" attributes="1"/>
-                                  <Component id="jTextField1" alignment="0" pref="106" max="32767" attributes="1"/>
+                                  <Component id="paymentAmountInput" alignment="0" pref="106" max="32767" attributes="1"/>
                               </Group>
-                              <Component id="jTextField2" min="-2" pref="220" max="-2" attributes="0"/>
-                              <Component id="jTextField3" alignment="0" min="-2" pref="107" max="-2" attributes="0"/>
+                              <Component id="ccNumInput" min="-2" pref="220" max="-2" attributes="0"/>
+                              <Component id="ccExpInput" alignment="0" min="-2" pref="107" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace pref="186" max="32767" attributes="0"/>
                       </Group>
@@ -90,17 +90,17 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jTextField1" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="paymentAmountInput" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jTextField2" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="ccNumInput" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jTextField3" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="ccExpInput" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace pref="278" max="32767" attributes="0"/>
                       </Group>
@@ -128,21 +128,21 @@
                     <Property name="text" type="java.lang.String" value="Payment Amount:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="jTextField1">
+                <Component class="javax.swing.JTextField" name="paymentAmountInput">
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel4">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Credit Card #:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="jTextField2">
+                <Component class="javax.swing.JTextField" name="ccNumInput">
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel5">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Credit Card Exp:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="jTextField3">
+                <Component class="javax.swing.JTextField" name="ccExpInput">
                 </Component>
               </SubComponents>
             </Container>

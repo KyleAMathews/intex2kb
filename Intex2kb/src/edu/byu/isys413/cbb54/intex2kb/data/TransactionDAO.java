@@ -442,4 +442,15 @@ public class TransactionDAO {
         return list;
     }
     
+    public double getTransactionTotal(Transaction tx){
+        List<TransactionLine> txList = tx.getTxLines();
+        double total = 0;
+        
+        for(int i = 0;i < txList.size();i++){
+            total += txList.get(i).getRevenueSource().getPrice();
+        }
+        
+        return total;
+    }
+    
 }

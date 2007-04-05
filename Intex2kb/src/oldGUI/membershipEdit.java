@@ -4,7 +4,7 @@
  * Created on February 27, 2007, 8:49 AM
  */
 
-package edu.byu.isys413.cbb54.intex2kb.views;
+package oldGUI;
 
 import edu.byu.isys413.cbb54.intex2kb.data.ConnectionPool;
 import edu.byu.isys413.cbb54.intex2kb.data.ConnectionPoolException;

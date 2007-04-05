@@ -30,7 +30,7 @@ DROP TABLE "conceptual";
 DROP TABLE "product";
 DROP TABLE "rentalreturn";
 DROP TABLE "conceptualrental";
-
+DROP TABLE "login";
 
 
 create table "customer"
@@ -286,9 +286,15 @@ create table "product"
     "productType" varchar(30)
 );
 
+create table "login"
+(
+    "email" varchar(100) not null primary key,
+    "password" varchar(100)
+);
+
 INSERT INTO "backupservice" VALUES (.99);
 INSERT INTO "customer" VALUES ('00000109123b9144eb018b64001000', 'Cameron', 'Burgon', '851 Wymount Terrace', '', 'Provo', 'Utah', '84602', '8013786198', 'wherever@sd.com');
-INSERT INTO "customer" VALUES ('00000109123b925d16688bc2001000', 'Jamie', 'Burgon', '851 Wymount Terrace', '', 'Provo', 'Utah', '84604', '8013786189', 'wherever@sd.com');
+INSERT INTO "customer" VALUES ('00000109123b925d16688bc2001000', 'Jamie', 'Burgon', '851 Wymount Terrace', '', 'Provo', 'Utah', '84604', '8013689248', 'wherever@sd.com');
 INSERT INTO "customer" VALUES ('00000109123b8e75a1ce5a33001000', 'John', 'Doe', '123 Somewhere', '', 'Nowhere', 'Nevada', '87839', '3418394854', 'wherever@sd.com');
 INSERT INTO "customer" VALUES ('00000109123b8e75a1ce5a34001000', 'Jane', 'Doe', '123 Somewhere', '', 'Nowhere', 'Nevada', '87839', '3418394854', 'wherever@sd.com');
 INSERT INTO "membership" VALUES ('00000109123b8e75a1ce5a34001000', '00000109123b8e75a1ce5a33001000', '23123', '12313', '123132', '12311175098508472',21, '123123', '123123');
@@ -301,9 +307,12 @@ INSERT INTO "transaction" VALUES('000001117284553c0014af0a500442','','complete',
 INSERT INTO "payment" VALUES('000001117284553c0014b00a500442',14.50,'1234-5678-9012-3456','06/07','000001117284553c0014af0a500442',0.0,'Credit Card');
 
 INSERT INTO "employee" VALUES('000001117284553c0014b10a500442','Ray','Thompson','123 East BYU','','Provo','Utah','84604','801-555-5555','thompson@thompson.com','123-45-6789','12/05',123.45,'000001117284553c0014b20a500442');
-INSERT INTO "employee" VALUES('000001117284553c0014b30a500442','Steve','Manager','123 East BYU','','Provo','Utah','84604','801-555-5555','thompson@thompson.com','123-45-6789','12/05',123.45,'000001117284553c0014b20a500442');
+INSERT INTO "employee" VALUES('000001117284553c0014b30a500442','Steve','Manager','123 East BYU','','Provo','Utah','84604','801-555-5555','tylerf@byu.edu','123-45-6789','12/05',123.45,'000001117284553c0014b20a500442');
+
+INSERT INTO "login" VALUES('tylerf@byu.edu','tyler');
 
 INSERT INTO "store" VALUES('000001117284553c0014b20a500442','Provo Center','123 Center Street','Suite 1','Provo','Utah','84604','108-333-3333','801-333-3334','000001117284553c0014b30a500442');
+INSERT INTO "store" VALUES('111','Provo','111 N 111 W','','Provo','UT','84601','108-333-3333','801-333-3334','000001117284553c0014b30a500442');
 
 INSERT INTO "coupon" VALUES('000001117284553c0014b40a500442',2.00);
 
