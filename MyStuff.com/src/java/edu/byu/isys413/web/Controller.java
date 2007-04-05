@@ -74,7 +74,7 @@ public class Controller extends HttpServlet {
       // exception, not the main exception.  so i'm embedding a WebException
       // inside a regular ServletException.  this makes tomcat (per web.xml)
       // call the /error.jsp page.
-      throw new ServletException(new WebException e ("Error in controller: " + e.getMessage(), e));
+      throw new ServletException(new WebException("Error in controller: " + e.getMessage(), e));
     }
     
     // forward to the JSP page
