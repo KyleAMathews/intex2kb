@@ -114,6 +114,7 @@ public class Login extends javax.swing.JFrame {
     
     private void loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginActionPerformed
         try {
+            //System.out.println("password: " + passwordInput.getText());
             if(emailInput.getText() != null){
                 empid = EmployeeDAO.getInstance().getEmail(emailInput.getText()).getId();
             }else{
@@ -128,6 +129,7 @@ public class Login extends javax.swing.JFrame {
             }
             
             if(pass == true){
+                System.out.print("Login passed");
                 this.dispose();
                 getCustomer g = new getCustomer(empid, storeid);
                 //Main m = new Main(empid, storeid);
