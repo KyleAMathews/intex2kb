@@ -63,7 +63,6 @@ public class RevenueSourceDAO {
             
             // create BO
             RevenueSource rs = dao.create();
-           
             // save to cache
             Cache c = Cache.getInstance();
             c.put(rs.getId(), rs);
@@ -142,7 +141,7 @@ public class RevenueSourceDAO {
     /// Save
     
     public void save(RevenueSource rs) throws DataException{
-      
+        
         String id = rs.getId();
         Connection conn = null;
         try {
@@ -154,8 +153,6 @@ public class RevenueSourceDAO {
             
             // grab DAO from map
             RSDAO dao = DAOmap.get(type);
-            System.out.println("saving rs");
-            System.out.println(id + " " + type + " " + rs.isDirty() + " " + rs.isInDB);
             // save rs using a connection on selected DAO
             dao.save(rs, conn);
             System.out.println("saved rs");
@@ -165,7 +162,7 @@ public class RevenueSourceDAO {
             // touch cache
             Cache c = Cache.getInstance();
             c.touch(rs.getId());
-
+            
             // release the connection
             conn.commit();
             ConnectionPool.getInstance().release(conn);
@@ -192,8 +189,7 @@ public class RevenueSourceDAO {
         return;
     }
     
-        public void save(RevenueSource rs, Connection conn1) throws DataException{
-      
+    public void save(RevenueSource rs, Connection conn1) throws DataException{
         String id = rs.getId();
         Connection conn = conn1;
         try {
@@ -203,8 +199,8 @@ public class RevenueSourceDAO {
             
             // grab DAO from map
             RSDAO dao = DAOmap.get(type);
-            System.out.println("saving rs");
-            System.out.println(id + " " + type + " " + rs.isDirty() + " " + rs.isInDB);
+//            System.out.println("saving rs");
+//            System.out.println(id + " " + type + " " + rs.isDirty() + " " + rs.isInDB);
             // save rs using a connection on selected DAO
             dao.save(rs, conn);
             System.out.println("saved rs");
@@ -214,7 +210,7 @@ public class RevenueSourceDAO {
             // touch cache
             Cache c = Cache.getInstance();
             c.touch(rs.getId());
-
+            
             // release the connection
             conn.commit();
             ConnectionPool.getInstance().release(conn);

@@ -502,6 +502,12 @@ public class tester {
             
             RentalBatch.getInstance().movetosale();
             
+            System.out.println();
+             System.out.println();
+            System.out.println("TESTING BACKUP BATCH");
+            System.out.println();
+            
+            batchBackupRepair.backup();
             
         }catch(Exception e) {
             e.printStackTrace();

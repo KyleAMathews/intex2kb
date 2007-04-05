@@ -175,6 +175,7 @@ public class TransactionLineDAO {
             
             // call save with a connection (the other save method in this class)
             save(txLn, conn);
+            RevenueSourceDAO.getInstance().save(txLn.getRevenueSource(), conn);
             
             // release the connection
             ConnectionPool.getInstance().release(conn);
