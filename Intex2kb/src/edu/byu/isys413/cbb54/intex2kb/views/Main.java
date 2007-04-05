@@ -600,6 +600,11 @@ public class Main extends javax.swing.JFrame {
 
         pay.setFont(new java.awt.Font("Lucida Grande", 1, 18));
         pay.setText("PAY");
+        pay.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                payActionPerformed(evt);
+            }
+        });
 
         org.jdesktop.layout.GroupLayout jPanel4Layout = new org.jdesktop.layout.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -643,6 +648,12 @@ public class Main extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+    
+    private void payActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_payActionPerformed
+        Payment p = new Payment(tx);
+        this.setVisible(false);
+        p.setVisible(true);
+    }//GEN-LAST:event_payActionPerformed
     
     private void addConversionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addConversionActionPerformed
         try {

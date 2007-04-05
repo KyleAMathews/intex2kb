@@ -19,15 +19,15 @@ import javax.swing.UIManager;
 public class Payment extends javax.swing.JFrame {
     
     private TableModel model;
-    private Transaction tx;
+    Transaction tx = null;
     
     /** Creates new form Main */
-    public Payment() {
+    public Payment(Transaction tx1) {
         //        frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
         
         // Set the selection background to yellow
         UIManager.put("Table.selectionBackground",Color.yellow );
-        
+        tx = tx1;
         
         // Set the look and feel to the system's default
         try {
@@ -40,12 +40,6 @@ public class Payment extends javax.swing.JFrame {
         initComponents();
         model = new TableModel();
         jTable1.setModel(model);
-        setVisible(8);
-        try {
-            tx = TransactionDAO.getInstance().create();
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
         
     }
     
@@ -68,6 +62,7 @@ public class Payment extends javax.swing.JFrame {
         ccNumInput = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         ccNumExpInput = new javax.swing.JTextField();
+        jButton2 = new javax.swing.JButton();
         jPanel6 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -98,24 +93,36 @@ public class Payment extends javax.swing.JFrame {
 
         jLabel5.setText("Credit Card Exp:");
 
+        jButton2.setText("Test");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
         org.jdesktop.layout.GroupLayout pmtTypeInputLayout = new org.jdesktop.layout.GroupLayout(pmtTypeInput);
         pmtTypeInput.setLayout(pmtTypeInputLayout);
         pmtTypeInputLayout.setHorizontalGroup(
             pmtTypeInputLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(pmtTypeInputLayout.createSequentialGroup()
-                .addContainerGap()
-                .add(pmtTypeInputLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
-                    .add(jLabel5)
-                    .add(jLabel4)
-                    .add(jLabel2)
-                    .add(jLabel3))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(pmtTypeInputLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(pmtTypeInputLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
-                        .add(jComboBox1, 0, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .add(pmtAmountInput))
-                    .add(ccNumInput, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 180, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(ccNumExpInput, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 44, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                    .add(pmtTypeInputLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .add(pmtTypeInputLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
+                            .add(jLabel5)
+                            .add(jLabel4)
+                            .add(jLabel2)
+                            .add(jLabel3))
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(pmtTypeInputLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                            .add(pmtTypeInputLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
+                                .add(jComboBox1, 0, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .add(pmtAmountInput))
+                            .add(ccNumInput, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 180, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                            .add(ccNumExpInput, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 44, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
+                    .add(pmtTypeInputLayout.createSequentialGroup()
+                        .add(164, 164, 164)
+                        .add(jButton2)))
                 .addContainerGap(235, Short.MAX_VALUE))
         );
         pmtTypeInputLayout.setVerticalGroup(
@@ -137,7 +144,9 @@ public class Payment extends javax.swing.JFrame {
                 .add(pmtTypeInputLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(jLabel5)
                     .add(ccNumExpInput, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(284, Short.MAX_VALUE))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 204, Short.MAX_VALUE)
+                .add(jButton2)
+                .add(51, 51, 51))
         );
         jPanel2.add(pmtTypeInput, "card9");
 
@@ -222,10 +231,10 @@ public class Payment extends javax.swing.JFrame {
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jPanel4Layout.createSequentialGroup()
-                .add(273, 273, 273)
+            .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel4Layout.createSequentialGroup()
+                .addContainerGap(384, Short.MAX_VALUE)
                 .add(completeTX)
-                .addContainerGap(305, Short.MAX_VALUE))
+                .add(194, 194, 194))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -238,16 +247,20 @@ public class Payment extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        System.out.println(tx.getId());
+    }//GEN-LAST:event_jButton2ActionPerformed
+    
     private void completeTXActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_completeTXActionPerformed
         try {
-            Payment pmt = PaymentDAO.getInstance().create(tx);
+            //Payment pmt = PaymentDAO.getInstance().create(tx);
             
         } catch (Exception ex) {
             ex.printStackTrace();
         }
     }//GEN-LAST:event_completeTXActionPerformed
-                                        
+    
     /**
      * @param args the command line arguments
      */
@@ -264,6 +277,7 @@ public class Payment extends javax.swing.JFrame {
     private javax.swing.JTextField ccNumInput;
     private javax.swing.JButton completeTX;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JComboBox jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -284,88 +298,6 @@ public class Payment extends javax.swing.JFrame {
     private javax.swing.JScrollPane table;
     // End of variables declaration//GEN-END:variables
     
-    private void setVisible(int num){
-        switch(num){
-            case 1:
-                Backup.setVisible(true);
-                Conversion.setVisible(false);
-                PrintOrder.setVisible(false);
-                Rental.setVisible(false);
-                Repair.setVisible(false);
-                Return.setVisible(false);
-                Sale.setVisible(false);
-                Default.setVisible(false);
-                break;
-            case 2:
-                Backup.setVisible(false);
-                Conversion.setVisible(true);
-                PrintOrder.setVisible(false);
-                Rental.setVisible(false);
-                Repair.setVisible(false);
-                Return.setVisible(false);
-                Sale.setVisible(false);
-                Default.setVisible(false);
-                break;
-            case 3:
-                Backup.setVisible(false);
-                Conversion.setVisible(false);
-                PrintOrder.setVisible(true);
-                Rental.setVisible(false);
-                Repair.setVisible(false);
-                Return.setVisible(false);
-                Sale.setVisible(false);
-                Default.setVisible(false);
-                break;
-            case 4:
-                Backup.setVisible(false);
-                Conversion.setVisible(false);
-                PrintOrder.setVisible(false);
-                Rental.setVisible(true);
-                Repair.setVisible(false);
-                Return.setVisible(false);
-                Sale.setVisible(false);
-                Default.setVisible(false);
-                break;
-            case 5:
-                Backup.setVisible(false);
-                Conversion.setVisible(false);
-                PrintOrder.setVisible(false);
-                Rental.setVisible(false);
-                Repair.setVisible(true);
-                Return.setVisible(false);
-                Sale.setVisible(false);
-                Default.setVisible(false);
-                break;
-            case 6:
-                Backup.setVisible(false);
-                Conversion.setVisible(false);
-                PrintOrder.setVisible(false);
-                Rental.setVisible(false);
-                Repair.setVisible(false);
-                Return.setVisible(true);
-                Sale.setVisible(false);
-                Default.setVisible(false);
-                break;
-            case 7:
-                Backup.setVisible(false);
-                Conversion.setVisible(false);
-                PrintOrder.setVisible(false);
-                Rental.setVisible(false);
-                Repair.setVisible(false);
-                Return.setVisible(false);
-                Sale.setVisible(true);
-                Default.setVisible(false);
-                break;
-            default:
-                Backup.setVisible(false);
-                Conversion.setVisible(false);
-                PrintOrder.setVisible(false);
-                Rental.setVisible(false);
-                Repair.setVisible(false);
-                Return.setVisible(false);
-                Sale.setVisible(false);
-                Default.setVisible(true);
-                break;
-        }
-    }
+    
+    
 }
