@@ -23,6 +23,8 @@ public class Main extends javax.swing.JFrame {
     private String empid = null;
     private String storeid = null;
     private Customer cust = null;
+    double price = 0.0;
+    double subtot = 0.0;
     
     /** Creates new form Main */
     public Main(String empid1, String storeid1, Customer cust1) {
@@ -106,7 +108,19 @@ public class Main extends javax.swing.JFrame {
         Backup = new javax.swing.JPanel();
         jLabel13 = new javax.swing.JLabel();
         Rental = new javax.swing.JPanel();
+        jLabel20 = new javax.swing.JLabel();
+        todaysdate = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
+        priceperday = new javax.swing.JTextField();
+        jLabel21 = new javax.swing.JLabel();
+        numberdays = new javax.swing.JTextField();
+        jLabel22 = new javax.swing.JLabel();
+        serialnumber = new javax.swing.JTextField();
+        jLabel23 = new javax.swing.JLabel();
+        subtotal = new javax.swing.JTextField();
+        calcsubtotal = new javax.swing.JButton();
+        addRentalItem = new javax.swing.JButton();
+        updateprod = new javax.swing.JButton();
         Return = new javax.swing.JPanel();
         jLabel15 = new javax.swing.JLabel();
         Repair = new javax.swing.JPanel();
@@ -188,7 +202,7 @@ public class Main extends javax.swing.JFrame {
                 .add(jPanel10Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(jTextField2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(jLabel18))
-                .addContainerGap(258, Short.MAX_VALUE))
+                .addContainerGap(266, Short.MAX_VALUE))
         );
         Sale.add(jPanel10, java.awt.BorderLayout.CENTER);
 
@@ -245,12 +259,12 @@ public class Main extends javax.swing.JFrame {
                             .add(numMinutesInput))
                         .add(319, 319, 319))
                     .add(ConversionLayout.createSequentialGroup()
-                        .add(jLabel4, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 295, Short.MAX_VALUE)
+                        .add(jLabel4, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 306, Short.MAX_VALUE)
                         .add(227, 227, 227))))
             .add(ConversionLayout.createSequentialGroup()
                 .add(111, 111, 111)
                 .add(addConversion)
-                .addContainerGap(341, Short.MAX_VALUE))
+                .addContainerGap(353, Short.MAX_VALUE))
         );
         ConversionLayout.setVerticalGroup(
             ConversionLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -269,7 +283,7 @@ public class Main extends javax.swing.JFrame {
                 .add(ConversionLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(jLabel3)
                     .add(numMinutesInput, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 227, Short.MAX_VALUE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 255, Short.MAX_VALUE)
                 .add(addConversion)
                 .addContainerGap())
         );
@@ -320,17 +334,17 @@ public class Main extends javax.swing.JFrame {
                 .add(PrintOrderLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(PrintOrderLayout.createSequentialGroup()
                         .add(jLabel5, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 231, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(291, Short.MAX_VALUE))
+                        .addContainerGap(302, Short.MAX_VALUE))
                     .add(PrintOrderLayout.createSequentialGroup()
                         .add(jLabel6)
-                        .addContainerGap(390, Short.MAX_VALUE))
+                        .addContainerGap(433, Short.MAX_VALUE))
                     .add(org.jdesktop.layout.GroupLayout.TRAILING, PrintOrderLayout.createSequentialGroup()
-                        .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 367, Short.MAX_VALUE)
+                        .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 378, Short.MAX_VALUE)
                         .add(155, 155, 155))))
             .add(PrintOrderLayout.createSequentialGroup()
                 .add(104, 104, 104)
                 .add(addPrintOrder)
-                .addContainerGap(348, Short.MAX_VALUE))
+                .addContainerGap(360, Short.MAX_VALUE))
             .add(PrintOrderLayout.createSequentialGroup()
                 .addContainerGap()
                 .add(PrintOrderLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
@@ -346,7 +360,7 @@ public class Main extends javax.swing.JFrame {
                     .add(printTypeInput, 0, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .add(sizeInput, 0, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .add(numPhotosInput))
-                .addContainerGap(312, Short.MAX_VALUE))
+                .addContainerGap(384, Short.MAX_VALUE))
         );
         PrintOrderLayout.setVerticalGroup(
             PrintOrderLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -377,7 +391,7 @@ public class Main extends javax.swing.JFrame {
                 .add(jLabel6)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jScrollPane1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 49, Short.MAX_VALUE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 89, Short.MAX_VALUE)
                 .add(addPrintOrder)
                 .addContainerGap())
         );
@@ -395,37 +409,130 @@ public class Main extends javax.swing.JFrame {
             .add(BackupLayout.createSequentialGroup()
                 .add(116, 116, 116)
                 .add(jLabel13)
-                .addContainerGap(381, Short.MAX_VALUE))
+                .addContainerGap(393, Short.MAX_VALUE))
         );
         BackupLayout.setVerticalGroup(
             BackupLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(BackupLayout.createSequentialGroup()
                 .addContainerGap()
                 .add(jLabel13)
-                .addContainerGap(412, Short.MAX_VALUE))
+                .addContainerGap(417, Short.MAX_VALUE))
         );
         jPanel2.add(Backup, "card4");
 
         Rental.setBackground(new java.awt.Color(255, 255, 255));
         Rental.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         Rental.setMinimumSize(new java.awt.Dimension(250, 0));
-        jLabel14.setText("Rental");
+        jLabel20.setText("Todays Date");
+
+        todaysdate.setText("Todays Date");
+
+        jLabel14.setText("Price Per Day");
+
+        priceperday.setText("Price per day");
+
+        jLabel21.setText("Number Days Rented");
+
+        numberdays.setText("Number Days");
+
+        jLabel22.setText("Serial Number");
+
+        serialnumber.setText("Serial Number");
+
+        jLabel23.setText("Subtotal Due");
+
+        subtotal.setText("Subtotal Due");
+
+        calcsubtotal.setText("Subtotal");
+        calcsubtotal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                calcsubtotalActionPerformed(evt);
+            }
+        });
+
+        addRentalItem.setText("Submit");
+        addRentalItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addRentalItemActionPerformed(evt);
+            }
+        });
+
+        updateprod.setText("Subtotal");
+        updateprod.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updateprodActionPerformed(evt);
+            }
+        });
 
         org.jdesktop.layout.GroupLayout RentalLayout = new org.jdesktop.layout.GroupLayout(Rental);
         Rental.setLayout(RentalLayout);
         RentalLayout.setHorizontalGroup(
             RentalLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(RentalLayout.createSequentialGroup()
-                .add(127, 127, 127)
-                .add(jLabel14)
-                .addContainerGap(376, Short.MAX_VALUE))
+                .add(RentalLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(RentalLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .add(jLabel21))
+                    .add(RentalLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .add(numberdays, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                    .add(RentalLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .add(RentalLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                            .add(jLabel20)
+                            .add(todaysdate, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                            .add(jLabel14)
+                            .add(priceperday, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                        .add(93, 93, 93)
+                        .add(RentalLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                            .add(updateprod)
+                            .add(serialnumber, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                            .add(jLabel22)))
+                    .add(RentalLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .add(jLabel23))
+                    .add(RentalLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .add(subtotal, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                    .add(RentalLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .add(calcsubtotal))
+                    .add(RentalLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .add(addRentalItem)))
+                .addContainerGap(289, Short.MAX_VALUE))
         );
         RentalLayout.setVerticalGroup(
             RentalLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(RentalLayout.createSequentialGroup()
                 .addContainerGap()
-                .add(jLabel14)
-                .addContainerGap(412, Short.MAX_VALUE))
+                .add(RentalLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(jLabel20)
+                    .add(jLabel22))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(RentalLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(todaysdate, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(serialnumber, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(RentalLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(RentalLayout.createSequentialGroup()
+                        .add(jLabel14)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(priceperday, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(jLabel21)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(numberdays, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(jLabel23)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(subtotal, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(calcsubtotal))
+                    .add(updateprod))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(addRentalItem)
+                .addContainerGap(199, Short.MAX_VALUE))
         );
         jPanel2.add(Rental, "card6");
 
@@ -441,14 +548,14 @@ public class Main extends javax.swing.JFrame {
             .add(ReturnLayout.createSequentialGroup()
                 .add(123, 123, 123)
                 .add(jLabel15)
-                .addContainerGap(378, Short.MAX_VALUE))
+                .addContainerGap(387, Short.MAX_VALUE))
         );
         ReturnLayout.setVerticalGroup(
             ReturnLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(ReturnLayout.createSequentialGroup()
                 .addContainerGap()
                 .add(jLabel15)
-                .addContainerGap(412, Short.MAX_VALUE))
+                .addContainerGap(417, Short.MAX_VALUE))
         );
         jPanel2.add(Return, "card7");
 
@@ -464,14 +571,14 @@ public class Main extends javax.swing.JFrame {
             .add(RepairLayout.createSequentialGroup()
                 .add(122, 122, 122)
                 .add(jLabel16)
-                .addContainerGap(381, Short.MAX_VALUE))
+                .addContainerGap(390, Short.MAX_VALUE))
         );
         RepairLayout.setVerticalGroup(
             RepairLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(RepairLayout.createSequentialGroup()
                 .addContainerGap()
                 .add(jLabel16)
-                .addContainerGap(412, Short.MAX_VALUE))
+                .addContainerGap(417, Short.MAX_VALUE))
         );
         jPanel2.add(Repair, "card8");
 
@@ -481,7 +588,7 @@ public class Main extends javax.swing.JFrame {
         Default.setLayout(DefaultLayout);
         DefaultLayout.setHorizontalGroup(
             DefaultLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 542, Short.MAX_VALUE)
+            .add(0, 543, Short.MAX_VALUE)
         );
         DefaultLayout.setVerticalGroup(
             DefaultLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -634,7 +741,7 @@ public class Main extends javax.swing.JFrame {
                 .add(Rep)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(Sal)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 80, Short.MAX_VALUE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 176, Short.MAX_VALUE)
                 .add(pay)
                 .addContainerGap())
         );
@@ -657,6 +764,47 @@ public class Main extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void updateprodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateprodActionPerformed
+// TODO add your handling code here:
+         setrentalinfo();
+    }//GEN-LAST:event_updateprodActionPerformed
+
+    private void addRentalItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addRentalItemActionPerformed
+// TODO add your handling code here:
+        try {
+            Rental rn = (Rental)RentalDAO.getInstance().create();
+            
+            //set rental info
+            rn.setDateOut(12345678);
+            rn.setDateDue(12348765);
+           
+            
+            //set total price
+            //conv.setTotalPrice(conv.getQuantity(),ct.getPrice());
+            rn.setPrice(subtot);
+            
+            //create new TX-Line
+            TransactionLine txln = TransactionLineDAO.getInstance().create(tx,rn.getId());
+            txln.setRevenueSource(rn);
+            txln.setRsType("rental");
+            tx.addTxLine(txln);
+            
+            //Add TX-Line to GUI
+            model.updateTable(tx);
+            
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }//GEN-LAST:event_addRentalItemActionPerformed
+
+    private void calcsubtotalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_calcsubtotalActionPerformed
+// TODO add your handling code here:
+        String numdays = numberdays.getText();
+        int days = Integer.parseInt(numdays);
+        subtot = days * price;
+        subtotal.setText(Double.toString(subtot));
+    }//GEN-LAST:event_calcsubtotalActionPerformed
     
     private void payActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_payActionPerformed
         PmtGUI p = new PmtGUI(tx,this,model);
@@ -756,7 +904,23 @@ public class Main extends javax.swing.JFrame {
         setVisible(2);
     }//GEN-LAST:event_ConvActionPerformed
     
-    
+    public void setrentalinfo(){
+        try{
+        String serial = serialnumber.getText();
+        
+        //serialnumber.setText(serial);
+        String physicalid = ForRentDAO.getInstance().getBySerial(serial);
+        //PhysicalDAO.getInstance().read();
+        ConceptualRental cr = ConceptualRentalDAO.getInstance().read("214ra3q4wrae");
+        price = cr.getPrice();
+        priceperday.setText(Double.toString(price));
+        todaysdate.setText("April 4th");
+        
+        
+        }catch (Exception e){
+        e.printStackTrace();
+    }
+    }
     /**
      * @param args the command line arguments
      */
@@ -787,6 +951,8 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JTextField SaleQty;
     private javax.swing.JButton addConversion;
     private javax.swing.JButton addPrintOrder;
+    private javax.swing.JButton addRentalItem;
+    private javax.swing.JButton calcsubtotal;
     private javax.swing.JComboBox destinationTypeInput;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
@@ -801,6 +967,10 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -824,15 +994,21 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField numMinutesInput;
     private javax.swing.JTextField numPhotosInput;
+    private javax.swing.JTextField numberdays;
     private javax.swing.JComboBox paperTypeInput;
     private javax.swing.JButton pay;
     private javax.swing.JTextArea photosetDesc;
+    private javax.swing.JTextField priceperday;
     private javax.swing.JComboBox printTypeInput;
     private javax.swing.JTextField quantityInput;
+    private javax.swing.JTextField serialnumber;
     private javax.swing.JComboBox sizeInput;
     private javax.swing.JComboBox sourceTypeInput;
     private javax.swing.JButton submitSale;
+    private javax.swing.JTextField subtotal;
     private javax.swing.JScrollPane table;
+    private javax.swing.JTextField todaysdate;
+    private javax.swing.JButton updateprod;
     // End of variables declaration//GEN-END:variables
     
     private void setVisible(int num){
