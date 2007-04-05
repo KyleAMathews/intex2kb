@@ -19,14 +19,16 @@ public class PmtGUI extends javax.swing.JFrame {
     
     private TableModel model;
     private Transaction tx;
+    Main m;
     
     /** Creates new form Main */
-    public PmtGUI(Transaction tx1) {
+    public PmtGUI(Transaction tx1, Main m1) {
         //        frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
         
         // Set the selection background to yellow
         UIManager.put("Table.selectionBackground",Color.yellow );
         tx = tx1;
+        m = m1;
         
         // Set the look and feel to the system's default
         try {
@@ -71,6 +73,7 @@ public class PmtGUI extends javax.swing.JFrame {
         jPanel8 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         finish = new javax.swing.JButton();
+        cancel = new javax.swing.JButton();
 
         jButton1.setText("jButton1");
 
@@ -211,12 +214,22 @@ public class PmtGUI extends javax.swing.JFrame {
             }
         });
 
+        cancel.setFont(new java.awt.Font("Lucida Grande", 1, 18));
+        cancel.setText("Cancel");
+        cancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cancelActionPerformed(evt);
+            }
+        });
+
         org.jdesktop.layout.GroupLayout jPanel4Layout = new org.jdesktop.layout.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addContainerGap(705, Short.MAX_VALUE)
+                .addContainerGap(598, Short.MAX_VALUE)
+                .add(cancel)
+                .add(16, 16, 16)
                 .add(finish)
                 .addContainerGap())
         );
@@ -224,16 +237,23 @@ public class PmtGUI extends javax.swing.JFrame {
             jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel4Layout.createSequentialGroup()
                 .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .add(finish)
+                .add(jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(finish)
+                    .add(cancel))
                 .addContainerGap())
         );
         getContentPane().add(jPanel4, java.awt.BorderLayout.SOUTH);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void cancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelActionPerformed
+        this.dispose();
+        m.setVisible(true);
+    }//GEN-LAST:event_cancelActionPerformed
     
     private void finishActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_finishActionPerformed
-        
+        Payment p = PaymentDAO.getInstance().create(tx);
     }//GEN-LAST:event_finishActionPerformed
                                         
     /**
@@ -249,6 +269,7 @@ public class PmtGUI extends javax.swing.JFrame {
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Default;
+    private javax.swing.JButton cancel;
     private javax.swing.JButton finish;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
