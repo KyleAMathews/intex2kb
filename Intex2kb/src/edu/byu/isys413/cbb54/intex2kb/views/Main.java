@@ -73,9 +73,11 @@ public class Main extends javax.swing.JFrame {
         jPanel9 = new javax.swing.JPanel();
         jLabel12 = new javax.swing.JLabel();
         jPanel10 = new javax.swing.JPanel();
-        SaleQty = new javax.swing.JTextField();
+        jPanel37 = new javax.swing.JPanel();
         jLabel17 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
+        jPanel36 = new javax.swing.JPanel();
+        SaleQty = new javax.swing.JTextField();
         jTextField2 = new javax.swing.JTextField();
         jPanel11 = new javax.swing.JPanel();
         submitSale = new javax.swing.JButton();
@@ -120,19 +122,30 @@ public class Main extends javax.swing.JFrame {
         Backup = new javax.swing.JPanel();
         jLabel13 = new javax.swing.JLabel();
         Rental = new javax.swing.JPanel();
-        jLabel20 = new javax.swing.JLabel();
-        todaysdate = new javax.swing.JTextField();
-        jLabel14 = new javax.swing.JLabel();
-        priceperday = new javax.swing.JTextField();
-        jLabel21 = new javax.swing.JLabel();
-        numberdays = new javax.swing.JTextField();
+        jPanel26 = new javax.swing.JPanel();
+        jLabel24 = new javax.swing.JLabel();
+        jPanel30 = new javax.swing.JPanel();
+        addRentalItem = new javax.swing.JButton();
+        jPanel31 = new javax.swing.JPanel();
+        jPanel27 = new javax.swing.JPanel();
         jLabel22 = new javax.swing.JLabel();
         serialnumber = new javax.swing.JTextField();
-        jLabel23 = new javax.swing.JLabel();
-        subtotal = new javax.swing.JTextField();
-        calcsubtotal = new javax.swing.JButton();
-        addRentalItem = new javax.swing.JButton();
+        jPanel28 = new javax.swing.JPanel();
         updateprod = new javax.swing.JButton();
+        jPanel29 = new javax.swing.JPanel();
+        jPanel34 = new javax.swing.JPanel();
+        jPanel32 = new javax.swing.JPanel();
+        jLabel20 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel21 = new javax.swing.JLabel();
+        jLabel23 = new javax.swing.JLabel();
+        jPanel33 = new javax.swing.JPanel();
+        todaysdate = new javax.swing.JTextField();
+        priceperday = new javax.swing.JTextField();
+        numberdays = new javax.swing.JTextField();
+        subtotal = new javax.swing.JTextField();
+        jPanel35 = new javax.swing.JPanel();
+        calcsubtotal = new javax.swing.JButton();
         Return = new javax.swing.JPanel();
         jLabel15 = new javax.swing.JLabel();
         Repair = new javax.swing.JPanel();
@@ -166,7 +179,7 @@ public class Main extends javax.swing.JFrame {
         Sale.setBackground(new java.awt.Color(255, 255, 255));
         Sale.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         Sale.setMaximumSize(new java.awt.Dimension(300, 2147483647));
-        Sale.setMinimumSize(new java.awt.Dimension(250, 0));
+        Sale.setMinimumSize(new java.awt.Dimension(250, 100));
         Sale.setPreferredSize(new java.awt.Dimension(250, 0));
         jPanel9.setBackground(new java.awt.Color(255, 255, 255));
         jLabel12.setFont(new java.awt.Font("Tahoma", 0, 14));
@@ -175,47 +188,64 @@ public class Main extends javax.swing.JFrame {
 
         Sale.add(jPanel9, java.awt.BorderLayout.NORTH);
 
-        jPanel10.setBackground(new java.awt.Color(255, 255, 255));
-        SaleQty.setFont(new java.awt.Font("Tahoma", 0, 12));
-        SaleQty.setText("1");
+        jPanel10.setLayout(new javax.swing.BoxLayout(jPanel10, javax.swing.BoxLayout.X_AXIS));
 
-        jLabel17.setFont(new java.awt.Font("Tahoma", 0, 12));
+        jPanel10.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel37.setBackground(new java.awt.Color(255, 255, 255));
         jLabel17.setText("Quantity");
 
-        jLabel18.setFont(new java.awt.Font("Tahoma", 0, 12));
         jLabel18.setText("SKU");
+
+        org.jdesktop.layout.GroupLayout jPanel37Layout = new org.jdesktop.layout.GroupLayout(jPanel37);
+        jPanel37.setLayout(jPanel37Layout);
+        jPanel37Layout.setHorizontalGroup(
+            jPanel37Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jPanel37Layout.createSequentialGroup()
+                .addContainerGap(62, Short.MAX_VALUE)
+                .add(jPanel37Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jLabel18)
+                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jLabel17)))
+        );
+        jPanel37Layout.setVerticalGroup(
+            jPanel37Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jPanel37Layout.createSequentialGroup()
+                .add(24, 24, 24)
+                .add(jLabel18)
+                .add(19, 19, 19)
+                .add(jLabel17)
+                .addContainerGap(67, Short.MAX_VALUE))
+        );
+        jPanel10.add(jPanel37);
+
+        jPanel36.setBackground(new java.awt.Color(255, 255, 255));
+        SaleQty.setFont(new java.awt.Font("Tahoma", 0, 12));
+        SaleQty.setText("1");
 
         jTextField2.setColumns(10);
         jTextField2.setFont(new java.awt.Font("Tahoma", 0, 12));
 
-        org.jdesktop.layout.GroupLayout jPanel10Layout = new org.jdesktop.layout.GroupLayout(jPanel10);
-        jPanel10.setLayout(jPanel10Layout);
-        jPanel10Layout.setHorizontalGroup(
-            jPanel10Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jPanel10Layout.createSequentialGroup()
-                .add(28, 28, 28)
-                .add(jPanel10Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
-                    .add(jLabel17)
-                    .add(jLabel18))
-                .add(22, 22, 22)
-                .add(jPanel10Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(jTextField2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(SaleQty, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 33, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(47, Short.MAX_VALUE))
+        org.jdesktop.layout.GroupLayout jPanel36Layout = new org.jdesktop.layout.GroupLayout(jPanel36);
+        jPanel36.setLayout(jPanel36Layout);
+        jPanel36Layout.setHorizontalGroup(
+            jPanel36Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jPanel36Layout.createSequentialGroup()
+                .addContainerGap()
+                .add(jPanel36Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(SaleQty, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 33, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(jTextField2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(25, Short.MAX_VALUE))
         );
-        jPanel10Layout.setVerticalGroup(
-            jPanel10Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jPanel10Layout.createSequentialGroup()
-                .add(49, 49, 49)
-                .add(jPanel10Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jLabel17)
-                    .add(SaleQty, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .add(27, 27, 27)
-                .add(jPanel10Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jTextField2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(jLabel18))
-                .addContainerGap(264, Short.MAX_VALUE))
+        jPanel36Layout.setVerticalGroup(
+            jPanel36Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jPanel36Layout.createSequentialGroup()
+                .add(20, 20, 20)
+                .add(jTextField2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .add(14, 14, 14)
+                .add(SaleQty, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(62, Short.MAX_VALUE))
         );
+        jPanel10.add(jPanel36);
+
         Sale.add(jPanel10, java.awt.BorderLayout.CENTER);
 
         jPanel11.setBackground(new java.awt.Color(255, 255, 255));
@@ -250,7 +280,7 @@ public class Main extends javax.swing.JFrame {
         jPanel15Layout.setHorizontalGroup(
             jPanel15Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(jPanel15Layout.createSequentialGroup()
-                .addContainerGap(18, Short.MAX_VALUE)
+                .addContainerGap(14, Short.MAX_VALUE)
                 .add(jPanel15Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(org.jdesktop.layout.GroupLayout.TRAILING, jLabel2)
                     .add(org.jdesktop.layout.GroupLayout.TRAILING, jLabel19)
@@ -286,10 +316,10 @@ public class Main extends javax.swing.JFrame {
                 .add(jPanel16Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(jPanel16Layout.createSequentialGroup()
                         .add(sourceTypeInput, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(73, Short.MAX_VALUE))
+                        .addContainerGap(77, Short.MAX_VALUE))
                     .add(jPanel16Layout.createSequentialGroup()
                         .add(destinationTypeInput, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 67, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(50, Short.MAX_VALUE))
+                        .addContainerGap(54, Short.MAX_VALUE))
                     .add(jPanel16Layout.createSequentialGroup()
                         .add(numMinutesInput)
                         .add(114, 114, 114))))
@@ -521,37 +551,20 @@ public class Main extends javax.swing.JFrame {
         );
         jPanel2.add(Backup, "card4");
 
+        Rental.setLayout(new java.awt.BorderLayout());
+
         Rental.setBackground(new java.awt.Color(255, 255, 255));
         Rental.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         Rental.setMaximumSize(new java.awt.Dimension(300, 2147483647));
         Rental.setMinimumSize(new java.awt.Dimension(250, 0));
-        jLabel20.setText("Todays Date");
+        jPanel26.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel24.setFont(new java.awt.Font("Tahoma", 0, 14));
+        jLabel24.setText("Rental");
+        jPanel26.add(jLabel24);
 
-        todaysdate.setText("Todays Date");
+        Rental.add(jPanel26, java.awt.BorderLayout.NORTH);
 
-        jLabel14.setText("Price Per Day");
-
-        priceperday.setText("Price per day");
-
-        jLabel21.setText("Number Days Rented");
-
-        numberdays.setText("Number Days");
-
-        jLabel22.setText("Serial Number");
-
-        serialnumber.setText("Serial Number");
-
-        jLabel23.setText("Subtotal Due");
-
-        subtotal.setText("Subtotal Due");
-
-        calcsubtotal.setText("Subtotal");
-        calcsubtotal.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                calcsubtotalActionPerformed(evt);
-            }
-        });
-
+        jPanel30.setBackground(new java.awt.Color(255, 255, 255));
         addRentalItem.setText("Submit");
         addRentalItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -559,6 +572,26 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
+        jPanel30.add(addRentalItem);
+
+        Rental.add(jPanel30, java.awt.BorderLayout.SOUTH);
+
+        jPanel31.setLayout(new javax.swing.BoxLayout(jPanel31, javax.swing.BoxLayout.Y_AXIS));
+
+        jPanel31.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel27.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel27.setMaximumSize(new java.awt.Dimension(32767, 40));
+        jLabel22.setText("Serial Number");
+        jPanel27.add(jLabel22);
+
+        serialnumber.setColumns(10);
+        serialnumber.setText("Serial Number");
+        jPanel27.add(serialnumber);
+
+        jPanel31.add(jPanel27);
+
+        jPanel28.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel28.setMaximumSize(new java.awt.Dimension(32767, 40));
         updateprod.setText("Subtotal");
         updateprod.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -566,59 +599,113 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
-        org.jdesktop.layout.GroupLayout RentalLayout = new org.jdesktop.layout.GroupLayout(Rental);
-        Rental.setLayout(RentalLayout);
-        RentalLayout.setHorizontalGroup(
-            RentalLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(RentalLayout.createSequentialGroup()
-                .addContainerGap()
-                .add(RentalLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(jLabel21)
-                    .add(numberdays, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(jLabel20)
-                    .add(todaysdate, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(jLabel14)
-                    .add(priceperday, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(jLabel23)
-                    .add(subtotal, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(calcsubtotal)
-                    .add(addRentalItem)
-                    .add(updateprod)
-                    .add(serialnumber, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(jLabel22))
-                .addContainerGap(138, Short.MAX_VALUE))
+        jPanel28.add(updateprod);
+
+        jPanel31.add(jPanel28);
+
+        jPanel29.setLayout(new javax.swing.BoxLayout(jPanel29, javax.swing.BoxLayout.Y_AXIS));
+
+        jPanel29.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel29.setMaximumSize(new java.awt.Dimension(32869, 100));
+        jPanel34.setLayout(new javax.swing.BoxLayout(jPanel34, javax.swing.BoxLayout.X_AXIS));
+
+        jPanel34.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel32.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel20.setText("Todays Date");
+
+        jLabel14.setText("Price Per Day");
+
+        jLabel21.setText("Number Days Rented");
+
+        jLabel23.setText("Subtotal Due");
+
+        org.jdesktop.layout.GroupLayout jPanel32Layout = new org.jdesktop.layout.GroupLayout(jPanel32);
+        jPanel32.setLayout(jPanel32Layout);
+        jPanel32Layout.setHorizontalGroup(
+            jPanel32Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jPanel32Layout.createSequentialGroup()
+                .addContainerGap(19, Short.MAX_VALUE)
+                .add(jPanel32Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jLabel23)
+                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jLabel20)
+                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jLabel14)
+                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jLabel21, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 102, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
         );
-        RentalLayout.setVerticalGroup(
-            RentalLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(RentalLayout.createSequentialGroup()
-                .addContainerGap()
+        jPanel32Layout.setVerticalGroup(
+            jPanel32Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jPanel32Layout.createSequentialGroup()
+                .add(31, 31, 31)
                 .add(jLabel20)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(todaysdate, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(14, 14, 14)
                 .add(jLabel14)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jLabel21, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 24, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jLabel23)
+                .addContainerGap(14, Short.MAX_VALUE))
+        );
+        jPanel34.add(jPanel32);
+
+        jPanel33.setBackground(new java.awt.Color(255, 255, 255));
+        todaysdate.setColumns(10);
+        todaysdate.setText("Todays Date");
+
+        priceperday.setColumns(10);
+        priceperday.setText("Price per day");
+
+        numberdays.setColumns(10);
+        numberdays.setText("Number Days");
+
+        subtotal.setColumns(10);
+        subtotal.setText("Subtotal Due");
+
+        org.jdesktop.layout.GroupLayout jPanel33Layout = new org.jdesktop.layout.GroupLayout(jPanel33);
+        jPanel33.setLayout(jPanel33Layout);
+        jPanel33Layout.setHorizontalGroup(
+            jPanel33Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jPanel33Layout.createSequentialGroup()
+                .addContainerGap()
+                .add(jPanel33Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(subtotal, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(numberdays, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(priceperday, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(todaysdate, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(22, Short.MAX_VALUE))
+        );
+        jPanel33Layout.setVerticalGroup(
+            jPanel33Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jPanel33Layout.createSequentialGroup()
+                .add(28, 28, 28)
+                .add(todaysdate, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(priceperday, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jLabel21)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(numberdays, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jLabel23)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(subtotal, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(calcsubtotal)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(addRentalItem)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 43, Short.MAX_VALUE)
-                .add(jLabel22)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(serialnumber, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(updateprod)
-                .add(83, 83, 83))
+                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+        jPanel34.add(jPanel33);
+
+        jPanel29.add(jPanel34);
+
+        jPanel35.setBackground(new java.awt.Color(255, 255, 255));
+        calcsubtotal.setText("Subtotal");
+        calcsubtotal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                calcsubtotalActionPerformed(evt);
+            }
+        });
+
+        jPanel35.add(calcsubtotal);
+
+        jPanel29.add(jPanel35);
+
+        jPanel31.add(jPanel29);
+
+        Rental.add(jPanel31, java.awt.BorderLayout.CENTER);
+
         jPanel2.add(Rental, "card6");
 
         Return.setBackground(new java.awt.Color(255, 255, 255));
@@ -1066,6 +1153,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -1091,7 +1179,19 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel23;
     private javax.swing.JPanel jPanel24;
     private javax.swing.JPanel jPanel25;
+    private javax.swing.JPanel jPanel26;
+    private javax.swing.JPanel jPanel27;
+    private javax.swing.JPanel jPanel28;
+    private javax.swing.JPanel jPanel29;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel30;
+    private javax.swing.JPanel jPanel31;
+    private javax.swing.JPanel jPanel32;
+    private javax.swing.JPanel jPanel33;
+    private javax.swing.JPanel jPanel34;
+    private javax.swing.JPanel jPanel35;
+    private javax.swing.JPanel jPanel36;
+    private javax.swing.JPanel jPanel37;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
