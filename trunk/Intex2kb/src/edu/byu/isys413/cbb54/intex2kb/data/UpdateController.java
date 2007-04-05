@@ -11,6 +11,7 @@ package edu.byu.isys413.cbb54.intex2kb.data;
 
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.sql.*;
 
 /**
  *
@@ -34,7 +35,7 @@ public class UpdateController {
         return instance;
     }        
     
-            
+           
     public void saveTransaction(Transaction tx) throws Exception {
         Connection conn = ConnectionPool.getInstance().get();
         
@@ -45,4 +46,36 @@ public class UpdateController {
         conn.commit();
         ConnectionPool.getInstance().release(conn);
     }
+    
+    public Physical getbySerial(String serial) throws Exception{
+        Physical phy = null;
+        Connection conn = ConnectionPool.getInstance().get();
+        PreparedStatement read = conn.prepareStatement(
+                "SELECT * FROM \"physical\" WHERE \"serialnum\" = ?");
+        read.setString(1, serial);
+        ResultSet rs = read.executeQuery();
+        conn.commit();
+        ConnectionPool.getInstance().release(conn);
+        
+        System.out.println("Read from the db");
+        System.out.println(rs.getString("id"));
+        
+        // set variables
+        while(rs.next()){
+        phy = new Physical(rs.getString("id"));
+        System.out.println("item created");
+        phy.setSerialNum(rs.getString("serialnum"));
+        phy.setShelfLocation(rs.getString("shelflocation"));
+        phy.setConceptualid(rs.getString("conceptualproduct"));
+        phy.setForSale(rs.getBoolean("forsale"));
+        phy.setInDB(true);
+        }
+        
+        
+        // return the RevenueSource
+        System.out.println("created the physical product");
+        return phy;
+    } 
+    
+    
 }
