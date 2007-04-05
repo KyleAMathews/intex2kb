@@ -27,13 +27,13 @@ public class Main extends javax.swing.JFrame {
         
         // Set the selection background to yellow
         UIManager.put("Table.selectionBackground",Color.yellow );
-
-
+        
+        
         // Set the look and feel to the system's default
         try {
-          UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
         } catch(Exception e) {
-          System.out.println("Error setting native LAF: " + e);
+            System.out.println("Error setting native LAF: " + e);
         }
         
         // Insert the TableModel
@@ -46,7 +46,7 @@ public class Main extends javax.swing.JFrame {
         } catch (Exception ex) {
             ex.printStackTrace();
         }
-
+        
     }
     
     /** This method is called from within the constructor to
@@ -71,13 +71,13 @@ public class Main extends javax.swing.JFrame {
         submitSale = new javax.swing.JButton();
         Conversion = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        conversionTypeInput = new javax.swing.JComboBox();
+        sourceTypeInput = new javax.swing.JComboBox();
         jLabel3 = new javax.swing.JLabel();
         numMinutesInput = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         addConversion = new javax.swing.JButton();
         jLabel19 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox();
+        destinationTypeInput = new javax.swing.JComboBox();
         PrintOrder = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
@@ -197,7 +197,7 @@ public class Main extends javax.swing.JFrame {
         Conversion.setMinimumSize(new java.awt.Dimension(250, 0));
         jLabel2.setText("Source Type:");
 
-        conversionTypeInput.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "VHS", "Film" }));
+        sourceTypeInput.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "VHS", "Film" }));
 
         jLabel3.setText("Number of Minutes:");
 
@@ -214,7 +214,7 @@ public class Main extends javax.swing.JFrame {
 
         jLabel19.setText("Destination Type:");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "DVD", "CD" }));
+        destinationTypeInput.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "DVD", "CD" }));
 
         org.jdesktop.layout.GroupLayout ConversionLayout = new org.jdesktop.layout.GroupLayout(Conversion);
         Conversion.setLayout(ConversionLayout);
@@ -234,7 +234,7 @@ public class Main extends javax.swing.JFrame {
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                         .add(ConversionLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                             .add(ConversionLayout.createSequentialGroup()
-                                .add(conversionTypeInput, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                                .add(sourceTypeInput, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                                 .add(jLabel4, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 210, Short.MAX_VALUE)
                                 .addContainerGap())
@@ -242,7 +242,7 @@ public class Main extends javax.swing.JFrame {
                                 .add(numMinutesInput, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE)
                                 .add(173, 173, 173))
                             .add(ConversionLayout.createSequentialGroup()
-                                .add(jComboBox1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                                .add(destinationTypeInput, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                                 .addContainerGap())))))
         );
         ConversionLayout.setVerticalGroup(
@@ -252,12 +252,12 @@ public class Main extends javax.swing.JFrame {
                 .add(jLabel4, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 38, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .add(26, 26, 26)
                 .add(ConversionLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(conversionTypeInput, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(sourceTypeInput, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(jLabel2))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(ConversionLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(jLabel19)
-                    .add(jComboBox1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                    .add(destinationTypeInput, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .add(9, 9, 9)
                 .add(ConversionLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(jLabel3)
@@ -639,45 +639,59 @@ public class Main extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    
     private void addConversionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addConversionActionPerformed
         try {
             conversionBO conv = (conversionBO)ConversionDAO.getInstance().create();
             
             //Read conversionType from DB and create object
-            conversionTypeDAO.getInstance().getConversionType(so)
+            conversionTypeBO ct = conversionTypeDAO.getInstance().getConversionType(sourceTypeInput.getSelectedItem().toString(),destinationTypeInput.getSelectedItem().toString());
             
-            String conversionType = conversionTypeInput.getSelectedItem().toString();
-            System.out.println(conversionType);
+            //set ConversionOrder attributes
+            conv.setConversionType(ct);
+            conv.setQuantity(Integer.valueOf(numMinutesInput.getText()));
+            
+            //set total price
+            conv.setTotalPrice(conv.getQuantity(),ct.getPrice());
+            
+            //create new TX-Line
+            TransactionLine txln = TransactionLineDAO.getInstance().create(tx,conv.getId());
+            txln.setRevenueSource(conv);
+            txln.setRsType("Conversion Order - " + conv.getConversionType().getSourceType() + " -> " + conv.getConversionType().getDestinationType());
+            tx.addTxLine(txln);
+            
+            //Add TX-Line to GUI
+            model.updateTable(tx);
+            
         } catch (Exception ex) {
             ex.printStackTrace();
         }
     }//GEN-LAST:event_addConversionActionPerformed
-
+    
     private void SalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalActionPerformed
         setVisible(7);
     }//GEN-LAST:event_SalActionPerformed
-
+    
     private void RepActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RepActionPerformed
         setVisible(5);
     }//GEN-LAST:event_RepActionPerformed
-
+    
     private void RetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RetActionPerformed
         setVisible(6);
     }//GEN-LAST:event_RetActionPerformed
-
+    
     private void RentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RentActionPerformed
         setVisible(4);
     }//GEN-LAST:event_RentActionPerformed
-
+    
     private void BackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackActionPerformed
         setVisible(1);
     }//GEN-LAST:event_BackActionPerformed
-
+    
     private void PrintOActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PrintOActionPerformed
         setVisible(3);
     }//GEN-LAST:event_PrintOActionPerformed
-
+    
     private void addPrintOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addPrintOrderActionPerformed
         try {
             printOrder po = (printOrder)PrintOrderDAO.getInstance().create();
@@ -693,8 +707,9 @@ public class Main extends javax.swing.JFrame {
             
             //set PhotoSet values
             ps.setDescription(photosetDesc.getText());
-            System.out.println(numPhotosInput.getText());
+            System.out.println(photosetDesc.getText());
             ps.setNumPhotos(Integer.valueOf(numPhotosInput.getText()));
+            po.setPhotoSet(ps);
             
             //set total price in RSBO
             po.setTotalPrice(po.getQuantity(),pf.getPrice(),ps.getNumPhotos());
@@ -702,7 +717,7 @@ public class Main extends javax.swing.JFrame {
             //Create TX-Line
             TransactionLine txln = TransactionLineDAO.getInstance().create(tx,po.getId());
             txln.setRevenueSource(po);
-            txln.setRsType("PrintOrder");
+            txln.setRsType("Print Order - " + po.getPhotoSet().getDescription());
             tx.addTxLine(txln);
             
             //Add TX-Line to GUI
@@ -712,7 +727,7 @@ public class Main extends javax.swing.JFrame {
             ex.printStackTrace();
         }
     }//GEN-LAST:event_addPrintOrderActionPerformed
-
+    
     private void ConvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConvActionPerformed
         setVisible(2);
     }//GEN-LAST:event_ConvActionPerformed
@@ -747,9 +762,8 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JTextField SaleQty;
     private javax.swing.JButton addConversion;
     private javax.swing.JButton addPrintOrder;
-    private javax.swing.JComboBox conversionTypeInput;
+    private javax.swing.JComboBox destinationTypeInput;
     private javax.swing.JButton jButton1;
-    private javax.swing.JComboBox jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -790,6 +804,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JComboBox printTypeInput;
     private javax.swing.JTextField quantityInput;
     private javax.swing.JComboBox sizeInput;
+    private javax.swing.JComboBox sourceTypeInput;
     private javax.swing.JButton submitSale;
     private javax.swing.JScrollPane table;
     // End of variables declaration//GEN-END:variables
