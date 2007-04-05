@@ -117,7 +117,7 @@ public class ConceptualRentalDAO {
             // a SELECT * FROM table WHERE id=guid
            try{ 
             PreparedStatement read = conn.prepareStatement(
-                "SELECT * FROM \"concpetualrental\" WHERE \"id\" = ?");
+                "SELECT * FROM \"conceptualrental\" WHERE \"id\" = ?");
             read.setString(1, id); 
             ResultSet rs = read.executeQuery();
             conn.commit();
