@@ -54,9 +54,19 @@ public class conversionTypeDAO{
         return conversionType;
     }
     
+    public conversionTypeBO create(String id) throws Exception{
+        conversionTypeBO conversionType = new conversionTypeBO(id);
+        
+        //put RS into Cache
+        Cache c = Cache.getInstance();
+        c.put(conversionType.getId(),conversionType);
+        
+        return conversionType;
+    }
+    
     ///////////////////////////////////////////
     /// Read
-        public conversionTypeBO read(String id) throws Exception {
+    public conversionTypeBO read(String id) throws Exception {
         conversionTypeBO po = null;
         
         //check to see if ID is in cache.  If so, return immediately
@@ -90,7 +100,7 @@ public class conversionTypeDAO{
         }
         return po;
     }
-        
+    
     public conversionTypeBO read(String id, Connection conn) throws Exception {
         conversionTypeBO po = null;
         
@@ -149,8 +159,8 @@ public class conversionTypeDAO{
     
     private synchronized void update(conversionTypeBO conversionType, Connection conn) throws Exception{
         //do update statement
-        PreparedStatement ps = conn.prepareStatement("update \"conversiontype\" set \"sourcetype\" = '" + conversionType.getSourceType() 
-               + "', \"destinationtype\" = '" + conversionType.getDestinationType() + "', \"price\" = " +
+        PreparedStatement ps = conn.prepareStatement("update \"conversiontype\" set \"sourcetype\" = '" + conversionType.getSourceType()
+        + "', \"destinationtype\" = '" + conversionType.getDestinationType() + "', \"price\" = " +
                 conversionType.getPrice() + " where \"id\" = '" + conversionType.getId() + "'");
         ps.execute();
         conn.commit();
@@ -189,13 +199,24 @@ public class conversionTypeDAO{
     
 // for business reasons we're not supporting deleting
     
-    public conversionTypeBO getConversionType(String conversionType) throws Exception {
+    public conversionTypeBO getConversionType(String sourceType, String destinationType) throws Exception {
         conversionTypeBO conv = null;
         
         Connection conn = ConnectionPool.getInstance().get();
         
-        PreparedStatement ps = conn.prepareStatement("select * from \"conversiontype\" where ");
+        PreparedStatement ps = conn.prepareStatement("select * from \"conversiontype\" where \"sourcetype\" = '" + sourceType + "'" +
+                " and \"destinationType\" = '" + destinationType + "'");
+        ResultSet rs = ps.executeQuery();
+        if(rs.next()){
+            conv = conversionTypeDAO.getInstance().create(rs.getString("id"));
+            conv.setDestinationType(rs.getString("destinationtype"));
+            conv.setSourceType(rs.getString("sourcetype"));
+            conv.setDirty(false);
+            conv.setInDB(true);
+            conv.setPrice(rs.getDouble("price"));
+        }
         
+        return conv;
     }
 }
 //test

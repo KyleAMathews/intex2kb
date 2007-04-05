@@ -645,7 +645,7 @@ public class Main extends javax.swing.JFrame {
             conversionBO conv = (conversionBO)ConversionDAO.getInstance().create();
             
             //Read conversionType from DB and create object
-            
+            conversionTypeDAO.getInstance().getConversionType(so)
             
             String conversionType = conversionTypeInput.getSelectedItem().toString();
             System.out.println(conversionType);
