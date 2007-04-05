@@ -17,6 +17,7 @@ public class Physical extends Product{
     
     private String serialNum;
     private String shelfLocation;
+    private String conceptualid;
     private boolean forSale;
     
     /** Creates a new instance of Physical */
@@ -48,6 +49,14 @@ public class Physical extends Product{
     public void setForSale(boolean forSale) {
         this.setDirty(true);
         this.forSale = forSale;
+    }
+
+    public String getConceptualid() {
+        return conceptualid;
+    }
+
+    public void setConceptualid(String conceptualid) {
+        this.conceptualid = conceptualid;
     }
     
     
