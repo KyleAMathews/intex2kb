@@ -119,6 +119,7 @@ public class Main extends javax.swing.JFrame {
         Ret = new javax.swing.JButton();
         Rep = new javax.swing.JButton();
         Sal = new javax.swing.JButton();
+        pay = new javax.swing.JButton();
 
         jButton1.setText("jButton1");
 
@@ -165,7 +166,7 @@ public class Main extends javax.swing.JFrame {
                 .add(jPanel10Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(jTextField2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(SaleQty, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 33, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(188, Short.MAX_VALUE))
+                .addContainerGap(273, Short.MAX_VALUE))
         );
         jPanel10Layout.setVerticalGroup(
             jPanel10Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -223,27 +224,24 @@ public class Main extends javax.swing.JFrame {
             .add(ConversionLayout.createSequentialGroup()
                 .addContainerGap()
                 .add(ConversionLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(org.jdesktop.layout.GroupLayout.TRAILING, ConversionLayout.createSequentialGroup()
-                        .add(addConversion)
-                        .add(103, 103, 103))
                     .add(ConversionLayout.createSequentialGroup()
                         .add(ConversionLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
                             .add(jLabel2)
                             .add(jLabel19)
                             .add(jLabel3))
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                        .add(ConversionLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                            .add(ConversionLayout.createSequentialGroup()
-                                .add(sourceTypeInput, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                                .add(jLabel4, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 210, Short.MAX_VALUE)
-                                .addContainerGap())
-                            .add(ConversionLayout.createSequentialGroup()
-                                .add(numMinutesInput, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE)
-                                .add(173, 173, 173))
-                            .add(ConversionLayout.createSequentialGroup()
-                                .add(destinationTypeInput, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap())))))
+                        .add(ConversionLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
+                            .add(sourceTypeInput, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                            .add(destinationTypeInput, 0, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .add(numMinutesInput))
+                        .add(319, 319, 319))
+                    .add(ConversionLayout.createSequentialGroup()
+                        .add(jLabel4, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 295, Short.MAX_VALUE)
+                        .add(227, 227, 227))))
+            .add(ConversionLayout.createSequentialGroup()
+                .add(111, 111, 111)
+                .add(addConversion)
+                .addContainerGap(341, Short.MAX_VALUE))
         );
         ConversionLayout.setVerticalGroup(
             ConversionLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -262,9 +260,9 @@ public class Main extends javax.swing.JFrame {
                 .add(ConversionLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(jLabel3)
                     .add(numMinutesInput, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 224, Short.MAX_VALUE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 227, Short.MAX_VALUE)
                 .add(addConversion)
-                .add(20, 20, 20))
+                .addContainerGap())
         );
         jPanel2.add(Conversion, "card5");
 
@@ -313,17 +311,17 @@ public class Main extends javax.swing.JFrame {
                 .add(PrintOrderLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(PrintOrderLayout.createSequentialGroup()
                         .add(jLabel5, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 231, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(206, Short.MAX_VALUE))
+                        .addContainerGap(291, Short.MAX_VALUE))
                     .add(PrintOrderLayout.createSequentialGroup()
                         .add(jLabel6)
-                        .addContainerGap(305, Short.MAX_VALUE))
+                        .addContainerGap(390, Short.MAX_VALUE))
                     .add(org.jdesktop.layout.GroupLayout.TRAILING, PrintOrderLayout.createSequentialGroup()
                         .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 367, Short.MAX_VALUE)
-                        .add(70, 70, 70))))
+                        .add(155, 155, 155))))
             .add(PrintOrderLayout.createSequentialGroup()
                 .add(104, 104, 104)
                 .add(addPrintOrder)
-                .addContainerGap(263, Short.MAX_VALUE))
+                .addContainerGap(348, Short.MAX_VALUE))
             .add(PrintOrderLayout.createSequentialGroup()
                 .addContainerGap()
                 .add(PrintOrderLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
@@ -339,7 +337,7 @@ public class Main extends javax.swing.JFrame {
                     .add(printTypeInput, 0, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .add(sizeInput, 0, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .add(numPhotosInput))
-                .addContainerGap(227, Short.MAX_VALUE))
+                .addContainerGap(312, Short.MAX_VALUE))
         );
         PrintOrderLayout.setVerticalGroup(
             PrintOrderLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -388,7 +386,7 @@ public class Main extends javax.swing.JFrame {
             .add(BackupLayout.createSequentialGroup()
                 .add(116, 116, 116)
                 .add(jLabel13)
-                .addContainerGap(296, Short.MAX_VALUE))
+                .addContainerGap(381, Short.MAX_VALUE))
         );
         BackupLayout.setVerticalGroup(
             BackupLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -411,7 +409,7 @@ public class Main extends javax.swing.JFrame {
             .add(RentalLayout.createSequentialGroup()
                 .add(127, 127, 127)
                 .add(jLabel14)
-                .addContainerGap(291, Short.MAX_VALUE))
+                .addContainerGap(376, Short.MAX_VALUE))
         );
         RentalLayout.setVerticalGroup(
             RentalLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -434,7 +432,7 @@ public class Main extends javax.swing.JFrame {
             .add(ReturnLayout.createSequentialGroup()
                 .add(123, 123, 123)
                 .add(jLabel15)
-                .addContainerGap(293, Short.MAX_VALUE))
+                .addContainerGap(378, Short.MAX_VALUE))
         );
         ReturnLayout.setVerticalGroup(
             ReturnLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -457,7 +455,7 @@ public class Main extends javax.swing.JFrame {
             .add(RepairLayout.createSequentialGroup()
                 .add(122, 122, 122)
                 .add(jLabel16)
-                .addContainerGap(296, Short.MAX_VALUE))
+                .addContainerGap(381, Short.MAX_VALUE))
         );
         RepairLayout.setVerticalGroup(
             RepairLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -474,7 +472,7 @@ public class Main extends javax.swing.JFrame {
         Default.setLayout(DefaultLayout);
         DefaultLayout.setHorizontalGroup(
             DefaultLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 457, Short.MAX_VALUE)
+            .add(0, 542, Short.MAX_VALUE)
         );
         DefaultLayout.setVerticalGroup(
             DefaultLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -600,12 +598,15 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
+        pay.setFont(new java.awt.Font("Lucida Grande", 1, 18));
+        pay.setText("PAY");
+
         org.jdesktop.layout.GroupLayout jPanel4Layout = new org.jdesktop.layout.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(jPanel4Layout.createSequentialGroup()
-                .add(30, 30, 30)
+                .add(36, 36, 36)
                 .add(Conv)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(PrintO)
@@ -619,7 +620,9 @@ public class Main extends javax.swing.JFrame {
                 .add(Rep)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(Sal)
-                .addContainerGap(178, Short.MAX_VALUE))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 80, Short.MAX_VALUE)
+                .add(pay)
+                .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -632,7 +635,8 @@ public class Main extends javax.swing.JFrame {
                     .add(Rent)
                     .add(Ret)
                     .add(Rep)
-                    .add(Sal))
+                    .add(Sal)
+                    .add(pay))
                 .addContainerGap())
         );
         getContentPane().add(jPanel4, java.awt.BorderLayout.SOUTH);
@@ -800,6 +804,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JTextField numMinutesInput;
     private javax.swing.JTextField numPhotosInput;
     private javax.swing.JComboBox paperTypeInput;
+    private javax.swing.JButton pay;
     private javax.swing.JTextArea photosetDesc;
     private javax.swing.JComboBox printTypeInput;
     private javax.swing.JTextField quantityInput;
