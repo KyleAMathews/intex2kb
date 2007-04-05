@@ -650,7 +650,7 @@ public class Main extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
     
     private void payActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_payActionPerformed
-        PmtGUI p = new PmtGUI(tx, this);
+        PmtGUI p = new PmtGUI(tx,this,model);
         this.setVisible(false);
         p.setVisible(true);
     }//GEN-LAST:event_payActionPerformed
