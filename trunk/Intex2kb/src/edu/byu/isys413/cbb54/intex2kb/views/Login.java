@@ -114,7 +114,6 @@ public class Login extends javax.swing.JFrame {
     
     private void loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginActionPerformed
         try {
-            System.out.println("Email Input: " + emailInput.getText());
             if(emailInput.getText() != null){
                 empid = EmployeeDAO.getInstance().getEmail(emailInput.getText()).getId();
             }else{

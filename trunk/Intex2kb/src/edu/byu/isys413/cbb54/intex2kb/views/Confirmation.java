@@ -66,6 +66,10 @@ public class Confirmation extends javax.swing.JFrame {
         txTotal = new javax.swing.JLabel();
         pmtAmount = new javax.swing.JLabel();
         change = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -94,30 +98,52 @@ public class Confirmation extends javax.swing.JFrame {
 
         change.setText("jLabel2");
 
+        jLabel2.setText("Customer Name:");
+
+        jLabel3.setText("Total Amount:");
+
+        jLabel4.setText("Amount Paid:");
+
+        jLabel5.setText("Change:");
+
         org.jdesktop.layout.GroupLayout DefaultLayout = new org.jdesktop.layout.GroupLayout(Default);
         Default.setLayout(DefaultLayout);
         DefaultLayout.setHorizontalGroup(
             DefaultLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(DefaultLayout.createSequentialGroup()
-                .addContainerGap()
+                .addContainerGap(82, Short.MAX_VALUE)
+                .add(DefaultLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
+                    .add(jLabel4)
+                    .add(jLabel3)
+                    .add(jLabel2)
+                    .add(jLabel5))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(DefaultLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(custName)
                     .add(txTotal)
+                    .add(custName)
                     .add(pmtAmount)
                     .add(change))
-                .addContainerGap(482, Short.MAX_VALUE))
+                .addContainerGap(418, Short.MAX_VALUE))
         );
         DefaultLayout.setVerticalGroup(
             DefaultLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(DefaultLayout.createSequentialGroup()
                 .add(34, 34, 34)
-                .add(custName)
+                .add(DefaultLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(custName)
+                    .add(jLabel2))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(txTotal)
+                .add(DefaultLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(jLabel3)
+                    .add(txTotal))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(pmtAmount)
+                .add(DefaultLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(jLabel4)
+                    .add(pmtAmount))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(change)
+                .add(DefaultLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(jLabel5)
+                    .add(change))
                 .addContainerGap(320, Short.MAX_VALUE))
         );
         jPanel2.add(Default, "card9");
@@ -244,6 +270,10 @@ public class Confirmation extends javax.swing.JFrame {
     private javax.swing.JButton finish;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;

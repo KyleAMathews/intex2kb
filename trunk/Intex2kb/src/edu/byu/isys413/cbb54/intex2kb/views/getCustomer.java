@@ -23,6 +23,7 @@ public class getCustomer extends javax.swing.JFrame {
         storeid = storeid1;
         
         initComponents();
+        createCust.setVisible(false);
     }
     
     /** This method is called from within the constructor to
@@ -35,6 +36,7 @@ public class getCustomer extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         custPhoneInput = new javax.swing.JTextField();
         submit = new javax.swing.JButton();
+        createCust = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         jLabel1.setText("Customer Phone Number:");
@@ -46,20 +48,29 @@ public class getCustomer extends javax.swing.JFrame {
             }
         });
 
+        createCust.setText("Create Cust");
+        createCust.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                createCustActionPerformed(evt);
+            }
+        });
+
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(layout.createSequentialGroup()
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
+                    .add(layout.createSequentialGroup()
+                        .add(141, 141, 141)
+                        .add(submit)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 22, Short.MAX_VALUE)
+                        .add(createCust))
+                    .add(layout.createSequentialGroup()
                         .addContainerGap()
                         .add(jLabel1)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                        .add(custPhoneInput, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 148, Short.MAX_VALUE))
-                    .add(layout.createSequentialGroup()
-                        .add(141, 141, 141)
-                        .add(submit)))
+                        .add(custPhoneInput, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 148, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -70,11 +81,19 @@ public class getCustomer extends javax.swing.JFrame {
                     .add(jLabel1)
                     .add(custPhoneInput, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(submit)
+                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(submit)
+                    .add(createCust))
                 .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void createCustActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createCustActionPerformed
+        this.dispose();
+        createCustomer c = new createCustomer(this);
+        c.setVisible(true);
+    }//GEN-LAST:event_createCustActionPerformed
     
     private void submitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitActionPerformed
         try {
@@ -86,6 +105,7 @@ public class getCustomer extends javax.swing.JFrame {
                 m.setVisible(true);
             }catch (Exception e){
                 custPhoneInput.setText("No customer found");
+                createCust.setVisible(true);
             }
         } catch (DataException ex) {
             ex.printStackTrace();
@@ -104,6 +124,7 @@ public class getCustomer extends javax.swing.JFrame {
     }*/
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton createCust;
     private javax.swing.JTextField custPhoneInput;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JButton submit;
