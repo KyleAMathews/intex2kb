@@ -14,7 +14,7 @@ import edu.byu.isys413.cbb54.intex2kb.data.*;
  */
 public class Login extends javax.swing.JFrame {
     
-    String storeid = "111";
+    String storeid = "000001117284553c0014b20a500442";
     String empid = null;
     
     /** Creates new form Login */
