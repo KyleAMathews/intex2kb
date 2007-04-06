@@ -398,17 +398,13 @@
     </target>
     <target name="do-dist" depends="init,compile,compile-jsps,-pre-dist,-do-dist-with-manifest,-do-dist-without-manifest"/>
     <target name="library-inclusion-in-manifest" depends="init" if="dist.ear.dir">
-        <basename property="included.lib.reference.Intex2kb.jar" file="${reference.Intex2kb.jar}"/>
-        <copy-ear-war file="${reference.Intex2kb.jar}" propname="included.lib.reference.Intex2kb.jar.X"/>
         <mkdir dir="${build.web.dir.real}/META-INF"/>
         <manifest file="${build.web.dir.real}/META-INF/MANIFEST.MF" mode="update">
-            <attribute name="Class-Path" value="${included.lib.reference.Intex2kb.jar} "/>
+            <attribute name="Class-Path" value=""/>
         </manifest>
         <delete dir="${dist.ear.dir}/temp"/>
     </target>
-    <target name="library-inclusion-in-archive" depends="init" unless="dist.ear.dir">
-        <copy file="${reference.Intex2kb.jar}" todir="${build.web.dir.real}/WEB-INF/lib"/>
-    </target>
+    <target name="library-inclusion-in-archive" depends="init" unless="dist.ear.dir"/>
     <target name="do-ear-dist" depends="init,compile,compile-jsps,-pre-dist,library-inclusion-in-manifest">
         <dirname property="dist.jar.dir" file="${dist.ear.war}"/>
         <mkdir dir="${dist.jar.dir}"/>
