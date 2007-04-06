@@ -11,7 +11,7 @@ on Libraries node in Projects view can be used to add the JSTL 1.1 library.
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
-<%String title = "index";%>
+<%String title = "Index";%>
 <html>
     <head><TITLE>MyStuff.com: <%out.write(title);%></TITLE>
         <link rel="StyleSheet" type="text/css" media="all" href="style.css" />
