@@ -28,7 +28,7 @@ a:hover ,a:active {
 	color: #f2ffd9;
 	margin-left: 10px;
 	}
-#logoheader {
+#logoHeader {
 	padding-left: 20px;
 	}
 #nolink a a:hover, a:active {
@@ -127,8 +127,8 @@ a:hover ,a:active {
 		}
 
 input:focus {
- color: black;
- background-color: #a3fdf1;	
+color: black;
+background-color: #f2ffd9;	
 	}
 
 label {

@@ -35,10 +35,11 @@ $(document).ready(function(){
     <BODY>
         <div id="bigcontainer">
             <div id="container">
-                <div id="header">
-                    <a id="nolink" id="logo" alt="Home" href="index.html">
+               <div id="header">
+                    <a id="nolink" id="logo" alt="Home" href="index.jsp">
                         <div id="logoHeader">
-                            <h1>MyStuff.com</h1>
+                            <img src="mystuff.png" />
+                            <!--<h1>MyStuff.com</h1>-->
                         </div>
                     </a>
                 </div><!--end header-->
@@ -54,7 +55,7 @@ $(document).ready(function(){
                 </div><!--end navigation-->
                 
                 <div id="body">
-                    <h1><%if (message != null) {out.write(title);}%></h1>
+                    <h1><%if (message != null) {out.write(message);}%></h1>
                     <div id="form">
                         <form id="formexact" method="post" action="NumberGame.action">
                             <label for="guess">NumberGuess:</label>
