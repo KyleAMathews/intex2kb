@@ -3,7 +3,7 @@ body {
 	color: #434854;
 	Font-family: georgia, times, "times new roman", serif; 
 	font-size: 11pt;
-	background-color: black;
+	background-color: #655e75;
 	background-image: url("background.png");
         background-repeat: repeat-x;
 	margin: 0;
@@ -22,14 +22,17 @@ a:hover ,a:active {
 	color: #fff;
 	background-color: #878fa8;
 	}
-
 #nolink {
 	text-decoration: none;
 	border: 0pt none; 
-	color:#434854;
+	color: #f2ffd9;
+	margin-left: 10px;
 	}
-#nolink a:hover, a:active {
-	color:#434854;
+#logoheader {
+	padding-left: 20px;
+	}
+#nolink a a:hover, a:active {
+	color: #f2ffd9;
 	}
 #bigcontainer2{
 	margin: 0 auto;
@@ -57,9 +60,9 @@ a:hover ,a:active {
 	width: 780px;
 	margin: 0px auto;
 	color: #434854;
-	background-color: #eeffcc;
+	background-color: #f2ffd9;
 	xborder-bottom: 1px solid black;
-	padding-bottom: 35px;
+	padding-bottom: 10px;
 	}
 #header h1 {
 	margin: 0;
@@ -68,6 +71,7 @@ a:hover ,a:active {
 	}
 #header img {
 	float: left:
+        margin-left: 10px;
 	}
 
 #navigation {
@@ -91,11 +95,11 @@ a:hover ,a:active {
 	width: 135px;
 	padding: 3px 5px 3px 10px;
 	text-decoration: none;
-	background-color: #eeffcc;
+	background-color: #f2ffd9;
 	border-bottom: 1px solid #eee;
 	}
 #navigation a:link, #navlist a:visited {
-	color: #cbcd3b;
+	color: #4c4854;
 	text-decoration: none;
 	}
 

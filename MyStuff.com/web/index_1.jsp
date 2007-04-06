@@ -34,7 +34,8 @@ $(document).ready(function(){
                    <div id="header">
                        <a id="nolink" id="logo" alt="Home" href="index.html">
                            <div id="logoHeader">
-                               <h1>MyStuff.com</h1>
+                               <img src="mystuff.png" />
+                               <!--<h1>MyStuff.com</h1>-->
                            </div>
                        </a>
                    </div><!--end header-->
