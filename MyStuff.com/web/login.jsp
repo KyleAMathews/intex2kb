@@ -32,7 +32,7 @@ on Libraries node in Projects view can be used to add the JSTL 1.1 library.
         <label for="email">Email: </label>
         <input type="text" name="email"><br />
         <label for="password">Password: </label>
-        <input type="text" name="password"><br />
+        <input type="password" name="password"><br />
         <input style="float: right; margin-right: 5px; padding-right: 0px;" type="submit" value="Submit">
     </form>
     
