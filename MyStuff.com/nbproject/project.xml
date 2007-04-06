@@ -6,7 +6,7 @@
             <name>MyStuff.com</name>
             <minimum-ant-version>1.6</minimum-ant-version>
             <web-module-libraries>
-                <library>
+                <library files="1">
                     <file>${reference.Intex2kb.jar}</file>
                     <path-in-war>WEB-INF/lib</path-in-war>
                 </library>
