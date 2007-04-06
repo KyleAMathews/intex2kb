@@ -15,8 +15,10 @@ on Libraries node in Projects view can be used to add the JSTL 1.1 library.
 <html>
     <head><TITLE>MyStuff.com: <%out.write(title);%></TITLE>
         <link rel="StyleSheet" type="text/css" media="all" href="style.css" />
+        <link rel="stylesheet" href="thickbox.css" type="text/css" media="screen" />
         <script type="text/javascript" src="jquery.js"></script>
         <script type="text/javascript" src="jq-corner.js"></script>
+        <script type="text/javascript" src="thickbox.js"></script>
         <script type="text/javascript">
 	$(function(){	// shorthand for $(document).ready() BTW
         $("#navigation ul li a").corner();
@@ -42,11 +44,11 @@ $(document).ready(function(){
                    
                 <div id="navigation">
                     <ul>
-                        <LI><a href="">Nav 1</a></LI>
-                        <LI><a href="">Nav 2</a></LI>
-                        <LI><a href="">Nav 3</a></LI>
-                        <LI><a href="">Nav 4</a></LI>
-                        <LI><a href="">Nav 5</a></LI>
+                        <LI style="margin-top: 0;"><a href="login.jsp?KeepThis=true&TB_iframe=true&height=200&width=250" class="thickbox">Login</a></LI>
+                        <LI><a href="">Sale</a></LI>
+                        <LI><a href="">Rental</a></LI>
+                        <LI><a href="">Photo</a></LI>
+                        <LI><a href="">Backup</a></LI>
                     </ul>
                 </div><!--end navigation-->
                    

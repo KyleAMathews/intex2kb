@@ -38,7 +38,6 @@ a:hover ,a:active {
 	margin: 0 auto;
 	padding: 10px;
 	width: 800px;
-	
 	background-color: black;
 	}
 #filler {
@@ -49,7 +48,7 @@ a:hover ,a:active {
 	margin-top: 20px;	
 	width: 800px;
 	border: 1px solid gray;
-	background-color: #ddccff
+	background-color: #ddccff;
 	}
 #container{
 	xbackground-image: url(nav_col_base.jpg);
@@ -59,6 +58,7 @@ a:hover ,a:active {
 #header{
 	width: 780px;
 	margin: 0px auto;
+        margin-bottom: 10px;
 	color: #434854;
 	background-color: #f2ffd9;
 	xborder-bottom: 1px solid black;
@@ -73,16 +73,15 @@ a:hover ,a:active {
 	float: left:
         margin-left: 10px;
 	}
-
 #navigation {
 	float: left;
 	width: 150px;
-	padding-top: 5px;
         padding-bottom: 5px;
 	}
  #navigation ul {
 	list-style-type: none;
 	padding-left: 10px;
+        padding-top: 10px;
 	margin: 0; 
 	font-family: Verdana, Helvetica, sans-serif;
 	font-size: large;
@@ -108,7 +107,8 @@ a:hover ,a:active {
 	color: white;
 	}
 #body {
-	margin-left:180px;
+	margin-left: 180px;
+        margin-right: 40px;
 	}
 #footer {
 	border-top: 1px solid gray;
@@ -146,11 +146,9 @@ input {
  float: left;
  margin-bottom: 10px;
 	}
-br {
- clear: left;
-} 
+
 .buttonSubmit {
  width: 75px;
- margin-left: 95px;
+ xmargin-left: 95px;
 }
 

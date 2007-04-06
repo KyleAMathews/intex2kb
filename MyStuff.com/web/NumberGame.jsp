@@ -57,10 +57,9 @@ $(document).ready(function(){
                 <div id="body">
                     <h1><%if (message != null) {out.write(message);}%></h1>
                     <div id="form">
-                        <form id="formexact" method="post" action="NumberGame.action">
-                            <label for="guess">NumberGuess:</label>
-                            <input type="text" name="guess" size="30" />	<br />
-                            <%out.println(message);%>
+                        <form method="post" action="edu.byu.isys413.web.NumberGame.action">
+                            <label for="guess">NumberGuess: </label>
+                            <input type="text" name="guess" size="30" /><br /><br />
                             <input type="submit" value="Submit" class="buttonSubmit" />
                         </form>
                     </div>
