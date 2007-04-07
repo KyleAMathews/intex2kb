@@ -20,7 +20,7 @@ import java.util.logging.Logger;
  */
 public class ConnectionPool {
 
-  private static String dbURL = "jdbc:derby://localhost:1527/intex2;user=dbuser;password=dbuser;";
+  private static String dbURL = "jdbc:sqlserver://128.187.72.113:1400;user=dbuser;password=dbuser";
   
   // right now we are forcing one connection only -- to ensure code is written correctly
   // this will up increased at deployment time
@@ -52,7 +52,8 @@ public class ConnectionPool {
   
   private Connection createConnection() throws Exception {
     //Logger.global.info("Creating a new database connection in the pool.");
-    Class.forName("org.apache.derby.jdbc.ClientDriver").newInstance();
+//    Class.forName("org.apache.derby.jdbc.ClientDriver").newInstance();
+      Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver").newInstance();
     Connection conn = DriverManager.getConnection(dbURL);
     conn.setAutoCommit(false);
     return conn;

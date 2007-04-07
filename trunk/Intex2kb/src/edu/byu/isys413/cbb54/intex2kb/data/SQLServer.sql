@@ -62,7 +62,7 @@ create table "membership"
 
 create table "backupservice"
 (
-    "price" DOUBLE not null primary key
+    "price" FLOAT primary key
 );
 
 create table "interest"
@@ -92,11 +92,11 @@ create table "transaction"
 create table "payment"
 (
     "id" varchar(40) not null primary key,
-    "amount" DOUBLE,
+    "amount" FLOAT,
     "ccnumber" varchar(20),
     "ccexpiration" varchar(10),
     "transactionid" varchar(80),
-    "change" DOUBLE,
+    "change" FLOAT,
     "type" varchar(80)
 );
  
@@ -114,7 +114,7 @@ create table "employee"
     "email" varchar(80),
     "ssnumber" varchar(15),
     "hiredate" varchar(80),
-    "salary" DOUBLE,
+    "salary" FLOAT,
     "storeid" varchar(40)
 );
  
@@ -143,7 +143,7 @@ create table "transactionline"
 create table "coupon"
 (
     "id" varchar(40) not null primary key,
-    "amount" DOUBLE
+    "amount" FLOAT
 );
 
 create table "revenuesource"
@@ -155,9 +155,9 @@ create table "revenuesource"
 create table "backup"
 (
     "id" varchar(40) not null primary key,
-    "size" DOUBLE,
-    "lengthofbackup" DOUBLE,
-    "price" DOUBLE
+    "size" FLOAT,
+    "lengthofbackup" FLOAT,
+    "price" FLOAT
 );
 
 create table "serviceRepair" 
@@ -166,10 +166,10 @@ create table "serviceRepair"
     "dateStarted" bigint,
     "dateEnded" bigint,
     "description" varchar(150),
-    "laborHours" DOUBLE,
+    "laborHours" FLOAT,
     "employeeID" varchar(30),
     "datePickedUp" bigint,
-    "price" DOUBLE
+    "price" FLOAT
 );
 
 create table "printorder"
@@ -179,7 +179,7 @@ create table "printorder"
     "quantity" int,
     "photoSet" varchar(30),
     "printformat" varchar(30),
-    "price" DOUBLE
+    "price" FLOAT
 );
 
 create table "printformat"
@@ -188,7 +188,7 @@ create table "printformat"
     "size" varchar(30),
     "papertype" varchar(30),
     "sourcetype" varchar(30),
-    "price" DOUBLE
+    "price" FLOAT
 );
 
 create table "photoset"
@@ -203,7 +203,7 @@ create table "conversionorder"
     "id" varchar(40) not null primary key,
     "conversiontype" varchar(30),
     "quantity" int,
-    "price" DOUBLE
+    "price" FLOAT
 );
 
 create table "conversiontype"
@@ -211,7 +211,7 @@ create table "conversiontype"
     "id" varchar(30) not null primary key,
     "sourcetype" varchar(30),
     "destinationtype" varchar(30),
-    "price" DOUBLE
+    "price" FLOAT
 );
 
 create table "sale"
@@ -253,15 +253,15 @@ create table "conceptual"
     "id" varchar(40) not null primary key,
     "name" varchar(60),
     "description" varchar(120),
-    "avgCost" DOUBLE
+    "avgCost" FLOAT
 );
 
 create table "conceptualrental"
 (
     "id" varchar(40) not null primary key,
-    "price" DOUBLE,
-    "cost" DOUBLE,
-    "late" DOUBLE,
+    "price" FLOAT,
+    "cost" FLOAT,
+    "late" FLOAT,
     "maxrent" int,
     "maxlate" int
 );

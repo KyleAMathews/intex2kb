@@ -34,8 +34,9 @@ public class TableModel extends AbstractTableModel{
     static Statement stmt = null;
     boolean change = false;
     
+    
     public static Connection connection(){
-        try{
+        /*try{
             Class.forName("org.apache.derby.jdbc.ClientDriver").newInstance();
             conn = DriverManager.getConnection("jdbc:derby://localhost:1527/intex2;user=dbuser;password=dbuser;");
             conn.setAutoCommit(false);
@@ -43,7 +44,7 @@ public class TableModel extends AbstractTableModel{
             
         }catch (Exception e){
             e.printStackTrace();
-        }
+        }*/
         return conn;
     }
     
