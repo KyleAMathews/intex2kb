@@ -24,19 +24,24 @@ public class NumberGame implements edu.byu.isys413.web.Action {
     }
   
     /** Processes a number guess */
-    public String process(HttpServletRequest request, HttpServletResponse response) throws Exception {
+    public String process(HttpServletRequest request, HttpServletResponse response) throws Exception {        
         HttpSession session = request.getSession();
-        int guess = Integer.parseInt(request.getParameter("guess"));
-        int realnum = ((Integer)session.getAttribute("secretnumber")).intValue();
-        if (guess == realnum) {
-            request.setAttribute("message", "You got it!  It was " + guess + ".  Let's play again.  I've already got another number.");
+        if (session.getAttribute("secretnumber") == null) {
+            System.out.println("Secret number was null " + session.getAttribute("secretnumber"));
             session.setAttribute("secretnumber", new Integer(new Random().nextInt(101)));
-        }else if (guess > realnum) {
-            request.setAttribute("message", "Try a lower number than " + guess);
-        }else {
-            request.setAttribute("message", "Try a higher number than " + guess);
-        }//if
-        
+            System.out.println("Session object is: " + session.getId());
+        }else{
+            int guess = Integer.parseInt(request.getParameter("guess"));
+            int realnum = ((Integer)session.getAttribute("secretnumber")).intValue();
+            if (guess == realnum) {
+                request.setAttribute("message", "You got it!  It was " + guess + ".  Let's play again.  I've already got another number.");
+                session.setAttribute("secretnumber", new Integer(new Random().nextInt(101)));
+            }else if (guess > realnum) {
+                request.setAttribute("message", "Try a lower number than " + guess);
+            }else {
+                request.setAttribute("message", "Try a higher number than " + guess);
+            }//if
+        }
         return "NumberGame.jsp";
     }//process
     

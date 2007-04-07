@@ -14,7 +14,6 @@ on Libraries node in Projects view can be used to add the JSTL 1.1 library.
 
 <%
 String title = "NumberGame";
-String message = null;
 %>
 <html>
     <head><TITLE>MyStuff.com: <%out.write(title);%></TITLE>
@@ -55,9 +54,10 @@ $(document).ready(function(){
                 </div><!--end navigation-->
                 
                 <div id="body">
-                    <h1><%if (message != null) {out.write(message);}%></h1>
+                    <p><%=request.getAttribute("message")%></p>
+                    <p><%=session.getAttribute("secretnumber")%></p>
                     <div id="form">
-                        <form method="post" action="edu.byu.isys413.web.NumberGame.action">
+                        <form method="post" action="edu.byu.isys413.actions.NumberGame.action">
                             <label for="guess">NumberGuess: </label>
                             <input type="text" name="guess" size="30" /><br /><br />
                             <input type="submit" value="Submit" class="buttonSubmit" />
