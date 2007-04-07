@@ -11,7 +11,14 @@ on Libraries node in Projects view can be used to add the JSTL 1.1 library.
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
    "http://www.w3.org/TR/html4/loose.dtd">
-<%String title = "Login";%>
+<%String title = "Login";
+String login = "";
+%>
+<%if ((String)request.getAttribute("login") == "1") {
+    login = "target=_parent";
+    }else {
+    login = "";
+    }%>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -27,8 +34,10 @@ on Libraries node in Projects view can be used to add the JSTL 1.1 library.
     </head>
     <body>
 
-    <h1 style="padding-left: 95px; text-decoration: underline;"><%out.println(title);%></h1>
-    <form action="edu.byu.isys413.web.login.action" method="post" target=_parent>
+    <h1 style="padding-left: 95px; text-decoration: underline;"><%=title%></h1>
+    <p style="color: red; background-color: yellow"><%=request.getAttribute("message")%>
+    
+    <form action="edu.byu.isys413.actions.loginWeb.action" method="post" <%=login%>>
         <label for="email">Email: </label>
         <input type="text" name="email" ><br />
         <label for="password">Password: </label>
