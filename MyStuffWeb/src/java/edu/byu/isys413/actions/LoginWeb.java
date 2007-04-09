@@ -5,7 +5,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 /*
- * loginWeb.java
+ * LoginWeb.java
  *
  * Created on April 7, 2007, 8:25 AM
  *
@@ -17,15 +17,15 @@ import javax.servlet.http.HttpSession;
  *
  * @author kyle
  */
-public class loginWeb implements edu.byu.isys413.web.Action{
+public class LoginWeb implements edu.byu.isys413.web.Action{
     
     boolean pass = false;
     String email;
     String password;
     /**
-     * Creates a new instance of loginWeb
+     * Creates a new instance of LoginWeb
      */
-    public loginWeb() {
+    public LoginWeb() {
         
     }
     public String process(HttpServletRequest request, HttpServletResponse response) throws Exception {

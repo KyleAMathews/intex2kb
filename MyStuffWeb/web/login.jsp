@@ -38,7 +38,7 @@ String login = "";
         <h1 style="padding-left: 95px; text-decoration: underline;"><%=title%></h1>
         <p style="color: red; background-color: yellow"><%=request.getAttribute("message")%>
         
-        <form style="margin: 0 auto;" action="edu.byu.isys413.actions.loginWeb.action" method="post" <%=login%>>
+        <form style="margin: 0 auto;" action="edu.byu.isys413.actions.LoginWeb.action" method="post" <%=login%>>
             <label for="email">Email: </label>
             <input type="text" name="email" ><br />
             <label for="password">Password: </label>

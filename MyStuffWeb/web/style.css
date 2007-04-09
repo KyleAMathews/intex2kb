@@ -56,6 +56,7 @@ p.small{
 	width: 150px;
 	xbackground-color: black;
 	border: 1px solid black;
+        list-style-type: none;
 	}
 #rightcolumn ul {
 	padding-left: 10px;
@@ -65,7 +66,7 @@ p.small{
 	padding-left: 0;
 	}
 #rightcolumn h4 {
-	text-decoration: underline;
+	background-color: #e2ffd9;
 	}
 #filler {
 	height: 6px;

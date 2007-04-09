@@ -44,10 +44,10 @@ $(document).ready(function(){
                    
 <div id="navigation">
     <ul>
-        <LI style="margin-top: 0;"><a href="">Sale</a></LI>
-        <LI><a href="">Rental</a></LI>
-        <LI><a href="">Photo</a></LI>
-        <LI><a href="">Backup</a></LI>
+        <LI style="margin-top: 0;"><a href="sale.jsp">Sale</a></LI>
+        <LI><a href="rental.jsp">Rental</a></LI>
+        <LI><a href="photo.jsp">Photo</a></LI>
+        <LI><a href="backup.jsp">Backup</a></LI>
     </ul>
 </div><!--end navigation-->
 <div id="rightcolumn">
@@ -57,7 +57,7 @@ $(document).ready(function(){
     <h4>Actions:</h4>
     <ul>
         <li><a href="">View Slideshow</a></li>
-        <li><a href="">Upload Photo</a></li>
+        <li><a href="">Upload File(s)</a></li>
         <li><a href="">Add Backup Space</a></li>
         <li><a href="">Help</a></li>
     </ul>
@@ -70,7 +70,7 @@ $(document).ready(function(){
     <tr><th>Kyle in Snow</th><th>Kyle is snow isn't this a long title?</th><th>Baby J</th></tr>
     <tr>
     <td>
-    <a href="images/pic1.jpg" class="thickbox" rel="gallery"><img src="images/pic1.jpg" title="Kyle in Snow" /></a><br /><a href="download.action">Download</a><a href="deletepic.action">Delete</a></td>	
+    <a href="images/pic1.jpg" class="thickbox" rel="gallery"><img src="images/pic1.jpg" title="Kyle in Snow" /></a><br /><a href="downloadfile.jsp?id=03488023840234">Download</a><a href="deletefile.jsp?id=23402384023840">Delete</a></td>	
     <td>
         <a href="images/pic2.jpg" class="thickbox" rel="gallery"><img src="images/pic2.jpg" class="thickbox" rel="gallery" /></a><br /><a href="download.action">Download</a><a href="deletepic.action">Delete</a>
     </td>
