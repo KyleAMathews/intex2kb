@@ -32,14 +32,13 @@ public class LoginWeb implements edu.byu.isys413.web.Action{
         HttpSession session = request.getSession();
         
         // get password / email
-        System.out.println("I'm in loginweb.java");
-        email = (String)session.getAttribute("email");
-        password = (String)session.getAttribute("password");
+        email = (String)request.getParameter("email");
+        password = (String)request.getParameter("password");
         System.out.println("I'm in loginweb.java " + password + " " + email);
         
         
-            pass = validateLogin.getInstance().validate(email, password);
-            System.out.println("pass value=" + pass);
+        pass = validateLogin.getInstance().validate(email, password);
+        System.out.println("validation value=" + pass);
         
         if(pass == true){
             request.setAttribute("message", "Login passed");
