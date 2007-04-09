@@ -31,6 +31,7 @@ DROP TABLE "product";
 DROP TABLE "rentalreturn";
 DROP TABLE "conceptualrental";
 DROP TABLE "login";
+DROP TABLE "photoBackup";
 
 
 create table "customer"
@@ -290,6 +291,17 @@ create table "login"
 (
     "email" varchar(100) not null primary key,
     "password" varchar(100)
+);
+create table ""photoBackup"
+(
+    "id" varchar(40) not null primary key,
+    "membid" varchar(40),
+    "title" varchar(60),
+    "thumbnail" verbinary(max),
+    "mediumpic" verbinary(max),
+    "orginalpic" verbinary(max),
+    "filetype" varchar(10),
+    "status" varchar(2)
 );
 
 INSERT INTO "backupservice" VALUES (.99);
