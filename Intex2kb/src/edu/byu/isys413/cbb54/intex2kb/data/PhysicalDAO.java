@@ -125,7 +125,23 @@ public class PhysicalDAO extends ProductDAO{
     /// SEARCH
     
        
-    
+    public boolean exists(String id) throws Exception{
+        Boolean b = false;
+        Connection conn = ConnectionPool.getInstance().get();
+        
+        PreparedStatement search = conn.prepareStatement(
+                "SELECT * FROM \"physical\" WHERE \"serialnum\" = ?");
+        search.setString(1, id);
+        ResultSet rs = search.executeQuery();
+        conn.commit();
+        ConnectionPool.getInstance().release(conn);
+        
+        if(rs.next()){
+            b = true;
+        }
+        
+        return b;
+    }
     
     
     
