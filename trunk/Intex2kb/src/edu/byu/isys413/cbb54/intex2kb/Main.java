@@ -12,6 +12,7 @@
 package edu.byu.isys413.cbb54.intex2kb;
 import edu.byu.isys413.cbb54.intex2kb.data.*;
 import edu.byu.isys413.cbb54.intex2kb.views.*;
+import javax.mail.MessagingException;
 
 /**
  *
@@ -39,6 +40,16 @@ public class Main {
         //new Login().setVisible(true);//creates and loads the gui
        // new NewJFrame().setVisible(true);
         
+        String m = "Test";
+        String[] r = {"tylerf@byu.edu","tylerfarmer@gmail.com"};
+        
+        sendMail sm = new sendMail();
+        
+        try {
+            sm.postMail(r,m);
+        } catch (MessagingException ex) {
+            ex.printStackTrace();
+        }
     }
     
 }
