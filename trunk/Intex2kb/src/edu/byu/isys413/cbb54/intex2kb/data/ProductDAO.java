@@ -38,4 +38,16 @@ public abstract class ProductDAO {
     abstract void insert(Product product, Connection conn) throws Exception;
     
     abstract void update(Product product, Connection conn) throws Exception;
+    
+    public ProductDAO getProductDAO(String id) throws Exception{
+        ProductDAO p;
+        PhysicalDAO pDAO = (PhysicalDAO)PhysicalDAO.getInstance();
+        if(pDAO.exists(id)){
+            p = pDAO;
+        }else{
+            p = (ConceptualDAO)ConceptualDAO.getInstance();
+        }
+        return p;
+    }
+
 }

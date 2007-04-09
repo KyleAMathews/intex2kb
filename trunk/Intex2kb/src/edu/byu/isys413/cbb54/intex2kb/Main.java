@@ -28,7 +28,7 @@ public class Main {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-//        new tester().main(args);
+        new tester().main(args);
 //        try{
 //        batchBackupRepair.backup();
 //        }catch(DataException e){

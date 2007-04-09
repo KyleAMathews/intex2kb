@@ -509,6 +509,9 @@ public class tester {
             
             batchBackupRepair.backup();
             
+            System.out.println("TESTING THE PHYSICAL LOOKUP");
+            
+            
         }catch(Exception e) {
             e.printStackTrace();
         }
