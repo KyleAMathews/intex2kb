@@ -56,11 +56,14 @@ p.small{
 	width: 150px;
 	xbackground-color: black;
 	border: 1px solid black;
-        list-style-type: none;
 	}
+#rightcolumn p {
+        padding-left: 10px;
+        }
 #rightcolumn ul {
 	padding-left: 10px;
 	text-decoration: none;
+        list-style: none;
 	}
 #rightcolumn ul li{
 	padding-left: 0;
