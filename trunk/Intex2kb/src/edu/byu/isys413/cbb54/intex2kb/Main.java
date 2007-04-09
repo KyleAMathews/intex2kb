@@ -29,7 +29,7 @@ public class Main {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        new tester().main(args);
+        //new tester().main(args);
 //        try{
 //        batchBackupRepair.backup();
 //        }catch(DataException e){
@@ -41,7 +41,7 @@ public class Main {
        // new NewJFrame().setVisible(true);
         
         String m = "Test";
-        String[] r = {"tylerf@byu.edu","tylerfarmer@gmail.com"};
+        String[] r = {"tylerf@farm-boys.com","tylerfarmer@gmail.com"};
         
         sendMail sm = new sendMail();
         
