@@ -21,6 +21,7 @@ public class PmtGUI extends javax.swing.JFrame {
     private TableModel model;
     private Transaction tx;
     private Main m;
+    private formatNumber fmtNum = new formatNumber();
     
     /** Creates new form Main */
     public PmtGUI(Transaction tx1, Main m1, TableModel model1) throws DataException {
@@ -44,8 +45,10 @@ public class PmtGUI extends javax.swing.JFrame {
         initComponents();
         jTable1.setModel(model);
         subtotalAmountInput.setText(Double.toString(tx.calculateSubtotal()));
-        taxtAmountInput.setText(Double.toString(tx.calculateTax()));
-        paymentAmountInput.setText(Double.toString(tx.calculateTotal()));
+        taxtAmountInput.setText(fmtNum.fmt(tx.calculateTax()));
+        total.setText(fmtNum.fmt(tx.calculateTotal()));
+//        taxtAmountInput.setText(Double.toString(fmtNum.fmt(tx.calculateTax())));
+//        total.setText(Double.toString(fmtNum.fmt(tx.calculateTotal())));
         
     }
     
@@ -71,6 +74,8 @@ public class PmtGUI extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         taxtAmountInput = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
+        total = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
         paymentAmountInput = new javax.swing.JTextField();
         jPanel6 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
@@ -105,30 +110,44 @@ public class PmtGUI extends javax.swing.JFrame {
 
         jLabel6.setText("TAX:");
 
-        jLabel7.setText("Payment Total:");
+        jLabel7.setText("Total:");
+
+        jLabel8.setText("Payment Amount:");
 
         org.jdesktop.layout.GroupLayout DefaultLayout = new org.jdesktop.layout.GroupLayout(Default);
         Default.setLayout(DefaultLayout);
         DefaultLayout.setHorizontalGroup(
             DefaultLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(DefaultLayout.createSequentialGroup()
-                .addContainerGap()
-                .add(DefaultLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
-                    .add(jLabel4)
-                    .add(jLabel6)
-                    .add(jLabel3)
-                    .add(jLabel2)
-                    .add(jLabel5)
-                    .add(jLabel7))
+                .add(DefaultLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(DefaultLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .add(DefaultLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
+                            .add(jLabel6)
+                            .add(jLabel3)
+                            .add(jLabel2)
+                            .add(jLabel7)
+                            .add(jLabel8)))
+                    .add(DefaultLayout.createSequentialGroup()
+                        .add(34, 34, 34)
+                        .add(DefaultLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
+                            .add(jLabel4)
+                            .add(DefaultLayout.createSequentialGroup()
+                                .add(jLabel5)
+                                .add(4, 4, 4)))))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(DefaultLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(paymentAmountInput, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 106, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(ccExpInput, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 107, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(DefaultLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
-                        .add(paymentTypeInput, 0, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .add(subtotalAmountInput, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 106, Short.MAX_VALUE))
-                    .add(taxtAmountInput, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 106, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(ccNumInput, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 220, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                    .add(DefaultLayout.createSequentialGroup()
+                        .add(7, 7, 7)
+                        .add(DefaultLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                            .add(ccExpInput, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 107, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                            .add(ccNumInput, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 220, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
+                    .add(total, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 106, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(paymentTypeInput, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(DefaultLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING, false)
+                        .add(org.jdesktop.layout.GroupLayout.LEADING, subtotalAmountInput)
+                        .add(org.jdesktop.layout.GroupLayout.LEADING, taxtAmountInput, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 106, Short.MAX_VALUE))
+                    .add(paymentAmountInput, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 106, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(186, Short.MAX_VALUE))
         );
         DefaultLayout.setVerticalGroup(
@@ -148,9 +167,13 @@ public class PmtGUI extends javax.swing.JFrame {
                     .add(taxtAmountInput, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .add(4, 4, 4)
                 .add(DefaultLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(paymentAmountInput, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(total, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(jLabel7))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(DefaultLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(jLabel8)
+                    .add(paymentAmountInput, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .add(17, 17, 17)
                 .add(DefaultLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
                     .add(jLabel4)
                     .add(ccNumInput, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
@@ -158,7 +181,7 @@ public class PmtGUI extends javax.swing.JFrame {
                 .add(DefaultLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(ccExpInput, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(jLabel5))
-                .addContainerGap(250, Short.MAX_VALUE))
+                .addContainerGap(183, Short.MAX_VALUE))
         );
         jPanel2.add(Default, "card9");
 
@@ -252,7 +275,7 @@ public class PmtGUI extends javax.swing.JFrame {
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addContainerGap(600, Short.MAX_VALUE)
+                .addContainerGap(598, Short.MAX_VALUE)
                 .add(cancel)
                 .add(16, 16, 16)
                 .add(finish)
@@ -323,6 +346,7 @@ public class PmtGUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -337,6 +361,7 @@ public class PmtGUI extends javax.swing.JFrame {
     private javax.swing.JTextField subtotalAmountInput;
     private javax.swing.JScrollPane table;
     private javax.swing.JTextField taxtAmountInput;
+    private javax.swing.JTextField total;
     // End of variables declaration//GEN-END:variables
     
     

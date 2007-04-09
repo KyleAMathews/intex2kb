@@ -20,6 +20,7 @@ public class Confirmation extends javax.swing.JFrame {
     
     private TableModel model;
     private Transaction tx;
+    private formatNumber fmtNum = new formatNumber();
     
     /** Creates new form Main */
     public Confirmation(Transaction tx1,TableModel model1) throws DataException {
@@ -48,7 +49,8 @@ public class Confirmation extends javax.swing.JFrame {
         double txTotalDbl = tx.calculateTotal();
         txTotal.setText(Double.toString(txTotalDbl));
         pmtAmount.setText(Double.toString((tx.getPayment().getAmount())));
-        change.setText(Double.toString(tx.getPayment().getChange()));
+        change.setText(fmtNum.fmt(tx1.getPayment().getChange()));
+//        change.setText(Double.toString(tx.getPayment().getChange()));
     }
     
     /** This method is called from within the constructor to
