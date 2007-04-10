@@ -11,6 +11,7 @@
 
 package edu.byu.isys413.cbb54.intex2kb;
 import edu.byu.isys413.cbb54.intex2kb.data.*;
+import edu.byu.isys413.cbb54.intex2kb.views.*;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -38,10 +39,10 @@ public class Main {
 //        }
             //Login lo = new Login();
             //lo.setVisible(true);
-            //new Login().setVisible(true);//creates and loads the gui
+            new Login().setVisible(true);//creates and loads the gui
        // new NewJFrame().setVisible(true);
             
-            printConvBatch.getInstance().getReady();
+//            printConvBatch.getInstance().getReady();
             
         } catch (Exception ex) {
             ex.printStackTrace();

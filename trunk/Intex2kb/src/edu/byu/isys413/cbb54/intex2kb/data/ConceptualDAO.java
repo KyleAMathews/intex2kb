@@ -12,6 +12,7 @@ package edu.byu.isys413.cbb54.intex2kb.data;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
 /**
  *
@@ -50,6 +51,47 @@ public class ConceptualDAO extends ProductDAO{
     
     ///////////////////////////////////////////
     /// Read
+    public Product read(String sku) throws Exception {
+        Conceptual con = null;
+        
+        
+        // check to see if id in the cache
+        // if so, return it immediately
+        if(Cache.getInstance().containsKey(sku)){
+            con = (Conceptual)Cache.getInstance().get(sku);
+        }else{        
+            Connection conn = null;
+            try {
+                // retrieve a database connection from the pool
+                conn = ConnectionPool.getInstance().get();
+
+                // call read with a connection (the other read method in this class)
+                con = (Conceptual)this.read(sku, conn);
+
+                // release the connection
+                conn.commit();
+                ConnectionPool.getInstance().release(conn);
+
+            }catch (ConnectionPoolException e){
+                throw new DataException("Could not get a connection to the database.");
+
+            }catch (SQLException e) {
+                // rollback
+                try {
+                    conn.rollback();
+                    ConnectionPool.getInstance().release(conn);
+                }catch (ConnectionPoolException ce){
+                    throw new DataException("There was an error with the connection to the database", ce);
+                }catch (SQLException e2) {
+                    throw new DataException("Big error: could not even release the connection", e2);
+                }
+
+                throw new DataException("Could not retrieve record for id=" + con, e);
+            }
+        }
+        Product prod = (Product)con;
+        return prod;
+    }
     
     public Product read(String id, Connection conn) throws Exception{
         Conceptual concept = new Conceptual(id);
@@ -73,6 +115,39 @@ public class ConceptualDAO extends ProductDAO{
     ///////////////////////////////////////////
     /// Save
 
+    public void save(Product product) throws Exception {
+        Connection conn = null;
+        
+        try {
+   
+            // retrieve a database connection from the pool
+            conn = ConnectionPool.getInstance().get();
+            
+            // call save with a connection (the other save method in this class)
+            this.save(product, conn);
+            
+            // release the connection
+            ConnectionPool.getInstance().release(conn);
+            
+        }catch (ConnectionPoolException e){
+            throw new DataException("Could not get a connection to the database.");
+            
+        }catch (SQLException e) {
+            
+            // rollback
+            try {
+                conn.rollback();
+                ConnectionPool.getInstance().release(conn);
+            }catch (ConnectionPoolException ce){
+                throw new DataException("There was an error with the connection to the database", ce);
+            }catch (SQLException e2) {
+                throw new DataException("Big error: could not even release the connection", e2);
+            }
+            
+            throw new DataException("Could not save record for id=" + product.getId(), e);
+        }
+    }
+    
     public void save(Product prod, Connection conn) throws Exception{
         // check the dirty flag in the object.  if it is dirty,
         // run update or insert
@@ -113,8 +188,29 @@ public class ConceptualDAO extends ProductDAO{
         update.executeUpdate();
     }
     
-//////////////////////////////////////////
-/// delete
+    //////////////////////////////////////////
+    /// delete
+
+    // for business reasons we're not supporting deleting
     
-// for business reasons we're not supporting deleting
+    //////////////////////////////////////////
+    /// search
+    
+    public boolean exists(String id) throws Exception{
+        Boolean b = false;
+        Connection conn = ConnectionPool.getInstance().get();
+        
+        PreparedStatement search = conn.prepareStatement(
+                "SELECT * FROM \"conceptual\" WHERE \"sku\" = ?");
+        search.setString(1, id);
+        ResultSet rs = search.executeQuery();
+        conn.commit();
+        ConnectionPool.getInstance().release(conn);
+        
+        if(rs.next()){
+            b = true;
+        }
+        
+        return b;
+    }   
 }

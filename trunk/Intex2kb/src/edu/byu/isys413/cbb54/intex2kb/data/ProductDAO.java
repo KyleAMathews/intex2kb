@@ -23,31 +23,27 @@ public abstract class ProductDAO {
     ///////////////////////////////////////////
     /// Create
     
-    abstract Product create() throws Exception;
+    public abstract Product create() throws Exception;
     
     ///////////////////////////////////////////
     /// Read
     
-    abstract Product read (String sku, Connection conn) throws Exception;
+    public abstract Product read(String sku, Connection conn) throws Exception;
+    public abstract Product read(String sku) throws Exception;
             
     ///////////////////////////////////////////
     /// Save
     
-    abstract void save(Product product, Connection conn) throws Exception;
+    public abstract void save(Product product, Connection conn) throws Exception;
+    public abstract void save(Product product) throws Exception;
             
-    abstract void insert(Product product, Connection conn) throws Exception;
+    public abstract void insert(Product product, Connection conn) throws Exception;
     
-    abstract void update(Product product, Connection conn) throws Exception;
+    public abstract void update(Product product, Connection conn) throws Exception;
     
-    public ProductDAO getProductDAO(String id) throws Exception{
-        ProductDAO p;
-        PhysicalDAO pDAO = (PhysicalDAO)PhysicalDAO.getInstance();
-        if(pDAO.exists(id)){
-            p = pDAO;
-        }else{
-            p = (ConceptualDAO)ConceptualDAO.getInstance();
-        }
-        return p;
-    }
+    //////////////////////////////////////////
+    /// Search
+    
+    public abstract boolean exists(String id) throws Exception;
 
 }
