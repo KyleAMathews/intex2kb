@@ -8,29 +8,26 @@ on Libraries node in Projects view can be used to add the JSTL 1.1 library.
 <%--
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%> 
 --%>
-
+<% TransactionDAO.getInstance()              %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
    "http://www.w3.org/TR/html4/loose.dtd">
-
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
-    </head>
-    <body>
-
-    <h1>JSP Page</h1>
+<jsp:include page="header.jsp" />
+<div id="rightcolumn">
+    <h4>MyStuff Backup</h4>
+    <p class="small">75% Used of 10GB</p>
+    <br />
+    <h4>Actions:</h4>
+    <ul>
+        <li><a href="">View Slideshow</a></li>
+        <li><a href="">Upload File(s)</a></li>
+        <li><a href="">Add Backup Space</a></li>
+        <li><a href="">Help</a></li>
+    </ul>
+</div><!--end right column-->  
+<div id="body">
     
-    <%--
-    This example uses JSTL, uncomment the taglib directive above.
-    To test, display the page like this: index.jsp?sayHello=true&name=Murphy
-    --%>
-    <%--
-    <c:if test="${param.sayHello}">
-        <!-- Let's welcome the user ${param.name} -->
-        Hello ${param.name}!
-    </c:if>
-    --%>
     
-    </body>
-</html>
+</div><!--end of body-->
+
+
+<jsp:include page="footer.jsp" />
