@@ -78,7 +78,7 @@ public class validateLogin {
         ResultSet rs = ps.executeQuery();
         
         if(rs.next()){
-            custid = rs.getString("custId");
+            custid = rs.getString("membid");
         }
         
         ps.close();
