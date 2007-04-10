@@ -10,9 +10,9 @@ on Libraries node in Projects view can be used to add the JSTL 1.1 library.
 --%>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-   "http://www.w3.org/TR/html4/loose.dtd">
+"http://www.w3.org/TR/html4/loose.dtd">
 
 <jsp:include page="header.jsp" /> 
+<%="Cust Name" + (CustomerDAO.getInstance().read(request.getAttribute(custid))).get %>
 
-    
 <jsp:include page="footer.jsp" />

@@ -1,6 +1,6 @@
 package edu.byu.isys413.actions;
 
-import edu.byu.isys413.cbb54.intex2kb.data.validateLogin;
+import edu.byu.isys413.cbb54.intex2kb.data.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -41,7 +41,7 @@ public class LoginWeb implements edu.byu.isys413.web.Action{
         System.out.println("validation value=" + pass);
         
         if(pass == true){
-            request.setAttribute("login", "1"); // makes login not null sending message that login worked
+            // set login guid (not yet implemented)
             return "account.jsp"; // returns account page
         }else{
             // send back text saying please try again
