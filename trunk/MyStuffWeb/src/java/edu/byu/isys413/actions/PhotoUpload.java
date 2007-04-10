@@ -1,10 +1,11 @@
 /*
- * FileUpload.java
- *
+ * PhotoUpload.java
+ * Write to photobackup table
  */
 
 package edu.byu.isys413.actions;
 
+import edu.byu.isys413.cbb54.intex2kb.data.*;
 import java.util.*;
 import javax.servlet.http.*;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
@@ -16,7 +17,7 @@ import org.apache.commons.fileupload.FileItem;
  * See http://www.developershome.com/wap/wapUpload/wap_upload.asp?page=jsp 
  * for a really good tutorial on JSP file upload using the Jakarta libarary.
  *
- * @author Kyle Mathews
+ * @author Tyler Farmer
  */
 public class PhotoUpload implements edu.byu.isys413.web.Action {
     
@@ -45,20 +46,31 @@ public class PhotoUpload implements edu.byu.isys413.web.Action {
         String datafile1 = ((FileItem)params.get("datafile1")).getString();
         System.out.println(datafile1);
         
-        
         // get a file from the request
         FileItem fileinfo = (FileItem)params.get("datafile1");
         System.out.println("File name: " + fileinfo.getName());
         System.out.println("File size: " + fileinfo.getSize());
         System.out.println("File type: " + fileinfo.getContentType());
+        
+        //create PhotoBackupBO
+        photoBackupBO photo = PhotoDAO.getInstance().create();
+        photo.setCaption(null);
+        photo.setFilename(fileinfo.getName());
+        photo.setFilesize(Long.toString(fileinfo.getSize()));
+        photo.setFiletype(fileinfo.getContentType());
+        photo.setM("111");
+        photo.setStatus("1");
+        
+        //save photo to DB
+        PhotoDAO.getInstance().save(photo,fileinfo);
                 
         // the fileitem also has the bytes of the file.  you could easily call
         // setBinaryStream in your PreparedStatement since fileitem.getInputStream
         // gives you an input stream, which is what setBinaryStream wants.
         
         
-        return "FileUpload2.jsp";
+        return "photoDisplay.jsp";
     }//process
     
     
-}//NumberGame class
+}//PhotoUpload.java
