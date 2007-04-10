@@ -334,4 +334,101 @@ public class ForRentDAO {
         return id;
     }
     
+    public List getByID(List physical) throws DataException {
+        List<String> list = new LinkedList<String>();
+        
+        // get the connection
+        Connection conn = null;
+        try{
+            // retrieve a database connection from the pool
+            conn = ConnectionPool.getInstance().get();
+            for(int i = 0; i<physical.size(); i++){
+            // sql the names, phone, and ids
+            PreparedStatement read = conn.prepareStatement(
+                "SELECT * FROM \"physical\" WHERE \"id\" = ? AND \"forsale\" = ? ");
+            read.setString(1, (String) physical.get(i));
+            read.setBoolean(2, false);
+            ResultSet rs = read.executeQuery();
+
+            // while loop to populate the list from the results
+            while(rs.next()) {
+               list.add(rs.getString("id"));
+                }  
+            }
+            // release the connection
+            conn.commit();
+            ConnectionPool.getInstance().release(conn);
+            
+              
+
+        }catch (ConnectionPoolException e){
+            throw new DataException("Could not get a connection to the database.");
+
+        }catch (SQLException e) {
+            // rollback
+            try {
+                conn.rollback();
+                ConnectionPool.getInstance().release(conn);
+            }catch (ConnectionPoolException ce){
+                throw new DataException("There was an error with the connection to the database", ce);
+            }catch (SQLException e2) {
+                throw new DataException("Big error: could not even release the connection", e2);
+            }
+
+            throw new DataException("Could not retrieve customer records form the database",  e);
+        }
+       
+        // return the list of customer lists
+        return list;
+    }
+    
+     public List getAvailableRentals(List rentals) throws DataException {
+        List<ForRent> list = new LinkedList<ForRent>();
+        ForRent fr = null;
+        
+        // get the connection
+        Connection conn = null;
+        try{
+            // retrieve a database connection from the pool
+            conn = ConnectionPool.getInstance().get();
+            for(int i = 0; i<rentals.size(); i++){
+            // sql the names, phone, and ids
+            PreparedStatement read = conn.prepareStatement(
+                "SELECT * FROM \"forrent\" WHERE \"currentrental\" = ? AND \"id\" = ? ");
+            read.setString(1, "");
+            read.setString(2, (String) rentals.get(i));
+            ResultSet rs = read.executeQuery();
+
+            // while loop to populate the list from the results
+            while(rs.next()) {
+                fr = new ForRent(rs.getString("id"));
+                list.add(fr);
+                }  
+            }
+            // release the connection
+            conn.commit();
+            ConnectionPool.getInstance().release(conn);
+            
+              
+
+        }catch (ConnectionPoolException e){
+            throw new DataException("Could not get a connection to the database.");
+
+        }catch (SQLException e) {
+            // rollback
+            try {
+                conn.rollback();
+                ConnectionPool.getInstance().release(conn);
+            }catch (ConnectionPoolException ce){
+                throw new DataException("There was an error with the connection to the database", ce);
+            }catch (SQLException e2) {
+                throw new DataException("Big error: could not even release the connection", e2);
+            }
+
+            throw new DataException("Could not retrieve customer records form the database",  e);
+        }
+       
+        // return the list of customer lists
+        return list;
+    }
 }
