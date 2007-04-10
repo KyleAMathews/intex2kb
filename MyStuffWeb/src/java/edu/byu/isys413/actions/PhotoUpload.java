@@ -11,6 +11,7 @@ import javax.servlet.http.*;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.apache.commons.fileupload.FileItem;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -44,27 +45,24 @@ public class PhotoUpload implements edu.byu.isys413.web.Action {
         // get a file from the request
         List<FileItem> f = new LinkedList();
         
-        if(String.valueOf(params.get("datafile1")) != ""){
+        if(((FileItem)params.get("datafile1")).getName() != ""){
             f.add((FileItem)params.get("datafile1"));
         }
-        if(String.valueOf(params.get("datafile2")) != ""){
+        if(((FileItem)params.get("datafile2")).getName() != ""){
             f.add((FileItem)params.get("datafile2"));
         }
-        System.out.println("String.valueOf...: " + String.valueOf(params.get("datafile3")));
-        if(String.valueOf(params.get("datafile3")) != ""){
+        if(((FileItem)params.get("datafile3")).getName() != ""){
             f.add((FileItem)params.get("datafile3"));
         }
-        if(String.valueOf(params.get("datafile4")) != ""){
+        if(((FileItem)params.get("datafile4")).getName() != ""){
             f.add((FileItem)params.get("datafile4"));
         }
-        if(String.valueOf(params.get("datafile5")) != ""){
+        if(((FileItem)params.get("datafile5")).getName() != ""){
             f.add((FileItem)params.get("datafile5"));
         }
         
-        System.out.println(f.size());
-        
-        //create PhotoBackupBO
-        for(int i = 0;f.get(i) != null; i++){
+        //create PhotoBackupBO & write to DB
+        for(int i = 0;i < f.size(); i++){
             photoBackupBO photo = PhotoDAO.getInstance().create();
             photo.setCaption(null);
             photo.setFilename(f.get(i).getName());
@@ -75,6 +73,8 @@ public class PhotoUpload implements edu.byu.isys413.web.Action {
             
             //save photo to DB
             PhotoDAO.getInstance().save(photo,null,null,f.get(i));
+            JOptionPane.showMessageDialog(null,Integer.toString(i));
+            session.setAttribute(Integer.toString(i + 1),photo.getFilename());
         }
         
         // the fileitem also has the bytes of the file.  you could easily call
