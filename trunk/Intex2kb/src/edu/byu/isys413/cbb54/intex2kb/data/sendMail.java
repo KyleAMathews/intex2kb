@@ -49,8 +49,7 @@ public class sendMail {
     private static final String SMTP_AUTH_USER = "info@2kmystuff.com";
     private static final String SMTP_AUTH_PWD  = "intex24";
     
-    public void postMail( List<String> recipients,
-            String message) throws MessagingException {
+    public void postMail( List<String> recipients, String message) throws MessagingException {
         boolean debug = false;
         
         //Set generic message properties
