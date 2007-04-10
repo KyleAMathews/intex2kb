@@ -45,6 +45,7 @@ public class PhotoUpload implements edu.byu.isys413.web.Action {
         String datafile1 = ((FileItem)params.get("datafile1")).getString();
         System.out.println(datafile1);
         
+        
         // get a file from the request
         FileItem fileinfo = (FileItem)params.get("datafile1");
         System.out.println("File name: " + fileinfo.getName());
