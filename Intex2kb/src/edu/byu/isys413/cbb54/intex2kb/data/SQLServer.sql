@@ -31,6 +31,7 @@ DROP TABLE "product";
 DROP TABLE "rentalreturn";
 DROP TABLE "conceptualrental";
 DROP TABLE "login";
+DROP TABLE "category";
 
 
 create table "customer"
@@ -292,7 +293,20 @@ create table "login"
     "password" varchar(100)
 );
 
+create table "category"
+(
+    "id" varchar(40) not null primary key,
+    "name" varchar(40)
+);
+
 INSERT INTO "backupservice" VALUES (.99);
+
+INSERT INTO "category" VALUES ('00000110123b9144eb018b64001000', 'digital camera');
+INSERT INTO "category" VALUES ('00000111123b9144eb018b64001000', 'digital video camera');
+INSERT INTO "category" VALUES ('00000112123b9144eb018b64001000', 'misc equipment');
+INSERT INTO "category" VALUES ('00000113123b9144eb018b64001000', 'lighting equipment');
+
+
 
 INSERT INTO "customer" VALUES ('00000109123b9144eb018b64001000', 'Cameron', 'Burgon', '851 Wymount Terrace', '', 'Provo', 'Utah', '84602', '8013786198', 'tylerfarmer@gmail.com');
 INSERT INTO "customer" VALUES ('00000109123b925d16688bc2001000', 'Jamie', 'Burgon', '851 Wymount Terrace', '', 'Provo', 'Utah', '84604', '8013689248', 'wherever@sd.com');
