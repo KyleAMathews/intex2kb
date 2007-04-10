@@ -23,7 +23,7 @@ public class LoginWeb implements edu.byu.isys413.web.Action{
     boolean pass = false;
     String email;
     String password;
-    String custid;
+    String membid;
     /**
      * Creates a new instance of LoginWeb
      */
@@ -36,7 +36,7 @@ public class LoginWeb implements edu.byu.isys413.web.Action{
         // get password / email
         email = (String)request.getParameter("email");
         password = (String)request.getParameter("password");
-        custid = validateLogin.getInstance().custid(email, password);
+        membid = validateLogin.getInstance().membid(email, password);
         System.out.println("I'm in loginweb.java " + password + " " + email);
         System.out.println("custid: " + custid);
         
@@ -46,7 +46,7 @@ public class LoginWeb implements edu.byu.isys413.web.Action{
         if(pass == true){
             // set login guid (not yet implemented)
             // set customerid in cookie
-            session.setAttribute("custid", custid);
+            session.setAttribute("membid", membid);
             return "account.jsp"; // returns account page
         }else{
             // send back text saying please try again
