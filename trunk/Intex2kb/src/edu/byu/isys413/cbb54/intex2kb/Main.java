@@ -43,9 +43,9 @@ public class Main {
             
 //            printConvBatch.getInstance().getReady();
             
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
+       // } catch (Exception ex) {
+         //   ex.printStackTrace();
+       // }
     }
     
 }
