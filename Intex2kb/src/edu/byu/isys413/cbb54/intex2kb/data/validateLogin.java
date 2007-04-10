@@ -68,7 +68,7 @@ public class validateLogin {
         return pass;
     }
     
-    public String custid(String email, String password) throws Exception {
+    public String membid(String email, String password) throws Exception {
         String custid = "";
         Connection conn = ConnectionPool.getInstance().get();
         System.out.println("attempting to get custid from table login");
