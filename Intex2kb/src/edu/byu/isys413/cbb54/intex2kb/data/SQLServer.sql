@@ -380,7 +380,6 @@ INSERT INTO "login" VALUES('k', 'k');
 
 
 INSERT INTO "store" VALUES('000001117284553c0014b20a500442','Provo Center','123 Center Street','Suite 1','Provo','Utah','84604','108-333-3333','801-333-3334','000001117284553c0014b30a500442');
-INSERT INTO "store" VALUES('111','Provo','111 N 111 W','','Provo','UT','84601','108-333-3333','801-333-3334','000001117284553c0014b30a500442');
 
 INSERT INTO "coupon" VALUES('000001117284553c0014b40a500442',2.00);
 
@@ -447,8 +446,6 @@ INSERT INTO "vendor" VALUES ('lkjldj4kk54jk4jk4','DVD Vendor','123 DVD Drive','2
 
 INSERT INTO "conceptual" VALUES('aksfjl3krjlsk3j3ljk','ISO 100 BW Film - 36 Exp','The best film for you Black and White masterpieces',5.26,'00000115123b9144eb018b64001000');
 INSERT INTO "conceptual" VALUES('kkdsjl2k3lk3kjk3dkj','ISO 64 BW Film - 36 Exp','The best film for you Black and White masterpieces',7.35,'00000115123b9144eb018b64001000');
-INSERT INTO "conceptual" VALUES('asbnmn43en39df09sd3','AAA Batteries - 4 Pack','The Best Batteries for your Camera',2.15,'00000112123b9144eb018b64001000');
-INSERT INTO "conceptual" VALUES('ksdflk23fkgje988f89','AAA Batteries - 12 Pack','The Best Batteries for your Camera',6.10,'00000112123b9144eb018b64001000');
 INSERT INTO "conceptual" VALUES('skdfjlkjn23ndlkfjs3','Canon EOS 20D Digital Camera','',945.68,'00000110123b9144eb018b64001000');
 INSERT INTO "conceptual" VALUES('lskdjfkn323k3k3nlkn','Canon PowerShot A350 Digital Camera','',95.63,'00000110123b9144eb018b64001000');
 INSERT INTO "conceptual" VALUES('skldfjksdflkdker38f','DVD+R DL Media - 100 Pack','Blank Dual Layer DVD Media',20.56,'00000114123b9144eb018b64001000');
@@ -458,16 +455,17 @@ INSERT INTO "conceptual" VALUES('skdfjlk32kgjk23k34k','ISO 300 Color film - 36 E
 INSERT INTO "conceptual" VALUES('sdkfjlk4fg76f784398','DVD+R Media - 50 Pack','Blank DVD media',12.39,'00000114123b9144eb018b64001000');
 
 INSERT INTO "vendoritem" VALUES('l32k452lkj42k4k23','skdfjlkjn23ndlkfjs3');
-INSERT INTO "vendoritem" VALUES('l32k452lkj42k4k23','skdfjlkjn23ndlkfjs3');
+INSERT INTO "vendoritem" VALUES('l32k452lkj42k4k23','lskdjfkn323k3k3nlkn');
 INSERT INTO "vendoritem" VALUES('k23djf45j4k543lk5','lskdjfk32jfgkge8f7e');
 INSERT INTO "vendoritem" VALUES('k23djf45j4k543lk5','skdfjlk32kgjk23k34k');
+INSERT INTO "vendoritem" VALUES('k23djf45j4k543lk5','aksfjl3krjlsk3j3ljk');
+INSERT INTO "vendoritem" VALUES('k23djf45j4k543lk5','kkdsjl2k3lk3kjk3dkj');
 INSERT INTO "vendoritem" VALUES('lkjldj4kk54jk4jk4','sdkfjlk4fg76f784398');
 INSERT INTO "vendoritem" VALUES('lkjldj4kk54jk4jk4','skdjf4f8g7dfgwk3rj3');
 INSERT INTO "vendoritem" VALUES('lkjldj4kk54jk4jk4','skldfjksdflkdker38f');
 
 INSERT INTO "storeproduct" VALUES('000001117284553c0014b20a500442','aksfjl3krjlsk3j3ljk',50,'Film Rack',30,50,0);
 INSERT INTO "storeproduct" VALUES('000001117284553c0014b20a500442','kkdsjl2k3lk3kjk3dkj',10,'Film Rack',15,50,0);
-INSERT INTO "storeproduct" VALUES('000001117284553c0014b20a500442','asbnmn43en39df09sd3',45,'Battery Rack',30,100,0);
 INSERT INTO "storeproduct" VALUES('000001117284553c0014b20a500442','skdfjlkjn23ndlkfjs3',5,'Camera Display',5,10,0);
 INSERT INTO "storeproduct" VALUES('000001117284553c0014b20a500442','lskdjfkn323k3k3nlkn',13,'Point and Shoot Display',15,25,0);
 INSERT INTO "storeproduct" VALUES('000001117284553c0014b20a500442','skldfjksdflkdker38f',21,'Blank Media',20,50,0);
