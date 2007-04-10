@@ -155,8 +155,8 @@ public class TransactionDAO {
                 trans.setCustomer(CustomerDAO.getInstance().read(rs.getString("custid"), conn));
                 trans.setEmployee(EmployeeDAO.getInstance().read(rs.getString("empid"), conn));
                 trans.setStore(StoreDAO.getInstance().read(rs.getString("storeid"), conn));
-                trans.setPayment(PaymentDAO.getInstance().read(rs.getString("paymentid"),trans, conn));
-                if(rs.getString("origtx") == null){
+                //trans.setPayment(PaymentDAO.getInstance().read(rs.getString("paymentid"),trans, conn));
+                if(rs.getString("origtx").matches("na") == true){
                     trans.setOrig(null);
                 }else{
                     trans.setOrig(TransactionDAO.getInstance().read(rs.getString("origtx"), conn));
@@ -306,7 +306,7 @@ public class TransactionDAO {
         insert.setString(5, tx.getEmployee().getId());
         insert.setString(6, tx.getStore().getId());
         if(tx.getOrig() == null){
-            insert.setString(7, "");
+            insert.setString(7, "na");
         }else{
             insert.setString(7, tx.getOrig().getId());
         }
