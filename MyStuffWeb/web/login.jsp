@@ -15,7 +15,7 @@ on Libraries node in Projects view can be used to add the JSTL 1.1 library.
 <%String title = "Login";
 String login = "";
 %>
-<%if ((String)request.getAttribute("login") == "1") {
+<%if (request.getAttribute("login") != null) {
 login = "target=_parent";
 }else {
 login = "";
@@ -37,13 +37,13 @@ login = "";
         
         <div id="login">   
             <h1 style="padding-left: 95px; text-decoration: underline;"><%=title%></h1>
-            <p style="color: red; background-color: yellow"><%=request.getAttribute("message")%>
+            <p style="color: red; background-color: yellow"><%if (request.getAttribute("message") != null) {out.print(request.getAttribute("message"));}%>
             
-            <% edu.byu.isys413.cbb54.intex2kb.data.Customer c = edu.byu.isys413.cbb54.intex2kb.data.CustomerDAO.getInstance().create();
-            out.write(c.getId());
+            <% //edu.byu.isys413.cbb54.intex2kb.data.Customer c = edu.byu.isys413.cbb54.intex2kb.data.CustomerDAO.getInstance().create();
+            //out.write(c.getId());
             %>
             
-            <form style="margin: 0 auto;" action="edu.byu.isys413.actions.LoginWeb.action" method="post" <%=login%>>
+            <form style="margin: 0 auto;" action="edu.byu.isys413.actions.LoginWeb.action" method="post" target=_parent>
                 <label for="email">Email: </label>
                 <input type="text" name="email" ><br />
                 <label for="password">Password: </label>
