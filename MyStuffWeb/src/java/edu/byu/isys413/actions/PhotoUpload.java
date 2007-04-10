@@ -27,7 +27,7 @@ public class PhotoUpload implements edu.byu.isys413.web.Action {
   
     /** Processes a number guess */
     public String process(HttpServletRequest request, HttpServletResponse response) throws Exception {
-
+        HttpSession session = request.getSession();
         System.out.println("Myname is (regular request object):" + request.getParameter("datafile1"));
         
         // parse the request using the Jakarta file upload library
@@ -58,7 +58,7 @@ public class PhotoUpload implements edu.byu.isys413.web.Action {
         photo.setFilename(fileinfo.getName());
         photo.setFilesize(Long.toString(fileinfo.getSize()));
         photo.setFiletype(fileinfo.getContentType());
-        photo.setM("111");
+        photo.setM((String)session.getAttribute("membid"));
         photo.setStatus("1");
         
         //save photo to DB
