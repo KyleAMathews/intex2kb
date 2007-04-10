@@ -38,7 +38,7 @@ public class LoginWeb implements edu.byu.isys413.web.Action{
         password = (String)request.getParameter("password");
         membid = validateLogin.getInstance().membid(email, password);
         System.out.println("I'm in loginweb.java " + password + " " + email);
-        System.out.println("custid: " + custid);
+        System.out.println("membid: " + membid);
         
         pass = validateLogin.getInstance().validate(email, password);
         System.out.println("validation value = " + pass);
