@@ -69,7 +69,7 @@ public class validateLogin {
     }
     
     public String membid(String email, String password) throws Exception {
-        String custid = "";
+        String membid = "";
         Connection conn = ConnectionPool.getInstance().get();
         System.out.println("attempting to get custid from table login");
         
@@ -78,7 +78,7 @@ public class validateLogin {
         ResultSet rs = ps.executeQuery();
         
         if(rs.next()){
-            custid = rs.getString("membid");
+            membid = rs.getString("membid");
         }
         
         ps.close();
@@ -86,6 +86,6 @@ public class validateLogin {
         
         ConnectionPool.getInstance().release(conn);
         System.out.println("got the custid from table login");
-        return custid;
+        return membid;
     }
 }
