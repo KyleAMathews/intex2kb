@@ -41,13 +41,11 @@ public class LoginWeb implements edu.byu.isys413.web.Action{
         System.out.println("validation value=" + pass);
         
         if(pass == true){
-            request.setAttribute("message", "Login passed");
-            request.setAttribute("login", "1");
+            request.setAttribute("login", "1"); // makes login not null sending message that login worked
             return "account.jsp"; // returns account page
         }else{
             // send back text saying please try again
             request.setAttribute("message", "Login Failed <br />Please try again");
-            request.setAttribute("login", "0");
             return "login.jsp"; // returns login page with error message
         }
         
