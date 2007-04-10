@@ -348,11 +348,13 @@ create table "photoBackup"
 (
     "id" varchar(40) not null primary key,
     "membid" varchar(40),
-    "title" varchar(60),
+    "caption" varchar(60),
     "thumbnail" varbinary(max),
     "mediumpic" varbinary(max),
-    "orginalpic" varbinary(max),
+    "originalpic" varbinary(max),
+    "filename" varchar(100),
     "filetype" varchar(10),
+    "filesize" varchar(100),
     "status" varchar(2)
 );
 
