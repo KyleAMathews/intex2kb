@@ -26,11 +26,11 @@ public class backupView {
         // let into loop 4
         // for each 4
         photos += "<table width=\"500px\" cellpadding=\"5px\" cellspacing=\"10px\">";
-        //photos += "<tr><th>" + getTitle() + "</th>";
+       // photos += "<tr><th>" + getTitle() + "</th>";
         
         // for each 4
         photos += "<tr><td>";
-        //photos += "a href=\"" + getidtobig() + "\" class=\"thickbox\" rel=\"gallery\"><img src=\"" + getthumbnailid() + "title=\"" + getTitle() + "/></a><br /><a href=\"downloadfile.jsp?id=" + getId() + ">Download</a><a href =\"deletefile.jsp?id=" + getId() + ">Delete</a></td>";
+       // photos += "a href=\"" + getidtobig() + "\" class=\"thickbox\" rel=\"gallery\"><img src=\"" + getthumbnailid() + "title=\"" + getTitle() + "/></a><br /><a href=\"downloadfile.jsp?id=" + getId() + ">Download</a><a href =\"deletefile.jsp?id=" + getId() + ">Delete</a></td>";
         
         //finish off
         photos += "</td></table>";
