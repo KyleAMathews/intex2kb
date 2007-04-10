@@ -28,15 +28,10 @@ on Libraries node in Projects view can be used to add the JSTL 1.1 library.
 <div id="body">
     <h1><%out.write(title);%></h1>
     <p>Welcome to MyStuff Online Photo Printing<br><br>
-    Please use the following input boxes to upload up to five (5) photos to be printed.</p>
+    Files uploaded.  Please make selections below and click Submit to add print order to cart.</p>
     <div>
         <form method="post" action="edu.byu.isys413.actions.PhotoUpload.action" enctype="multipart/form-data">
             <table width="600px" cellpadding="5px" cellspacing="10px" valign="middle">
-                <tr><td>Picture 1:</td><td><input type="file" name="datafile1" size="32"></td></tr>
-                <tr><td>Picture 2:</td><td><input type="file" name="datafile2" size="32"></td></tr>
-                <tr><td>Picture 3:</td><td><input type="file" name="datafile3" size="32"></td></tr>
-                <tr><td>Picture 4:</td><td><input type="file" name="datafile4" size="32"></td></tr>
-                <tr><td>Picture 5:</td><td><input type="file" name="datafile5" size="32"></td></tr>
                 <tr><td><input type="submit" value="Submit" class="buttonSubmit" /></td></tr>
             </table>
         </form>
