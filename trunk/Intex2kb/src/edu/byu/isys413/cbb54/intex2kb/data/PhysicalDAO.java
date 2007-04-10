@@ -13,6 +13,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.*;
 
 /**
  *
@@ -276,4 +277,53 @@ public class PhysicalDAO extends ProductDAO{
         
         return b;
     }   
+
+    public List<String> getByConceptual(List productList) throws DataException {
+        List<String> list = new LinkedList<String>();
+        
+        // get the connection
+        Connection conn = null;
+        try{
+            // retrieve a database connection from the pool
+            conn = ConnectionPool.getInstance().get();
+            for(int i = 0; i<productList.size(); i++){
+                    // sql the names, phone, and ids
+                    PreparedStatement read = conn.prepareStatement(
+                        "SELECT \"id\" FROM \"physical\" WHERE \"conceptualproduct\" = ? ");
+                    read.setString(1, (String) productList.get(i));
+                    ResultSet rs = read.executeQuery();
+
+                    // while loop to populate the list from the results
+                    while(rs.next()) {
+                            list.add(rs.getString("id"));         
+                    }           
+            }
+            //release the connection
+            conn.commit();
+            ConnectionPool.getInstance().release(conn);
+        }catch (ConnectionPoolException e){
+            throw new DataException("Could not get a connection to the database.");
+
+        }catch (SQLException e) {
+            // rollback
+            try {
+                conn.rollback();
+                ConnectionPool.getInstance().release(conn);
+            }catch (ConnectionPoolException ce){
+                throw new DataException("There was an error with the connection to the database", ce);
+            }catch (SQLException e2) {
+                throw new DataException("Big error: could not even release the connection", e2);
+            }
+
+            throw new DataException("Could not retrieve customer records form the database",  e);
+        }
+       
+        // return the list of stores
+        return list;
+    }
+
+
+
 }
+
+
