@@ -32,6 +32,10 @@ DROP TABLE "rentalreturn";
 DROP TABLE "conceptualrental";
 DROP TABLE "login";
 DROP TABLE "category";
+DROP TABLE "vendor";
+DROP TABLE "vendoritem";
+DROP TABLE "purchaseorder";
+DROP TABLE "orderline";
 
 
 create table "customer"
@@ -254,7 +258,8 @@ create table "conceptual"
     "id" varchar(40) not null primary key,
     "name" varchar(60),
     "description" varchar(120),
-    "avgCost" FLOAT
+    "avgCost" FLOAT,
+    "categoryID" varchar(40)
 );
 
 create table "conceptualrental"
@@ -297,6 +302,39 @@ create table "category"
 (
     "id" varchar(40) not null primary key,
     "name" varchar(40)
+);
+
+create table "vendor"
+(
+    "id" varchar(40) not null primary key,
+    "name" varchar(60),
+    "address" varchar(80),
+    "phone" varchar(20),
+    "contact" varchar(60)
+);
+
+create table "vendoritem"
+(
+    "vendorid" varchar(40) not null,
+    "productid" varchar(40) not null
+);
+
+create table "purchaseorder"
+(
+    "id" varchar(40) not null primary key,
+    "date" varchar(15)
+);
+
+create table "orderline"
+(
+    "id" varchar(40) not null primary key,
+    "productid" varchar(40)
+);
+
+create table "storeproduct"
+(
+    "storeid" varchar(40) not null,
+    "productid" varchar(40) not null
 );
 
 INSERT INTO "backupservice" VALUES (.99);
