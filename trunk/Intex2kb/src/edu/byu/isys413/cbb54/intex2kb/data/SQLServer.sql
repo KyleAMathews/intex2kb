@@ -369,6 +369,7 @@ INSERT INTO "employee" VALUES('100001117284553c0014b30a500442','Steve','Director
 INSERT INTO "login" VALUES('tylerf@byu.edu','tyler');
 INSERT INTO "login" VALUES('bryan@trueramerica.org','bryan');
 INSERT INTO "login" VALUES('c@b.com','cb');
+INSERT INTO "login" VALUES('k', 'k');
 
 
 INSERT INTO "store" VALUES('000001117284553c0014b20a500442','Provo Center','123 Center Street','Suite 1','Provo','Utah','84604','108-333-3333','801-333-3334','000001117284553c0014b30a500442');

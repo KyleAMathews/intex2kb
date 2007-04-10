@@ -24,7 +24,7 @@ public class ConnectionPool {
   
   // right now we are forcing one connection only -- to ensure code is written correctly
   // this will up increased at deployment time
-  private static final int MAX_CONNECTIONS = 1;
+  private static final int MAX_CONNECTIONS = 10;
 
   
   //////////////////////////////////////////////

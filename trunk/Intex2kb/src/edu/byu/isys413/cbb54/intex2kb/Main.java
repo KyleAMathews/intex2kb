@@ -29,9 +29,8 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        try {
-            // TODO code application logic here
-            //new tester().main(args);
+        // TODO code application logic here
+        //new tester().main(args    );
 //        try{
 //        batchBackupRepair.backup();
 //        }catch(DataException e){
@@ -40,7 +39,7 @@ public class Main {
             //Login lo = new Login();
             //lo.setVisible(true);
             new Login().setVisible(true);//creates and loads the gui
-       // new NewJFrame().setVisible(true);
+        // new NewJFrame().setVisible(true);
             
 //            printConvBatch.getInstance().getReady();
             
