@@ -52,14 +52,23 @@ public class PhotoDAO {
         return p;
     }
     
-    public void save(photoBackupBO p, FileItem file) throws Exception {
+    public void save(photoBackupBO p, FileItem thumb, FileItem med, FileItem file) throws Exception {
         Connection conn = ConnectionPool.getInstance().get();
         PreparedStatement ps = conn.prepareStatement("INSERT INTO photobackup (id,membid,caption,thumbnail,mediumpic,originalpic,filename,filetype,filesize,status) values (?,?,?,?,?,?,?,?,?,?)");
         ps.setString(1,p.getId());
         ps.setString(2,p.getM());
         ps.setString(3,p.getCaption());
-        ps.setBinaryStream(4,null,0);
-        ps.setBinaryStream(5,null,0);
+        if(thumb != null){
+            System.out.println("trying to write thumb");
+            ps.setBinaryStream(4,thumb.getInputStream(),(int)thumb.getSize());
+        }else{
+            ps.setBinaryStream(4,null,0);
+        }
+        if(med != null){
+            ps.setBinaryStream(5,med.getInputStream(),(int)thumb.getSize());
+        }else{
+            ps.setBinaryStream(5,null,0);
+        }
         ps.setBinaryStream(6,file.getInputStream(),(int)file.getSize());
         ps.setString(7,p.getFilename());
         ps.setString(8,p.getFiletype());
