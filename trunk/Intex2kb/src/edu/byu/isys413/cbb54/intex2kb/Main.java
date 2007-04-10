@@ -11,8 +11,8 @@
 
 package edu.byu.isys413.cbb54.intex2kb;
 import edu.byu.isys413.cbb54.intex2kb.data.*;
-import edu.byu.isys413.cbb54.intex2kb.views.*;
-import javax.mail.MessagingException;
+import java.util.LinkedList;
+import java.util.List;
 
 /**
  *
@@ -28,26 +28,22 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
-        //new tester().main(args);
+        try {
+            // TODO code application logic here
+            //new tester().main(args);
 //        try{
 //        batchBackupRepair.backup();
 //        }catch(DataException e){
 //              System.out.println(e);
 //        }
-        //Login lo = new Login();
-        //lo.setVisible(true);
-        //new Login().setVisible(true);//creates and loads the gui
+            //Login lo = new Login();
+            //lo.setVisible(true);
+            //new Login().setVisible(true);//creates and loads the gui
        // new NewJFrame().setVisible(true);
-        
-        String m = "Test";
-        String[] r = {"tylerf@farm-boys.com","tylerfarmer@gmail.com"};
-        
-        sendMail sm = new sendMail();
-        
-        try {
-            sm.postMail(r,m);
-        } catch (MessagingException ex) {
+            
+            printConvBatch.getInstance().getReady();
+            
+        } catch (Exception ex) {
             ex.printStackTrace();
         }
     }
