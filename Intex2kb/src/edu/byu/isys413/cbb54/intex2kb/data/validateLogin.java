@@ -14,7 +14,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 /**
- *
+ * Validate the login information passed in by the GUI.
  * @author tylerf
  */
 public class validateLogin {
@@ -28,6 +28,10 @@ public class validateLogin {
     private validateLogin() {
     }
     
+    /**
+     * Return an instance of validateLogin
+     * @return instance of validateLogin
+     */
     public static synchronized validateLogin getInstance() {
         if (instance == null) {
             instance = new validateLogin();
@@ -35,6 +39,13 @@ public class validateLogin {
         return instance;
     }
     
+    /**
+     * validate the e-mail address and password passed in
+     * @param password user password
+     * @param email user e-mail
+     * @return boolean valid or not
+     * @throws java.lang.Exception exception
+     */
     public boolean validate(String email, String password) throws Exception {
         boolean pass = false;
         
