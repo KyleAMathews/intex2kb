@@ -67,4 +67,25 @@ public class validateLogin {
         System.out.println("login processed");
         return pass;
     }
+    
+    public String custid(String email, String password) throws Exception {
+        String custid = "";
+        Connection conn = ConnectionPool.getInstance().get();
+        System.out.println("attempting to get custid from table login");
+        
+        PreparedStatement ps = conn.prepareStatement("select * from \"login\" where \"email\" = '" +
+                email + "' and \"password\" = '" + password + "'");
+        ResultSet rs = ps.executeQuery();
+        
+        if(rs.next()){
+            custid = rs.getString("custId");
+        }
+        
+        ps.close();
+        rs.close();
+        
+        ConnectionPool.getInstance().release(conn);
+        System.out.println("got the custid from table login");
+        return custid;
+    }
 }
