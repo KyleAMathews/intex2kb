@@ -316,7 +316,8 @@ create table "vendor"
 create table "vendoritem"
 (
     "vendorid" varchar(40) not null,
-    "productid" varchar(40) not null
+    "productid" varchar(40) not null,
+    "cost" FLOAT
 );
 
 create table "purchaseorder"
@@ -454,15 +455,15 @@ INSERT INTO "conceptual" VALUES('lskdjfk32jfgkge8f7e','ISO 100 Color Film - 24 E
 INSERT INTO "conceptual" VALUES('skdfjlk32kgjk23k34k','ISO 300 Color film - 36 Exp','The best film for you Color masterpieces',5.98,'00000115123b9144eb018b64001000');
 INSERT INTO "conceptual" VALUES('sdkfjlk4fg76f784398','DVD+R Media - 50 Pack','Blank DVD media',12.39,'00000114123b9144eb018b64001000');
 
-INSERT INTO "vendoritem" VALUES('l32k452lkj42k4k23','skdfjlkjn23ndlkfjs3');
-INSERT INTO "vendoritem" VALUES('l32k452lkj42k4k23','lskdjfkn323k3k3nlkn');
-INSERT INTO "vendoritem" VALUES('k23djf45j4k543lk5','lskdjfk32jfgkge8f7e');
-INSERT INTO "vendoritem" VALUES('k23djf45j4k543lk5','skdfjlk32kgjk23k34k');
-INSERT INTO "vendoritem" VALUES('k23djf45j4k543lk5','aksfjl3krjlsk3j3ljk');
-INSERT INTO "vendoritem" VALUES('k23djf45j4k543lk5','kkdsjl2k3lk3kjk3dkj');
-INSERT INTO "vendoritem" VALUES('lkjldj4kk54jk4jk4','sdkfjlk4fg76f784398');
-INSERT INTO "vendoritem" VALUES('lkjldj4kk54jk4jk4','skdjf4f8g7dfgwk3rj3');
-INSERT INTO "vendoritem" VALUES('lkjldj4kk54jk4jk4','skldfjksdflkdker38f');
+INSERT INTO "vendoritem" VALUES('l32k452lkj42k4k23','skdfjlkjn23ndlkfjs3',1000.00);
+INSERT INTO "vendoritem" VALUES('l32k452lkj42k4k23','lskdjfkn323k3k3nlkn',90.00);
+INSERT INTO "vendoritem" VALUES('k23djf45j4k543lk5','lskdjfk32jfgkge8f7e',4.50);
+INSERT INTO "vendoritem" VALUES('k23djf45j4k543lk5','skdfjlk32kgjk23k34k',5.50);
+INSERT INTO "vendoritem" VALUES('k23djf45j4k543lk5','aksfjl3krjlsk3j3ljk',5.15);
+INSERT INTO "vendoritem" VALUES('k23djf45j4k543lk5','kkdsjl2k3lk3kjk3dkj',6.95);
+INSERT INTO "vendoritem" VALUES('lkjldj4kk54jk4jk4','sdkfjlk4fg76f784398',11.45);
+INSERT INTO "vendoritem" VALUES('lkjldj4kk54jk4jk4','skdjf4f8g7dfgwk3rj3',21.65);
+INSERT INTO "vendoritem" VALUES('lkjldj4kk54jk4jk4','skldfjksdflkdker38f',20.25);
 
 INSERT INTO "storeproduct" VALUES('000001117284553c0014b20a500442','aksfjl3krjlsk3j3ljk',50,'Film Rack',30,50,0);
 INSERT INTO "storeproduct" VALUES('000001117284553c0014b20a500442','kkdsjl2k3lk3kjk3dkj',10,'Film Rack',15,50,0);
