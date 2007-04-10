@@ -19,7 +19,8 @@ public class backupView {
     public backupView() {
     }
     
-    public static String readPhotos() {
+    public static String readPhotos(String custid) {
+        System.out.println(custid);
         String photos="";
         // sql
         
