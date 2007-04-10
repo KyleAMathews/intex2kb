@@ -14,7 +14,7 @@ import java.sql.SQLException;
 import java.sql.*;
 
 /**
- *
+ * cascades through a transaction and all of its subcomponents and writes them to the DB
  * @author Cameron
  */
 public class UpdateController {
@@ -28,6 +28,10 @@ public class UpdateController {
     private UpdateController() {
     }
     
+    /**
+     * returns an instance of UpdateController
+     * @return instance of UpdateController
+     */
     public static synchronized UpdateController getInstance() {
         if (instance == null) {
             instance = new UpdateController();
@@ -36,6 +40,11 @@ public class UpdateController {
     }        
     
            
+    /**
+     * saveTransaction cascades through all the pieces of a transaction and writes them to the DB
+     * @param tx transaction
+     * @throws java.lang.Exception Exception
+     */
     public void saveTransaction(Transaction tx) throws Exception {
         Connection conn = ConnectionPool.getInstance().get();
         
@@ -47,6 +56,12 @@ public class UpdateController {
         ConnectionPool.getInstance().release(conn);
     }
     
+    /**
+     * get Product by Serial Number
+     * @param serial serial number of product
+     * @return product
+     * @throws java.lang.Exception Exception
+     */
     public Physical getbySerial(String serial) throws Exception{
         Physical phy = null;
         Connection conn = ConnectionPool.getInstance().get();

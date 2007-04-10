@@ -30,8 +30,9 @@ public class printOrder extends RevenueSource {
 
     /**
      * Set total price on abstract RS object
-     *@param q Quantity
-     *@param pfPrice PrintFormat Price
+     * @param q Quantity
+     * @param pfPrice PrintFormat Price
+     * @param numPhotos number of photos in the photoset
      */
     public void setTotalPrice(int q, double pfPrice, int numPhotos){
         double totalPrice = q * numPhotos * pfPrice;

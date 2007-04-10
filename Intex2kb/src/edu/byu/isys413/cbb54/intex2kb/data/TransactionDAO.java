@@ -17,7 +17,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 /**
- *
+ * Perform CRUD functions for transaction objects
  * @author Cameron
  */
 public class TransactionDAO {
@@ -32,6 +32,9 @@ public class TransactionDAO {
     private TransactionDAO() {
     }
     
+    /**
+     * Return an instance of Transaction
+     */
     public static synchronized TransactionDAO getInstance() {
         if (instance == null) {
             instance = new TransactionDAO();
@@ -57,6 +60,9 @@ public class TransactionDAO {
         return trans;
     }
     
+    /**
+     * Create a transaction based on a previous transaction (type return)
+     */
     public Transaction create(Transaction orig) throws Exception{
         String id = null;
         id = GUID.generate();
@@ -335,6 +341,9 @@ public class TransactionDAO {
     ///  SEARCH methods
     
     
+    /**
+     * Get all transactions
+     */
     public List<List> getAll() throws DataException {
         List<List> list = new LinkedList<List>();
         
@@ -385,6 +394,9 @@ public class TransactionDAO {
         return list;
     }
     
+    /**
+     * Get all transactions for a given customer
+     */
     public List<Customer> getByCustmerID(String fname, String lname) throws DataException {
         List<Customer> list = new LinkedList<Customer>();
         
@@ -447,6 +459,9 @@ public class TransactionDAO {
         return list;
     }
     
+    /**
+     * Return the total of the Transaction
+     */
     public double getTransactionTotal(Transaction tx){
         List<TransactionLine> txList = tx.getTxLines();
         double total = 0;

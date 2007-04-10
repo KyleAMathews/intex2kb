@@ -16,7 +16,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 /**
- *
+ * Batch process that makes a list of e-mail addresses of customers that have conversion or print orders that are ready to be picked up.
  * @author tylerf
  */
 public class printConvBatch {
@@ -27,10 +27,16 @@ public class printConvBatch {
     private static printConvBatch instance = null;
     
     
+    /**
+     * printConvBatch constructor
+     */
     public printConvBatch() {
     }
     
-    /** Creates a new instance of RentalBatch */
+    /**
+     * Creates a new instance of printConvBatch
+     * @return printConvBatch
+     */
     public static synchronized printConvBatch getInstance() {
         if (instance == null) {
             instance = new printConvBatch();
@@ -39,6 +45,10 @@ public class printConvBatch {
     }
     
     //Find all tx with print or conversion order and status complete & return customer e-mail
+    /**
+     * return a list of customers that need to be notified
+     * @throws java.lang.Exception Exception
+     */
     public void getReady() throws Exception {
         List l = new LinkedList<String>();
         

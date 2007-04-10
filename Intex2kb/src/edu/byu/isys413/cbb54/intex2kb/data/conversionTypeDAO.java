@@ -15,7 +15,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 /**
- *
+ * ConversionTypeDAO is a combination of source type and destination type of a conversion order
  * @author kyle
  */
 public class conversionTypeDAO{
@@ -43,6 +43,11 @@ public class conversionTypeDAO{
     ///////////////////////////////////////////
     /// Create
     
+    /**
+     * create new conversionOrder
+     * @return conversionOrder
+     * @throws java.lang.Exception Exception
+     */
     public conversionTypeBO create() throws Exception{
         String id = GUID.generate();
         conversionTypeBO conversionType = new conversionTypeBO(id);
@@ -54,6 +59,12 @@ public class conversionTypeDAO{
         return conversionType;
     }
     
+    /**
+     * create conversionTypeDAO based on known ID
+     * @param id ID of conversionTypeDAO to be created
+     * @return conversionType
+     * @throws java.lang.Exception Exception
+     */
     public conversionTypeBO create(String id) throws Exception{
         conversionTypeBO conversionType = new conversionTypeBO(id);
         
@@ -66,6 +77,12 @@ public class conversionTypeDAO{
     
     ///////////////////////////////////////////
     /// Read
+    /**
+     * read ConversionType by known ID
+     * @param id ID of conversionType
+     * @return conversionType
+     * @throws java.lang.Exception Exception
+     */
     public conversionTypeBO read(String id) throws Exception {
         conversionTypeBO po = null;
         
@@ -101,6 +118,13 @@ public class conversionTypeDAO{
         return po;
     }
     
+    /**
+     * read conversionType if you have the id and a connection
+     * @param id ID of conversionType
+     * @param conn ConnectionPool instance to SQL server
+     * @return conversionType
+     * @throws java.lang.Exception Exception
+     */
     public conversionTypeBO read(String id, Connection conn) throws Exception {
         conversionTypeBO po = null;
         
@@ -139,6 +163,13 @@ public class conversionTypeDAO{
 ///////////////////////////////////////////
 /// Save
     
+    /**
+     * save ConversionType
+     * @param ps conversionType
+     * @param conn connectionPool instance
+     * @throws java.sql.SQLException SQLException
+     * @throws java.lang.Exception Exception
+     */
     public synchronized void save(conversionTypeBO ps, Connection conn) throws SQLException, Exception {
         if (ps.getIsInDB() == true) {
             update(ps,conn);
@@ -147,6 +178,12 @@ public class conversionTypeDAO{
         }
     }
     
+    /**
+     * save ConversionType
+     * @param ps conversionType
+     * @throws java.lang.Exception Exception
+     * @throws java.sql.SQLException SQLException
+     */
     public synchronized void save(conversionTypeBO ps) throws SQLException, Exception {
         Connection conn = ConnectionPool.getInstance().get();
         if (ps.getIsInDB() == true) {
@@ -199,6 +236,13 @@ public class conversionTypeDAO{
     
 // for business reasons we're not supporting deleting
     
+    /**
+     * getConversionType by sourceType and destinationType
+     * @param sourceType sourceTYpe
+     * @param destinationType destinationType
+     * @throws java.lang.Exception Exception
+     * @return conversionType
+     */
     public conversionTypeBO getConversionType(String sourceType, String destinationType) throws Exception {
         conversionTypeBO conv = null;
         

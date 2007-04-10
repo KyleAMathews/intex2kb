@@ -247,10 +247,16 @@ public class Customer {
         this.membership = membership;
     }
 
+    /**
+     * get E-mail address of a customer
+     */
     public String getEmail() {
         return email;
     }
 
+    /**
+     * set the E-mail address of a customer
+     */
     public void setEmail(String email) {
         this.email = email;
     }
