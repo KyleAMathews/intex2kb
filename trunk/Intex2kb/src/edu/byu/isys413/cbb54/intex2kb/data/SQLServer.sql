@@ -36,7 +36,7 @@ DROP TABLE "vendor";
 DROP TABLE "vendoritem";
 DROP TABLE "purchaseorder";
 DROP TABLE "orderline";
-
+DROP TABLE "storeproduct";
 
 create table "customer"
 (
