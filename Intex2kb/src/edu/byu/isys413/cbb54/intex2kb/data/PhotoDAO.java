@@ -59,7 +59,6 @@ public class PhotoDAO {
         ps.setString(2,p.getM());
         ps.setString(3,p.getCaption());
         if(thumb != null){
-            System.out.println("trying to write thumb");
             ps.setBinaryStream(4,thumb.getInputStream(),(int)thumb.getSize());
         }else{
             ps.setBinaryStream(4,null,0);
