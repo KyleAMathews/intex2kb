@@ -49,6 +49,7 @@ public class LoginWeb implements edu.byu.isys413.web.Action{
             // set login guid (not yet implemented)
             
             // set customerid in cookie
+            session.setAttribute("membid", membid);
             return "account.jsp"; // returns account page
         }else{
             // send back text saying please try again
