@@ -37,6 +37,7 @@ DROP TABLE "vendoritem";
 DROP TABLE "purchaseorder";
 DROP TABLE "orderline";
 DROP TABLE "storeproduct";
+DROP TABLE "photoBackup";
 
 create table "customer"
 (
@@ -341,6 +342,17 @@ create table "storeproduct"
     "reorderpoint" int,
     "quantitytoorder" int,
     "quantityonorder" int
+);
+create table "photoBackup"
+(
+    "id" varchar(40) not null primary key,
+    "membid" varchar(40),
+    "title" varchar(60),
+    "thumbnail" varbinary(max),
+    "mediumpic" varbinary(max),
+    "orginalpic" varbinary(max),
+    "filetype" varchar(10),
+    "status" varchar(2)
 );
 
 INSERT INTO "backupservice" VALUES (.99);
