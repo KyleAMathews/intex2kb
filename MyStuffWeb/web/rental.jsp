@@ -79,9 +79,16 @@ $(document).ready(function(){
           </select>
     </td>	
     <td>
+        <form action="edu.byu.isys413.actions.GetRentals.action" method="post" target=_parent> 
+        <input type="checkbox" name="StoreOpt1" value="000001117284553c0014b20a500442"> Provo<br>
+        <input type="checkbox" name="StoreOpt2" value="000001117284553c0014b20a500443"> Logan<br>
+        <input type="checkbox" name="StoreOpt3" value="000001117284553c0014b20a500444"> Murray<br>
+        
     </td>
 </table>
-<form> <input type="submit" value="Search"> </form>
+ <input type="submit" value="Search">
+        </form>
+
 <table width="600px" cellpadding="5px" cellspacing="10px">
     <tr><th>Available Products</th><th>Shopping Cart</th></tr>
     <tr>
