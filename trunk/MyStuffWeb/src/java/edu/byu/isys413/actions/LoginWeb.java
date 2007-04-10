@@ -1,6 +1,8 @@
 package edu.byu.isys413.actions;
 
 //import edu.byu.isys413.cbb54.intex2kb.data.validateLogin;
+import edu.byu.isys413.cbb54.intex2kb.data.Transaction;
+import edu.byu.isys413.cbb54.intex2kb.data.TransactionDAO;
 import edu.byu.isys413.cbb54.intex2kb.data.validateLogin;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -45,8 +47,8 @@ public class LoginWeb implements edu.byu.isys413.web.Action{
         
         if(pass == true){
             // set login guid (not yet implemented)
+            
             // set customerid in cookie
-            session.setAttribute("membid", membid);
             return "account.jsp"; // returns account page
         }else{
             // send back text saying please try again
