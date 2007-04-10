@@ -49,7 +49,7 @@ public class sendMail {
     private static final String SMTP_AUTH_USER = "info@2kmystuff.com";
     private static final String SMTP_AUTH_PWD  = "intex24";
     
-    public void postMail( String recipients[ ],
+    public void postMail( List<String> recipients,
             String message) throws MessagingException {
         boolean debug = false;
         
@@ -74,9 +74,9 @@ public class sendMail {
         InternetAddress addressFrom = new InternetAddress(from);
         msg.setFrom(addressFrom);
         
-        InternetAddress[] addressTo = new InternetAddress[recipients.length];
-        for (int i = 0; i < recipients.length; i++) {
-            addressTo[i] = new InternetAddress(recipients[i]);
+        InternetAddress[] addressTo = new InternetAddress[recipients.size()];
+        for (int i = 0; i < recipients.size(); i++) {
+            addressTo[i] = new InternetAddress(recipients.get(i));
         }
         msg.setRecipients(Message.RecipientType.TO, addressTo);
         
