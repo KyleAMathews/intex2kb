@@ -23,7 +23,6 @@ on Libraries node in Projects view can be used to add the JSTL 1.1 library.
 </div><!--end navigation-->
 <div id="rightcolumn">
     <h4>MyStuff Photo Printing</h4>
-    <hr><%MembershipDAO.getInstance().read(session.getAttribute("membid"))%></hr>
 </div><!--end right column-->  
 <div id="body">
     <h1><%out.write(title);%></h1>
@@ -32,6 +31,7 @@ on Libraries node in Projects view can be used to add the JSTL 1.1 library.
     <div>
         <form method="post" action="edu.byu.isys413.actions.PhotoUpload.action" enctype="multipart/form-data">
             <table width="600px" cellpadding="5px" cellspacing="10px" valign="middle">
+                <tr><td>Picture 1:</td><td><%=session.getAttribute("1")%></td>
                 <tr><td><input type="submit" value="Submit" class="buttonSubmit" /></td></tr>
             </table>
         </form>
