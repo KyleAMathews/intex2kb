@@ -293,17 +293,20 @@ create table "login"
 );
 
 INSERT INTO "backupservice" VALUES (.99);
-INSERT INTO "customer" VALUES ('00000109123b9144eb018b64001000', 'Cameron', 'Burgon', '851 Wymount Terrace', '', 'Provo', 'Utah', '84602', '8013786198', 'wherever@sd.com');
+
+INSERT INTO "customer" VALUES ('00000109123b9144eb018b64001000', 'Cameron', 'Burgon', '851 Wymount Terrace', '', 'Provo', 'Utah', '84602', '8013786198', 'tylerfarmer@gmail.com');
 INSERT INTO "customer" VALUES ('00000109123b925d16688bc2001000', 'Jamie', 'Burgon', '851 Wymount Terrace', '', 'Provo', 'Utah', '84604', '8013689248', 'wherever@sd.com');
 INSERT INTO "customer" VALUES ('10000109123b925d16688bc2001000', 'Bryan', 'Schader', '267 E. 500 N. #71', '', 'Provo', 'Utah', '84606', '4089529043', 'bryan@trueramerica.org');
 INSERT INTO "customer" VALUES ('00000109123b8e75a1ce5a33001000', 'John', 'Doe', '123 Somewhere', '', 'Nowhere', 'Nevada', '87839', '3418394854', 'wherever@sd.com');
 INSERT INTO "customer" VALUES ('00000109123b8e75a1ce5a34001000', 'Jane', 'Doe', '123 Somewhere', '', 'Nowhere', 'Nevada', '87839', '3418394854', 'wherever@sd.com');
+INSERT INTO "customer" VALUES ('00000111d80891e0015d170a04449d', 'Tyler', 'Farmer', '123 Somewhere', '', 'Nowhere', 'Nevada', '87839', '3418394854', 'tylerfarmer@gmail.com');
+
 INSERT INTO "membership" VALUES ('00000109123b8e75a1ce5a34001000', '00000109123b8e75a1ce5a33001000', '23123', '12313', '123132', '12311175098508472',21, '123123', '123123');
 INSERT INTO "memberinterests" VALUES('00000109123b925d16688bc2001000','0000011105caf55500f1fec0a80204');
 
 INSERT INTO "transactionline" VALUES('00000111728454ec00e60e0a500442','1234','000001117284553c0014af0a500442', 'backup');
 
-INSERT INTO "transaction" VALUES('000001117284553c0014af0a500442','','complete','00000109123b9144eb018b64001000','000001117284553c0014b10a500442','000001117284553c0014b20a500442','');
+INSERT INTO "transaction" VALUES('000001117284553c0014af0a500442','','complete','00000109123b9144eb018b64001000','000001117284553c0014b10a500442','000001117284553c0014b20a500442','na');
 
 INSERT INTO "payment" VALUES('000001117284553c0014b00a500442',14.50,'1234-5678-9012-3456','06/07','000001117284553c0014af0a500442',0.0,'Credit Card');
 
