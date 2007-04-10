@@ -297,7 +297,7 @@ create table "login"
 (
     "email" varchar(100) not null primary key,
     "password" varchar(100),
-    "custId" varchar(40)
+    "membid" varchar(40)
 );
 
 create table "category"
@@ -379,7 +379,10 @@ INSERT INTO "customer" VALUES ('00000109123b8e75a1ce5a33001000', 'Kyle', 'Mathew
 INSERT INTO "customer" VALUES ('00000109123b8e75a1ce5a34001000', 'Jane', 'Doe', '123 Somewhere', '', 'Nowhere', 'Nevada', '87839', '3418394854', 'wherever@sd.com');
 INSERT INTO "customer" VALUES ('00000111d80891e0015d170a04449d', 'Tyler', 'Farmer', '123 Somewhere', '', 'Nowhere', 'Nevada', '87839', '3418394854', 'tylerfarmer@gmail.com');
 
-INSERT INTO "membership" VALUES ('00000109123b8e75a1ce5a34001000', '00000109123b8e75a1ce5a33001000', '23123', '12313', '123132', '12311175098508472',21, '123123', '123123');
+INSERT INTO "membership" VALUES ('tylermembid', '00000111d80891e0015d170a04449d', '23123', '12313', '123132', '12311175098508472',21, '123123', '123123');
+INSERT INTO "membership" VALUES ('bryanmembid', '10000109123b925d16688bc2001000', '23123', '12313', '123132', '12311175098508472',21, '123123', '123123');
+INSERT INTO "membership" VALUES ('cameronmembid', '00000109123b9144eb018b64001000', '23123', '12313', '123132', '12311175098508472',21, '123123', '123123');
+INSERT INTO "membership" VALUES ('kylemembid', '00000109123b8e75a1ce5a33001000', '23123', '12313', '123132', '12311175098508472',21, '123123', '123123');
 INSERT INTO "memberinterests" VALUES('00000109123b925d16688bc2001000','0000011105caf55500f1fec0a80204');
 
 INSERT INTO "transactionline" VALUES('00000111728454ec00e60e0a500442','1234','000001117284553c0014af0a500442', 'backup');
@@ -392,10 +395,10 @@ INSERT INTO "employee" VALUES('000001117284553c0014b10a500442','Ray','Thompson',
 INSERT INTO "employee" VALUES('000001117284553c0014b30a500442','Steve','Manager','123 East BYU','','Provo','Utah','84604','801-555-5555','tylerf@byu.edu','123-45-6789','12/05',123.45,'000001117284553c0014b20a500442');
 INSERT INTO "employee" VALUES('100001117284553c0014b30a500442','Steve','Director','123 East BYU','','Provo','Utah','84604','801-555-5555','bryan@trueramerica.org','123-45-6789','12/05',123.45,'000001117284553c0014b20a500442');
 
-INSERT INTO "login" VALUES('tylerf@byu.edu','tyler', '00000111d80891e0015d170a04449d');
-INSERT INTO "login" VALUES('bryan@trueramerica.org','bryan', '10000109123b925d16688bc2001000');
-INSERT INTO "login" VALUES('c@b.com','cb', '00000109123b9144eb018b64001000');
-INSERT INTO "login" VALUES('k', 'k', '00000109123b8e75a1ce5a33001000');
+INSERT INTO "login" VALUES('tylerf@byu.edu','tyler', 'tylermembid');
+INSERT INTO "login" VALUES('bryan@trueramerica.org','bryan', 'bryanmembid');
+INSERT INTO "login" VALUES('c@b.com','cb', 'cameronmembid');
+INSERT INTO "login" VALUES('k', 'k', 'kylemembid');
 
 
 INSERT INTO "store" VALUES('000001117284553c0014b20a500442','Provo','123 Center Street','Suite 1','Provo','Utah','84604','108-333-3333','801-333-3334','000001117284553c0014b30a500442');
