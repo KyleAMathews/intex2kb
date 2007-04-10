@@ -17,7 +17,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author kyle
  */
-public class loginWeb implements edu.byu.isys413.web.Action{
+public class LoginWeb implements edu.byu.isys413.web.Action{
     
     boolean pass = false;
     String email;
@@ -25,7 +25,7 @@ public class loginWeb implements edu.byu.isys413.web.Action{
     /**
      * Creates a new instance of LoginWeb
      */
-    public loginWeb() {
+    public LoginWeb() {
         
     }
     public String process(HttpServletRequest request, HttpServletResponse response) throws Exception {
