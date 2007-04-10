@@ -43,12 +43,21 @@ import javax.mail.Session;
  
  */
 
+/**
+ * Send an e-mail confirmation
+ */
 public class sendMail {
     
     private static final String SMTP_HOST_NAME = "smtp.1and1.com";
     private static final String SMTP_AUTH_USER = "info@2kmystuff.com";
     private static final String SMTP_AUTH_PWD  = "intex24";
     
+    /**
+     * Send an e-mail to a list of recipients
+     * @param recipients LinkedList of recipients of the e-mail
+     * @param message message to be sent to list
+     * @throws javax.mail.MessagingException MessageingException
+     */
     public void postMail( List<String> recipients, String message) throws MessagingException {
         boolean debug = false;
         

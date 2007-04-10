@@ -15,7 +15,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 /**
- * printFormatDAO
+ * Provides CRUD functions for printFormat business object
  * @author Tyler
  */
 public class printFormatDAO{
@@ -59,6 +59,12 @@ public class printFormatDAO{
         return printFormat;
     } 
     
+    /**
+     * create printFormat with known ID
+     * @param id GUID
+     * @return printFormat object
+     * @throws java.lang.Exception Exception
+     */
     public printFormat create(String id) throws Exception{
         printFormat printFormat = new printFormat(id);
         
@@ -239,6 +245,14 @@ public class printFormatDAO{
     
 // for business reasons we're not supporting deleting
     
+    /**
+     * getPrintFormat by parameters
+     * @param size paper size
+     * @param paperType paper type
+     * @param sourceType source format type
+     * @return printFormat object
+     * @throws java.lang.Exception Exception
+     */
     public printFormat getPrintFormat(String size, String paperType, String sourceType) throws Exception {
         printFormat pf = null;
         Connection conn = ConnectionPool.getInstance().get();

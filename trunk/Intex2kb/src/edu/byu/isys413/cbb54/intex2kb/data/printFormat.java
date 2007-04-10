@@ -10,7 +10,7 @@
 package edu.byu.isys413.cbb54.intex2kb.data;
 
 /**
- * printFormat
+ * PrintFormat refers to the paper size, paper type, and development type of a print order
  * @author Tyler
  */
 public class printFormat {
@@ -32,7 +32,7 @@ public class printFormat {
     }
 
     /**
-     * getID
+     * get printformat ID
      * @return ID
      */
     public String getId() {
@@ -40,7 +40,7 @@ public class printFormat {
     }
 
     /**
-     * getSize
+     * get paper size
      * @return size
      */
     public String getSize() {
@@ -48,7 +48,7 @@ public class printFormat {
     }
 
     /**
-     * setSize
+     * set paper size
      * @param size size
      */
     public void setSize(String size) {

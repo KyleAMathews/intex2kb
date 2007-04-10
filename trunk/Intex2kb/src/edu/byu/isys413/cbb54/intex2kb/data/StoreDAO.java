@@ -17,7 +17,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 /**
- *
+ * Performs CRUD functions on Store business object
  * @author Cameron
  */
 public class StoreDAO {
@@ -31,6 +31,9 @@ public class StoreDAO {
     private StoreDAO() {
     }
     
+    /**
+     * Returns singleton pattern instance of StoreDAO
+     */
     public static synchronized StoreDAO getInstance() {
         if (instance == null) {
             instance = new StoreDAO();
@@ -334,6 +337,9 @@ public class StoreDAO {
     ///  SEARCH methods
     
     
+    /**
+     * Returns all of the Stores in the DB
+     */
     public List<Store> getAll() throws DataException {
         List<Store> list = new LinkedList<Store>();
         
@@ -389,6 +395,9 @@ public class StoreDAO {
         return list;
     }
     
+    /**
+     * Queries the DB for a store based on store name
+     */
     public List<Store> getByName(String name) throws DataException {
         List<Store> list = new LinkedList<Store>();
         
@@ -449,6 +458,9 @@ public class StoreDAO {
         return list;
     }
     
+    /**
+     * Queries the DB for a store based on store phone number
+     */
     public List<Store> getByPhone(String phone) throws DataException {
         List<Store> list = new LinkedList<Store>();
         

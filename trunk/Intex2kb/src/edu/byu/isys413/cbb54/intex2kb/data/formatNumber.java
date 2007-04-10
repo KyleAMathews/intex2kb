@@ -12,7 +12,7 @@ package edu.byu.isys413.cbb54.intex2kb.data;
 import java.text.DecimalFormat;
 
 /**
- *
+ * Format a double to two decimal places and return as a string
  * @author tylerf
  */
 public class formatNumber {
@@ -22,6 +22,11 @@ public class formatNumber {
         
     }
     
+    /**
+     * format double and return as a string
+     * @param number Double
+     * @return formatted string
+     */
     public String fmt(double number) {
         DecimalFormat formatter = new DecimalFormat("###,##0.00");
         return formatter.format(number);

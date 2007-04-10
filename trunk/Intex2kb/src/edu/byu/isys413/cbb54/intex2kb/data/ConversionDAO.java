@@ -15,8 +15,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 /**
- *
- * @author kyle
+ * Model object to handle CRUD functions for a conversion business object
+ * @author Tyler Farmer
  */
 public class ConversionDAO extends RSDAO{
     
@@ -43,6 +43,9 @@ public class ConversionDAO extends RSDAO{
     ///////////////////////////////////////////
     /// Create
     
+    /**
+     * create a conversion business object
+     */
     public RevenueSource create() throws Exception{
         String id = GUID.generate("co");
         RevenueSource rs = new conversionBO(id);
@@ -58,6 +61,9 @@ public class ConversionDAO extends RSDAO{
     ///////////////////////////////////////////
     /// Read
     
+    /**
+     * read a conversion business object given its ID and a connection to the DB
+     */
     public RevenueSource read(String id, Connection conn) throws Exception {
         conversionBO po = new conversionBO(id);
         
@@ -80,6 +86,9 @@ public class ConversionDAO extends RSDAO{
     ///////////////////////////////////////////
     /// Save
     
+    /**
+     * save a conversion object
+     */
     public void save(RevenueSource rsbo, Connection conn) throws Exception{
         // check the dirty flag in the object.  if it is dirty,
         // run update or insert
@@ -95,6 +104,9 @@ public class ConversionDAO extends RSDAO{
         }
     }
     
+    /**
+     * insert a conversion object into the db
+     */
     public void insert(RevenueSource rsbo, Connection conn) throws Exception{
         conversionBO po = (conversionBO)rsbo;
         
@@ -108,6 +120,9 @@ public class ConversionDAO extends RSDAO{
         ps.close();
     }
     
+    /**
+     * update a conversion object in db
+     */
     public void update(RevenueSource rsbo, Connection conn) throws Exception{
         //We do not support the update function for a Revenue source.  All information
         //will be added and static at the time of creation.

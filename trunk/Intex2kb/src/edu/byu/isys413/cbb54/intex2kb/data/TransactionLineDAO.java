@@ -19,7 +19,7 @@ import edu.byu.isys413.cbb54.intex2kb.data.DataException;
 
 
 /**
- *
+ * transactionLineDAO
  * @author Cameron
  */
 public class TransactionLineDAO {
@@ -31,6 +31,10 @@ public class TransactionLineDAO {
     private TransactionLineDAO() {
     }
     
+    /**
+     * getInstance of TransactionLine
+     * @return transactionLineBO
+     */
     public static synchronized TransactionLineDAO getInstance() {
         if (instance == null) {
             instance = new TransactionLineDAO();
@@ -41,10 +45,14 @@ public class TransactionLineDAO {
     /////////////////////////////////
     ///   CREATE
     
-    /** 
+    /**
      * There's no need for two creates because we don't need
      * a connection to create BOs.  We run the insert statement
      * later, when it get's saved for the first time.
+     * @param transaction transaction object
+     * @param sku id number of product
+     * @return transactionline
+     * @throws java.lang.Exception Exception
      */
     public TransactionLine create(Transaction transaction, String sku) throws Exception{
         String id = null;
@@ -60,9 +68,13 @@ public class TransactionLineDAO {
     /////////////////////////////////////
     ///   READ
     
-    /** 
+    /**
+     * 
      * This is the public read statement.  It loads an existing record
      * from the database.
+     * @param id id of txline
+     * @throws edu.byu.isys413.cbb54.intex2kb.data.DataException DataExceptionn
+     * @return txline
      */
     public synchronized TransactionLine read(String id) throws DataException {
         TransactionLine txLn = null;
@@ -159,10 +171,13 @@ public class TransactionLineDAO {
     //////////////////////////////////
     ///   UPDATE
     
-    /** 
+    /**
+     * 
      * This is the public save method.  It is what is called when
      * the user (controller) code wants to save or update an object
      * into the database.
+     * @param txLn txln
+     * @throws edu.byu.isys413.cbb54.intex2kb.data.DataException DataException
      */
     public synchronized void save(TransactionLine txLn) throws DataException {
         
@@ -321,6 +336,13 @@ public class TransactionLineDAO {
     ///  SEARCH methods
    
 
+    /**
+     * Get all txlns associted with a transactions
+     * @param transaction transaction object
+     * @param conn connection
+     * @throws edu.byu.isys413.cbb54.intex2kb.data.DataException DataException
+     * @return txlns
+     */
     public List<TransactionLine> getByTransaction(Transaction transaction, Connection conn) throws DataException{
         List<TransactionLine> transLines = new LinkedList<TransactionLine>();
         
