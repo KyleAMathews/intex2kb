@@ -334,7 +334,12 @@ create table "orderline"
 create table "storeproduct"
 (
     "storeid" varchar(40) not null,
-    "productid" varchar(40) not null
+    "productid" varchar(40) not null,
+    "quantityonhand" int,
+    "location" varchar(100),
+    "reorderpoint" int,
+    "quantitytoorder" int,
+    "quantityonorder" int
 );
 
 INSERT INTO "backupservice" VALUES (.99);
@@ -343,6 +348,8 @@ INSERT INTO "category" VALUES ('00000110123b9144eb018b64001000', 'digital camera
 INSERT INTO "category" VALUES ('00000111123b9144eb018b64001000', 'digital video camera');
 INSERT INTO "category" VALUES ('00000112123b9144eb018b64001000', 'misc equipment');
 INSERT INTO "category" VALUES ('00000113123b9144eb018b64001000', 'lighting equipment');
+INSERT INTO "category" VALUES ('00000114123b9144eb018b64001000','Blank Media');
+INSERT INTO "category" VALUES ('00000115123b9144eb018b64001000','Film');
 
 
 
@@ -433,3 +440,38 @@ INSERT INTO "conversiontype" VALUES ('111','Film','CD',.18);
 INSERT INTO "conversiontype" VALUES ('222','Film','DVD',.27);
 INSERT INTO "conversiontype" VALUES ('333','VHS','CD',.35);
 INSERT INTO "conversiontype" VALUES ('444','VHS','DVD',.45);
+
+INSERT INTO "vendor" VALUES ('l32k452lkj42k4k23','Camera Vendor','123 Camera Street','234-545-5655','Rick');
+INSERT INTO "vendor" VALUES ('k23djf45j4k543lk5','Film Vendor','123 Film Street','234-654-7686','Stan');
+INSERT INTO "vendor" VALUES ('lkjldj4kk54jk4jk4','DVD Vendor','123 DVD Drive','236-543-5434','Dick');
+
+INSERT INTO "conceptual" VALUES('aksfjl3krjlsk3j3ljk','ISO 100 BW Film - 36 Exp','The best film for you Black and White masterpieces',5.26,'00000115123b9144eb018b64001000');
+INSERT INTO "conceptual" VALUES('kkdsjl2k3lk3kjk3dkj','ISO 64 BW Film - 36 Exp','The best film for you Black and White masterpieces',7.35,'00000115123b9144eb018b64001000');
+INSERT INTO "conceptual" VALUES('asbnmn43en39df09sd3','AAA Batteries - 4 Pack','The Best Batteries for your Camera',2.15,'00000112123b9144eb018b64001000');
+INSERT INTO "conceptual" VALUES('ksdflk23fkgje988f89','AAA Batteries - 12 Pack','The Best Batteries for your Camera',6.10,'00000112123b9144eb018b64001000');
+INSERT INTO "conceptual" VALUES('skdfjlkjn23ndlkfjs3','Canon EOS 20D Digital Camera','',945.68,'00000110123b9144eb018b64001000');
+INSERT INTO "conceptual" VALUES('lskdjfkn323k3k3nlkn','Canon PowerShot A350 Digital Camera','',95.63,'00000110123b9144eb018b64001000');
+INSERT INTO "conceptual" VALUES('skldfjksdflkdker38f','DVD+R DL Media - 100 Pack','Blank Dual Layer DVD Media',20.56,'00000114123b9144eb018b64001000');
+INSERT INTO "conceptual" VALUES('skdjf4f8g7dfgwk3rj3','DVD-R DL Media - 100 Pack','Blank Dual Layer DVD Media',23.43,'00000114123b9144eb018b64001000');
+INSERT INTO "conceptual" VALUES('lskdjfk32jfgkge8f7e','ISO 100 Color Film - 24 Exp','The best film for you Color masterpieces',4.75,'00000115123b9144eb018b64001000');
+INSERT INTO "conceptual" VALUES('skdfjlk32kgjk23k34k','ISO 300 Color film - 36 Exp','The best film for you Color masterpieces',5.98,'00000115123b9144eb018b64001000');
+INSERT INTO "conceptual" VALUES('sdkfjlk4fg76f784398','DVD+R Media - 50 Pack','Blank DVD media',12.39,'00000114123b9144eb018b64001000');
+
+INSERT INTO "vendoritem" VALUES('l32k452lkj42k4k23','skdfjlkjn23ndlkfjs3');
+INSERT INTO "vendoritem" VALUES('l32k452lkj42k4k23','skdfjlkjn23ndlkfjs3');
+INSERT INTO "vendoritem" VALUES('k23djf45j4k543lk5','lskdjfk32jfgkge8f7e');
+INSERT INTO "vendoritem" VALUES('k23djf45j4k543lk5','skdfjlk32kgjk23k34k');
+INSERT INTO "vendoritem" VALUES('lkjldj4kk54jk4jk4','sdkfjlk4fg76f784398');
+INSERT INTO "vendoritem" VALUES('lkjldj4kk54jk4jk4','skdjf4f8g7dfgwk3rj3');
+INSERT INTO "vendoritem" VALUES('lkjldj4kk54jk4jk4','skldfjksdflkdker38f');
+
+INSERT INTO "storeproduct" VALUES('000001117284553c0014b20a500442','aksfjl3krjlsk3j3ljk',50,'Film Rack',30,50,0);
+INSERT INTO "storeproduct" VALUES('000001117284553c0014b20a500442','kkdsjl2k3lk3kjk3dkj',10,'Film Rack',15,50,0);
+INSERT INTO "storeproduct" VALUES('000001117284553c0014b20a500442','asbnmn43en39df09sd3',45,'Battery Rack',30,100,0);
+INSERT INTO "storeproduct" VALUES('000001117284553c0014b20a500442','skdfjlkjn23ndlkfjs3',5,'Camera Display',5,10,0);
+INSERT INTO "storeproduct" VALUES('000001117284553c0014b20a500442','lskdjfkn323k3k3nlkn',13,'Point and Shoot Display',15,25,0);
+INSERT INTO "storeproduct" VALUES('000001117284553c0014b20a500442','skldfjksdflkdker38f',21,'Blank Media',20,50,0);
+INSERT INTO "storeproduct" VALUES('000001117284553c0014b20a500442','skdjf4f8g7dfgwk3rj3',32,'Blank Media',20,50,0);
+INSERT INTO "storeproduct" VALUES('000001117284553c0014b20a500442','lskdjfk32jfgkge8f7e',43,'Film Rack',40,60,0);
+INSERT INTO "storeproduct" VALUES('000001117284553c0014b20a500442','skdfjlk32kgjk23k34k',38,'Film Rack',35,50,0);
+INSERT INTO "storeproduct" VALUES('000001117284553c0014b20a500442','sdkfjlk4fg76f784398',29,'Blank Media',30,50,50);
