@@ -46,7 +46,7 @@ public class LoginWeb implements edu.byu.isys413.web.Action{
         if(pass == true){
             // set login guid (not yet implemented)
             // set customerid in cookie
-            request.setAttribute("custid", custid);
+            session.setAttribute("custid", custid);
             return "account.jsp"; // returns account page
         }else{
             // send back text saying please try again

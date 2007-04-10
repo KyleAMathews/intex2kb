@@ -34,7 +34,6 @@ on Libraries node in Projects view can be used to add the JSTL 1.1 library.
             <% //edu.byu.isys413.cbb54.intex2kb.data.Customer c = edu.byu.isys413.cbb54.intex2kb.data.CustomerDAO.getInstance().create();
             //out.write(c.getId());
             %>
-            
             <form style="margin: 0 auto;" action="edu.byu.isys413.actions.LoginWeb.action" method="post" target=_parent>
                 <label for="email">Email: </label>
                 <input type="text" name="email" ><br />
@@ -44,7 +43,7 @@ on Libraries node in Projects view can be used to add the JSTL 1.1 library.
             </form>
             <div class="clear"></div>
         </div><!--end login-->
-    
-    
+
+        
     </body>
 </html>

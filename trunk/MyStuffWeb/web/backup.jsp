@@ -66,8 +66,10 @@ $(document).ready(function(){
 <div id="body">
 <h1><%out.write(title);%></h1>
 <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Quisque purus. Mauris sed arcu id felis vestibulum luctus. Praesent fringilla nonummy eros. Suspendisse eget ligula eu nisi luctus pulvinar. Morbi feugiat convallis nibh. Quisque suscipit, ligula eget molestie accumsan, quam velit pellentesque libero, id placerat urna ligula feugiat erat. Suspendisse et mauris tincidunt eros fermentum nonummy. Pellentesque sed nulla malesuada turpis pharetra faucibus. Aenean feugiat fringilla orci. Vestibulum dignissim pellentesque magna. Aliquam in sem at justo pretium elementum. Nunc ultricies velit eget urna. Duis massa.</p>
-<div>
-    <%=backupView.readPhotos()%>
+<div><br />
+    <%="kyle"%>
+    <%out.print(session.getAttribute("custid"));%>
+    <%out.print(backupView.readPhotos((String)session.getAttribute("custid")));%>
 <table width="500px" cellpadding="5px" cellspacing="10px">
     <tr><th>Kyle in Snow</th><th>Kyle is snow isn't this a long title?</th><th>Baby J</th></tr>
     <tr>
