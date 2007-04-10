@@ -58,7 +58,7 @@ $(document).ready(function(){
 <p>Welcome to MyStuff Online Photo Printing<br><br>
 Please use the following input boxes to upload up to five (5) photos to be printed.</p>
 <div>
-    <form method="post" action="edu.byu.isys413.actions.photo.action">
+    <form method="post" action="edu.byu.isys413.actions.PhotoUpload.action" enctype="multipart/form-data">
         <table width="600px" cellpadding="5px" cellspacing="10px" valign="middle">
             <tr><td>Picture 1:</td><td><input type="file" name="datafile1" size="32"></td></tr>
             <tr><td>Picture 2:</td><td><input type="file" name="datafile2" size="32"></td></tr>
