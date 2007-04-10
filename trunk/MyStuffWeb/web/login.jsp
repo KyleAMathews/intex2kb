@@ -12,14 +12,6 @@ on Libraries node in Projects view can be used to add the JSTL 1.1 library.
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
-<%String title = "Login";
-String login = "";
-%>
-<%if (request.getAttribute("login") != null) {
-login = "target=_parent";
-}else {
-login = "";
-}%>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -36,7 +28,7 @@ login = "";
     <body>
         
         <div id="login">   
-            <h1 style="padding-left: 95px; text-decoration: underline;"><%=title%></h1>
+            <h1 style="padding-left: 95px; text-decoration: underline;">Login</h1>
             <p style="color: red; background-color: yellow"><%if (request.getAttribute("message") != null) {out.print(request.getAttribute("message"));}%>
             
             <% //edu.byu.isys413.cbb54.intex2kb.data.Customer c = edu.byu.isys413.cbb54.intex2kb.data.CustomerDAO.getInstance().create();
