@@ -22,6 +22,7 @@ public class Vendor {
     private String contact;
     private boolean inDB;
     private boolean dirty;
+    private PurchaseOrder purchaseOrder;
     
     /** Creates a new instance of Vendor */
     public Vendor(String id) {
@@ -82,6 +83,14 @@ public class Vendor {
 
     public String getId() {
         return id;
+    }
+
+    public PurchaseOrder getOrder() {
+        return purchaseOrder;
+    }
+
+    public void setOrder(PurchaseOrder po) {
+        this.purchaseOrder = po;
     }
     
 }

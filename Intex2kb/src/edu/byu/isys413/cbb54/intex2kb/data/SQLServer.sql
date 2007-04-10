@@ -334,7 +334,8 @@ create table "orderline"
 (
     "id" varchar(40) not null primary key,
     "purchaseorderid" varchar(40),
-    "productid" varchar(40)
+    "productid" varchar(40),
+    "quantity" int
 );
 
 create table "storeproduct"
