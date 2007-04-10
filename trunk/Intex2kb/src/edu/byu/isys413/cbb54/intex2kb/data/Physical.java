@@ -31,6 +31,7 @@ public class Physical extends Product{
     
     public void setSerialNum(String serialNum) {
         this.serialNum = serialNum;
+        this.setDirty(true);
     }
 
     public String getShelfLocation() {
