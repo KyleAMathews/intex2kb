@@ -325,12 +325,15 @@ create table "vendoritem"
 create table "purchaseorder"
 (
     "id" varchar(40) not null primary key,
-    "date" varchar(15)
+    "date" bigint,
+    "vendorid" varchar(40),
+    "storeid" varchar(40)
 );
 
 create table "orderline"
 (
     "id" varchar(40) not null primary key,
+    "purchaseorderid" varchar(40),
     "productid" varchar(40)
 );
 
