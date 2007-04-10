@@ -1,6 +1,7 @@
 package edu.byu.isys413.actions;
 
-import edu.byu.isys413.cbb54.intex2kb.data.*;
+//import edu.byu.isys413.cbb54.intex2kb.data.validateLogin;
+import edu.byu.isys413.cbb54.intex2kb.data.validateLogin;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
