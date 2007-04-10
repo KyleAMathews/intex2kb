@@ -11,7 +11,7 @@ on Libraries node in Projects view can be used to add the JSTL 1.1 library.
    // Transaction tx = TransactionDAO.getInstance().create();
   //  tx.setType(rental);
    // session.setAttribute("transaction", tx);
-   String value = "";
+   //String value = "";
 
 %>
 
@@ -70,7 +70,7 @@ $(document).ready(function(){
             <% List<String> categoryList = new LinkedList<String>();
             categoryList = CategoryDAO.getInstance().getCategoryList();
         for(int i = 0; i<categoryList.size(); i++){
-                value = categoryList.get(i);
+               String value = categoryList.get(i);
                 %>
                 <option VALUE="<%=i%>"><%=value%>
                 <%
