@@ -309,7 +309,7 @@ public class VendorDAO {
     
     
     /**
-     * Returns the id, first name, last name, and phone number of all customers in the database
+     * Returns the id, name, address, phone, and contact of all vendors in the database
      * @return List
      * @throws DataException Thrown when there is an error connecting to the database or executing the SQL
      */
@@ -365,10 +365,9 @@ public class VendorDAO {
     }
     
     /**
-     * Returns all customer with matching first and last name
-     * @param fname String
-     * @param lname String
-     * @return List of Customers
+     * Returns all vendors with matching first and last name
+     * @param Name String
+     * @return List of Vendors
      * @throws DataException Thrown when there is an error creating a database connection or executing the SQL
      */
     public List<Vendor> getByName(String name) throws DataException {
