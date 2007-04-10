@@ -395,6 +395,7 @@ INSERT INTO "payment" VALUES('000001117284553c0014b00a500442',14.50,'1234-5678-9
 INSERT INTO "employee" VALUES('000001117284553c0014b10a500442','Ray','Thompson','123 East BYU','','Provo','Utah','84604','801-555-5555','c@b.com','123-45-6789','12/05',123.45,'000001117284553c0014b20a500442');
 INSERT INTO "employee" VALUES('000001117284553c0014b30a500442','Steve','Manager','123 East BYU','','Provo','Utah','84604','801-555-5555','tylerf@byu.edu','123-45-6789','12/05',123.45,'000001117284553c0014b20a500442');
 INSERT INTO "employee" VALUES('100001117284553c0014b30a500442','Steve','Director','123 East BYU','','Provo','Utah','84604','801-555-5555','bryan@trueramerica.org','123-45-6789','12/05',123.45,'000001117284553c0014b20a500442');
+INSERT INTO "employee" VALUES('120001117284553c0014b60a500442','Online','','','','','','','','','','',0.0,'');
 
 INSERT INTO "login" VALUES('tylerf@byu.edu','tyler', 'tylermembid');
 INSERT INTO "login" VALUES('bryan@trueramerica.org','bryan', 'bryanmembid');
@@ -405,6 +406,7 @@ INSERT INTO "login" VALUES('k', 'k', 'kylemembid');
 INSERT INTO "store" VALUES('000001117284553c0014b20a500442','Provo','123 Center Street','Suite 1','Provo','Utah','84604','108-333-3333','801-333-3334','000001117284553c0014b30a500442');
 INSERT INTO "store" VALUES('000001117284553c0014b20a500443','Logan','123 Center Street','Suite 1','Provo','Utah','84604','108-333-3333','801-333-3334','000001117284553c0014b30a500442');
 INSERT INTO "store" VALUES('000001117284553c0014b20a500444','Murray','123 Center Street','Suite 1','Provo','Utah','84604','108-333-3333','801-333-3334','000001117284553c0014b30a500442');
+INSERT INTO "store" VALUES('010001117284553c0014b20b500444','Online Store','','','','','','','','');
 
 INSERT INTO "coupon" VALUES('000001117284553c0014b40a500442',2.00);
 
