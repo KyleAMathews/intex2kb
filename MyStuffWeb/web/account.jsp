@@ -54,7 +54,7 @@ $(document).ready(function(){
                 <div id="body">
                     <h1><%out.write(title);%></h1>
                     <p>Buy products, rent items, develop pictures, or view file/picture backups by clicking on the appropriate link on the left</p>
-                    <p><%=session.getAttribute("custid")%></p>
+                    <p><%=session.getAttribute("membid")%></p>
                 </div><!--end body-->
             </div><!--end container-->
             <div id="footer">
