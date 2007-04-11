@@ -13,6 +13,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.LinkedList;
+import java.util.List;
 
 /**
  *
@@ -217,5 +219,32 @@ public class ConceptualDAO extends ProductDAO{
         }
         
         return b;
+    }
+
+    public List<Conceptual> getProductsByCategory(String categoryID) throws Exception{
+        List<Conceptual> list = new LinkedList<Conceptual>();
+        
+        Connection conn = ConnectionPool.getInstance().get();
+        
+        PreparedStatement search = conn.prepareStatement(
+                "SELECT * FROM \"conceptual\" \"co\", \"product\" \"pr\" WHERE \"co\".\"id\" = \"pr\".\"id\" AND \"co\".\"categoryID\" = ? ");
+        search.setString(1, categoryID);
+        ResultSet rs = search.executeQuery();
+        conn.commit();
+        ConnectionPool.getInstance().release(conn);
+        
+        while(rs.next()){
+            Conceptual concept = new Conceptual(rs.getString("id"));
+            concept.setName(rs.getString("name"));
+            concept.setDesc(rs.getString("description"));
+            concept.setAvgCost(rs.getDouble("avgCost"));
+            concept.setPrice(rs.getDouble("price"));
+            concept.setInDB(true);
+            list.add(concept);
+        }
+        
+        
+        
+        return list;
     }
 }
