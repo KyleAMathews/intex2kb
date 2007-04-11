@@ -30,6 +30,18 @@ public class PhotoCheckout implements edu.byu.isys413.web.Action {
     public String process(HttpServletRequest request, HttpServletResponse response) throws Exception {
         HttpSession session = request.getSession();
         
+        Transaction tx = (Transaction)session.getAttribute("tx");
+        printOrder po = (printOrder)PrintOrderDAO.getInstance().create();
+        PhotoSet ps = PhotoSetDAO.getInstance().create();
+        
+        
+        String membid = (String)session.getAttribute("membid");
+        Membership m = MembershipDAO.getInstance().read(membid);
+        Customer cust = m.getCustomer();
+        
+        String storeid = (String)session.getAttribute("store");
+        Store store = StoreDAO.getInstance().read(storeid);
+        
         String printFormat1 = request.getParameter("PrintFormat1");
         String printFormat2 = request.getParameter("PrintFormat2");
         String printFormat3 = request.getParameter("PrintFormat3");
@@ -102,6 +114,20 @@ public class PhotoCheckout implements edu.byu.isys413.web.Action {
         System.out.println(pfPaper4);
         System.out.println(pfSize5);
         System.out.println(pfPaper5);
+        
+        //read printFormat
+        printFormat pf = printFormatDAO.getInstance().getPrintFormat(pfSize1,pfPaper1,sourceType);
+        
+        //set PrintOrder values
+        po.setPOID(GUID.generate());
+        po.setPrintFormat(pf);
+        po.setQuantity(qty1);
+        
+        //Create TX-Line
+        TransactionLine txln = TransactionLineDAO.getInstance().create(tx,po.getId());
+        txln.setRevenueSource(po);
+        txln.setRsType("Print Order - " + po.getPhotoSet().getDescription());
+        tx.addTxLine(txln);
         
         return "checkout.jsp";
     }//process
