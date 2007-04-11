@@ -1,5 +1,6 @@
 <%@page contentType="text/html"%>
 <%@page pageEncoding="UTF-8"%>
+<%@page import= "edu.byu.isys413.cbb54.intex2kb.data.*" %>
 <%--
 The taglib directive below imports the JSTL library. If you uncomment it,
 you must also add the JSTL library to the project. The Add Library... action
@@ -12,7 +13,8 @@ on Libraries node in Projects view can be used to add the JSTL 1.1 library.
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
 <%String title = "Photo Development";%>
-<jsp:include page="header.jsp" /> 
+<jsp:include page="header.jsp" />
+<%session.setAttribute("tx",TransactionDAO.getInstance().create());%>
 <div id="rightcolumn">
     <h4>MyStuff Photo Printing</h4>
 </div><!--end right column-->  
