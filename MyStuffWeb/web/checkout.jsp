@@ -15,7 +15,16 @@ on Libraries node in Projects view can be used to add the JSTL 1.1 library.
 
 <jsp:include page="header.jsp" />
 <div id="body">
-    <%=checkoutView.getTx((String)session.getAttribute("checkoutTxType"))%>
+    <% String txType = (String)session.getAttribute("checkoutTxType");
+    if (txType.equals("ba")){
+    out.write("<jsp:include page=\"backupCheckout.jsp\" />");    
+    }else(txType.equals("re")){
+    out.write("<jsp:include page=\"rentalCheckout.jsp\" />");    
+    }else(txType.equals("po")){
+    out.write("<jsp:include page=\"photoCheckout.jsp\" />");    
+    }else(txType.equals("sa")){
+    out.write("<jsp:include page=\"saleCheckout.jsp\" />");    
+    %>
     <%//=checkoutView.getMembInfo()%>
     
     <table>
@@ -44,4 +53,5 @@ on Libraries node in Projects view can be used to add the JSTL 1.1 library.
         </tbody>
     </table>
 </div>
+
 <jsp:include page="footer.jsp" />
