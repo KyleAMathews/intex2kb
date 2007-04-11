@@ -39,7 +39,7 @@ on Libraries node in Projects view can be used to add the JSTL 1.1 library.
                 </select></td>
                 <td>Qty:<input name="qty1" type=text size="5"></td>
                 <%
-                }
+                request.setAttribute("PrintFormat1",)}
                 %>
                 <%if(session.getAttribute("2") != null){%><tr><td>Picture 2:</td><td><%=session.getAttribute("2")%></td>
                 <td><select NAME="PrintFormat2">
