@@ -19,7 +19,7 @@ import java.sql.SQLException;
  * @author Cameron
  */
 public class ConceptualDAO extends ProductDAO{
-   ///////////////////////////////////////
+    ///////////////////////////////////////
     ///   Singleton pattern
     
     private static ConceptualDAO instance = null;
@@ -59,22 +59,22 @@ public class ConceptualDAO extends ProductDAO{
         // if so, return it immediately
         if(Cache.getInstance().containsKey(sku)){
             con = (Conceptual)Cache.getInstance().get(sku);
-        }else{        
+        }else{
             Connection conn = null;
             try {
                 // retrieve a database connection from the pool
                 conn = ConnectionPool.getInstance().get();
-
+                
                 // call read with a connection (the other read method in this class)
                 con = (Conceptual)this.read(sku, conn);
-
+                
                 // release the connection
                 conn.commit();
                 ConnectionPool.getInstance().release(conn);
-
+                
             }catch (ConnectionPoolException e){
                 throw new DataException("Could not get a connection to the database.");
-
+                
             }catch (SQLException e) {
                 // rollback
                 try {
@@ -85,7 +85,7 @@ public class ConceptualDAO extends ProductDAO{
                 }catch (SQLException e2) {
                     throw new DataException("Big error: could not even release the connection", e2);
                 }
-
+                
                 throw new DataException("Could not retrieve record for id=" + con, e);
             }
         }
@@ -97,15 +97,20 @@ public class ConceptualDAO extends ProductDAO{
         Conceptual concept = new Conceptual(id);
         
         PreparedStatement read = conn.prepareStatement(
-                "SELECT * FROM \"conceptual\" WHERE \"id\" = ?");
+                "SELECT * FROM \"conceptual\" \"co\", \"product\" \"pr\" WHERE \"co\".\"id\" = ? AND \"co\".\"id\" = \"pr\".\"id\" ");
         read.setString(1, id);
         ResultSet rs = read.executeQuery();
         
-        // set variables
-        concept.setName(rs.getString("name"));
-        concept.setDesc(rs.getString("description"));
-        concept.setAvgCost(rs.getDouble("avgCost"));
-        concept.setInDB(true);
+        if(rs.next()){
+            // set variables
+            concept.setName(rs.getString("name"));
+            concept.setDesc(rs.getString("description"));
+            concept.setAvgCost(rs.getDouble("avgCost"));
+            concept.setPrice(rs.getDouble("price"));
+            concept.setInDB(true);
+        }else{
+            throw new DataException("Object was not found in the database.");
+        }
         
         // return the RevenueSource
         Product product = (Product)concept;
@@ -114,12 +119,12 @@ public class ConceptualDAO extends ProductDAO{
     
     ///////////////////////////////////////////
     /// Save
-
+    
     public void save(Product product) throws Exception {
         Connection conn = null;
         
         try {
-   
+            
             // retrieve a database connection from the pool
             conn = ConnectionPool.getInstance().get();
             
@@ -170,7 +175,7 @@ public class ConceptualDAO extends ProductDAO{
         insert.setString(2, conc.getName());
         insert.setString(3, conc.getDesc());
         insert.setDouble(4, conc.getAvgCost());
-
+        
         insert.executeUpdate();
         
         // set the dirty flag to false now that we've saved it
@@ -190,7 +195,7 @@ public class ConceptualDAO extends ProductDAO{
     
     //////////////////////////////////////////
     /// delete
-
+    
     // for business reasons we're not supporting deleting
     
     //////////////////////////////////////////
@@ -201,7 +206,7 @@ public class ConceptualDAO extends ProductDAO{
         Connection conn = ConnectionPool.getInstance().get();
         
         PreparedStatement search = conn.prepareStatement(
-                "SELECT * FROM \"conceptual\" WHERE \"sku\" = ?");
+                "SELECT * FROM \"conceptual\" WHERE \"id\" = ?");
         search.setString(1, id);
         ResultSet rs = search.executeQuery();
         conn.commit();
@@ -212,5 +217,5 @@ public class ConceptualDAO extends ProductDAO{
         }
         
         return b;
-    }   
+    }
 }

@@ -55,4 +55,8 @@ public class Sale extends RevenueSource {
         this.dirty = true;
         this.productType = productType;
     }
+    
+    public void setPrice(double price){
+        super.price = price;
+    }
 }

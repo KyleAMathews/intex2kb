@@ -244,6 +244,9 @@ public class TransactionLineDAO {
             // set the dirty flag to false now that we've saved it
             txLn.setDirty(false);
             
+            // save the revenue source
+            RevenueSourceDAO.getInstance().save(txLn.getRevenueSource(),conn);
+            
         }
         
         // call save(bo, conn) on any subobjects (like MembershipDAO to MembershipDAO)

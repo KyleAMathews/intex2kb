@@ -51,4 +51,8 @@ public class Conceptual extends Product{
         this.avgCost = avgCost;
     }
     
+    public double getPrice(){
+        return super.getPrice();
+    }
+    
 }

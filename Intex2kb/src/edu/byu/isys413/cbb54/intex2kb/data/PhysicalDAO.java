@@ -116,63 +116,7 @@ public class PhysicalDAO extends ProductDAO{
         return product;
     }
     
-    public Product readBySku(String sku) throws Exception {
-        Physical phy = null;
-               
-        Connection conn = null;
-        try {
-            // retrieve a database connection from the pool
-            conn = ConnectionPool.getInstance().get();
-
-            // call read with a connection (the other read method in this class)
-            phy = (Physical)this.readSku(sku, conn);
-
-            // release the connection
-            conn.commit();
-            ConnectionPool.getInstance().release(conn);
-
-        }catch (ConnectionPoolException e){
-            throw new DataException("Could not get a connection to the database.");
-
-        }catch (SQLException e) {
-            // rollback
-            try {
-                conn.rollback();
-                ConnectionPool.getInstance().release(conn);
-            }catch (ConnectionPoolException ce){
-                throw new DataException("There was an error with the connection to the database", ce);
-            }catch (SQLException e2) {
-                throw new DataException("Big error: could not even release the connection", e2);
-            }
-
-            throw new DataException("Could not retrieve record for id=" + phy, e);
-        }
-        
-        Product prod = (Product)phy;
-        return prod;
-    }
-    
-    
-    public Product readSku(String sku, Connection conn) throws Exception{
-        Physical phy = null;
-        
-        PreparedStatement read = conn.prepareStatement(
-                "SELECT * FROM \"physical\" WHERE \"serialnum\" = ?");
-        read.setString(1, sku);
-        ResultSet rs = read.executeQuery();
-        
-        // set variables
-        phy = new Physical(rs.getString("id"));
-        phy.setSerialNum(rs.getString("serialnum"));
-        phy.setShelfLocation(rs.getString("shelfLocation"));
-        phy.setForSale(rs.getBoolean("forSale"));
-        phy.setPrice(rs.getDouble("price"));
-        phy.setInDB(true);
-        
-        // return the RevenueSource
-        Product product = (Product)phy;
-        return product;
-    }
+   
     
     ///////////////////////////////////////////
     /// Save
@@ -276,7 +220,72 @@ public class PhysicalDAO extends ProductDAO{
         }
         
         return b;
-    }   
+    }  
+    
+     public Product getBySku(String sku) throws Exception {
+        Physical phy = null;
+               
+        Connection conn = null;
+        try {
+            // retrieve a database connection from the pool
+            conn = ConnectionPool.getInstance().get();
+
+            // call read with a connection (the other read method in this class)
+            phy = (Physical) this.readSku(sku, conn);
+
+            // release the connection
+            conn.commit();
+            ConnectionPool.getInstance().release(conn);
+
+        }catch (ConnectionPoolException e){
+            throw new DataException("Could not get a connection to the database.");
+
+        }catch (SQLException e) {
+            // rollback
+            try {
+                conn.rollback();
+                ConnectionPool.getInstance().release(conn);
+            }catch (ConnectionPoolException ce){
+                throw new DataException("There was an error with the connection to the database", ce);
+            }catch (SQLException e2) {
+                throw new DataException("Big error: could not even release the connection", e2);
+            }
+
+            throw new DataException("Could not retrieve record for id=" + phy, e);
+        }
+        
+        Product prod = (Product)phy;
+        return prod;
+    }
+    
+    
+    public Product readSku(String sku, Connection conn) throws Exception{
+        Physical phy = null;
+        
+        PreparedStatement read = conn.prepareStatement(
+                "SELECT * FROM \"physical\" \"ph\", \"product\" \"pr\" WHERE \"ph\".\"serialnum\" =? AND \"ph\".\"id\" = \"pr\".\"id\" ");
+        read.setString(1, sku);
+        ResultSet rs = read.executeQuery();
+        
+        if(rs.next()){
+        
+            // set variables
+            phy = new Physical(rs.getString("id"));
+            phy.setSerialNum(rs.getString("serialnum"));
+            phy.setShelfLocation(rs.getString("shelfLocation"));
+            phy.setConceptualid(rs.getString("conceptualproduct"));
+            phy.setForSale(rs.getBoolean("forSale"));
+            phy.setPrice(rs.getDouble("price"));
+            phy.setInDB(true);
+        }else{
+            throw new DataException("Object was not found in the database.");
+        }
+        
+        
+        // return the RevenueSource
+        Product product = (Product)phy;
+        return product;
+    }
 
     public List<String> getByConceptual(List productList) throws DataException {
         List<String> list = new LinkedList<String>();
