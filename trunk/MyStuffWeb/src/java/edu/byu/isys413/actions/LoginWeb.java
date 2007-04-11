@@ -47,7 +47,10 @@ public class LoginWeb implements edu.byu.isys413.web.Action{
         
         if(pass == true){
             // set login guid (not yet implemented)
-            
+            System.out.println(session.getId());
+            session.invalidate();
+            session = request.getSession(true);
+            System.out.println(session.getId());
             // set customerid in cookie
             session.setAttribute("membid", membid);
             return "account.jsp"; // returns account page
