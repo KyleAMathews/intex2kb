@@ -18,12 +18,13 @@ on Libraries node in Projects view can be used to add the JSTL 1.1 library.
     <% String txType = (String)session.getAttribute("checkoutTxType");
     if (txType.equals("ba")){
     out.write("<jsp:include page=\"backupCheckout.jsp\" />");    
-    }else(txType.equals("re")){
+    }else if(txType.equals("re")){
     out.write("<jsp:include page=\"rentalCheckout.jsp\" />");    
-    }else(txType.equals("po")){
+    }else if(txType.equals("po")){
     out.write("<jsp:include page=\"photoCheckout.jsp\" />");    
-    }else(txType.equals("sa")){
-    out.write("<jsp:include page=\"saleCheckout.jsp\" />");    
+    }else if(txType.equals("sa")){
+    out.write("<jsp:include page=\"saleCheckout.jsp\" />");  
+    }
     %>
     <%//=checkoutView.getMembInfo()%>
     
