@@ -30,17 +30,18 @@ public class PhotoCheckout implements edu.byu.isys413.web.Action {
     public String process(HttpServletRequest request, HttpServletResponse response) throws Exception {
         HttpSession session = request.getSession();
         
-        Transaction tx = (Transaction)session.getAttribute("tx");
-        printOrder po = (printOrder)PrintOrderDAO.getInstance().create();
-        PhotoSet ps = PhotoSetDAO.getInstance().create();
-        
-        
         String membid = (String)session.getAttribute("membid");
         Membership m = MembershipDAO.getInstance().read(membid);
         Customer cust = m.getCustomer();
         
         String storeid = (String)session.getAttribute("store");
         Store store = StoreDAO.getInstance().read(storeid);
+        
+        Transaction tx = (Transaction)session.getAttribute("tx");
+        tx.setCustomer(cust);
+        tx.setStore(store);
+        tx.setType("Print Order");
+        tx.setStatus("Complete");
         
         String printFormat1 = request.getParameter("PrintFormat1");
         String printFormat2 = request.getParameter("PrintFormat2");
@@ -86,6 +87,23 @@ public class PhotoCheckout implements edu.byu.isys413.web.Action {
         if(printFormat1 != null){
             pfSize1 = getSize(Integer.valueOf(printFormat1));
             pfPaper1 = getPaper(Integer.valueOf(printFormat1));
+            
+            printOrder po1 = (printOrder)PrintOrderDAO.getInstance().create();
+            PhotoSet ps1 = PhotoSetDAO.getInstance().create();
+            
+            //read printFormat
+            printFormat pf1 = printFormatDAO.getInstance().getPrintFormat(pfSize1,pfPaper1,sourceType);
+            
+            //set PrintOrder values
+            po1.setPOID(GUID.generate());
+            po1.setPrintFormat(pf1);
+            po1.setQuantity(qty1);
+            
+            //Create TX-Line
+            TransactionLine txln1 = TransactionLineDAO.getInstance().create(tx,po1.getId());
+            txln1.setRevenueSource(po1);
+            txln1.setRsType("Print Order - " + po1.getPhotoSet().getDescription());
+            tx.addTxLine(txln1);
         }
         if(printFormat1 != null){
             pfSize2 = getSize(Integer.valueOf(printFormat2));
@@ -115,19 +133,7 @@ public class PhotoCheckout implements edu.byu.isys413.web.Action {
         System.out.println(pfSize5);
         System.out.println(pfPaper5);
         
-        //read printFormat
-        printFormat pf = printFormatDAO.getInstance().getPrintFormat(pfSize1,pfPaper1,sourceType);
         
-        //set PrintOrder values
-        po.setPOID(GUID.generate());
-        po.setPrintFormat(pf);
-        po.setQuantity(qty1);
-        
-        //Create TX-Line
-        TransactionLine txln = TransactionLineDAO.getInstance().create(tx,po.getId());
-        txln.setRevenueSource(po);
-        txln.setRsType("Print Order - " + po.getPhotoSet().getDescription());
-        tx.addTxLine(txln);
         
         return "checkout.jsp";
     }//process
