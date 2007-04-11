@@ -406,23 +406,9 @@
         <copy-ear-war file="${file.reference.sqljdbc.jar}" propname="included.lib.file.reference.sqljdbc.jar.X"/>
         <basename property="included.lib.reference.Intex2kb-1.jar" file="${reference.Intex2kb-1.jar}"/>
         <copy-ear-war file="${reference.Intex2kb-1.jar}" propname="included.lib.reference.Intex2kb-1.jar.X"/>
-        <basename property="included.lib.file.reference.mail.jar" file="${file.reference.mail.jar}"/>
-        <copy-ear-war file="${file.reference.mail.jar}" propname="included.lib.file.reference.mail.jar.X"/>
-        <basename property="included.lib.file.reference.dsn.jar" file="${file.reference.dsn.jar}"/>
-        <copy-ear-war file="${file.reference.dsn.jar}" propname="included.lib.file.reference.dsn.jar.X"/>
-        <basename property="included.lib.file.reference.imap.jar" file="${file.reference.imap.jar}"/>
-        <copy-ear-war file="${file.reference.imap.jar}" propname="included.lib.file.reference.imap.jar.X"/>
-        <basename property="included.lib.file.reference.mailapi.jar" file="${file.reference.mailapi.jar}"/>
-        <copy-ear-war file="${file.reference.mailapi.jar}" propname="included.lib.file.reference.mailapi.jar.X"/>
-        <basename property="included.lib.file.reference.pop3.jar" file="${file.reference.pop3.jar}"/>
-        <copy-ear-war file="${file.reference.pop3.jar}" propname="included.lib.file.reference.pop3.jar.X"/>
-        <basename property="included.lib.file.reference.smtp.jar" file="${file.reference.smtp.jar}"/>
-        <copy-ear-war file="${file.reference.smtp.jar}" propname="included.lib.file.reference.smtp.jar.X"/>
-        <basename property="included.lib.file.reference.activation.jar" file="${file.reference.activation.jar}"/>
-        <copy-ear-war file="${file.reference.activation.jar}" propname="included.lib.file.reference.activation.jar.X"/>
         <mkdir dir="${build.web.dir.real}/META-INF"/>
         <manifest file="${build.web.dir.real}/META-INF/MANIFEST.MF" mode="update">
-            <attribute name="Class-Path" value="${included.lib.file.reference.commons-io-1.3.1.jar} ${included.lib.file.reference.commons-fileupload-1.2.jar} ${included.lib.file.reference.sqljdbc.jar} ${included.lib.reference.Intex2kb-1.jar} ${included.lib.file.reference.mail.jar} ${included.lib.file.reference.dsn.jar} ${included.lib.file.reference.imap.jar} ${included.lib.file.reference.mailapi.jar} ${included.lib.file.reference.pop3.jar} ${included.lib.file.reference.smtp.jar} ${included.lib.file.reference.activation.jar} "/>
+            <attribute name="Class-Path" value="${included.lib.file.reference.commons-io-1.3.1.jar} ${included.lib.file.reference.commons-fileupload-1.2.jar} ${included.lib.file.reference.sqljdbc.jar} ${included.lib.reference.Intex2kb-1.jar} "/>
         </manifest>
         <delete dir="${dist.ear.dir}/temp"/>
     </target>
@@ -431,13 +417,6 @@
         <copy file="${file.reference.commons-fileupload-1.2.jar}" todir="${build.web.dir.real}/WEB-INF/lib"/>
         <copy file="${file.reference.sqljdbc.jar}" todir="${build.web.dir.real}/WEB-INF/lib"/>
         <copy file="${reference.Intex2kb-1.jar}" todir="${build.web.dir.real}/WEB-INF/lib"/>
-        <copy file="${file.reference.mail.jar}" todir="${build.web.dir.real}/WEB-INF/lib"/>
-        <copy file="${file.reference.dsn.jar}" todir="${build.web.dir.real}/WEB-INF/lib"/>
-        <copy file="${file.reference.imap.jar}" todir="${build.web.dir.real}/WEB-INF/lib"/>
-        <copy file="${file.reference.mailapi.jar}" todir="${build.web.dir.real}/WEB-INF/lib"/>
-        <copy file="${file.reference.pop3.jar}" todir="${build.web.dir.real}/WEB-INF/lib"/>
-        <copy file="${file.reference.smtp.jar}" todir="${build.web.dir.real}/WEB-INF/lib"/>
-        <copy file="${file.reference.activation.jar}" todir="${build.web.dir.real}/WEB-INF/lib"/>
     </target>
     <target name="do-ear-dist" depends="init,compile,compile-jsps,-pre-dist,library-inclusion-in-manifest">
         <dirname property="dist.jar.dir" file="${dist.ear.war}"/>
