@@ -13,6 +13,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.LinkedList;
+import java.util.List;
 
 /**
  * Provides CRUD functions for printFormat business object
@@ -57,7 +59,7 @@ public class printFormatDAO{
         c.put(printFormat.getId(),printFormat);
         
         return printFormat;
-    } 
+    }
     
     /**
      * create printFormat with known ID
@@ -261,6 +263,24 @@ public class printFormatDAO{
         ResultSet rs = ps.executeQuery();
         if(rs.next()){
             pf = printFormatDAO.getInstance().read(rs.getString("id"),conn);
+        }
+        
+        rs.close();
+        ps.close();
+        ConnectionPool.getInstance().release(conn);
+        
+        return pf;
+    }
+    
+    public List<String> getPrintFormat() throws Exception {
+        List<String> pf = new LinkedList();
+        Connection conn = ConnectionPool.getInstance().get();
+        PreparedStatement ps = conn.prepareStatement("select * from \"printformat\" where sourcetype = 'Digital'");
+        ResultSet rs = ps.executeQuery();
+        while(rs.next()){
+            printFormat p = printFormatDAO.getInstance().read(rs.getString("id"),conn);
+            String temp = (p.getSize() + " - " + p.getPaperType());
+            pf.add(temp);
         }
         
         rs.close();
