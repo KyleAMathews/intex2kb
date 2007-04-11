@@ -59,7 +59,7 @@ $(document).ready(function(){
     <ul>
         <li><a href="">View Slideshow</a></li>
         <li><a href="">Upload File(s)</a></li>
-        <li><a href="">Add Backup Space</a></li>
+        <li><a href="backuptx.jsp">Add Backup Space</a></li>
         <li><a href="">Help</a></li>
     </ul>
 </div><!--end right column-->  
