@@ -291,4 +291,72 @@ public class ConceptualRentalDAO {
     
     //////////////////////////////
     ///  SEARCH methods
+    
+    public double getRentalPrice(ForRent fr) throws SQLException, ConnectionPoolException{
+        double price = 0.0;
+        Connection conn = null;
+        try {
+            
+            conn = ConnectionPool.getInstance().get();
+        
+        
+        
+            PreparedStatement read1 = conn.prepareStatement(
+                "SELECT \"conceptualproduct\" FROM \"physical\" WHERE \"id\" = ? ");
+            read1.setString(1, fr.getId());
+            ResultSet rs1 = read1.executeQuery();
+                    while(rs1.next()) {
+                        String prodid = rs1.getString("conceptualproduct");
+                                PreparedStatement read2 = conn.prepareStatement(
+                                "SELECT \"price\" FROM \"conceptualrental\" WHERE \"id\" = ? ");
+                                read2.setString(1, prodid);
+                                ResultSet rs2 = read2.executeQuery();
+                                    while(rs2.next()){
+                                    price = rs2.getDouble("price");
+                                            
+                                    }//end while loop
+                    }//end while loop
+              //release the connection      
+              ConnectionPool.getInstance().release(conn);
+           } catch (ConnectionPoolException ex) {
+            ex.printStackTrace();
+        } 
+        
+      
+    return price;
+    }//end method
+    
+    public String getRentalName(ForRent fr) throws SQLException, ConnectionPoolException{
+        String name = "";
+        Connection conn = null;
+        try {
+            
+            conn = ConnectionPool.getInstance().get();
+       
+            PreparedStatement read1 = conn.prepareStatement(
+                "SELECT * FROM \"physical\" WHERE \"id\" = ? ");
+            read1.setString(1, fr.getId());
+            ResultSet rs1 = read1.executeQuery();
+                    while(rs1.next()) {
+                        String prodid = rs1.getString("conceptualproduct");
+                                PreparedStatement read2 = conn.prepareStatement(
+                                "SELECT * FROM \"conceptual\" WHERE \"id\" = ? ");
+                                read2.setString(1, prodid);
+                                ResultSet rs2 = read2.executeQuery();
+                                    while(rs2.next()){
+                                    name = rs2.getString("name");
+                                            
+                                    }//end while loop
+                    }//end while loop
+           } catch (ConnectionPoolException ex) {
+            ex.printStackTrace();
+        } 
+        
+        //release the connection
+        ConnectionPool.getInstance().release(conn);
+    return name;
+    }//end method
+    
+    
+    
 }
