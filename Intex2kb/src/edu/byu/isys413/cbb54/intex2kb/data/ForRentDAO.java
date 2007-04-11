@@ -431,4 +431,51 @@ public class ForRentDAO {
         // return the list of customer lists
         return list;
     }
+     
+     public ForRent getByRentalID(String id) throws DataException {
+        ForRent fr = null;
+        
+        // get the connection
+        Connection conn = null;
+        try{
+            // retrieve a database connection from the pool
+            conn = ConnectionPool.getInstance().get();
+            // sql the names, phone, and ids
+            PreparedStatement read = conn.prepareStatement(
+                "SELECT * FROM \"forrent\" WHERE \"currentrental\" = ? ");
+            read.setString(1, id);
+            ResultSet rs = read.executeQuery();
+
+            // while loop to populate the list from the results
+            while(rs.next()) {
+                fr = new ForRent(rs.getString("id"));
+                }  
+            
+            // release the connection
+            conn.commit();
+            ConnectionPool.getInstance().release(conn);
+            
+              
+
+        }catch (ConnectionPoolException e){
+            throw new DataException("Could not get a connection to the database.");
+
+        }catch (SQLException e) {
+            // rollback
+            try {
+                conn.rollback();
+                ConnectionPool.getInstance().release(conn);
+            }catch (ConnectionPoolException ce){
+                throw new DataException("There was an error with the connection to the database", ce);
+            }catch (SQLException e2) {
+                throw new DataException("Big error: could not even release the connection", e2);
+            }
+
+            throw new DataException("Could not retrieve customer records form the database",  e);
+        }
+       
+        // return the list of customer lists
+        return fr;
+    }
+     
 }
