@@ -50,6 +50,8 @@ public class PhotoCheckout implements edu.byu.isys413.web.Action {
         tx.setType("po");
         tx.setStatus("Complete");
         
+        //change
+        
         String printFormat1 = request.getParameter("PrintFormat1");
         String printFormat2 = request.getParameter("PrintFormat2");
         String printFormat3 = request.getParameter("PrintFormat3");
