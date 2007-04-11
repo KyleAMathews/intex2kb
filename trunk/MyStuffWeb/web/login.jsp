@@ -36,9 +36,9 @@ on Libraries node in Projects view can be used to add the JSTL 1.1 library.
             %>
             <form style="margin: 0 auto;" action="edu.byu.isys413.actions.LoginWeb.action" method="post" target=_parent>
                 <label for="email">Email: </label>
-                <input type="text" name="email" ><br />
+                <input type="text" name="email" /><br />
                 <label for="password">Password: </label>
-                <input type="password" name="password"><br />
+                <input type="password" name="password" /><br />
                 <input style="float: right; margin-right: 5px; padding-right: 0px;" type="submit" value="Submit">
             </form>
             <div class="clear"></div>

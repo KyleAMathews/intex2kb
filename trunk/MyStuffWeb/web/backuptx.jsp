@@ -66,25 +66,31 @@ if (session.getAttribute("backuptx") == null) {
     <p>You have <%=memb.getBackupSize()%> GB of backup space</p>
     <p>Your backup will expire on <%=memb.getBackupExpDate()%>
     <%=tx.getTxLines().get(0).calculateSubtotal()%>
-   <table>
-  <caption>Buy more backup space</caption>
-  <thead>
-    <tr>
-      <th>Buy More Backup Space</th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td># of GBs (form)</td>
-      <td>Price <%=txLine1.getRevenueSource().getPrice()%></td>
-    </tr>
-    <tr>
-      <td>Total</td>
-      <td><%=tx.calculateTotal()%></td>
-    </tr>
-  </tbody>
-</table>
+    <table>
+        <caption>Buy more backup space</caption>
+        <thead>
+            <tr>
+                <th>Buy More Backup Space</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    <form action="edu.byu.isys413.actions.backuptx.action" method="post">
+                    <label for="numGBs"># of GBs to add to account</label>
+                    <input type="text" name="numGBs" />
+                </td>
+                <td>Price <%=txLine1.getRevenueSource().getPrice()%></td>
+            </tr>
+            <tr>
+                <td>Total (after tax)</td>
+                <td>$<%=tx.calculateTotal()%></td>
+            </tr>
+        </tbody>
+    </table>
+    <input style="float: right; margin-right: 5px; padding-right: 0px;" type="submit" value="Checkout">
+    </form>
 </div><!--end of body-->
 
 
