@@ -473,14 +473,23 @@ INSERT INTO "vendor" VALUES ('k23djf45j4k543lk5','Film Vendor','123 Film Street'
 INSERT INTO "vendor" VALUES ('lkjldj4kk54jk4jk4','DVD Vendor','123 DVD Drive','236-543-5434','Dick');
 
 INSERT INTO "conceptual" VALUES('aksfjl3krjlsk3j3ljk','ISO 100 BW Film - 36 Exp','The best film for you Black and White masterpieces',5.26,'00000115123b9144eb018b64001000');
+INSERT INTO "product" VALUES('5jaksfjl3krjlsk3j3ljky4354wet',1.5);
 INSERT INTO "conceptual" VALUES('kkdsjl2k3lk3kjk3dkj','ISO 64 BW Film - 36 Exp','The best film for you Black and White masterpieces',7.35,'00000115123b9144eb018b64001000');
+INSERT INTO "product" VALUES('kkdsjl2k3lk3kjk3dkj',2.6);
 INSERT INTO "conceptual" VALUES('skdfjlkjn23ndlkfjs3','Canon EOS 20D Digital Camera','',945.68,'00000110123b9144eb018b64001000');
+INSERT INTO "product" VALUES('skdfjlkjn23ndlkfjs3',3.6);
 INSERT INTO "conceptual" VALUES('lskdjfkn323k3k3nlkn','Canon PowerShot A350 Digital Camera','',95.63,'00000110123b9144eb018b64001000');
+INSERT INTO "product" VALUES('lskdjfkn323k3k3nlkn',455.2);
 INSERT INTO "conceptual" VALUES('skldfjksdflkdker38f','DVD+R DL Media - 100 Pack','Blank Dual Layer DVD Media',20.56,'00000114123b9144eb018b64001000');
+INSERT INTO "product" VALUES('skldfjksdflkdker38f',23.4);
 INSERT INTO "conceptual" VALUES('skdjf4f8g7dfgwk3rj3','DVD-R DL Media - 100 Pack','Blank Dual Layer DVD Media',23.43,'00000114123b9144eb018b64001000');
+INSERT INTO "product" VALUES('skdjf4f8g7dfgwk3rj3',23.43);
 INSERT INTO "conceptual" VALUES('lskdjfk32jfgkge8f7e','ISO 100 Color Film - 24 Exp','The best film for you Color masterpieces',4.75,'00000115123b9144eb018b64001000');
+INSERT INTO "product" VALUES('lskdjfk32jfgkge8f7e',23.43);
 INSERT INTO "conceptual" VALUES('skdfjlk32kgjk23k34k','ISO 300 Color film - 36 Exp','The best film for you Color masterpieces',5.98,'00000115123b9144eb018b64001000');
+INSERT INTO "product" VALUES('skdfjlk32kgjk23k34k',23.43);
 INSERT INTO "conceptual" VALUES('sdkfjlk4fg76f784398','DVD+R Media - 50 Pack','Blank DVD media',12.39,'00000114123b9144eb018b64001000');
+INSERT INTO "product" VALUES('sdkfjlk4fg76f784398',54.32);
 
 INSERT INTO "conceptualrental" VALUES('kkdsjl2k3lk3kjk3dkj', 29.99, 249.99, 14.99, 5, 10);
 INSERT INTO "conceptualrental" VALUES('skldfjksdflkdker38f', 19.99, 229.99, 9.99, 5, 10);
