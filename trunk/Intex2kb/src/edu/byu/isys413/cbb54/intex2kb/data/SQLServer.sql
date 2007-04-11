@@ -355,8 +355,8 @@ create table "photoBackup"
     "thumbnail" varbinary(max),
     "mediumpic" varbinary(max),
     "originalpic" varbinary(max),
-    "filename" varchar(100),
-    "filetype" varchar(10),
+    "filename" varchar(500),
+    "filetype" varchar(100),
     "filesize" varchar(100),
     "status" varchar(2)
 );
