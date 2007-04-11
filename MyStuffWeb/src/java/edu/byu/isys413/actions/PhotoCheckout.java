@@ -31,7 +31,7 @@ public class PhotoCheckout implements edu.byu.isys413.web.Action {
         HttpSession session = request.getSession();
         
         System.out.println("PrintFormat 1: " + request.getParameter("PrintFormat1"));
-        System.out.println("Qty 1: " + (String)request.getParameter("qty1"));
+        System.out.println("Qty 1: " + request.getParameter("qty1"));
         
         return "checkout.jsp";
     }//process
