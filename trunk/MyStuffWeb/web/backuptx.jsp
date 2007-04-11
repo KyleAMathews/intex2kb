@@ -42,6 +42,7 @@ if (session.getAttribute("backuptx") == null) {
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
 <jsp:include page="header.jsp" />
+<%session.setAttribute("checkoutTxType","ba");%>
 <div id="rightcolumn">
     <h4>MyStuff Backup</h4>
     <p class="small">75% Used of 10GB</p>
@@ -52,7 +53,7 @@ if (session.getAttribute("backuptx") == null) {
         <li><a href="">Upload File(s)</a></li>
         <li><a href="">Add Backup Space</a></li>
         <li><a href="">Help</a></li>
-        <li><a href="checkout.jsp?checkoutTxType="backuptx">Checkout</a></li>
+        <li><a href="checkout.jsp">Checkout</a></li>
     </ul>
 </div><!--end right column-->  
 <div id="body">
@@ -72,7 +73,7 @@ if (session.getAttribute("backuptx") == null) {
         <tbody>
             <tr>
                 <td>
-                    <form action="edu.byu.isys413.actions.backuptx.action" method="post">
+                    <form action="edu.byu.isys413.actions.checkout.action" method="post">
                     <label for="numGBs"># of GBs to add to account</label>
                     <input type="text" name="numGBs" />
                 </td>

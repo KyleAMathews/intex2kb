@@ -45,10 +45,10 @@ $(document).ready(function(){
 <div id="navigation">
     <ul>
         <LI style="margin-top: 0;"><a href="login.jsp?KeepThis=true&TB_iframe=true&height=333&width=300" class="thickbox">Login</a></LI>
-        <LI><a href="sale.jsp">Sale</a></LI>
+        <!--<LI><a href="sale.jsp">Sale</a></LI>
         <LI><a href="rental.jsp">Rental</a></LI>
         <LI><a href="photo.jsp">Photo</a></LI>
-        <LI><a href="backup.jsp">Backup</a></LI>
+        <LI><a href="backup.jsp">Backup</a></LI>-->
     </ul>
 </div><!--end navigation-->
 

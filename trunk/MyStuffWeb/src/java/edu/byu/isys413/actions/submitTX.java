@@ -57,7 +57,7 @@ public class submitTX implements edu.byu.isys413.web.Action {
         
         tx = null;
         
-        return "photo.jsp";
+        return "account.jsp";
     }//process
     
     
