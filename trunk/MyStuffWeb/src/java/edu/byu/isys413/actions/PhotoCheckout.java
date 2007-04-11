@@ -41,16 +41,13 @@ public class PhotoCheckout implements edu.byu.isys413.web.Action {
         String storeid = (String)request.getParameter("group1");
         List<Store> storeList = StoreDAO.getInstance().getByName((String)request.getParameter("group1"));
         Store store = storeList.get(0);
-        JOptionPane.showMessageDialog(null,"Store: " + store.getName());
-        
+         
         Transaction tx = TransactionDAO.getInstance().read((String)session.getAttribute("tx"));
         tx.setEmployee(emp);
         tx.setCustomer(cust);
         tx.setStore(store);
         tx.setType("po");
         tx.setStatus("Complete");
-        
-        //change
         
         String printFormat1 = request.getParameter("PrintFormat1");
         String printFormat2 = request.getParameter("PrintFormat2");
@@ -140,8 +137,8 @@ public class PhotoCheckout implements edu.byu.isys413.web.Action {
             pfSize5 = getSize(Integer.valueOf(printFormat5));
             pfPaper5 = getPaper(Integer.valueOf(printFormat5));
         }
-        
-        return "checkout.jsp?checkoutTxType=\"po\"";
+        session.setAttribute("checkoutTxType","po");
+        return "checkout.jsp";
     }//process
     
     private String getSize(int pf){

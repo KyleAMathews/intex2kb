@@ -48,9 +48,15 @@ import javax.mail.Session;
  */
 public class sendMail {
     
+    /*
     private static final String SMTP_HOST_NAME = "smtp.1and1.com";
     private static final String SMTP_AUTH_USER = "info@2kmystuff.com";
-    private static final String SMTP_AUTH_PWD  = "intex24";
+    private static final String SMTP_AUTH_PWD  = "intex24";*/
+    
+    private static final String SMTP_HOST_NAME = "gateway.byu.edu";
+    private static final String SMTP_AUTH_USER = "tylerf";
+    private static final String SMTP_AUTH_PWD  = "1landprk";
+    
     
     /**
      * Send an e-mail to a list of recipients
@@ -62,7 +68,7 @@ public class sendMail {
         boolean debug = false;
         
         //Set generic message properties
-        String from = "info@2kmystuff.com";
+        String from = "tylerf@byu.edu";
         String subject = "MyStuff Digital Photography";
         
         //Set the host smtp address
