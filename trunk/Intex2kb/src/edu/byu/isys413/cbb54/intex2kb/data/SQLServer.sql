@@ -62,8 +62,8 @@ create table "membership"
     "creditCard" VARCHAR(16),
     "ccExpiration" VARCHAR(45),
     "newsletter" SMALLINT,
-    "backupSize" VARCHAR(15),
-    "backupExpDate" VARCHAR(40)
+    "backupSize" float,
+    "backupExpDate" bigint
 );
 
 create table "backupservice"
@@ -289,8 +289,7 @@ create table "forsale"
 create table "product"
 (
     "id" varchar(40) not null primary key,
-    "quantity" int,
-    "productType" varchar(30)
+    "price" float
 );
 
 create table "login"
@@ -419,12 +418,19 @@ INSERT INTO "rental" VALUES('3245643212342', 4321789, 432143);
 INSERT INTO "rentalreturn" VALUES('4432435432543', '3245643212342', 432193);
 
 INSERT INTO "physical" VALUES('321423421', '543254', 'shelf 31', 'aksfjl3krjlsk3j3ljk', 1);
+INSERT INTO "product" VALUES('321423421',4.50);
 INSERT INTO "physical" VALUES('54322345', '5543256543565', 'shelf 32', 'kkdsjl2k3lk3kjk3dkj', 0);
+INSERT INTO "product" VALUES('54322345',2.25);
 INSERT INTO "physical" VALUES('6543643', '5543256543566', 'shelf 32', 'skdfjlkjn23ndlkfjs3', 0);
+INSERT INTO "product" VALUES('6543643',6.00);
 INSERT INTO "physical" VALUES('5jy4354wet', '5543256543567', 'shelf 32', 'skldfjksdflkdker38f', 0);
+INSERT INTO "product" VALUES('5jy4354wet',15.90);
 INSERT INTO "physical" VALUES('fds890h4oqt', '5543256543568', 'shelf 32', 'lskdjfk32jfgkge8f7e', 0);
+INSERT INTO "product" VALUES('fds890h4oqt',3.86);
 INSERT INTO "physical" VALUES('tgfdsgrewgfdgwe', '5543256543569', 'shelf 32', 'skdfjlk32kgjk23k34k', 0);
+INSERT INTO "product" VALUES('tgfdsgrewgfdgwe',4.65);
 INSERT INTO "physical" VALUES('asdfasdfw4s4', '5543256543570', 'shelf 32', 'sdkfjlk4fg76f784398', 0);
+INSERT INTO "product" VALUES('asdfasdfw4s4',6.45);
 
 INSERT INTO "forrent" VALUES('54322345', 3, '3245643212342');
 INSERT INTO "forrent" VALUES('6543643', 5, '');
