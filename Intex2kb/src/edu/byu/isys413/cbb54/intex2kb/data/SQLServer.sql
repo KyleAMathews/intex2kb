@@ -97,11 +97,11 @@ create table "transaction"
  
 create table "payment"
 (
-    "id" varchar(40) not null primary key,
+    "id" varchar(100) not null primary key,
     "amount" FLOAT,
-    "ccnumber" varchar(20),
-    "ccexpiration" varchar(10),
-    "transactionid" varchar(80),
+    "ccnumber" varchar(50),
+    "ccexpiration" varchar(50),
+    "transactionid" varchar(100),
     "change" FLOAT,
     "type" varchar(80)
 );
@@ -373,10 +373,10 @@ INSERT INTO "category" VALUES ('00000115123b9144eb018b64001000', 'Film');
 
 
 INSERT INTO "customer" VALUES ('00000109123b9144eb018b64001000', 'Cameron', 'Burgon', '851 Wymount Terrace', '', 'Provo', 'Utah', '84602', '8013786198', 'tylerfarmer@gmail.com');
-INSERT INTO "customer" VALUES ('00000109123b925d16688bc2001000', 'Jamie', 'Burgon', '851 Wymount Terrace', '', 'Provo', 'Utah', '84604', '8013689248', 'wherever@sd.com');
-INSERT INTO "customer" VALUES ('10000109123b925d16688bc2001000', 'Bryan', 'Schader', '267 E. 500 N. #71', '', 'Provo', 'Utah', '84606', '4089529043', 'bryan@trueramerica.org');
-INSERT INTO "customer" VALUES ('00000109123b8e75a1ce5a33001000', 'Kyle', 'Mathews', '123 Somewhere', '', 'Nowhere', 'Nevada', '87839', '3418394854', 'wherever@sd.com');
-INSERT INTO "customer" VALUES ('00000109123b8e75a1ce5a34001000', 'Jane', 'Doe', '123 Somewhere', '', 'Nowhere', 'Nevada', '87839', '3418394854', 'wherever@sd.com');
+INSERT INTO "customer" VALUES ('00000109123b925d16688bc2001000', 'Jamie', 'Burgon', '851 Wymount Terrace', '', 'Provo', 'Utah', '84604', '8013689248', 'cameronb62@gmail.com');
+INSERT INTO "customer" VALUES ('10000109123b925d16688bc2001000', 'Bryan', 'Schader', '267 E. 500 N. #71', '', 'Provo', 'Utah', '84606', '4089529043', 'bschader@gmail.com');
+INSERT INTO "customer" VALUES ('00000109123b8e75a1ce5a33001000', 'Kyle', 'Mathews', '123 Somewhere', '', 'Nowhere', 'Nevada', '87839', '3418394854', 'kyle.mathews@gmail.com');
+INSERT INTO "customer" VALUES ('00000109123b8e75a1ce5a34001000', 'Jane', 'Doe', '123 Somewhere', '', 'Nowhere', 'Nevada', '87839', '3418394854', 'tylerfarmer@gmail.com');
 INSERT INTO "customer" VALUES ('00000111d80891e0015d170a04449d', 'Tyler', 'Farmer', '123 Somewhere', '', 'Nowhere', 'Nevada', '87839', '3418394854', 'tylerfarmer@gmail.com');
 
 INSERT INTO "membership" VALUES ('tylermembid', '00000111d80891e0015d170a04449d', '23123', '12313', '123132', '12311175098508472',21, 1.0, 123123);

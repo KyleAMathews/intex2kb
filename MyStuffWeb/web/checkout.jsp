@@ -1,6 +1,6 @@
 <%@page contentType="text/html"%>
 <%@page pageEncoding="UTF-8"%>
-<%@page import="edu.byu.isys413.cbb54.intex2kb.*"%>
+<%@page import= "edu.byu.isys413.cbb54.intex2kb.data.*" %>
 <%--
 The taglib directive below imports the JSTL library. If you uncomment it,
 you must also add the JSTL library to the project. The Add Library... action
@@ -14,28 +14,31 @@ on Libraries node in Projects view can be used to add the JSTL 1.1 library.
 "http://www.w3.org/TR/html4/loose.dtd">
 
 <jsp:include page="header.jsp" />
-<%Membership m = MembershipDAO.getInstance().read(session.getAttribute("membid"));
+<%Membership m = MembershipDAO.getInstance().read((String)session.getAttribute("membid"));
 Customer cust = m.getCustomer();
 Transaction tx = null;
+formatNumber fmt = new formatNumber();
 %>
 <div id="body">
-    <% String txType = (String)request.getAttribute("checkoutTxType");
+    <% String txType = (String)session.getAttribute("checkoutTxType");
     if (txType.equals("ba")){
-    out.write("<jsp:include page=\"backupCheckout.jsp\" />");    
-    tx = TransactionDAO.getInstance().read((String)session.getAttribute("backuptx"));
+        out.write("<jsp:include page=\"backupCheckout.jsp\" />");
+        tx = TransactionDAO.getInstance().read((String)session.getAttribute("backuptx"));
     }else if(txType.equals("re")){
-    out.write("<jsp:include page=\"rentalCheckout.jsp\" />"); 
-    tx = TransactionDAO.getInstance().read((String)session.getAttribute("rentaltx"));
+        out.write("<jsp:include page=\"rentalCheckout.jsp\" />");
+        tx = TransactionDAO.getInstance().read((String)session.getAttribute("rentaltx"));
     }else if(txType.equals("po")){
-    out.write("<jsp:include page=\"photoCheckout.jsp\" />");    
-    tx = TransactionDAO.getInstance().read((String)session.getAttribute("tx"));
+        out.write("<jsp:include page=\"photoCheckout.jsp\" />");
+        tx = TransactionDAO.getInstance().read((String)session.getAttribute("tx"));
     }else if(txType.equals("sa")){
-    out.write("<jsp:include page=\"saleCheckout.jsp\" />");  
-    tx = TransactionDAO.getInstance().read((String)session.getAttribute("saletx"));
+        out.write("<jsp:include page=\"saleCheckout.jsp\" />");
+        tx = TransactionDAO.getInstance().read((String)session.getAttribute("saletx"));
     }
+    session.setAttribute("tx",tx.getId());
     %>
     <%//=checkoutView.getMembInfo()%>
     
+    <form method="post" action="edu.byu.isys413.actions.submitTX.action">
     <table>
         <thead>
             <tr>
@@ -49,7 +52,8 @@ Transaction tx = null;
             </tr>
             <tr>
                 <td>Address</td>
-                <td><%=request.getAttribute("Address1")%><br><%=request.getAttribute("Address2")%></td>
+                <td><%=cust.getAddress1()%><br><%=cust.getAddress2()%><br>
+                <%=cust.getCity()%>, <%=cust.getState()%> <%=cust.getZip()%></td>
             </tr>
             <tr>
                 <td>Email</td>
@@ -57,7 +61,11 @@ Transaction tx = null;
             </tr>
             <tr>
                 <td>Payment</td>
-                <td>Your credit card will be charged: $<%=tx.calculateTotal()%></td>
+                <td>Your credit card will be charged: $<%=fmt.fmt(tx.calculateTotal())%></td>
+            </tr>
+            <tr>
+                <td><input type="submit" value="Submit" class="buttonSubmit" /></td>
+                <td></td>
             </tr>
         </tbody>
     </table>
