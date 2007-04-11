@@ -29,7 +29,7 @@ public class RevenueSourceDAO {
     
     /** Creates a new instance of RevenueSourceDAO */
     private RevenueSourceDAO() {
-        //DAOmap.put("sa", SaleDAO.getInstance());
+        DAOmap.put("sa", SaleDAO.getInstance());
         DAOmap.put("ba", BackupDAO.getInstance());
         DAOmap.put("po", PrintOrderDAO.getInstance());
         DAOmap.put("rn", RentalDAO.getInstance());
