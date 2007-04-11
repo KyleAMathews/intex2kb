@@ -43,7 +43,7 @@ public class PhotoCheckout implements edu.byu.isys413.web.Action {
         Store store = storeList.get(0);
         JOptionPane.showMessageDialog(null,"Store: " + store.getName());
         
-        Transaction tx = (Transaction)session.getAttribute("tx");
+        Transaction tx = TransactionDAO.getInstance().read((String)session.getAttribute("tx"));
         tx.setEmployee(emp);
         tx.setCustomer(cust);
         tx.setStore(store);
@@ -122,7 +122,7 @@ public class PhotoCheckout implements edu.byu.isys413.web.Action {
             txln1.setRsType("Print Order - " + po1.getPhotoSet().getDescription());
             tx.addTxLine(txln1);
             
-            UpdateController.getInstance().saveTransaction(tx);
+            //UpdateController.getInstance().saveTransaction(tx);
         }
         if(printFormat2 != null){
             pfSize2 = getSize(Integer.valueOf(printFormat2));
@@ -141,21 +141,7 @@ public class PhotoCheckout implements edu.byu.isys413.web.Action {
             pfPaper5 = getPaper(Integer.valueOf(printFormat5));
         }
         
-        System.out.println((String)session.getAttribute("FileName1"));
-        System.out.println(pfSize1);
-        System.out.println(pfPaper1);
-        System.out.println(pfSize2);
-        System.out.println(pfPaper2);
-        System.out.println(pfSize3);
-        System.out.println(pfPaper3);
-        System.out.println(pfSize4);
-        System.out.println(pfPaper4);
-        System.out.println(pfSize5);
-        System.out.println(pfPaper5);
-        
-        
-        
-        return "photo.jsp";
+        return "checkout.jsp?checkoutTxType=\"po\"";
     }//process
     
     private String getSize(int pf){
