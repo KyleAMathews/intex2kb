@@ -27,91 +27,109 @@ on Libraries node in Projects view can be used to add the JSTL 1.1 library.
         <form method="post" action="edu.byu.isys413.actions.PhotoCheckout.action">
             <table width="600px" cellpadding="5px" cellspacing="10px" valign="middle">
                 <%if(session.getAttribute("1") != null){%><tr><td>Picture 1:</td><td><%=session.getAttribute("1")%></td>
-                <td><select NAME="PrintFormat1">
-                        <% List<String> sizeList = new LinkedList<String>();
-                        sizeList = printFormatDAO.getInstance().getPrintFormat();
-                        for(int i = 0; i<sizeList.size(); i++){
-                            String value = sizeList.get(i);
-                        %>
-                        <option VALUE="<%=i%>"><%=value%>
-                        <%
-                        session.setAttribute("FileName1",session.getAttribute("1"));}
-                        %>
-                </select></td>
-                <td>Qty:<input name="qty1" type=text size="5" value="0"></td>
-                <%
-                }
-                %>
+                    <td><select NAME="PrintFormat1">
+                            <% List<String> sizeList = new LinkedList<String>();
+                            sizeList = printFormatDAO.getInstance().getPrintFormat();
+                            for(int i = 0; i<sizeList.size(); i++){
+                                String value = sizeList.get(i);
+                            %>
+                            <option VALUE="<%=i%>"><%=value%>
+                            <%
+                            session.setAttribute("FileName1",session.getAttribute("1"));}
+                            %>
+                    </select></td>
+                    <td>Qty:<input name="qty1" type=text size="5" value="0"></td>
+                    <%
+                    }
+                    %>
+                </tr>
                 <%if(session.getAttribute("2") != null){%><tr><td>Picture 2:</td><td><%=session.getAttribute("2")%></td>
-                <td><select NAME="PrintFormat2">
-                        <% List<String> sizeList = new LinkedList<String>();
-                        sizeList = printFormatDAO.getInstance().getPrintFormat();
-                        for(int i = 0; i<sizeList.size(); i++){
-                            String value = sizeList.get(i);
-                        %>
-                        <option VALUE="<%=i%>"><%=value%>
-                        <%
-                        session.setAttribute("FileName2",session.getAttribute("2"));}
-                        %>
-                </select></td>
-                <td>Qty:<input name="qty2" type=text size="5" value="0"></td>
-                <td>
-                    <input type="checkbox" name="StoreOpt1" value="000001117284553c0014b20a500442"> Provo<br>
-                    <input type="checkbox" name="StoreOpt2" value="000001117284553c0014b20a500443"> Logan<br>
-                    <input type="checkbox" name="StoreOpt3" value="000001117284553c0014b20a500444"> Murray<br>
-                </td>
-                <%
-                }
-                %>
+                    <td><select NAME="PrintFormat2">
+                            <% List<String> sizeList = new LinkedList<String>();
+                            sizeList = printFormatDAO.getInstance().getPrintFormat();
+                            for(int i = 0; i<sizeList.size(); i++){
+                                String value = sizeList.get(i);
+                            %>
+                            <option VALUE="<%=i%>"><%=value%>
+                            <%
+                            session.setAttribute("FileName2",session.getAttribute("2"));}
+                            %>
+                    </select></td>
+                    <td>Qty:<input name="qty2" type=text size="5" value="0"></td>
+                    <%
+                    }
+                    %>
+                </tr>
                 <%if(session.getAttribute("3") != null){%><tr><td>Picture 3:</td><td><%=session.getAttribute("3")%></td>
-                <td><select NAME="PrintFormat3">
-                        <% List<String> sizeList = new LinkedList<String>();
-                        sizeList = printFormatDAO.getInstance().getPrintFormat();
-                        for(int i = 0; i<sizeList.size(); i++){
-                            String value = sizeList.get(i);
-                        %>
-                        <option VALUE="<%=i%>"><%=value%>
-                        <%
-                        session.setAttribute("FileName3",session.getAttribute("3"));}
-                        %>
-                </select></td>
-                <td>Qty:<input name="qty3" type=text size="5" value="0"></td>
-                <%
-                }
-                %>
+                    <td><select NAME="PrintFormat3">
+                            <% List<String> sizeList = new LinkedList<String>();
+                            sizeList = printFormatDAO.getInstance().getPrintFormat();
+                            for(int i = 0; i<sizeList.size(); i++){
+                                String value = sizeList.get(i);
+                            %>
+                            <option VALUE="<%=i%>"><%=value%>
+                            <%
+                            session.setAttribute("FileName3",session.getAttribute("3"));}
+                            %>
+                    </select></td>
+                    <td>Qty:<input name="qty3" type=text size="5" value="0"></td>
+                    <%
+                    }
+                    %>
+                </tr>
                 <%if(session.getAttribute("4") != null){%><tr><td>Picture 4:</td><td><%=session.getAttribute("4")%></td>
-                <td><select NAME="PrintFormat4">
-                        <% List<String> sizeList = new LinkedList<String>();
-                        sizeList = printFormatDAO.getInstance().getPrintFormat();
-                        for(int i = 0; i<sizeList.size(); i++){
-                            String value = sizeList.get(i);
-                        %>
-                        <option VALUE="<%=i%>"><%=value%>
-                        <%
-                        session.setAttribute("FileName4",session.getAttribute("4"));}
-                        %>   
-                </select></td>
-                <td>Qty:<input name="qty4" type=text size="5" value="0"></td>
-                <%
-                }
-                %>
+                    <td><select NAME="PrintFormat4">
+                            <% List<String> sizeList = new LinkedList<String>();
+                            sizeList = printFormatDAO.getInstance().getPrintFormat();
+                            for(int i = 0; i<sizeList.size(); i++){
+                                String value = sizeList.get(i);
+                            %>
+                            <option VALUE="<%=i%>"><%=value%>
+                            <%
+                            session.setAttribute("FileName4",session.getAttribute("4"));}
+                            %>   
+                    </select></td>
+                    <td>Qty:<input name="qty4" type=text size="5" value="0"></td>
+                    <%
+                    }
+                    %>
+                </tr>
                 <%if(session.getAttribute("5") != null){%><tr><td>Picture 5:</td><td><%=session.getAttribute("5")%></td>
-                <td><select NAME="PrintFormat5">
-                        <% List<String> sizeList = new LinkedList<String>();
-                        sizeList = printFormatDAO.getInstance().getPrintFormat();
-                        for(int i = 0; i<sizeList.size(); i++){
-                            String value = sizeList.get(i);
+                    <td><select NAME="PrintFormat5">
+                            <% List<String> sizeList = new LinkedList<String>();
+                            sizeList = printFormatDAO.getInstance().getPrintFormat();
+                            for(int i = 0; i<sizeList.size(); i++){
+                                String value = sizeList.get(i);
+                            %>
+                            <option VALUE="<%=i%>"><%=value%>
+                            <%
+                            session.setAttribute("FileName5",session.getAttribute("5"));}
+                            %>
+                    </select></td>
+                    <td>Qty:<input name="qty5" type=text size="5" value="0"></td>
+                    <%
+                    }
+                    %>
+                </tr>
+                <tr><td><input type="submit" value="Submit" class="buttonSubmit" /></td>
+                    <td>Pickup Location:<br>
+                        <%List<Store> storeList = new LinkedList<Store>();
+                        storeList = StoreDAO.getInstance().getAll();
+                        for(int i = 0; i < storeList.size(); i++){
+                            String value = null;
+                            if(storeList.get(i).getName().matches("Online Store")){
+                                break;
+                            }else{
+                                value = storeList.get(i).getName();
+                            }
                         %>
-                        <option VALUE="<%=i%>"><%=value%>
+                        <input type="radio" name="group1" value="<%=value%>"><%=value%><br>
                         <%
-                        session.setAttribute("FileName5",session.getAttribute("5"));}
+                        }
                         %>
-                </select></td>
-                <td>Qty:<input name="qty5" type=text size="5" value="0"></td>
-                <%
-                }
-                %>
-                <tr><td><input type="submit" value="Submit" class="buttonSubmit" /></td></tr>
+                    </td>
+                </tr>
+                
             </table>
         </form>
     </div>
