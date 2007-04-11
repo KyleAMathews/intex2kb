@@ -26,8 +26,8 @@ table {
 	xborder: 1px solid gray;
 	}
 table td {
-	border: 1px solid gray;
-	width: 100px;
+	border: 1px solid white;
+
 	}
 p.small{
 	font-size: small;
@@ -181,7 +181,6 @@ label {
 input {
  display: block;
  background-color:#c6c6c6;
- width: 175px;
  float: left;
  margin-bottom: 10px;
 	}
@@ -210,7 +209,6 @@ td, th+th {
 td+td {
  border: 5px solid #ccc;
  text-align: center;
-width: 100px;
 	}
 td#winner {
  border: 7px dotted #999;

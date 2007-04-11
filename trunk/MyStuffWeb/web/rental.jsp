@@ -4,6 +4,7 @@
 <%@page import= "edu.byu.isys413.cbb54.intex2kb.data.*" %>
 
 <%
+    String title = "Rental";
     Transaction rentaltx = null;
       if (session.getAttribute("rentaltx") == null){
         System.out.println("System didn't catch the same transaction");
@@ -57,33 +58,53 @@
         
     </td>
 </table>
- <input type="submit" value="Search"><br>
+ <input type="submit" value="Search"><br><br>
         </form>
 
 <table width="600px" cellpadding="5px" cellspacing="10px">
     <tr><th>Available Products</th><th>Shopping Cart</th></tr>
     <tr>
     <td>
-        <%if (request.getAttribute("forrent") != null) {
-                List<ForRent> rental = new LinkedList<ForRent>();
-                rental = (List) request.getAttribute("forrent");
-                for(int i = 0; i<rental.size(); i++){
-                    double price = ConceptualRentalDAO.getInstance().getRentalPrice(rental.get(i));
-                    String name = ConceptualRentalDAO.getInstance().getRentalName(rental.get(i));
-                %>The Item Name = <%=name%> The Item Price = <%=price%><br> <%
-                    }//end for
-                
-                }//end if
-                %>
-    </td>	
+        <table>
+            <form action = "edu.byu.isys413.actions.AddTXLine.action" method ="post" target=_parent>
+            <tr>
+                <td>Select Product</td>
+                <td>Name</td>
+                <td>Price</td>
+            </tr>
+            <%if (request.getAttribute("forrent") != null) {
+            List<ForRent> rental = new LinkedList<ForRent>();
+            rental = (List) request.getAttribute("forrent");
+            for(int i = 0; i<rental.size(); i++){
+            double price = ConceptualRentalDAO.getInstance().getRentalPrice(rental.get(i));
+            String name = ConceptualRentalDAO.getInstance().getRentalName(rental.get(i));
+            //String id = (String) rental.get(i).getId();
+            %>
+            <tr>
+                <td><input type="radio" name ="Rental" value = "<%=rental.get(i).getId()%>"></td>
+                <td><%=name%></td>
+                <td><%=price%></td>
+            </tr>
+            <%
+            }//end for
+            
+            }//end if
+            %>
+            <input type="submit" value="Add"></form><br><br>
+        </table><br>
+        
+    </td>
     <td>
         The following items will be added to your shopping cart.
         <%
         List<TransactionLine> txline = new LinkedList<TransactionLine>();
         txline = rentaltx.getTxLines();
+        System.out.println("preparing to print out the transaction lines");
+        System.out.println(txline);
         for(int i = 0; i<txline.size(); i++){
             double txlineprice = txline.get(i).calculateSubtotal();
-            Rental tn = new Rental(txline.get(i).getRevenueSource().getId());
+            Rental rn = new Rental(txline.get(i).getRevenueSource().getId());
+            ForRent fr = ForRentDAO.getInstance().getByRentalID(rn.getId());
             String txlinename = ConceptualRentalDAO.getInstance().getRentalName(fr);
             %>The Item Name = <%=txlinename%> The Item Price = <%=txlineprice%><br> <%
         }
