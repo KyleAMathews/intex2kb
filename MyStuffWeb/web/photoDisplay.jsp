@@ -23,10 +23,10 @@ on Libraries node in Projects view can be used to add the JSTL 1.1 library.
     <p>Welcome to MyStuff Online Photo Printing<br><br>
     Files uploaded.  Please make selections below and click Submit to add print order to cart.</p>
     <div>
-        <form method="post" action="edu.byu.isys413.actions.PhotoUpload.action" enctype="multipart/form-data">
+        <form method="post" action="edu.byu.isys413.actions.PhotoCheckout.action">
             <table width="600px" cellpadding="5px" cellspacing="10px" valign="middle">
                 <%if(session.getAttribute("1") != null){%><tr><td>Picture 1:</td><td><%=session.getAttribute("1")%></td>
-                <td><select NAME="PrintFormat">
+                <td><select NAME="PrintFormat1">
                         <% List<String> sizeList = new LinkedList<String>();
                         sizeList = printFormatDAO.getInstance().getPrintFormat();
                         for(int i = 0; i<sizeList.size(); i++){
@@ -42,7 +42,7 @@ on Libraries node in Projects view can be used to add the JSTL 1.1 library.
                 }
                 %>
                 <%if(session.getAttribute("2") != null){%><tr><td>Picture 2:</td><td><%=session.getAttribute("2")%></td>
-                <td><select NAME="PrintFormat">
+                <td><select NAME="PrintFormat2">
                         <% List<String> sizeList = new LinkedList<String>();
                         sizeList = printFormatDAO.getInstance().getPrintFormat();
                         for(int i = 0; i<sizeList.size(); i++){
@@ -58,7 +58,7 @@ on Libraries node in Projects view can be used to add the JSTL 1.1 library.
                 }
                 %>
                 <%if(session.getAttribute("3") != null){%><tr><td>Picture 3:</td><td><%=session.getAttribute("3")%></td>
-                <td><select NAME="PrintFormat">
+                <td><select NAME="PrintFormat3">
                         <% List<String> sizeList = new LinkedList<String>();
                         sizeList = printFormatDAO.getInstance().getPrintFormat();
                         for(int i = 0; i<sizeList.size(); i++){
@@ -74,7 +74,7 @@ on Libraries node in Projects view can be used to add the JSTL 1.1 library.
                 }
                 %>
                 <%if(session.getAttribute("4") != null){%><tr><td>Picture 4:</td><td><%=session.getAttribute("4")%></td>
-                <td><select NAME="PrintFormat">
+                <td><select NAME="PrintFormat4">
                         <% List<String> sizeList = new LinkedList<String>();
                         sizeList = printFormatDAO.getInstance().getPrintFormat();
                         for(int i = 0; i<sizeList.size(); i++){
@@ -90,7 +90,7 @@ on Libraries node in Projects view can be used to add the JSTL 1.1 library.
                 }
                 %>
                 <%if(session.getAttribute("5") != null){%><tr><td>Picture 5:</td><td><%=session.getAttribute("5")%></td>
-                <td><select NAME="PrintFormat">
+                <td><select NAME="PrintFormat5">
                         <% List<String> sizeList = new LinkedList<String>();
                         sizeList = printFormatDAO.getInstance().getPrintFormat();
                         for(int i = 0; i<sizeList.size(); i++){
