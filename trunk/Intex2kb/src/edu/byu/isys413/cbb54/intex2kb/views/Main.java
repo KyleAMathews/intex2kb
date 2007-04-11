@@ -929,7 +929,7 @@ public class Main extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    
     private void submitSaleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitSaleActionPerformed
         try{
             Sale s = (Sale)SaleDAO.getInstance().create();
@@ -939,40 +939,60 @@ public class Main extends javax.swing.JFrame {
             System.out.println("Quantity = " + SaleQty.getText());
             
             String id = saleSKU.getText();
-            Product p = null;
+            Product p;
+            TransactionLine txln;
             
             if(PhysicalDAO.getInstance().exists(id)){
                 System.out.print("Creating a Physical Product object.....");
                 PhysicalDAO PhyDAO = (PhysicalDAO) PhysicalDAO.getInstance();
-                p = PhyDAO.readBySku(id);
+                p = PhyDAO.getBySku(id);
+                Physical ph = (Physical)p;
                 System.out.print("Success");
+                s.setPrice(p.getPrice());
+                s.setProductType("Serialized");
+                s.setProduct(p);
+                Conceptual cp = (Conceptual)ConceptualDAO.getInstance().read(ph.getConceptualid());
+                
+                txln = TransactionLineDAO.getInstance().create(tx, p.getId());
+                txln.setRevenueSource(s);
+                txln.setRsType("Sale - " + cp.getName());
+                tx.addTxLine(txln);
             }else if(ConceptualDAO.getInstance().exists(id)){
                 System.out.println("Creating a Conceptual Product object");
                 p = ConceptualDAO.getInstance().read(id);
+                Conceptual cp = (Conceptual)p;
+                s.setPrice(p.getPrice());
+                s.setProductType("Bulk");
+                s.setProduct(p);
+                
+                txln = TransactionLineDAO.getInstance().create(tx, p.getId());
+                txln.setRevenueSource(s);
+                txln.setRsType("Sale - " + cp.getName());
+                tx.addTxLine(txln);
             }else{
                 throw new Exception();
             }
             
-            s.setProduct(p);
-            
-            //create new TX-Line
-            TransactionLine txln = TransactionLineDAO.getInstance().create(tx, p.getId());
-            txln.setRevenueSource(s);
-            txln.setRsType("Sale - " + ConceptualDAO.getInstance().read(s.getProduct().getId()));
-            tx.addTxLine(txln);
-            
             //Add TX-Line to GUI
             model.updateTable(tx);
+            
+            // Reset Revenue Source panel
+            setVisible(8);
+            
+            // Reset SKU field
+            saleSKU.setText("");
+            
         }catch (Exception e){
             JOptionPane.showMessageDialog(null,"There was an error adding item to transaction");
+            e.printStackTrace();
         }
     }//GEN-LAST:event_submitSaleActionPerformed
-
+    
     private void updateprodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateprodActionPerformed
 // TODO add your handling code here:
-         setrentalinfo();
+        setrentalinfo();
     }//GEN-LAST:event_updateprodActionPerformed
-
+    
     private void addRentalItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addRentalItemActionPerformed
 // TODO add your handling code here:
         try {
@@ -981,7 +1001,7 @@ public class Main extends javax.swing.JFrame {
             //set rental info
             rn.setDateOut(12345678);
             rn.setDateDue(12348765);
-           
+            
             
             //set total price
             //conv.setTotalPrice(conv.getQuantity(),ct.getPrice());
@@ -1000,7 +1020,7 @@ public class Main extends javax.swing.JFrame {
             ex.printStackTrace();
         }
     }//GEN-LAST:event_addRentalItemActionPerformed
-
+    
     private void calcsubtotalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_calcsubtotalActionPerformed
 // TODO add your handling code here:
         String numdays = numberdays.getText();
@@ -1116,20 +1136,20 @@ public class Main extends javax.swing.JFrame {
     
     public void setrentalinfo(){
         try{
-        String serial = serialnumber.getText();
-        
-        //serialnumber.setText(serial);
-        String physicalid = ForRentDAO.getInstance().getBySerial(serial);
-        //PhysicalDAO.getInstance().read();
-        ConceptualRental cr = ConceptualRentalDAO.getInstance().read("214ra3q4wrae");
-        price = cr.getPrice();
-        priceperday.setText(Double.toString(price));
-        todaysdate.setText("April 4th");
-        
-        
+            String serial = serialnumber.getText();
+            
+            //serialnumber.setText(serial);
+            String physicalid = ForRentDAO.getInstance().getBySerial(serial);
+            //PhysicalDAO.getInstance().read();
+            ConceptualRental cr = ConceptualRentalDAO.getInstance().read("214ra3q4wrae");
+            price = cr.getPrice();
+            priceperday.setText(Double.toString(price));
+            todaysdate.setText("April 4th");
+            
+            
         }catch (Exception e){
-        e.printStackTrace();
-    }
+            e.printStackTrace();
+        }
     }
     /**
      * @param args the command line arguments
