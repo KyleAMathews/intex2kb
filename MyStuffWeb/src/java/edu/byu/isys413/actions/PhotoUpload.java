@@ -73,7 +73,6 @@ public class PhotoUpload implements edu.byu.isys413.web.Action {
             
             //save photo to DB
             PhotoDAO.getInstance().save(photo,null,null,f.get(i));
-            JOptionPane.showMessageDialog(null,Integer.toString(i));
             session.setAttribute(Integer.toString(i + 1),photo.getFilename());
         }
         

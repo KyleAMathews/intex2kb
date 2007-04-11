@@ -13,14 +13,6 @@ on Libraries node in Projects view can be used to add the JSTL 1.1 library.
 "http://www.w3.org/TR/html4/loose.dtd">
 <%String title = "Photo Development";%>
 <jsp:include page="header.jsp" /> 
-<div id="navigation">
-    <ul>
-        <LI style="margin-top: 0;"><a href="sale.jsp">Sale</a></LI>
-        <LI><a href="rental.jsp">Rental</a></LI>
-        <LI><a href="photo.jsp">Photo</a></LI>
-        <LI><a href="backup.jsp">Backup</a></LI>
-    </ul>
-</div><!--end navigation-->
 <div id="rightcolumn">
     <h4>MyStuff Photo Printing</h4>
 </div><!--end right column-->  
