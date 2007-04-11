@@ -426,11 +426,6 @@ INSERT INTO "physical" VALUES('fds890h4oqt', '5543256543568', 'shelf 32', 'lskdj
 INSERT INTO "physical" VALUES('tgfdsgrewgfdgwe', '5543256543569', 'shelf 32', 'skdfjlk32kgjk23k34k', 0);
 INSERT INTO "physical" VALUES('asdfasdfw4s4', '5543256543570', 'shelf 32', 'sdkfjlk4fg76f784398', 0);
 
-INSERT INTO "conceptualrental" VALUES('1234waf3q4wrea', 29.99, 249.99, 14.99, 5, 10);
-INSERT INTO "conceptualrental" VALUES('214ra3q4wrae', 19.99, 229.99, 9.99, 5, 10);
-INSERT INTO "conceptualrental" VALUES('6jhy53gtryjmun', 9.99, 49.99, 4.99, 5, 10);
-INSERT INTO "conceptualrental" VALUES('8okij7u6hy', 99.99, 11249.99, 44.99, 5, 10);
-
 INSERT INTO "forrent" VALUES('54322345', 3, '3245643212342');
 INSERT INTO "forrent" VALUES('6543643', 5, '');
 INSERT INTO "forrent" VALUES('5jy4354wet', 4, '');
@@ -480,6 +475,14 @@ INSERT INTO "conceptual" VALUES('skdjf4f8g7dfgwk3rj3','DVD-R DL Media - 100 Pack
 INSERT INTO "conceptual" VALUES('lskdjfk32jfgkge8f7e','ISO 100 Color Film - 24 Exp','The best film for you Color masterpieces',4.75,'00000115123b9144eb018b64001000');
 INSERT INTO "conceptual" VALUES('skdfjlk32kgjk23k34k','ISO 300 Color film - 36 Exp','The best film for you Color masterpieces',5.98,'00000115123b9144eb018b64001000');
 INSERT INTO "conceptual" VALUES('sdkfjlk4fg76f784398','DVD+R Media - 50 Pack','Blank DVD media',12.39,'00000114123b9144eb018b64001000');
+
+INSERT INTO "conceptualrental" VALUES('kkdsjl2k3lk3kjk3dkj', 29.99, 249.99, 14.99, 5, 10);
+INSERT INTO "conceptualrental" VALUES('skldfjksdflkdker38f', 19.99, 229.99, 9.99, 5, 10);
+INSERT INTO "conceptualrental" VALUES('lskdjfk32jfgkge8f7e', 9.99, 49.99, 4.99, 5, 10);
+INSERT INTO "conceptualrental" VALUES('sdkfjlk4fg76f784398', 99.99, 11249.99, 44.99, 5, 10);
+INSERT INTO "conceptualrental" VALUES('skdfjlkjn23ndlkfjs3', 19.99, 229.99, 9.99, 5, 10);
+INSERT INTO "conceptualrental" VALUES('skdfjlk32kgjk23k34k', 19.99, 229.99, 9.99, 5, 10);
+
 
 INSERT INTO "vendoritem" VALUES('l32k452lkj42k4k23','skdfjlkjn23ndlkfjs3',1000.00);
 INSERT INTO "vendoritem" VALUES('l32k452lkj42k4k23','lskdjfkn323k3k3nlkn',90.00);
