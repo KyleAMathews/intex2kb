@@ -8,11 +8,25 @@ you must also add the JSTL library to the project. The Add Library... action
 on Libraries node in Projects view can be used to add the JSTL 1.1 library.
 --%>
 <%
-   // Transaction tx = TransactionDAO.getInstance().create();
-  //  tx.setType(rental);
-   // session.setAttribute("transaction", tx);
-   //String value = "";
-
+    Transaction rentaltx = null;
+      if (request.getAttribute("rentaltx") == null){
+        System.out.println("System didn't catch the same transaction");
+      rentaltx = TransactionDAO.getInstance().create();
+      Store store = new Store("010001117284553c0014b20b500444");
+      store.setIsInDB(true);
+      store.setDirty(false);
+      rentaltx.setType("rental");
+      rentaltx.setStore(store);
+      Employee emp = new Employee("120001117284553c0014b60a500442");
+      emp.setInDB(true);
+      emp.setDirty(false);
+      rentaltx.setEmployee(emp);
+      session.setAttribute("rentaltx", rentaltx);
+      //TransactionLine txln = TransactionLineDAO.getInstance().create(tx, "rn");
+      //rentaltx.addTxLine(txln);
+}else{
+        rentaltx = (Transaction) session.getAttribute("rentaltx");
+}
 %>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
@@ -72,7 +86,7 @@ $(document).ready(function(){
         for(int i = 0; i<categoryList.size(); i++){
                String value = categoryList.get(i);
                 %>
-                <option VALUE="<%=i%>"><%=value%>
+                <option VALUE="<%=i%>"><%=value%><br>
                 <%
                 }
                 %>
@@ -86,7 +100,7 @@ $(document).ready(function(){
         
     </td>
 </table>
- <input type="submit" value="Search">
+ <input type="submit" value="Search"><br>
         </form>
 
 <table width="600px" cellpadding="5px" cellspacing="10px">
@@ -106,7 +120,18 @@ $(document).ready(function(){
                 %>
     </td>	
     <td>
-        The transaction text goes here.
+        The following items will be added to your shopping cart.
+        <%
+        List<TransactionLine> txline = new LinkedList<TransactionLine>();
+        txline = rentaltx.getTxLines();
+        for(int i = 0; i<txline.size(); i++){
+            double txlineprice = txline.get(i).calculateSubtotal();
+            ForRent fr = new ForRent(txline.get(i).getRevenueSource().getId());
+            String txlinename = ConceptualRentalDAO.getInstance().getRentalName(fr);
+            %>The Item Name = <%=txlinename%> The Item Price = <%=txlineprice%><br> <%
+        }
+        System.out.println(rentaltx.getId());
+        %>
     </td>
 </table>
 </div>
