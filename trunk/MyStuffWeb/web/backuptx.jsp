@@ -58,6 +58,7 @@ if (session.getAttribute("backuptx") == null) {
         <li><a href="">Upload File(s)</a></li>
         <li><a href="">Add Backup Space</a></li>
         <li><a href="">Help</a></li>
+        <li><a href="edu.byu.isys413.actions.checkoutView.action">Checkout</a></li>
     </ul>
 </div><!--end right column-->  
 <div id="body">
@@ -65,7 +66,7 @@ if (session.getAttribute("backuptx") == null) {
     <h3>Hi <%=tx.getCustomer().getFname()%></h3>
     <p>You have <%=memb.getBackupSize()%> GB of backup space</p>
     <p>Your backup will expire on <%=memb.getBackupExpDate()%>
-    <%=tx.getTxLines().get(0).calculateSubtotal()%>
+    <%//=//(backup)(tx.getTxLines().get(0).getRevenueSource())%>
     <table>
         <caption>Buy more backup space</caption>
         <thead>
