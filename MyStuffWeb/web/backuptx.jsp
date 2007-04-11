@@ -1,12 +1,6 @@
 <%@page contentType="text/html"%>
 <%@page pageEncoding="UTF-8"%>
-<%@page import="edu.byu.isys413.cbb54.intex2kb.data.TransactionDAO"%>
-<%@page import="edu.byu.isys413.cbb54.intex2kb.data.Transaction"%>
-<%@page import="edu.byu.isys413.cbb54.intex2kb.data.TransactionLineDAO"%>
-<%@page import="edu.byu.isys413.cbb54.intex2kb.data.TransactionLine"%>
-<%@page import="edu.byu.isys413.cbb54.intex2kb.data.MembershipDAO"%>
-<%@page import="edu.byu.isys413.cbb54.intex2kb.data.Membership"%>
-<%@page import="edu.byu.isys413.cbb54.intex2kb.data.Customer"%>
+<%@page import="edu.byu.isys413.cbb54.intex2kb.data.*"%>
 <%@page import="java.util.LinkedList"%>
 <%@page import="java.util.List"%>
 <%@page import="java.util.Calendar"%>
@@ -66,7 +60,7 @@ if (session.getAttribute("backuptx") == null) {
     <h3>Hi <%=tx.getCustomer().getFname()%></h3>
     <p>You have <%=memb.getBackupSize()%> GB of backup space</p>
     <p>Your backup will expire on <%=memb.getBackupExpDate()%>
-    <%//=//(backup)(tx.getTxLines().get(0).getRevenueSource())%>
+    <%=(backup)(tx.getTxLines().get(0).getRevenueSource())%>
     <table>
         <caption>Buy more backup space</caption>
         <thead>
