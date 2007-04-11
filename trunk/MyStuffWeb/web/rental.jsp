@@ -1,7 +1,7 @@
 <%@page contentType="text/html"%>
 <%@page pageEncoding="UTF-8"%>
 <%@page import= "java.util.*" %>
-<%@page import= "edu.byu.isys413.cbb54.intex2kb.data.CategoryDAO" %>
+<%@page import= "edu.byu.isys413.cbb54.intex2kb.data.*" %>
 <%--
 The taglib directive below imports the JSTL library. If you uncomment it,
 you must also add the JSTL library to the project. The Add Library... action
@@ -93,9 +93,17 @@ $(document).ready(function(){
     <tr><th>Available Products</th><th>Shopping Cart</th></tr>
     <tr>
     <td>
-        Canon SLR 500X<br>
-        Second Digital Camera<br>
-        Third Digital Camera<br>
+        <%if (request.getAttribute("forrent") != null) {
+                List<ForRent> rental = new LinkedList<ForRent>();
+                rental = (List) request.getAttribute("forrent");
+                for(int i = 0; i<rental.size(); i++){
+                    double price = ConceptualRentalDAO.getInstance().getRentalPrice(rental.get(i));
+                    String name = ConceptualRentalDAO.getInstance().getRentalName(rental.get(i));
+                %>The Item Name = <%=name%> The Item Price = <%=price%><br> <%
+                    }//end for
+                
+                }//end if
+                %>
     </td>	
     <td>
         The transaction text goes here.
