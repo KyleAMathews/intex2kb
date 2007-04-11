@@ -55,6 +55,11 @@ on Libraries node in Projects view can be used to add the JSTL 1.1 library.
                         %>
                 </select></td>
                 <td>Qty:<input name="qty2" type=text size="5" value="0"></td>
+                <td>
+                    <input type="checkbox" name="StoreOpt1" value="000001117284553c0014b20a500442"> Provo<br>
+                    <input type="checkbox" name="StoreOpt2" value="000001117284553c0014b20a500443"> Logan<br>
+                    <input type="checkbox" name="StoreOpt3" value="000001117284553c0014b20a500444"> Murray<br>
+                </td>
                 <%
                 }
                 %>
