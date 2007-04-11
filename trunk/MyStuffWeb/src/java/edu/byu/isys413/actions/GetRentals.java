@@ -57,7 +57,7 @@ public class GetRentals implements edu.byu.isys413.web.Action {
         System.out.println(forRentList);
         //create a list of for rent items
         forRentBOList = ForRentDAO.getInstance().getAvailableRentals(forRentList);
-        System.out.println(forRentBOList.size());
+        request.setAttribute("forrent", forRentBOList);
         
         return "rental.jsp"; //return back to the rental page
         }  
