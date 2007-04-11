@@ -71,7 +71,7 @@ public class validateLogin {
     public String membid(String email, String password) throws Exception {
         String membid = "";
         Connection conn = ConnectionPool.getInstance().get();
-        System.out.println("attempting to get custid from table login");
+        System.out.println("attempting to get membid from table login");
         
         PreparedStatement ps = conn.prepareStatement("select * from \"login\" where \"email\" = '" +
                 email + "' and \"password\" = '" + password + "'");
@@ -85,7 +85,7 @@ public class validateLogin {
         rs.close();
         
         ConnectionPool.getInstance().release(conn);
-        System.out.println("got the custid from table login");
+        System.out.println("got the membid from table login");
         return membid;
     }
 }
