@@ -61,12 +61,12 @@ public class MembershipDAO {
         mem.setCustomer(CustomerDAO.getInstance().read(custId));
         return mem;
     }
-
+    
     /////////////////////////////////////
     ///   READ
     
     /**
-     * 
+     *
      * This is the public read statement.  It loads an existing membership
      * from the database.
      * @param id String
@@ -81,22 +81,22 @@ public class MembershipDAO {
         // if so, return it immediately
         if(Cache.getInstance().containsKey(id)){
             mem = (Membership)Cache.getInstance().get(id);
-        }else{        
+        }else{
             Connection conn = null;
             try {
                 // retrieve a database connection from the pool
                 conn = ConnectionPool.getInstance().get();
-
+                
                 // call read with a connection (the other read method in this class)
                 mem = this.read(id, conn);
-
+                
                 // release the connection
                 conn.commit();
                 ConnectionPool.getInstance().release(conn);
-
+                
             }catch (ConnectionPoolException e){
                 throw new DataException("Could not get a connection to the database.");
-
+                
             }catch (SQLException e) {
                 // rollback
                 try {
@@ -107,14 +107,14 @@ public class MembershipDAO {
                 }catch (SQLException e2) {
                     throw new DataException("Big error: could not even release the connection", e2);
                 }
-
+                
                 throw new DataException("Could not retrieve record for id=" + id, e);
             }
         }
         return mem;
     }
     
-    /** 
+    /**
      *  This is a package method that is called by the public read (above) or
      *  by another DAO.  Either way we already have a connection to the database
      *  to use.  The user (controller) code never calls this one directly, since
@@ -122,28 +122,28 @@ public class MembershipDAO {
      */
     synchronized Membership read(String id, Connection conn) throws SQLException, DataException {
         Membership mem = null;
-            
+        
         // check again if the id is in the cache, and if so,
         // just get it from the cache.  we need to check again
         // because this method might be called directly from
         // another DAO rather than from read above.
         if(Cache.getInstance().containsKey(id)){
             mem = (Membership)Cache.getInstance().get(id);
-        }else{ 
-            // if not in the cache, get a result set from 
+        }else{
+            // if not in the cache, get a result set from
             // a SELECT * FROM table WHERE id=guid
             
             PreparedStatement read = conn.prepareStatement(
-                "SELECT * FROM \"membership\" WHERE \"id\" = ?");
-            read.setString(1, id); 
+                    "SELECT * FROM \"membership\" WHERE \"id\" = ?");
+            read.setString(1, id);
             ResultSet rs = read.executeQuery();
             conn.commit();
             
-        
+            
             if (rs.next()) {
-               
+                
                 mem = readRecord(rs,conn);
-
+                
                 // save to the cache
                 Cache.getInstance().put(id, mem);
                 
@@ -152,7 +152,7 @@ public class MembershipDAO {
             }
         }
         
-        // return the Customer
+        // return the Member
         return mem;
     }
     
@@ -163,8 +163,8 @@ public class MembershipDAO {
         mem.setCreditCard(rs.getString("creditCard"));
         mem.setCcExpiration(rs.getString("ccExpiration"));
         mem.setNewsletter(rs.getBoolean("newsletter"));
-        mem.setBackupSize(Double.valueOf(rs.getString("backupSize")));
-        mem.setBackupExpDate(Long.getLong(rs.getString("backupExpDate")));
+        mem.setBackupSize(rs.getDouble("backupSize"));
+        mem.setBackupExpDate(rs.getLong("backupExpDate"));
         mem.setInterests(MemberInterestDAO.getInstance().read(mem.getId(),conn));
         mem.setInDB(true);
         mem.setDirty(false);
@@ -178,14 +178,14 @@ public class MembershipDAO {
     /**
      * Saves a membership to the database
      * @param mem Membership
-     * @throws DataException Thrown when there is an error getting a database connection or executing the SQL 
+     * @throws DataException Thrown when there is an error getting a database connection or executing the SQL
      */
     public synchronized void save(Membership mem) throws DataException {
         
         Connection conn = null;
         
         try {
-   
+            
             // retrieve a database connection from the pool
             conn = ConnectionPool.getInstance().get();
             
@@ -214,9 +214,9 @@ public class MembershipDAO {
         }
         
     } // End of first Save()
-
     
-    /** 
+    
+    /**
      *  This is a package method that is called by the public save (above) or
      *  by another DAO.  Either way we already have a connection to the database
      *  to use.  The user (controller) code never calls this one directly, since
@@ -230,8 +230,8 @@ public class MembershipDAO {
      *  them directly from another DAO, this DAO can't decide whether it's
      *  object needs to be inserted or updated.
      */
-     synchronized void save(Membership mem, Connection conn) throws SQLException, DataException {
-        // check the dirty flag in the object.  if it is dirty, 
+    synchronized void save(Membership mem, Connection conn) throws SQLException, DataException {
+        // check the dirty flag in the object.  if it is dirty,
         // run update or insert
         if (mem.isDirty()) {
             if (mem.isInDB()) {
@@ -259,7 +259,7 @@ public class MembershipDAO {
     private synchronized void update(Membership mem, Connection conn) throws SQLException, DataException {
         // do the update statement
         PreparedStatement update = conn.prepareStatement(
-            "UPDATE \"membership\"" +
+                "UPDATE \"membership\"" +
                 "SET \"startDate\" = ?, \"endDate\" = ?, \"creditCard\" = ?, \"ccExpiration\" = ?," +
                 "\"newsletter\" = ?, \"backupSize\" = ?, \"backupExpDate\" = ?" +
                 "WHERE \"id\" = ?");
@@ -271,7 +271,7 @@ public class MembershipDAO {
         update.setString(6, Double.toString(mem.getBackupSize()));
         update.setString(7, Long.toString(mem.getBackupExpDate()));
         update.setString(8, mem.getId());
-
+        
         // execute and commit the query
         update.executeUpdate();
         conn.commit();
@@ -279,9 +279,9 @@ public class MembershipDAO {
         // touch the Membership object in cache
         Cache.getInstance().touch(mem.getId());
         
-        // Update the InDB and Dirty 
+        // Update the InDB and Dirty
         mem.setInDB(true);
-        mem.setDirty(false);         
+        mem.setDirty(false);
         
         // cascade to the Member/Interest objects if they exists for the customer
         List<String> ilist = mem.getInterests();
@@ -304,13 +304,13 @@ public class MembershipDAO {
     private synchronized void insert(Membership mem, Connection conn) throws SQLException, DataException {
         // do the insert SQL statement
         PreparedStatement insert = conn.prepareStatement(
-            "INSERT INTO \"membership\" VALUES(?,?,?,?,?,?,?,?,?)");
+                "INSERT INTO \"membership\" VALUES(?,?,?,?,?,?,?,?,?)");
         insert.setString(1, mem.getId());
         insert.setString(2, mem.getCustId());
         insert.setString(3, mem.getStartDate());
         insert.setString(4, mem.getEndDate());
         insert.setString(5, mem.getCreditCard());
-        insert.setString(6, mem.getCcExpiration());  
+        insert.setString(6, mem.getCcExpiration());
         insert.setBoolean(7, mem.getNewsletter());
         insert.setString(8, Double.toString(mem.getBackupSize()));
         insert.setString(9, Long.toString(mem.getBackupExpDate()));
@@ -327,14 +327,14 @@ public class MembershipDAO {
         Cache.getInstance().put(mem.getId(),mem);
         
         mem.setCustomer(CustomerDAO.getInstance().read(mem.getCustId()));
-
+        
     }
     
     
     ////////////////////////////////////
     ///   DELETE
     
-    // we are not supporting because there really isn't any reason to delete a membership. 
+    // we are not supporting because there really isn't any reason to delete a membership.
     // we simply set the end date.  This preserves the integrety of the database.
     
     
@@ -352,29 +352,29 @@ public class MembershipDAO {
      */
     public Membership getByCustomerID(String id, Connection conn) throws DataException {
         Membership mem = null;
-
+        
         
         try{
             
             // sql the names, phone, and ids
             PreparedStatement read = conn.prepareStatement(
-                "SELECT * FROM \"membership\" WHERE \"custID\" = ?");
+                    "SELECT * FROM \"membership\" WHERE \"custID\" = ?");
             read.setString(1, id);
             ResultSet rs = read.executeQuery();
             
             // release the connection
             conn.commit();
-
+            
             
             // while loop to populate the list from the results
             while(rs.next()) {
                 if(Cache.getInstance().containsKey(rs.getString("id"))){
-                   mem = (Membership)Cache.getInstance().get(rs.getString("id"));
+                    mem = (Membership)Cache.getInstance().get(rs.getString("id"));
                 }else{
                     mem = readRecord(rs, conn);
                 }
-            }    
-
+            }
+            
         }catch (SQLException e) {
             // rollback
             try {
@@ -385,14 +385,14 @@ public class MembershipDAO {
             }catch (SQLException e2) {
                 throw new DataException("Big error: could not even release the connection", e2);
             }
-
+            
             throw new DataException("Could not retrieve membership records form the database",  e);
         }
-       
+        
         // return the list of customer lists
         return mem;
     }
-
+    
     /**
      * Used to hold a membership temporarily
      * @param mem Membership
