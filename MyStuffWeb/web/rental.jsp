@@ -9,7 +9,7 @@ on Libraries node in Projects view can be used to add the JSTL 1.1 library.
 --%>
 <%
     Transaction rentaltx = null;
-      if (request.getAttribute("rentaltx") == null){
+      if (session.getAttribute("rentaltx") == null){
         System.out.println("System didn't catch the same transaction");
       rentaltx = TransactionDAO.getInstance().create();
       Store store = new Store("010001117284553c0014b20b500444");
@@ -21,11 +21,12 @@ on Libraries node in Projects view can be used to add the JSTL 1.1 library.
       emp.setInDB(true);
       emp.setDirty(false);
       rentaltx.setEmployee(emp);
-      session.setAttribute("rentaltx", rentaltx);
-      //TransactionLine txln = TransactionLineDAO.getInstance().create(tx, "rn");
-      //rentaltx.addTxLine(txln);
+      session.setAttribute("rentaltx", rentaltx.getId());
 }else{
-        rentaltx = (Transaction) session.getAttribute("rentaltx");
+        String rentalid = null;
+        System.out.println("I remembered!");
+        rentalid = (String) session.getAttribute("rentaltx");
+        rentaltx = TransactionDAO.getInstance().read(rentalid);
 }
 %>
 
@@ -86,7 +87,7 @@ $(document).ready(function(){
         for(int i = 0; i<categoryList.size(); i++){
                String value = categoryList.get(i);
                 %>
-                <option VALUE="<%=i%>"><%=value%><br>
+                <option VALUE="<%=i%>"><%=value%>
                 <%
                 }
                 %>
@@ -94,9 +95,9 @@ $(document).ready(function(){
     </td>	
     <td>
         <form action="edu.byu.isys413.actions.GetRentals.action" method="post" target=_parent> 
-        <input type="checkbox" name="StoreOpt1" value="000001117284553c0014b20a500442"> Provo<br>
-        <input type="checkbox" name="StoreOpt2" value="000001117284553c0014b20a500443"> Logan<br>
-        <input type="checkbox" name="StoreOpt3" value="000001117284553c0014b20a500444"> Murray<br>
+        <input type="checkbox" name="StoreOpt1" value="1"> Provo<br>
+        <input type="checkbox" name="StoreOpt2" value="2"> Logan<br>
+        <input type="checkbox" name="StoreOpt3" value="3"> Murray<br>
         
     </td>
 </table>
@@ -126,7 +127,7 @@ $(document).ready(function(){
         txline = rentaltx.getTxLines();
         for(int i = 0; i<txline.size(); i++){
             double txlineprice = txline.get(i).calculateSubtotal();
-            ForRent fr = new ForRent(txline.get(i).getRevenueSource().getId());
+            Rental tn = new Rental(txline.get(i).getRevenueSource().getId());
             String txlinename = ConceptualRentalDAO.getInstance().getRentalName(fr);
             %>The Item Name = <%=txlinename%> The Item Price = <%=txlineprice%><br> <%
         }
