@@ -30,18 +30,24 @@ public class PhotoCheckout implements edu.byu.isys413.web.Action {
     public String process(HttpServletRequest request, HttpServletResponse response) throws Exception {
         HttpSession session = request.getSession();
         
-        /*String membid = (String)session.getAttribute("membid");
+        String membid = (String)session.getAttribute("membid");
         Membership m = MembershipDAO.getInstance().read(membid);
-        Customer cust = m.getCustomer();*/
+        Customer cust = m.getCustomer();
+        
+        Employee emp = new Employee("120001117284553c0014b60a500442");
+        emp.setInDB(true);
+        emp.setDirty(false);
         
         String storeid = (String)request.getParameter("group1");
         List<Store> storeList = StoreDAO.getInstance().getByName((String)request.getParameter("group1"));
         Store store = storeList.get(0);
+        JOptionPane.showMessageDialog(null,"Store: " + store.getName());
         
         Transaction tx = (Transaction)session.getAttribute("tx");
-        //tx.setCustomer(cust);
+        tx.setEmployee(emp);
+        tx.setCustomer(cust);
         tx.setStore(store);
-        tx.setType("Print Order");
+        tx.setType("po");
         tx.setStatus("Complete");
         
         String printFormat1 = request.getParameter("PrintFormat1");
@@ -88,7 +94,7 @@ public class PhotoCheckout implements edu.byu.isys413.web.Action {
         if(printFormat1 != null){
             pfSize1 = getSize(Integer.valueOf(printFormat1));
             pfPaper1 = getPaper(Integer.valueOf(printFormat1));
-            /*
+            
             printOrder po1 = (printOrder)PrintOrderDAO.getInstance().create();
             PhotoSet ps1 = PhotoSetDAO.getInstance().create();
             
@@ -112,7 +118,9 @@ public class PhotoCheckout implements edu.byu.isys413.web.Action {
             TransactionLine txln1 = TransactionLineDAO.getInstance().create(tx,po1.getId());
             txln1.setRevenueSource(po1);
             txln1.setRsType("Print Order - " + po1.getPhotoSet().getDescription());
-            tx.addTxLine(txln1);*/
+            tx.addTxLine(txln1);
+            
+            UpdateController.getInstance().saveTransaction(tx);
         }
         if(printFormat2 != null){
             pfSize2 = getSize(Integer.valueOf(printFormat2));
