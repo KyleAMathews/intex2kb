@@ -54,8 +54,8 @@ public class sendMail {
     private static final String SMTP_AUTH_PWD  = "intex24";*/
     
     private static final String SMTP_HOST_NAME = "gateway.byu.edu";
-    private static final String SMTP_AUTH_USER = "tylerf";
-    private static final String SMTP_AUTH_PWD  = "1landprk";
+    private static final String SMTP_AUTH_USER = "cbb54";
+    private static final String SMTP_AUTH_PWD  = "intex241";
     
     
     /**
@@ -68,7 +68,7 @@ public class sendMail {
         boolean debug = false;
         
         //Set generic message properties
-        String from = "tylerf@byu.edu";
+        String from = "info@2kmystuff.com";
         String subject = "MyStuff Digital Photography";
         
         //Set the host smtp address
