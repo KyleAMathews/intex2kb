@@ -30,7 +30,7 @@ public class PhotoCheckout implements edu.byu.isys413.web.Action {
     public String process(HttpServletRequest request, HttpServletResponse response) throws Exception {
         HttpSession session = request.getSession();
         
-        String membid = (String)session.getAttribute("membid");
+        /*String membid = (String)session.getAttribute("membid");
         Membership m = MembershipDAO.getInstance().read(membid);
         Customer cust = m.getCustomer();
         
@@ -41,7 +41,7 @@ public class PhotoCheckout implements edu.byu.isys413.web.Action {
         tx.setCustomer(cust);
         tx.setStore(store);
         tx.setType("Print Order");
-        tx.setStatus("Complete");
+        tx.setStatus("Complete");*/
         
         String printFormat1 = request.getParameter("PrintFormat1");
         String printFormat2 = request.getParameter("PrintFormat2");
@@ -87,7 +87,7 @@ public class PhotoCheckout implements edu.byu.isys413.web.Action {
         if(printFormat1 != null){
             pfSize1 = getSize(Integer.valueOf(printFormat1));
             pfPaper1 = getPaper(Integer.valueOf(printFormat1));
-            
+            /*
             printOrder po1 = (printOrder)PrintOrderDAO.getInstance().create();
             PhotoSet ps1 = PhotoSetDAO.getInstance().create();
             
@@ -99,13 +99,21 @@ public class PhotoCheckout implements edu.byu.isys413.web.Action {
             po1.setPrintFormat(pf1);
             po1.setQuantity(qty1);
             
+            //set PhotoSet values
+            ps1.setDescription((String)request.getAttribute("FileName1"));
+            ps1.setNumPhotos(1);
+            po1.setPhotoSet(ps1);
+            
+            //set total price in RSBO
+            po1.setTotalPrice(po1.getQuantity(),pf1.getPrice(),ps1.getNumPhotos());
+            
             //Create TX-Line
             TransactionLine txln1 = TransactionLineDAO.getInstance().create(tx,po1.getId());
             txln1.setRevenueSource(po1);
             txln1.setRsType("Print Order - " + po1.getPhotoSet().getDescription());
-            tx.addTxLine(txln1);
+            tx.addTxLine(txln1);*/
         }
-        if(printFormat1 != null){
+        if(printFormat2 != null){
             pfSize2 = getSize(Integer.valueOf(printFormat2));
             pfPaper2 = getPaper(Integer.valueOf(printFormat2));
         }
@@ -122,6 +130,7 @@ public class PhotoCheckout implements edu.byu.isys413.web.Action {
             pfPaper5 = getPaper(Integer.valueOf(printFormat5));
         }
         
+        System.out.println((String)session.getAttribute("FileName1"));
         System.out.println(pfSize1);
         System.out.println(pfPaper1);
         System.out.println(pfSize2);

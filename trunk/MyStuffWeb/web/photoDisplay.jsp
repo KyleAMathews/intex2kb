@@ -35,7 +35,7 @@ on Libraries node in Projects view can be used to add the JSTL 1.1 library.
                         %>
                         <option VALUE="<%=i%>"><%=value%>
                         <%
-                        }
+                        session.setAttribute("FileName1",session.getAttribute("1"));}
                         %>
                 </select></td>
                 <td>Qty:<input name="qty1" type=text size="5" value="0"></td>
@@ -51,7 +51,7 @@ on Libraries node in Projects view can be used to add the JSTL 1.1 library.
                         %>
                         <option VALUE="<%=i%>"><%=value%>
                         <%
-                        }
+                        session.setAttribute("FileName2",session.getAttribute("2"));}
                         %>
                 </select></td>
                 <td>Qty:<input name="qty2" type=text size="5" value="0"></td>
@@ -67,7 +67,7 @@ on Libraries node in Projects view can be used to add the JSTL 1.1 library.
                         %>
                         <option VALUE="<%=i%>"><%=value%>
                         <%
-                        }
+                        session.setAttribute("FileName3",session.getAttribute("3"));}
                         %>
                 </select></td>
                 <td>Qty:<input name="qty3" type=text size="5" value="0"></td>
@@ -83,7 +83,7 @@ on Libraries node in Projects view can be used to add the JSTL 1.1 library.
                         %>
                         <option VALUE="<%=i%>"><%=value%>
                         <%
-                        }
+                        session.setAttribute("FileName4",session.getAttribute("4"));}
                         %>   
                 </select></td>
                 <td>Qty:<input name="qty4" type=text size="5" value="0"></td>
@@ -99,7 +99,7 @@ on Libraries node in Projects view can be used to add the JSTL 1.1 library.
                         %>
                         <option VALUE="<%=i%>"><%=value%>
                         <%
-                        }
+                        session.setAttribute("FileName5",session.getAttribute("5"));}
                         %>
                 </select></td>
                 <td>Qty:<input name="qty5" type=text size="5" value="0"></td>
