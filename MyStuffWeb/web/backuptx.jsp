@@ -73,7 +73,7 @@ if (session.getAttribute("backuptx") == null) {
         <tbody>
             <tr>
                 <td>
-                    <form action="edu.byu.isys413.actions.checkout.action" method="post">
+                    <form action="edu.byu.isys413.actions.backuptx.action" method="post">
                     <label for="numGBs"># of GBs to add to account</label>
                     <input type="text" name="numGBs" />
                 </td>
