@@ -143,7 +143,7 @@ create table "transactionline"
     "id" varchar(40) not null primary key,
     "revenuesourceid" varchar(40),
     "transactionid" varchar(40),
-    "rstype" varchar(40)
+    "rstype" varchar(50)
 );
  
 create table "coupon"
