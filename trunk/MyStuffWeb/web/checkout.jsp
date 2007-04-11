@@ -1,6 +1,6 @@
 <%@page contentType="text/html"%>
 <%@page pageEncoding="UTF-8"%>
-<%@page import="edu.byu.isys413.actions.checkoutView"%>
+<%@page import="edu.byu.isys413."%>
 <%--
 The taglib directive below imports the JSTL library. If you uncomment it,
 you must also add the JSTL library to the project. The Add Library... action
