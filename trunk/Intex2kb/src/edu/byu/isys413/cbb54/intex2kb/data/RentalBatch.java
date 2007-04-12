@@ -12,7 +12,10 @@ import java.sql.*;
 import java.util.*;
 
 /**
- *
+ * Rental Batch handles the charging of customers for overdue rentals,
+ * moving items from being for rent to for sale after they have been rented
+ * a certain number of times, and charging customer for rentals that have never
+ * been returned
  * @author Bryan
  */
 public class RentalBatch {
@@ -24,10 +27,13 @@ public class RentalBatch {
     private static RentalBatch instance = null;
     
 
-       public RentalBatch() {
+       private RentalBatch() {
         }
        
-        /** Creates a new instance of RentalBatch */
+        /**
+     * Creates a new instance of RentalBatch
+     * @return RentalBatch
+     */
        public static synchronized RentalBatch getInstance() {
         if (instance == null) {
             instance = new RentalBatch();
@@ -37,6 +43,12 @@ public class RentalBatch {
     
     
     
+    /**
+     * Method responsible for changing physical for rent product to for sale
+     * after they have been rented a certain number of times
+     * @throws java.sql.SQLException Thrown when there is an error in the SQL
+     * @throws edu.byu.isys413.cbb54.intex2kb.data.ConnectionPoolException Thrown when there is an error retrieving a database connection
+     */
     public void movetosale() throws SQLException, ConnectionPoolException{
         //sql query all items that are not for rent and store for rent object in a list
         List<ForRent> list = new LinkedList<ForRent>();
@@ -103,6 +115,9 @@ public class RentalBatch {
     
     
     
+    /**
+     * Method for charging members for rental that have never been returned
+     */
     public void chargeReplacement(){
         //find all the rentals that are late
         //calculate the days late that the overdue rentals are
