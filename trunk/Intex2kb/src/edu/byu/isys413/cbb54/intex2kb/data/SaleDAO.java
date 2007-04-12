@@ -14,7 +14,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 /**
- *
+ * Handles all database interaction for the Sale objects
  * @author Cameron
  */
 public class SaleDAO extends RSDAO {
@@ -42,6 +42,12 @@ public class SaleDAO extends RSDAO {
     ///////////////////////////////////////////
     /// Create
     
+    /**
+     * Creates a new sale object by first creating a GUID and then
+     * calling the create in Sale
+     * @throws java.lang.Exception Thrown when there is a error while creating the GUID
+     * @return Sale
+     */
     public RevenueSource create() throws Exception{
         String id = GUID.generate("sa");
         RevenueSource rs = new Sale(id);
@@ -52,6 +58,15 @@ public class SaleDAO extends RSDAO {
     ///////////////////////////////////////////
     /// Read
     
+    /**
+     * Reads a Sale object off the database or from cache
+     * @param id GUID of sale
+     * @param conn Connection
+     * @throws java.lang.Exception Thrown when there is an error retrieving a database connection, or
+     * when there is an error in the SQL, or when the sale record does
+     * not exist in the database
+     * @return Sale object
+     */
     public RevenueSource read(String id, Connection conn) throws Exception{
         Sale sale = new Sale(id);
         
@@ -83,6 +98,13 @@ public class SaleDAO extends RSDAO {
     ///////////////////////////////////////////
     /// Save
     
+    /**
+     * Saves the Sale to the database
+     * @param rsbo Sale Revenue Source
+     * @param conn Connection
+     * @throws java.lang.Exception Thrown when there is an error retrieving a database connection, or
+     * when there is an error in the SQL
+     */
      public void save(RevenueSource rsbo, Connection conn) throws Exception{
          // check the dirty flag in the object.  if it is dirty,
         // run update or insert
@@ -100,6 +122,13 @@ public class SaleDAO extends RSDAO {
         }
      }
             
+    /**
+     * Inserts the Sale data into the database
+     * @param rsbo Sale Revenue Source
+     * @param conn Connection
+     * @throws java.lang.Exception Thrown when there is an error retrieving a database connection, or
+     * when there is an error in the SQL
+     */
      public void insert(RevenueSource rsbo, Connection conn) throws Exception{
         System.out.println("inserting sale");
         Sale sale = (Sale)rsbo;
@@ -113,6 +142,13 @@ public class SaleDAO extends RSDAO {
         sale.setInDB(true);
      }
     
+    /**
+     * Updates the sale data in the database
+     * @param rsbo Sale Revenue Source
+     * @param conn Connection
+     * @throws java.lang.Exception Thrown when there is an error retrieving a database connection, or
+     * when there is an error in the SQL
+     */
      public void update(RevenueSource rsbo, Connection conn) throws Exception{
         System.out.println("Updating sale");
         Sale sale = (Sale)rsbo;
