@@ -12,7 +12,7 @@ package edu.byu.isys413.cbb54.intex2kb.data;
 import java.sql.*;
 
 /**
- *
+ * Handles all interactions between the database and the Rental objects
  * @author kyle
  */
 public class RentalDAO extends RSDAO{
@@ -40,6 +40,12 @@ public class RentalDAO extends RSDAO{
     ///////////////////////////////////////////
     /// Create
     
+    /**
+     * Creates a new Rental object by first creating a GUID and then calling
+     * the create method in Rental
+     * @throws java.lang.Exception Thrown when there is an error creating a GUID
+     * @return Rental
+     */
     public RevenueSource create() throws Exception{
         String id = GUID.generate("rn");
         RevenueSource rs = new Rental(id);
@@ -49,11 +55,14 @@ public class RentalDAO extends RSDAO{
     
     ///////////////////////////////////////////
     /// Read
-    /** 
-     *  This is a package method that is called by the public read (above) or
-     *  by another DAO.  Either way we already have a connection to the database
-     *  to use.  The user (controller) code never calls this one directly, since
-     *  it can't know about Connection objects or SQLExceptions.
+    /**
+     * Reads and returns a Rental object from either the Cache or the
+     * database
+     * @param id GUID of Rental to be read
+     * @param conn Connection
+     * @throws java.sql.SQLException Thrown when there is an error in the SQL
+     * @throws edu.byu.isys413.cbb54.intex2kb.data.DataException Thrown when there is an error retrieving a database connection
+     * @return Rental
      */
     public RevenueSource read (String id, Connection conn) throws SQLException, DataException {
         
@@ -100,6 +109,13 @@ public class RentalDAO extends RSDAO{
     ///////////////////////////////////////////
     /// Save
     
+    /**
+     * Saves a Rental object to the database
+     * @param rsbo Rental
+     * @param conn Connection
+     * @throws java.lang.Exception Thrown when there is an error retrieving a database connection, or
+     * when there is an error in the SQL
+     */
     public void save(RevenueSource rsbo, Connection conn) throws Exception{
         // check the dirty flag in the object.  if it is dirty,
         // run update or insert
@@ -117,6 +133,13 @@ public class RentalDAO extends RSDAO{
         }
     }
     
+    /**
+     * Inserts a Rental object into the database
+     * @param rsbo Rental
+     * @param conn Connection
+     * @throws java.lang.Exception Thrown when there is an error retrieving a database connection, or
+     * when there is an error in the SQL
+     */
     public void insert(RevenueSource rsbo, Connection conn) throws Exception{
         System.out.println("inserting rental");
         Rental rn = (Rental)rsbo;
@@ -129,6 +152,13 @@ public class RentalDAO extends RSDAO{
         rsbo.setInDB(true);
     }
     
+    /**
+     * Updates a Rental object in the database
+     * @param rsbo Rental
+     * @param conn Connection
+     * @throws java.lang.Exception Thrown when there is an error retrieving a database connection, or
+     * when there is an error in the SQL
+     */
     public void update(RevenueSource rsbo, Connection conn) throws Exception{
         Rental rn = (Rental)rsbo;
         PreparedStatement update = conn.prepareStatement(
