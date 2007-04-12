@@ -46,7 +46,7 @@ public class StoreProductDAO {
      * @throws edu.byu.isys413.cbb54.intex2kb.data.DataException Thrown when there is an error getting a database connection or 
      * executing SQL
      */
-    public List<String> getProductList(List storeList) throws DataException {
+    public List<String> getProductList(List storeList, String id) throws DataException {
         List<String> list = new LinkedList<String>();
         
         // get the connection
@@ -57,12 +57,16 @@ public class StoreProductDAO {
             for(int i = 0; i<storeList.size(); i++){
                     // sql the names, phone, and ids
                     PreparedStatement read = conn.prepareStatement(
-                        "SELECT \"productid\" FROM \"storeproduct\" WHERE \"storeid\" = ? ");
+                        "SELECT \"productid\" FROM \"storeproduct\" WHERE \"storeid\" = ? and productid IN (" +
+                            "Select \"id\" FROM \"conceptual\" WHERE \"categoryID\" = ? )");
+                    
                     read.setString(1, (String) storeList.get(i));
+                    read.setString(2, id);
                     ResultSet rs = read.executeQuery();
 
                     // while loop to populate the list from the results
                     while(rs.next()) {
+                            System.out.println(rs.getString("productid"));
                             list.add(rs.getString("productid"));
                             
                     }           
