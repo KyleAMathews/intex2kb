@@ -33,6 +33,7 @@ public class StoreDAO {
     
     /**
      * Returns singleton pattern instance of StoreDAO
+     * @return StoreDAO
      */
     public static synchronized StoreDAO getInstance() {
         if (instance == null) {
@@ -45,10 +46,11 @@ public class StoreDAO {
     /////////////////////////////////
     ///   CREATE
     
-    /** 
-     * There's no need for two creates because we don't need
-     * a connection to create BOs.  We run the insert statement
-     * later, when it get's saved for the first time.
+    /**
+     * Creates a new Store object by first creating a GUID and then calling
+     * the create in the Store class
+     * @throws java.lang.Exception Thrown when there is an error creating the GUID
+     * @return Store
      */
     public Store create() throws Exception{
         String id = null;
@@ -62,9 +64,12 @@ public class StoreDAO {
     /////////////////////////////////////
     ///   READ
     
-    /** 
-     * This is the public read statement.  It loads an existing record
-     * from the database.
+    /**
+     * Returns the store object with the corresponding GUID
+     * @param id String GUID
+     * @throws edu.byu.isys413.cbb54.intex2kb.data.DataException Thrown when there is an error retrieving a database connection, when
+     * there is an error in the SQL, or when the record does not exist
+     * @return Store
      */
     public synchronized Store read(String id) throws DataException {
         Store store = null;
@@ -166,10 +171,11 @@ public class StoreDAO {
     //////////////////////////////////
     ///   UPDATE
     
-    /** 
-     * This is the public save method.  It is what is called when
-     * the user (controller) code wants to save or update an object
-     * into the database.
+    /**
+     * Saves the store object in the database
+     * @param store To be saved
+     * @throws edu.byu.isys413.cbb54.intex2kb.data.DataException Thrown when there is an error retrieving a database connection, or
+     * when there is an error in the SQL
      */
     public synchronized void save(Store store) throws DataException {
         
@@ -339,6 +345,9 @@ public class StoreDAO {
     
     /**
      * Returns all of the Stores in the DB
+     * @return List of stores
+     * @throws edu.byu.isys413.cbb54.intex2kb.data.DataException Thrown when there is an error retrieving a database connection, or
+     * when there is an error in the SQL
      */
     public List<Store> getAll() throws DataException {
         List<Store> list = new LinkedList<Store>();
@@ -397,6 +406,11 @@ public class StoreDAO {
     
     /**
      * Queries the DB for a store based on store name
+     * @param name Store name
+     * @return List of stores
+     * @throws edu.byu.isys413.cbb54.intex2kb.data.DataException Thrown when there is an error retrieving a database connection, or
+     * when there is an error in the SQL, or when a store with that name
+     * doesn't exist
      */
     public List<Store> getByName(String name) throws DataException {
         List<Store> list = new LinkedList<Store>();
@@ -460,6 +474,11 @@ public class StoreDAO {
     
     /**
      * Queries the DB for a store based on store phone number
+     * @param phone number to be searched
+     * @return List of stores
+     * @throws edu.byu.isys413.cbb54.intex2kb.data.DataException Thrown when there is an error retrieving a database connection, or
+     * when there is an error in the SQL, or when there isn't a store with
+     * the corresponding phone number
      */
     public List<Store> getByPhone(String phone) throws DataException {
         List<Store> list = new LinkedList<Store>();
