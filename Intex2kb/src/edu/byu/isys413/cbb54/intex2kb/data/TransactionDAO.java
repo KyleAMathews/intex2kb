@@ -33,7 +33,8 @@ public class TransactionDAO {
     }
     
     /**
-     * Return an instance of Transaction
+     * Return an instance of TransactionDAO
+     * @return TransactionDAO
      */
     public static synchronized TransactionDAO getInstance() {
         if (instance == null) {
@@ -46,10 +47,11 @@ public class TransactionDAO {
     /////////////////////////////////
     ///   CREATE
     
-    /** 
-     * There's no need for two creates because we don't need
-     * a connection to create BOs.  We run the insert statement
-     * later, when it get's saved for the first time.
+    /**
+     * Creates a new Transaction by first creating a GUID and then passing it to
+     * the Transaction create method
+     * @throws java.lang.Exception Thrown when there is an error creating the GUID
+     * @return Transaction
      */
     public Transaction create() throws Exception{
         String id = null;
@@ -62,6 +64,9 @@ public class TransactionDAO {
     
     /**
      * Create a transaction based on a previous transaction (type return)
+     * @param orig Transaction
+     * @throws java.lang.Exception Thrown when there is an error creating a GUID
+     * @return Transaction
      */
     public Transaction create(Transaction orig) throws Exception{
         String id = null;
@@ -75,9 +80,13 @@ public class TransactionDAO {
     /////////////////////////////////////
     ///   READ
     
-    /** 
-     * This is the public read statement.  It loads an existing record
-     * from the database.
+    /**
+     * Returns the Transaction with the matching id
+     * @param id String
+     * @return Transaction
+     * @throws edu.byu.isys413.cbb54.intex2kb.data.DataException Thrown when there is an error getting a database connection, 
+     * executing the SQL, or when there is no entry in the database
+     * with that id
      */
     public synchronized Transaction read(String id) throws DataException {
         Transaction trans = null;
@@ -186,10 +195,12 @@ public class TransactionDAO {
     //////////////////////////////////
     ///   UPDATE
     
-    /** 
-     * This is the public save method.  It is what is called when
-     * the user (controller) code wants to save or update an object
-     * into the database.
+    /**
+     * Saves the Transaction be determining if its in the database, inserting it or
+     * updating it accordingly.
+     * @param tx Transaction to save
+     * @throws edu.byu.isys413.cbb54.intex2kb.data.DataException Thrown when there is an error retrieving the database connection,
+     * executing the SQL
      */
     public synchronized void save(Transaction tx) throws DataException {
         
@@ -342,125 +353,9 @@ public class TransactionDAO {
     
     
     /**
-     * Get all transactions
-     */
-    public List<List> getAll() throws DataException {
-        List<List> list = new LinkedList<List>();
-        
-        // get the connection
-        Connection conn = null;
-        try{
-            // retrieve a database connection from the pool
-            conn = ConnectionPool.getInstance().get();
-            
-            // sql the names, phone, and ids
-            PreparedStatement read = conn.prepareStatement(
-                "SELECT \"id\", \"fname\", \"lname\", \"phone\" FROM \"customer\" ");
-            ResultSet rs = read.executeQuery();
-            
-            // release the connection
-            conn.commit();
-            ConnectionPool.getInstance().release(conn);
-            
-            
-            // while loop to populate the list from the results
-            while(rs.next()) {
-                List<String> clist = new LinkedList();
-                clist.add(rs.getString("id"));
-                clist.add(rs.getString("fname"));
-                clist.add(rs.getString("lname"));
-                clist.add(rs.getString("phone"));
-                list.add(clist);
-            }    
-
-        }catch (ConnectionPoolException e){
-            throw new DataException("Could not get a connection to the database.");
-
-        }catch (SQLException e) {
-            // rollback
-            try {
-                conn.rollback();
-                ConnectionPool.getInstance().release(conn);
-            }catch (ConnectionPoolException ce){
-                throw new DataException("There was an error with the connection to the database", ce);
-            }catch (SQLException e2) {
-                throw new DataException("Big error: could not even release the connection", e2);
-            }
-
-            throw new DataException("Could not retrieve customer records form the database",  e);
-        }
-       
-        // return the list of customer lists
-        return list;
-    }
-    
-    /**
-     * Get all transactions for a given customer
-     */
-    public List<Customer> getByCustmerID(String fname, String lname) throws DataException {
-        List<Customer> list = new LinkedList<Customer>();
-        
-        // get the connection
-        Connection conn = null;
-        try{
-            // retrieve a database connection from the pool
-            conn = ConnectionPool.getInstance().get();
-            
-            // sql the names, phone, and ids
-            PreparedStatement read = conn.prepareStatement(
-                "SELECT * FROM \"customer\" WHERE \"fname\" = ? AND \"lname\" = ?");
-            read.setString(1, fname);
-            read.setString(2, lname);
-            ResultSet rs = read.executeQuery();
-
-            // release the connection
-            conn.commit();
-            ConnectionPool.getInstance().release(conn);
-            
-            // while loop to populate the list from the results
-            while(rs.next()) {
-                if(Cache.getInstance().containsKey(rs.getString("id"))){
-                   Customer cust = (Customer)Cache.getInstance().get(rs.getString("id")); 
-                   list.add(cust);
-                }else{
-                    Customer cust = new Customer(rs.getString("id"));
-                    cust.setFname(rs.getString("fname"));
-                    cust.setLname(rs.getString("lname"));
-                    cust.setAddress1(rs.getString("address1"));
-                    cust.setAddress2(rs.getString("address2"));
-                    cust.setCity(rs.getString("city"));
-                    cust.setState(rs.getString("state"));
-                    cust.setZip(rs.getString("zip"));
-                    cust.setPhone(rs.getString("phone"));
-                    cust.setIsInDB(true);
-                    cust.setDirty(false);
-                    list.add(cust);
-                }
-            }    
-
-        }catch (ConnectionPoolException e){
-            throw new DataException("Could not get a connection to the database.");
-
-        }catch (SQLException e) {
-            // rollback
-            try {
-                conn.rollback();
-                ConnectionPool.getInstance().release(conn);
-            }catch (ConnectionPoolException ce){
-                throw new DataException("There was an error with the connection to the database", ce);
-            }catch (SQLException e2) {
-                throw new DataException("Big error: could not even release the connection", e2);
-            }
-
-            throw new DataException("Could not retrieve customer records form the database",  e);
-        }
-       
-        // return the list of customer lists
-        return list;
-    }
-    
-    /**
      * Return the total of the Transaction
+     * @param tx Transaction
+     * @return Double Transaction total
      */
     public double getTransactionTotal(Transaction tx){
         List<TransactionLine> txList = tx.getTxLines();
