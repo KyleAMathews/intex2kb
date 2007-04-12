@@ -17,14 +17,22 @@ import java.util.LinkedList;
 import java.util.List;
 
 /**
- *
- * @author kyle
+ * Batch Backup/Repair generates notices to customers whose items have been repaired and who have not picked them up within 30 days of when
+ * the work was complete; generates renewal billings for customers whose expiration date for their backup service has arrived;
+ * automatically charges their credit cards for the renewal amount.  If the expiration date of the credit card has arrived,
+ * it sends a notice to the customer that their backup service will terminate if they do not update their credit card information.
+ * @author Kyle
  */
 public class batchBackupRepair {
     
     /** Creates a new instance of batchBackupRepair */
     public batchBackupRepair() {
     }
+    /**
+     * The "main" method of the batch
+     * @throws edu.byu.isys413.cbb54.intex2kb.data.DataException This is thrown whenever there is a problem conneting to the database,
+     * reading for the database, or an error in the sql.
+     */
     public static void backup() throws DataException {
         Connection conn = null;
         List<String> repairEmails = new LinkedList<String>();
@@ -121,8 +129,4 @@ public class batchBackupRepair {
         
     }
 }
-/**In a nightly cycle you must generate notices to customers whose items have been repaired and who have not picked them up within 30 days of when
- * the work was complete.  You must also generate renewal billings for customers whose expiration date for their backup  service has arrived.
- * Automatically charge their credit cards for the renewal amount.  If the expiration date of the credit card has arrived,
- * send a notice to the customer that their backup service will terminate if they do not update their credit card information.
- **/
+
