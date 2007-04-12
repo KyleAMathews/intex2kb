@@ -138,7 +138,7 @@ public class PhotoCheckout implements edu.byu.isys413.web.Action {
             pfPaper5 = getPaper(Integer.valueOf(printFormat5));
         }
         session.setAttribute("checkoutTxType","po");
-        return "checkout.jsp";
+        return "photoCheckout.jsp";
     }//process
     
     private String getSize(int pf){
