@@ -15,7 +15,7 @@ on Libraries node in Projects view can be used to add the JSTL 1.1 library.
 <%String title = "Photo Development";%>
 <jsp:include page="header.jsp" />
 <%Transaction tx = TransactionDAO.getInstance().create();%>
-<%session.setAttribute("tx",tx.getId());%>
+<%session.setAttribute("phototx",tx.getId());%>
 <div id="rightcolumn">
     <h4>MyStuff Photo Printing</h4>
 </div><!--end right column-->  
