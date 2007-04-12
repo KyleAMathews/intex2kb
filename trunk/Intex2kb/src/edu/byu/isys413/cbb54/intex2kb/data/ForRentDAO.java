@@ -150,6 +150,8 @@ public class ForRentDAO {
                 
                 // Close prepared statement
                 read.close();
+                // save to the cache
+                Cache.getInstance().put(id, fr);
 
         }catch (SQLException e) {
             // rollback
