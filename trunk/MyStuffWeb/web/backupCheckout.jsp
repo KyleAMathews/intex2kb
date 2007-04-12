@@ -32,7 +32,7 @@ backup bckup = (backup)txLine1.getRevenueSource();
         </tr>
         <tr>
             <td>Subtotal</td>
-            <td>Price $<%=fmt.fmt(txLine1.getRevenueSource().getPrice())%></td>
+            <td>$<%=fmt.fmt(txLine1.getRevenueSource().getPrice())%></td>
         </tr>
         <tr>
             <td>Total $/month (after tax)</td>
