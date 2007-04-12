@@ -26,7 +26,9 @@ public class PhotoCheckout implements edu.byu.isys413.web.Action {
     public PhotoCheckout() {
     }
     
-    /** Processes a number guess */
+    /**
+     * Processes a PhotoCheckout
+     */
     public String process(HttpServletRequest request, HttpServletResponse response) throws Exception {
         HttpSession session = request.getSession();
         
