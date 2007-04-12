@@ -20,11 +20,15 @@ import javax.servlet.http.*;
  */
 public class submitTX implements edu.byu.isys413.web.Action {
     
-    /** Creates a new instance of NumberGame */
+    /**
+     * Receive a transactionid, create a transaction object, create a payment, set payment information to transaction, and save.
+     */
     public submitTX() {
     }
   
-    /** Processes a number guess */
+    /**
+     * Processes a subitTX
+     */
     public String process(HttpServletRequest request, HttpServletResponse response) throws Exception {        
         HttpSession session = request.getSession();
         
