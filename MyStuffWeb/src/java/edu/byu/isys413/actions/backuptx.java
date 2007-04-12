@@ -35,11 +35,11 @@ public class backuptx implements edu.byu.isys413.web.Action{
         
         // grab how many gbs and set on revenue source
         GBs = Double.valueOf(request.getParameter("numGBs"));
-        bck = (backup)tx.getTxLines().get(0).getRevenueSource();
-        bck.setSize(GBs);
+        //bck = (backup)tx.getTxLines().get(0).getRevenueSource();
+        //bck.setSize(GBs);
         
         // calc subtotal
-        bck.calcSubTotal();
+        //bck.calcSubTotal();
         
         return "backuptx.jsp";
     }

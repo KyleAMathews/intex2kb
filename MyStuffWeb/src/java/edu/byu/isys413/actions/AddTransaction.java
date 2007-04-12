@@ -25,7 +25,9 @@ public class AddTransaction implements edu.byu.isys413.web.Action {
     public AddTransaction() {
     }
   
-    /** Processes a number guess */
+    /**
+     * Process addTransaction
+     */
     public String process(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
         System.out.println("Myname is (regular request object):" + request.getParameter("myname"));
