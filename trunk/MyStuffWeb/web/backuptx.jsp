@@ -1,5 +1,6 @@
 <%@page contentType="text/html"%>
 <%@page pageEncoding="UTF-8"%>
+<%@page import="edu.byu.isys413.cbb54.intex2kb.data.backupPriceBO"%>
 <%@page import="edu.byu.isys413.cbb54.intex2kb.data.*"%>
 <%@page import="java.util.LinkedList"%>
 <%@page import="java.util.List"%>
@@ -23,7 +24,7 @@ if (session.getAttribute("backuptx") == null) {
     System.out.println("Creating a new TransactionLine");
     txLine1 = TransactionLineDAO.getInstance().create(tx, "ba");
     
-    System.out.println("backup price these days: " + txLine1.getRevenueSource().getPrice());
+    System.out.println("backup price these days: " + backupPriceBO.getInstance().getPrice());
     List<TransactionLine> txLineList = new LinkedList<TransactionLine>();
     
     txLineList.add(txLine1);
@@ -77,7 +78,7 @@ if (session.getAttribute("backuptx") == null) {
                     <label for="numGBs"># of GBs to add to account</label>
                     <input type="text" name="numGBs" />
                 </td>
-                <td>Price <%=txLine1.getRevenueSource().getPrice()%></td>
+                <td>Price per GB per Month<%=backupPriceBO.getInstance().getPrice()%></td>
             </tr>
             <tr>
                 <td>Total (after tax)</td>
