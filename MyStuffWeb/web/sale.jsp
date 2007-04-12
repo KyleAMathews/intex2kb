@@ -10,8 +10,8 @@ String category = (String)request.getAttribute("category");
 List<Conceptual> productlist = (List)request.getAttribute("products");
 Transaction saletx = null;
 Membership memb = null;
-
 List<Category> categoryList = CategoryDAO.getInstance().getCategorys();
+List<TransactionLine> transLines = null;
 
 
 if (request.getAttribute("saletx") == null){
@@ -30,10 +30,9 @@ if (request.getAttribute("saletx") == null){
 //rentaltx.addTxLine(txln);
 }else{
     
-    saletx = TransactionDAO.getInstance().read((String)session.getAttribute("saletx"));
+    saletx = (Transaction)session.getAttribute("saletx");
+    transLines = saletx.getTxLines();
     memb = MembershipDAO.getInstance().read((String)session.getAttribute("membid"));
-    saletx.getTxLines().get(0);
-    System.out.println("customer's name " + memb.getCustomer().getFname() + " " + memb.getBackupExpDate());
 }
 %>
 
@@ -46,45 +45,70 @@ if (request.getAttribute("saletx") == null){
 <div id="body">
     <h1><%out.write(title);%></h1>
 <div>
-    <table width="600px" cellpadding="5px" cellspacing="10px">
-        <tr><th>Select Category</th><th>Select Stores</th></tr>
+    <table width="100%" cellpadding="5px" cellspacing="1px">
+        <tr><th>Select Category</th><th>Select Product</th></tr>
     <tr>
-    <td>
-        <form action="edu.byu.isys413.actions.GetItems.action" method="post" target=_parent>
-        <select NAME="category">
-            <% 
-        for(int i = 0; i<categoryList.size(); i++){
-               Category c = categoryList.get(i);
-                %>
-                <option VALUE="<%= c.getId() %>" <% if( (category != null) && (c.getId().matches((String)request.getParameter("category"))) ){out.print("selected");};%>><%= c.getName()%><br><%}%>
-          </select> 
-          <input type="submit" value="Get Items"><br>
-        </form>
-    </td>	
-    <td>
-        <form action="edu.byu.isys413.actions.AddItems.action" method="post" target="_parent">
-            <table>
-                <% if(productlist != null){
-                for(int i = 0; i < productlist.size(); i++){
-                    Conceptual conc = (Conceptual)productlist.get(i); %>
+        <td width="25%" valign="top" align="center">
+            <form action="edu.byu.isys413.actions.GetItems.action" method="post" target=_parent>
+            <select NAME="category">
+                <% 
+            for(int i = 0; i<categoryList.size(); i++){
+                   Category c = categoryList.get(i);
+                    %>
+                    <option VALUE="<%= c.getId() %>" <% if( (category != null) && (c.getId().matches((String)request.getParameter("category"))) ){out.print("selected");};%>><%= c.getName()%><br><%}%>
+              </select> 
+              <input type="submit" value="Get Items"><br>
+            </form>
+        </td>	
+        <td>
+            <% if(productlist != null){ %>
+            <form action="edu.byu.isys413.actions.AddItems.action" method="post" target="_parent">
+                <table width="100%">
+                    
+                    <% for(int i = 0; i < productlist.size(); i++){
+                        Conceptual conc = (Conceptual)productlist.get(i); %>
+                        <tr>
+                            <td valign="center" align="center">
+                                <input type="radio" value="<%=conc.getId()%>" name="item">
+                            </td>
+                            <td>
+                                <%=conc.getName() %>
+                            </td>
+                            <td align="right">
+                                <%=formatNumber.fmt(conc.getPrice()) %>
+                            </td>
+                        </tr>
+                    <%} %>
+                    
                     <tr>
-                        <td>
-                            <input type="radio" value="<%=conc.getId()%>">
-                        </td>
-                        <td>
-                            <%=conc.getName() %>
-                        </td>
-                        <td>
-                            <%=conc.getPrice() %>
-                        </td>
+                        <td colspan="3"><input type="submit" value="Add To Cart"></td>
                     </tr>
-                <%}
-                }%>
-                
+                </table>
+            </form>
+           <% }%>
+        </td>
+    </tr>
+    <tr>
+        <th colspan="2">Items in Cart</th>
+    </tr>
+    
+    <% if(transLines != null){%>
+    <tr>
+        <td colspan="2">
+            <table>
+                    <% for(int i=0; i < transLines.size(); i++){
+                        TransactionLine tl = transLines.get(i); 
+                        Sale s = (Sale)tl.getRevenueSource();
+                        Conceptual c = (Conceptual)s.getProduct();%>
+                        <tr>
+                            <td><%=c.getName() %></td>
+                            <td><%=c.getPrice() %></td>
+                        </tr>
+                    <% } %>
             </table>
-            
-        </form>
-    </td>
+        </td>
+    </tr>
+    <% } %>
 </table>
 
 
