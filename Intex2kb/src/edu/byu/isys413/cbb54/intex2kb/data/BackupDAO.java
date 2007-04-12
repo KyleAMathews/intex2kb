@@ -61,7 +61,7 @@ public class BackupDAO extends RSDAO{
             
             // set variables
             rst.next();
-            rs.setPrice(rst.getDouble("price"));
+            new backupPriceBO((rst.getDouble("price")));
             
             // release the connection
             conn.commit();
