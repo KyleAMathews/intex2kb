@@ -15,7 +15,7 @@ import java.util.Map;
 import java.util.TreeMap;
 
 /**
- *
+ * Handles all interactions between the database and the Revenue Source objects
  * @author kyle
  */
 public class RevenueSourceDAO {
@@ -50,6 +50,14 @@ public class RevenueSourceDAO {
     // KEY (ba = backup | rn = rental | us = used | rp = repair | po = printOrder | sale = Sale | co = conversion)
     ///////////////////////////////////////////
     //// Create
+    /**
+     * Creates a revenue source by creating a GUID, getting the appropriate
+     * revenue source type from a map, and then calling the create
+     * @param sku SKU of product, used to determine which type of revenue source to create
+     * @return Revenue Source
+     * @throws edu.byu.isys413.cbb54.intex2kb.data.DataException Thrown when there is an error retrieving a database connection, or
+     * when there is an error in the SQL
+     */
     public RevenueSource create(String sku) throws DataException{
         try{
             // check first digit if backup/rental/used/repair/printOrder
@@ -80,6 +88,14 @@ public class RevenueSourceDAO {
     ///////////////////////////////////////////
     /// Read
     
+    /**
+     * returns the revenue source from the cache or from the database
+     * @param id GUID of revenue source to be read
+     * @throws edu.byu.isys413.cbb54.intex2kb.data.DataException Thrown when there is an error retrieving a database connection, or
+     * when there is an error in the SQL, or when a revenue source with 
+     * that ID doesn't exist
+     * @return Revenue Source
+     */
     public RevenueSource read(String id) throws DataException{
         RevenueSource rs = null;
         
@@ -140,6 +156,13 @@ public class RevenueSourceDAO {
     ///////////////////////////////////////////
     /// Save
     
+    /**
+     * Saves the revenue source to the database by creating a connection
+     * to the database and then calling the save method with the connection
+     * @param rs Revenue Source to be saved
+     * @throws edu.byu.isys413.cbb54.intex2kb.data.DataException Thrown when there is an error retrieving a database connection, or
+     * when there is an error in the SQL
+     */
     public void save(RevenueSource rs) throws DataException{
         
         String id = rs.getId();
@@ -189,6 +212,13 @@ public class RevenueSourceDAO {
         return;
     }
     
+    /**
+     * Saves the revenue source to the database
+     * @param rs Revenue Source to be saved
+     * @param conn1 Connection
+     * @throws edu.byu.isys413.cbb54.intex2kb.data.DataException Thrown when there is an error retrieving a database connection, or
+     * when there is an error in the SQL
+     */
     public void save(RevenueSource rs, Connection conn1) throws DataException{
         String id = rs.getId();
         Connection conn = conn1;
