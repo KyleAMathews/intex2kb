@@ -99,12 +99,16 @@
         <%
         List<TransactionLine> txline = new LinkedList<TransactionLine>();
         txline = rentaltx.getTxLines();
-        System.out.println("preparing to print out the transaction lines");
-        System.out.println(txline);
         for(int i = 0; i<txline.size(); i++){
             double txlineprice = txline.get(i).calculateSubtotal();
-            Rental rn = new Rental(txline.get(i).getRevenueSource().getId());
-            ForRent fr = ForRentDAO.getInstance().getByRentalID(rn.getId());
+            String id = txline.get(i).getRevenueSource().getId();
+            System.out.println(id);
+            Rental rn = (Rental)Cache.getInstance().get(id);
+            String frid = (String) session.getAttribute("frid");
+            System.out.println(frid);
+            ForRent fr = (ForRent)Cache.getInstance().get(frid);
+            System.out.println("Here is the for rental guid");
+            System.out.println(fr.getId());
             String txlinename = ConceptualRentalDAO.getInstance().getRentalName(fr);
             %>The Item Name = <%=txlinename%> The Item Price = <%=txlineprice%><br> <%
         }
