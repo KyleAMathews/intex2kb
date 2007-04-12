@@ -16,15 +16,20 @@ import javax.servlet.http.HttpSession;
 import java.util.*;
 
 /**
- *
+ * Creates a new instance of GetItems
  * @author Cameron
  */
 public class GetItems implements edu.byu.isys413.web.Action {
     
-    /** Creates a new instance of GetRentals */
+    /**
+     * Creates a new instance of GetItems
+     */
     public GetItems() {
     }
     
+    /**
+     * process GetItems
+     */
     public String process(HttpServletRequest request, HttpServletResponse response) throws Exception {
         HttpSession session = request.getSession();
         List<String> storeList = new LinkedList<String>();

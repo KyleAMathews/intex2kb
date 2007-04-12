@@ -16,15 +16,24 @@ import javax.servlet.http.HttpSession;
 import java.util.*;
 
 /**
- *
+ * Adds an individual transactionline to a transaction
  * @author Bryan
  */
 public class AddTXLine implements edu.byu.isys413.web.Action {
     
-    /** Creates a new instance of GetRentals */
+    /**
+     * Adds an individual transactionline to a transaction
+     */
     public AddTXLine() {
     }
     
+    /**
+     * HTTP Process method
+     * @param request HTTP Request
+     * @param response HTTP Response
+     * @throws java.lang.Exception Exception
+     * @return process
+     */
     public String process(HttpServletRequest request, HttpServletResponse response) throws Exception {
         HttpSession session = request.getSession();
         String forrent = request.getParameter("Rental");

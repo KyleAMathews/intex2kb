@@ -26,7 +26,9 @@ public class PhotoUpload implements edu.byu.isys413.web.Action {
     public PhotoUpload() {
     }
     
-    /** Processes a number guess */
+    /**
+     * Processes a PhotoUpload
+     */
     public String process(HttpServletRequest request, HttpServletResponse response) throws Exception {
         HttpSession session = request.getSession();
         
