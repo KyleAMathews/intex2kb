@@ -23,6 +23,9 @@ formatNumber fmt = new formatNumber();
 tx = TransactionDAO.getInstance().read((String)session.getAttribute("rentaltx"));
 List<TransactionLine> txLnList = tx.getTxLines();
 tx.setCustomer(cust);
+
+String storeid = (String) session.getAttribute("storerental");
+     Store store = StoreDAO.getInstance().read(storeid);
 %>
    
 <jsp:include page="header.jsp" />   
@@ -56,7 +59,7 @@ tx.setCustomer(cust);
             String txlinename = ConceptualRentalDAO.getInstance().getRentalName(fr);
             %> 
             <tr>
-                    <td>Store</td>
+                    <td><%=store.getName()%></td>
                     <td><%=txlinename%></td>
                     <td><%=txlineprice%></td>
                 </tr>
