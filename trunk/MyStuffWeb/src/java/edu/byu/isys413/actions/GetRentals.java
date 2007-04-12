@@ -36,24 +36,22 @@ public class GetRentals implements edu.byu.isys413.web.Action {
         List<String> forRentList = new LinkedList<String>();
         List<ForRent> forRentBOList = new LinkedList<ForRent>();
         
+        String category = request.getParameter("category");
         
         //check the different check boxes where to search for the products
-        if(request.getParameter("StoreOpt1") != null){
-            storeList.add("000001117284553c0014b20a500442");
-        }
-        if(request.getParameter("StoreOpt2") != null){
-            storeList.add("000001117284553c0014b20a500443");
-        }
-        if(request.getParameter("StoreOpt3") != null){
-            storeList.add("000001117284553c0014b20a500444");
-        }
-        
+        storeList.add(request.getParameter("Store"));
+        Store store = StoreDAO.getInstance().read(storeList.get(0));
+        session.setAttribute("storerental",store.getId());
         //get list of conceptual product id's from store id's
-        conceptualProductList = StoreProductDAO.getInstance().getProductList(storeList);
+        conceptualProductList = StoreProductDAO.getInstance().getProductList(storeList, category);
+        
         
         //get list of product id with conceptual product id
         PhysicalDAO pdao = (PhysicalDAO)PhysicalDAO.getInstance();
         productList = pdao.getByConceptual(conceptualProductList);
+        
+
+        
         
         //get only for rent items from product list
         forRentList = ForRentDAO.getInstance().getByID(productList);
