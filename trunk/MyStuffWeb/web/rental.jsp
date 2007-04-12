@@ -6,6 +6,9 @@
 <%
     String title = "Rental";
     Transaction rentaltx = null;
+    List<Category> categoryList = CategoryDAO.getInstance().getCategorys();
+    String category = (String)request.getAttribute("category");
+    
       if (session.getAttribute("rentaltx") == null){
         System.out.println("System didn't catch the same transaction");
       rentaltx = TransactionDAO.getInstance().create();
@@ -37,24 +40,20 @@
         <tr><th>Select Category</th><th>Select Stores</th></tr>
     <tr>
     <td>
-        
-        <select NAME="Category">
-            <% List<String> categoryList = new LinkedList<String>();
-            categoryList = CategoryDAO.getInstance().getCategoryList();
+        <form action="edu.byu.isys413.actions.GetRentals.action" method="post" target=_parent> 
+        <select NAME="category">
+            <% 
         for(int i = 0; i<categoryList.size(); i++){
-               String value = categoryList.get(i);
+               Category c = categoryList.get(i);
                 %>
-                <option VALUE="<%=i%>"><%=value%>
-                <%
-                }
-                %>
-          </select>
+                <option VALUE="<%= c.getId() %>" <% if( (category != null) && (c.getId().matches((String)request.getParameter("category"))) ){out.print("selected");};%>><%= c.getName()%><br><%}%>
+          </select> 
     </td>	
     <td>
-        <form action="edu.byu.isys413.actions.GetRentals.action" method="post" target=_parent> 
-        <input type="checkbox" name="StoreOpt1" value="1"> Provo<br>
-        <input type="checkbox" name="StoreOpt2" value="2"> Logan<br>
-        <input type="checkbox" name="StoreOpt3" value="3"> Murray<br>
+        
+        <input type="radio" name="Store" value="000001117284553c0014b20a500442"> Provo<br>
+        <input type="radio" name="Store" value="000001117284553c0014b20a500443"> Logan<br>
+        <input type="radio" name="Store" value="000001117284553c0014b20a500444"> Murray<br>
         
     </td>
 </table>
@@ -66,7 +65,6 @@ The following items are available for rent
                 <tr>
                     
                     <td>Select Product</td>
-                    <td>Store</td>
                     <td>Name</td>
                     <td>Price</td>
                 </tr>
@@ -80,7 +78,6 @@ The following items are available for rent
                 %>
                 <tr>
                     <td><input type="radio" name ="Rental" value = "<%=rental.get(i).getId()%>"></td>
-                    <td>Store</td>
                     <td><%=name%></td>
                     <td><%=price%></td>
                 </tr>
@@ -95,7 +92,6 @@ The following items are available for rent
 <table>
         
         <tr>
-            <td>Store</td>
             <td>Name</td>
             <td>Price Per Day</td>
         </tr>
@@ -117,7 +113,6 @@ The following items are available for rent
             String txlinename = ConceptualRentalDAO.getInstance().getRentalName(fr);
             %> 
             <tr>
-                    <td>Store</td>
                     <td><%=txlinename%></td>
                     <td><%=txlineprice%></td>
                 </tr>
