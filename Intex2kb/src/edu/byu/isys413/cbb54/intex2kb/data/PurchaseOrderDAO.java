@@ -17,7 +17,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 /**
- *
+ * Handles all interactions between the database and the Purchase Order objects
  * @author Cameron
  */
 public class PurchaseOrderDAO {
@@ -32,7 +32,8 @@ public class PurchaseOrderDAO {
     }
     
     /**
-     * Return an instance of Transaction
+     * Return an instance of PurchaseOrderDAO
+     * @return PurchaseOrderDAO
      */
     public static synchronized PurchaseOrderDAO getInstance() {
         if (instance == null) {
@@ -46,9 +47,10 @@ public class PurchaseOrderDAO {
     ///   CREATE
     
     /**
-     * There's no need for two creates because we don't need
-     * a connection to create BOs.  We run the insert statement
-     * later, when it get's saved for the first time.
+     * Creates a new purchase order for the vendor that is passed to it
+     * @param vendor the purchase order is for
+     * @return PruchaseOrder
+     * @throws java.lang.Exception Thrown when there is an error creating a GUID
      */
     public PurchaseOrder create(Vendor vendor) throws Exception{
         String id = null;
@@ -64,8 +66,12 @@ public class PurchaseOrderDAO {
     ///   READ
     
     /**
-     * This is the public read statement.  It loads an existing record
-     * from the database.
+     * Reads a purchase order from the Cache or from the database
+     * @param id GUID of purchase order to be read
+     * @throws edu.byu.isys413.cbb54.intex2kb.data.DataException Thrown when there is an error retrieving a database connection, or
+     * when there is an error in the SQL, or when there is not a PurchaseOrder
+     * with that ID
+     * @return PurchaseOrder
      */
     public synchronized PurchaseOrder read(String id) throws DataException {
         PurchaseOrder po = null;
@@ -166,9 +172,10 @@ public class PurchaseOrderDAO {
     ///   UPDATE
     
     /**
-     * This is the public save method.  It is what is called when
-     * the user (controller) code wants to save or update an object
-     * into the database.
+     * Saves a purchase order to the database
+     * @param po Pruchase Order
+     * @throws edu.byu.isys413.cbb54.intex2kb.data.DataException Thrown when there is an error retrieving a database connection, or
+     * when there is an error in the SQL
      */
     public synchronized void save(PurchaseOrder po) throws DataException {
         
@@ -314,7 +321,11 @@ public class PurchaseOrderDAO {
     ///  SEARCH methods
     
     /**
-     * Get all transactions for a given customer
+     * Returns Purchase Orders for a given Vendor
+     * @param id GUID of Vendor
+     * @throws edu.byu.isys413.cbb54.intex2kb.data.DataException Thrown when there is an error retrieving a database connection, or
+     * when there is an error in the SQL
+     * @return List of PurchaseOrders
      */
     public List<PurchaseOrder> getByVendorID(String id) throws DataException {
         List<PurchaseOrder> list = new LinkedList<PurchaseOrder>();
