@@ -20,19 +20,19 @@ Transaction tx = null;
 formatNumber fmt = new formatNumber();
 %>
 <div id="body">
-    <% String txType = (String)session.getAttribute("checkoutTxType");
+    <% String txType = (String)request.getParameter("checkoutTxType");
     if (txType.equals("ba")){
         out.write("<jsp:include page=\"backupCheckout.jsp\" />");
-        tx = TransactionDAO.getInstance().read((String)session.getAttribute("backuptx"));
+        tx = TransactionDAO.getInstance().read((String)request.getParameter("backuptx"));
     }else if(txType.equals("re")){
         out.write("<jsp:include page=\"rentalCheckout.jsp\" />");
-        tx = TransactionDAO.getInstance().read((String)session.getAttribute("rentaltx"));
+        tx = TransactionDAO.getInstance().read((String)request.getParameter("rentaltx"));
     }else if(txType.equals("po")){
         out.write("<jsp:include page=\"photoCheckout.jsp\" />");
-        tx = TransactionDAO.getInstance().read((String)session.getAttribute("tx"));
+        tx = TransactionDAO.getInstance().read((String)request.getParameter("tx"));
     }else if(txType.equals("sa")){
         out.write("<jsp:include page=\"saleCheckout.jsp\" />");
-        tx = TransactionDAO.getInstance().read((String)session.getAttribute("saletx"));
+        tx = TransactionDAO.getInstance().read((String)request.getParameter("saletx"));
     }
     session.setAttribute("tx",tx.getId());
     %>
