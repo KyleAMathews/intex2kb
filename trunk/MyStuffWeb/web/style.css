@@ -182,8 +182,12 @@ input {
  display: block;
  background-color:#c6c6c6;
  float: left;
- xmargin-bottom: 10px;
+ margin-bottom: 10px;
 	}
+
+.checkbox {
+    margin-bottom: 0;
+    }
 
 .buttonSubmit {
  	width: 75px;
