@@ -68,6 +68,14 @@ public class validateLogin {
         return pass;
     }
     
+    /**
+     * Used to find the member id of the person attempting to log in to the online store
+     * @param email email address of the person
+     * @param password password entered by the person
+     * @return String - Member ID, if one exists
+     * @throws java.lang.Exception Throws and Exception if there is a problem connection with the 
+     * database of there is an error in the SQL
+     */
     public String membid(String email, String password) throws Exception {
         String membid = "";
         Connection conn = ConnectionPool.getInstance().get();
