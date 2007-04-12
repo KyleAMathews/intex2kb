@@ -70,7 +70,7 @@ public class backup extends RevenueSource {
     public void calcSubTotal(){
         this.dirty = true;
         double newPrice = getBkPrice() * getSize();
-        System.out.println(newPrice);
+        System.out.println("new monthly backup price: " + newPrice);
         this.setPrice(newPrice);
     }
     
