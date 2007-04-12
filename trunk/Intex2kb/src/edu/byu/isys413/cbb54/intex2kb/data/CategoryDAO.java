@@ -28,6 +28,9 @@ public class CategoryDAO {
     public CategoryDAO() {
     }
     
+    /**
+     * Returns an instance of the DAO
+     */
     public static synchronized CategoryDAO getInstance() {
         if (instance == null) {
             instance = new CategoryDAO();
@@ -35,12 +38,18 @@ public class CategoryDAO {
         return instance;
     }
     
+    /**
+     * Creates a new Category object
+     */
     public Category create(String name) throws Exception{
         String id = GUID.generate();
         Category cat = new Category(id,name);
         return cat;
     }
     
+    /**
+     * Returns a list of all the categorys
+     */
     public List<String> getCategoryList() throws DataException {
         List<String> list = new LinkedList<String>();
         
@@ -84,6 +93,9 @@ public class CategoryDAO {
         return list;
     }
     
+    /**
+     * Returns a list of categories and their id's
+     */
     public List<Category> getCategorys() throws DataException {
         List<Category> list = new LinkedList<Category>();
         
