@@ -12,7 +12,7 @@ package edu.byu.isys413.cbb54.intex2kb.data;
 import java.sql.*;
 import java.util.*;
 /**
- *
+ * Handles all database queries to the store/product table
  * @author Bryan
  */
 public class StoreProductDAO {
@@ -28,6 +28,10 @@ public class StoreProductDAO {
     public StoreProductDAO() {
     }
  
+    /**
+     * Returns an instance of the StoreProductDAO
+     * @return StoreProductDAO
+     */
     public static synchronized StoreProductDAO getInstance() {
         if (instance == null) {
             instance = new StoreProductDAO();
@@ -35,6 +39,13 @@ public class StoreProductDAO {
         return instance;
     }
     
+    /**
+     * Returns the product for specified stores
+     * @param storeList List of store IDs
+     * @return List of product IDs
+     * @throws edu.byu.isys413.cbb54.intex2kb.data.DataException Thrown when there is an error getting a database connection or 
+     * executing SQL
+     */
     public List<String> getProductList(List storeList) throws DataException {
         List<String> list = new LinkedList<String>();
         
