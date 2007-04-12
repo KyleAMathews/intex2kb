@@ -34,7 +34,7 @@
 <p>Please select a category and choose a store location.</p>
 <div>
     <table width="600px" cellpadding="5px" cellspacing="10px">
-        <tr><td>Select Category</td><td>Select Stores</td></tr>
+        <tr><th>Select Category</th><th>Select Stores</th></tr>
     <tr>
     <td>
         

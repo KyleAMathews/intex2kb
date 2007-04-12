@@ -47,7 +47,7 @@ if (request.getAttribute("saletx") == null){
     <h1><%out.write(title);%></h1>
 <div>
     <table width="600px" cellpadding="5px" cellspacing="10px">
-        <tr><td>Select Category</td><td>Select Stores</td></tr>
+        <tr><th>Select Category</th><th>Select Stores</th></tr>
     <tr>
     <td>
         <form action="edu.byu.isys413.actions.GetItems.action" method="post" target=_parent>
