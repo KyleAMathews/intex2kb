@@ -17,7 +17,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 /**
- *
+ * Handles all the database interactions for the Vendor objects
  * @author Cameron
  */
 public class VendorDAO {
@@ -166,8 +166,8 @@ public class VendorDAO {
      * This is the public save method.  It is what is called when
      * the user (controller) code wants to save or update a customer
      * into the database.
-     * @param cust Customer
      * @throws DataException Thrown when there is an error connection to the database or executing the SQL
+     * @param vendor Object to be saved
      */
     public synchronized void save(Vendor vendor) throws DataException {
         
@@ -366,9 +366,9 @@ public class VendorDAO {
     
     /**
      * Returns all vendors with matching first and last name
-     * @param Name String
-     * @return List of Vendors
      * @throws DataException Thrown when there is an error creating a database connection or executing the SQL
+     * @param name String to be searched
+     * @return List Vendors
      */
     public List<Vendor> getByName(String name) throws DataException {
         List<Vendor> list = new LinkedList<Vendor>();
