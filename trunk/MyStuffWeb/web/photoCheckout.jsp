@@ -31,16 +31,20 @@ List<TransactionLine> txLnList = tx.getTxLines();
         </tr>
     </thead>
     <tbody>
-        <%int index = 1;
+        <%
+        formatNumber format = new formatNumber();
+        int index = 1;
         for(int i = 0; i < txLnList.size();i++){
         String desc = (String)session.getAttribute("FileName" + (index));
         String pf = (String)session.getAttribute("pf" + (index));
         String qty = (String)session.getAttribute("qty" + (index));
+        String lnTotal = format.fmt(txLnList.get(i).calculateSubtotal());
         %>
         <tr>
             <td><%=desc%></td>
             <td><%=pf%></td>
             <td><%=qty%></td>
+            <td><%=lnTotal%></td>
         </tr>
         <%
         index++;}
