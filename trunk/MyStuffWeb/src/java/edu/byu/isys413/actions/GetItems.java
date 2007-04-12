@@ -31,33 +31,23 @@ public class GetItems implements edu.byu.isys413.web.Action {
      * process GetItems
      */
     public String process(HttpServletRequest request, HttpServletResponse response) throws Exception {
-        HttpSession session = request.getSession();
-        List<String> storeList = new LinkedList<String>();
+        // Create list to hold Conceptual product of a category
         List<Conceptual> productList = new LinkedList<Conceptual>();
-        List<String> forRentList = new LinkedList<String>();
-        List<ForRent> forRentBOList = new LinkedList<ForRent>();
         
+        // Retieve category ID
         String category = request.getParameter("category");
         
-//        //check the different check boxes where to search for the products
-//        if(request.getParameter("StoreOpt1") != null){
-//            storeList.add("000001117284553c0014b20a500442");
-//        }
-//        if(request.getParameter("StoreOpt2") != null){
-//            storeList.add("000001117284553c0014b20a500443");
-//        }
-//        if(request.getParameter("StoreOpt3") != null){
-//            storeList.add("000001117284553c0014b20a500444");
-//        }
-        
         //get list of conceptual products in specified category
-        
         ConceptualDAO cDAO = (ConceptualDAO) ConceptualDAO.getInstance();
         productList = cDAO.getProductsByCategory(category);
         
+        // Return category ID to next page
         request.setAttribute("category", category);
+        
+        // Return productlist to next page
         request.setAttribute("products", productList);
         
-        return "sale.jsp"; //return back to the rental page
+        // Direct information to the Sale.jsp page
+        return "sale.jsp";
         }  
 }
