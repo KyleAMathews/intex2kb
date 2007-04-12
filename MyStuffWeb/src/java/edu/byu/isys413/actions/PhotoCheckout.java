@@ -78,16 +78,16 @@ public class PhotoCheckout implements edu.byu.isys413.web.Action {
             qty1 = Integer.parseInt(request.getParameter("qty1"));
         }
         if((request.getParameter("qty2") != null)){
-            qty1 = Integer.parseInt(request.getParameter("qty2"));
+            qty2 = Integer.parseInt(request.getParameter("qty2"));
         }
         if((request.getParameter("qty3") != null)){
-            qty1 = Integer.parseInt(request.getParameter("qty3"));
+            qty3 = Integer.parseInt(request.getParameter("qty3"));
         }
         if((request.getParameter("qty4") != null)){
-            qty1 = Integer.parseInt(request.getParameter("qty4"));
+            qty4 = Integer.parseInt(request.getParameter("qty4"));
         }
         if((request.getParameter("qty5") != null)){
-            qty1 = Integer.parseInt(request.getParameter("qty5"));
+            qty5 = Integer.parseInt(request.getParameter("qty5"));
         }
         
         if(printFormat1 != null){
@@ -103,7 +103,9 @@ public class PhotoCheckout implements edu.byu.isys413.web.Action {
             //set PrintOrder values
             po1.setPOID(GUID.generate());
             po1.setPrintFormat(pf1);
+            session.setAttribute("pf1",(pfSize1 + " - " + pfPaper1));
             po1.setQuantity(qty1);
+            session.setAttribute("qty1",Integer.toString(qty1));
             
             //set PhotoSet values
             ps1.setDescription((String)request.getAttribute("FileName1"));
@@ -124,63 +126,171 @@ public class PhotoCheckout implements edu.byu.isys413.web.Action {
         if(printFormat2 != null){
             pfSize2 = getSize(Integer.valueOf(printFormat2));
             pfPaper2 = getPaper(Integer.valueOf(printFormat2));
+            
+            printOrder po2 = (printOrder)PrintOrderDAO.getInstance().create();
+            PhotoSet ps2 = PhotoSetDAO.getInstance().create();
+            
+            //read printFormat
+            printFormat pf2 = printFormatDAO.getInstance().getPrintFormat(pfSize2,pfPaper2,sourceType);
+            
+            //set PrintOrder values
+            po2.setPOID(GUID.generate());
+            po2.setPrintFormat(pf2);
+            session.setAttribute("pf2",(pfSize2 + " - " + pfPaper2));
+            po2.setQuantity(qty2);
+            session.setAttribute("qty2",Integer.toString(qty2));
+            
+            //set PhotoSet values
+            ps2.setDescription((String)request.getAttribute("FileName2"));
+            ps2.setNumPhotos(1);
+            po2.setPhotoSet(ps2);
+            
+            //set total price in RSBO
+            po2.setTotalPrice(po2.getQuantity(),pf2.getPrice(),ps2.getNumPhotos());
+            
+            //Create TX-Line
+            TransactionLine txln2 = TransactionLineDAO.getInstance().create(tx,po2.getId());
+            txln2.setRevenueSource(po2);
+            txln2.setRsType("Print Order - " + po2.getPhotoSet().getDescription());
+            tx.addTxLine(txln2);
         }
         if(printFormat3 != null){
             pfSize3 = getSize(Integer.valueOf(printFormat3));
             pfPaper3 = getPaper(Integer.valueOf(printFormat3));
+            
+            printOrder po3 = (printOrder)PrintOrderDAO.getInstance().create();
+            PhotoSet ps3 = PhotoSetDAO.getInstance().create();
+            
+            //read printFormat
+            printFormat pf3 = printFormatDAO.getInstance().getPrintFormat(pfSize3,pfPaper3,sourceType);
+            
+            //set PrintOrder values
+            po3.setPOID(GUID.generate());
+            po3.setPrintFormat(pf3);
+            session.setAttribute("pf3",(pfSize3 + " - " + pfPaper3));
+            po3.setQuantity(qty3);
+            session.setAttribute("qty3",Integer.toString(qty3));
+            
+            //set PhotoSet values
+            ps3.setDescription((String)request.getAttribute("FileName3"));
+            ps3.setNumPhotos(1);
+            po3.setPhotoSet(ps3);
+            
+            //set total price in RSBO
+            po3.setTotalPrice(po3.getQuantity(),pf3.getPrice(),ps3.getNumPhotos());
+            
+            //Create TX-Line
+            TransactionLine txln3 = TransactionLineDAO.getInstance().create(tx,po3.getId());
+            txln3.setRevenueSource(po3);
+            txln3.setRsType("Print Order - " + po3.getPhotoSet().getDescription());
+            tx.addTxLine(txln3);
         }
         if(printFormat4 != null){
             pfSize4 = getSize(Integer.valueOf(printFormat4));
             pfPaper4 = getPaper(Integer.valueOf(printFormat4));
+            
+            printOrder po4 = (printOrder)PrintOrderDAO.getInstance().create();
+            PhotoSet ps4 = PhotoSetDAO.getInstance().create();
+            
+            //read printFormat
+            printFormat pf4 = printFormatDAO.getInstance().getPrintFormat(pfSize4,pfPaper4,sourceType);
+            
+            //set PrintOrder values
+            po4.setPOID(GUID.generate());
+            po4.setPrintFormat(pf4);
+            session.setAttribute("pf4",(pfSize4 + " - " + pfPaper4));
+            po4.setQuantity(qty4);
+            session.setAttribute("qty4",Integer.toString(qty4));
+            
+            //set PhotoSet values
+            ps4.setDescription((String)request.getAttribute("FileName4"));
+            ps4.setNumPhotos(1);
+            po4.setPhotoSet(ps4);
+            
+            //set total price in RSBO
+            po4.setTotalPrice(po4.getQuantity(),pf4.getPrice(),ps4.getNumPhotos());
+            
+            //Create TX-Line
+            TransactionLine txln4 = TransactionLineDAO.getInstance().create(tx,po4.getId());
+            txln4.setRevenueSource(po4);
+            txln4.setRsType("Print Order - " + po4.getPhotoSet().getDescription());
+            tx.addTxLine(txln4);
         }
         if(printFormat5 != null){
             pfSize5 = getSize(Integer.valueOf(printFormat5));
             pfPaper5 = getPaper(Integer.valueOf(printFormat5));
+            
+            printOrder po5 = (printOrder)PrintOrderDAO.getInstance().create();
+            PhotoSet ps5 = PhotoSetDAO.getInstance().create();
+            
+            //read printFormat
+            printFormat pf5 = printFormatDAO.getInstance().getPrintFormat(pfSize5,pfPaper5,sourceType);
+            
+            //set PrintOrder values
+            po5.setPOID(GUID.generate());
+            po5.setPrintFormat(pf5);
+            session.setAttribute("pf5",(pfSize5 + " - " + pfPaper5));
+            po5.setQuantity(qty5);
+            session.setAttribute("qty5",Integer.toString(qty5));
+            
+            //set PhotoSet values
+            ps5.setDescription((String)request.getAttribute("FileName5"));
+            ps5.setNumPhotos(1);
+            po5.setPhotoSet(ps5);
+            
+            //set total price in RSBO
+            po5.setTotalPrice(po5.getQuantity(),pf5.getPrice(),ps5.getNumPhotos());
+            
+            //Create TX-Line
+            TransactionLine txln5 = TransactionLineDAO.getInstance().create(tx,po5.getId());
+            txln5.setRevenueSource(po5);
+            txln5.setRsType("Print Order - " + po5.getPhotoSet().getDescription());
+            tx.addTxLine(txln5);
         }
         session.setAttribute("checkoutTxType","po");
         return "photoCheckout.jsp";
     }//process
     
     private String getSize(int pf){
-        String pfSize1 = "";
+        String pfSize = "";
         
         switch(pf){
             case 0:
-                pfSize1 = "4x6";
+                pfSize = "4x6";
                 break;
             case 1:
-                pfSize1 = "4x6";
+                pfSize = "4x6";
                 break;
             case 2:
-                pfSize1 = "5x7";
+                pfSize = "5x7";
                 break;
             case 3:
-                pfSize1 = "5x7";
+                pfSize = "5x7";
                 break;
         }
         
-        return pfSize1;
+        return pfSize;
     }//end getSize
     
     private String getPaper(int pf){
-        String pfPaper1 = "";
+        String pfPaper = "";
         
         switch(pf){
             case 0:
-                pfPaper1 = "Matte";
+                pfPaper = "Matte";
                 break;
             case 1:
-                pfPaper1 = "Glossy";
+                pfPaper = "Glossy";
                 break;
             case 2:
-                pfPaper1 = "Matte";
+                pfPaper = "Matte";
                 break;
             case 3:
-                pfPaper1 = "Glossy";
+                pfPaper = "Glossy";
                 break;
         }
         
-        return pfPaper1;
+        return pfPaper;
     }//end getPaper
     
 }//PhotoUpload.java

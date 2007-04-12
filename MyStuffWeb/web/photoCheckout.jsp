@@ -20,10 +20,33 @@ cust = m.getCustomer();
 Transaction tx = null;
 formatNumber fmt = new formatNumber();
 tx = TransactionDAO.getInstance().read((String)session.getAttribute("tx"));
+List<TransactionLine> txLnList = tx.getTxLines();
 %>
-
 <jsp:include page="header.jsp" />
-
+<p></p>
+<table>
+    <thead>
+        <tr>
+            <th>Print Order Purchase Details</th>
+        </tr>
+    </thead>
+    <tbody>
+        <%int index = 1;
+        for(int i = 0; i < txLnList.size();i++){
+        String desc = (String)session.getAttribute("FileName" + (index));
+        String pf = (String)session.getAttribute("pf" + (index));
+        String qty = (String)session.getAttribute("qty" + (index));
+        %>
+        <tr>
+            <td><%=desc%></td>
+            <td><%=pf%></td>
+            <td><%=qty%></td>
+        </tr>
+        <%
+        index++;}
+        %>
+    </tbody>
+</table>
 <%@ include file="checkout.jsp" %>
 <jsp:include page="footer.jsp" />
 </div><!--end bigcontainer-->
