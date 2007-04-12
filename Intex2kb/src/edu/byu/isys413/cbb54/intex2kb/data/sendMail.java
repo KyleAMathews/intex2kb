@@ -48,14 +48,14 @@ import javax.mail.Session;
  */
 public class sendMail {
     
-    /*
+    
     private static final String SMTP_HOST_NAME = "smtp.1and1.com";
     private static final String SMTP_AUTH_USER = "info@2kmystuff.com";
-    private static final String SMTP_AUTH_PWD  = "intex24";*/
+    private static final String SMTP_AUTH_PWD  = "intex24";
     
-    private static final String SMTP_HOST_NAME = "gateway.byu.edu";
+    /*private static final String SMTP_HOST_NAME = "gateway.byu.edu";
     private static final String SMTP_AUTH_USER = "cbb54";
-    private static final String SMTP_AUTH_PWD  = "intex241";
+    private static final String SMTP_AUTH_PWD  = "intex241";*/
     
     
     /**
