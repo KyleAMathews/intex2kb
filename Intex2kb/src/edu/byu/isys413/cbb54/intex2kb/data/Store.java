@@ -28,13 +28,17 @@ public class Store {
     private String fax;
     private String managerID;
     
-    /** Creates a new instance of Store */
+    /**
+     * Creates a new instance of Store
+     * @param id GUID
+     */
     public Store(String id) {
         this.id = id;
     }
 
     /**
      * Returns boolean flag to notify of changes to object
+     * @return Boolean dirty
      */
     public boolean isDirty() {
         return dirty;
@@ -42,6 +46,7 @@ public class Store {
 
     /**
      * Sets boolean flag to indicate changes to object
+     * @param dirty Boolean
      */
     public void setDirty(boolean dirty) {
         this.dirty = dirty;
@@ -49,6 +54,7 @@ public class Store {
 
     /**
      * Returns boolean flag to indicate object has been written to DB
+     * @return Boolean inDB
      */
     public boolean isInDB() {
         return isInDB;
@@ -56,6 +62,7 @@ public class Store {
 
     /**
      * Sets boolean flat to indicate object has been written to DB
+     * @param isInDB Boolean
      */
     public void setIsInDB(boolean isInDB) {
         this.isInDB = isInDB;
@@ -63,6 +70,7 @@ public class Store {
 
     /**
      * Returns ID of Store
+     * @return GUID
      */
     public String getId() {
         return id;
@@ -70,6 +78,7 @@ public class Store {
 
     /**
      * Returns the name of the store
+     * @return name
      */
     public String getName() {
         return name;
@@ -77,6 +86,7 @@ public class Store {
 
     /**
      * Sets the name of the store
+     * @param name String
      */
     public void setName(String name) {
         this.dirty = true;
@@ -85,6 +95,7 @@ public class Store {
 
     /**
      * Returns the first line of the store's address
+     * @return address1
      */
     public String getAddress1() {
         return address1;
@@ -92,6 +103,7 @@ public class Store {
 
     /**
      * Sets the first line of the store's address
+     * @param address1 String
      */
     public void setAddress1(String address1) {
         this.dirty = true;
@@ -100,6 +112,7 @@ public class Store {
 
     /**
      * Returns the second line of the store's address
+     * @return address2
      */
     public String getAddress2() {
         return address2;
@@ -107,6 +120,7 @@ public class Store {
 
     /**
      * Sets the second line of the store's address
+     * @param address2 String
      */
     public void setAddress2(String address2) {
         this.dirty = true;
@@ -115,6 +129,7 @@ public class Store {
 
     /**
      * Returns the store's city
+     * @return City
      */
     public String getCity() {
         return city;
@@ -122,6 +137,7 @@ public class Store {
 
     /**
      * Sets store's city
+     * @param city String
      */
     public void setCity(String city) {
         this.dirty = true;
@@ -130,6 +146,7 @@ public class Store {
 
     /**
      * Returns store's state
+     * @return state
      */
     public String getState() {
         return state;
@@ -137,6 +154,7 @@ public class Store {
 
     /**
      * Sets store's state
+     * @param state String
      */
     public void setState(String state) {
         this.dirty = true;
@@ -145,6 +163,7 @@ public class Store {
 
     /**
      * Return store's zipcode
+     * @return zip
      */
     public String getZip() {
         return zip;
@@ -152,6 +171,7 @@ public class Store {
 
     /**
      * Set store's zipcode
+     * @param zip String
      */
     public void setZip(String zip) {
         this.dirty = true;
@@ -160,6 +180,7 @@ public class Store {
 
     /**
      * Returns store's phone number
+     * @return Phone
      */
     public String getPhone() {
         return phone;
@@ -167,6 +188,7 @@ public class Store {
 
     /**
      * Set store's phone number
+     * @param phone String
      */
     public void setPhone(String phone) {
         this.dirty = true;
@@ -175,6 +197,7 @@ public class Store {
 
     /**
      * Returns store's fax number
+     * @return fax
      */
     public String getFax() {
         return fax;
@@ -182,6 +205,7 @@ public class Store {
 
     /**
      * Sets store's fax number
+     * @param fax String
      */
     public void setFax(String fax) {
         this.dirty = true;
@@ -190,6 +214,7 @@ public class Store {
 
     /**
      * Returns EmployeeID of store manager
+     * @return employee GUID
      */
     public String getManagerID() {
         return managerID;
@@ -197,6 +222,7 @@ public class Store {
 
     /**
      * Sets EmployeeID of store manager
+     * @param managerID String GUID
      */
     public void setManagerID(String managerID) {
         this.dirty = true;
