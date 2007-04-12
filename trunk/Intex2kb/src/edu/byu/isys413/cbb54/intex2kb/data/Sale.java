@@ -29,33 +29,61 @@ public class Sale extends RevenueSource {
         this.id = id;
     }
     
+    /**
+     * Returns the quantity of the item sold
+     * @return Integer Quantity
+     */
     public int getQuantity() {
         return quantity;
     }
     
+    /**
+     * Sets the quantity sold
+     * @param quantity Integer
+     */
     public void setQuantity(int quantity) {
         this.quantity = quantity;
         this.dirty = true;
     }
 
+    /**
+     * Returns the product sold
+     * @return Product
+     */
     public Product getProduct() {
         return product;
     }
 
+    /**
+     * Sets the product sold
+     * @param product object
+     */
     public void setProduct(Product product) {
         this.dirty = true;
         this.product = product;
     }
 
+    /**
+     * Returns the product type
+     * @return String Product Type
+     */
     public String getProductType() {
         return productType;
     }
 
+    /**
+     * Sets the product type
+     * @param productType String
+     */
     public void setProductType(String productType) {
         this.dirty = true;
         this.productType = productType;
     }
     
+    /**
+     * Sets the price of the sale
+     * @param price Double
+     */
     public void setPrice(double price){
         super.price = price;
     }
