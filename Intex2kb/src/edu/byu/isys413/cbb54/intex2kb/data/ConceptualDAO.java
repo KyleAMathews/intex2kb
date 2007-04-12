@@ -254,7 +254,7 @@ public class ConceptualDAO extends ProductDAO{
         Connection conn = ConnectionPool.getInstance().get();
         
         PreparedStatement search = conn.prepareStatement(
-                "SELECT * FROM \"conceptual\" \"co\", \"product\" \"pr\" WHERE \"co\".\"id\" = \"pr\".\"id\" AND \"co\".\"categoryID\" = ? ");
+                "SELECT * FROM \"conceptual\" \"co\", \"product\" \"pr\" WHERE \"co\".\"id\" = \"pr\".\"id\" AND \"co\".\"categoryID\" = ? ORDER BY \"co\".\"name\" ");
         search.setString(1, categoryID);
         ResultSet rs = search.executeQuery();
         conn.commit();
