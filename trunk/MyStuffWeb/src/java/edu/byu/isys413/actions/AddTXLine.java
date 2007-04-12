@@ -46,6 +46,8 @@ public class AddTXLine implements edu.byu.isys413.web.Action {
         //increment the times rented in the for rent object
         int timesrented = fr.getTimesrented();
         fr.setTimesrented(timesrented++);
+        String frid = fr.getId();
+        session.setAttribute("frid", frid);
         
         //create the transaction line
         TransactionLine txln = TransactionLineDAO.getInstance().create(tx,"rn");
