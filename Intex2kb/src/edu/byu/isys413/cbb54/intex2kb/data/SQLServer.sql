@@ -375,7 +375,7 @@ INSERT INTO "category" VALUES ('00000115123b9144eb018b64001000', 'Film');
 INSERT INTO "customer" VALUES ('00000109123b9144eb018b64001000', 'Cameron', 'Burgon', '851 Wymount Terrace', '', 'Provo', 'Utah', '84602', '8013786198', 'cameronb62@gmail.com');
 INSERT INTO "customer" VALUES ('00000109123b925d16688bc2001000', 'Jamie', 'Burgon', '851 Wymount Terrace', '', 'Provo', 'Utah', '84604', '8013689248', 'cameronb62@gmail.com');
 INSERT INTO "customer" VALUES ('10000109123b925d16688bc2001000', 'Bryan', 'Schader', '267 E. 500 N. #71', '', 'Provo', 'Utah', '84606', '4089529043', 'bschader@gmail.com');
-INSERT INTO "customer" VALUES ('00000109123b8e75a1ce5a33001000', 'Kyle', 'Mathews', '123 Somewhere', '', 'Nowhere', 'Nevada', '87839', '3418394854', 'kyle.mathews@gmail.com');
+INSERT INTO "customer" VALUES ('00000109123b8e75a1ce5a33001000', 'Kyle', 'Mathews', '123 Somewhere', '', 'Nowhere', 'Nevada', '87839', '3418394854', 'mathews.kyle@gmail.com');
 INSERT INTO "customer" VALUES ('00000109123b8e75a1ce5a34001000', 'Jane', 'Doe', '123 Somewhere', '', 'Nowhere', 'Nevada', '87839', '3418394854', 'tylerfarmer@gmail.com');
 INSERT INTO "customer" VALUES ('00000111d80891e0015d170a04449d', 'Tyler', 'Farmer', '123 Somewhere', '', 'Nowhere', 'Nevada', '87839', '3418394854', 'tylerfarmer@gmail.com');
 
