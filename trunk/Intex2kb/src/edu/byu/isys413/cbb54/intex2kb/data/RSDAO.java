@@ -12,7 +12,7 @@ package edu.byu.isys413.cbb54.intex2kb.data;
 import java.sql.Connection;
 
 /**
- *
+ * Abstract class for the individual revenue source types
  * @author kyle
  */
 public abstract class RSDAO {
