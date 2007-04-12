@@ -123,7 +123,7 @@ on Libraries node in Projects view can be used to add the JSTL 1.1 library.
                                 value = storeList.get(i).getName();
                             }
                         %>
-                        <input type="radio" name="group1" value="<%=value%>"><%=value%><br>
+                        <input class="checkbox" type="radio" name="group1" value="<%=value%>"><%=value%><br>
                         <%
                         }
                         %>
