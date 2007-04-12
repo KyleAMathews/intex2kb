@@ -14,7 +14,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 /**
- *
+ * 
+ * Handles all interaction between the database and the Repair objects
  * @author kyle
  */
 public class RepairDAO extends RSDAO{
@@ -29,7 +30,7 @@ public class RepairDAO extends RSDAO{
     }
     
     /**
-     * Singleton Pattern to allow only one instance of RentalDAO
+     * Singleton Pattern to allow only one instance of RepairDAO
      * @return RentalDAO
      */
     public static synchronized RepairDAO getInstance() {
@@ -42,6 +43,13 @@ public class RepairDAO extends RSDAO{
     ///////////////////////////////////////////
     /// Create
     
+    /**
+     * Creates a new Repair object by first creating a GUID and then calling
+     * the create in Repair
+     * @throws java.lang.Exception Thrown when there is an error retrieving a database connection, or
+     * when there is an error in the SQL
+     * @return Repair
+     */
      public RevenueSource create() throws Exception{
         String id = GUID.generate("rp");
         RevenueSource rs = new repair(id);
@@ -52,6 +60,15 @@ public class RepairDAO extends RSDAO{
        ///////////////////////////////////////////
     /// Read
     
+    /**
+     * Returns a Repair object be retrieving it from cache or from the database
+     * @param id String GUID of object
+     * @param conn Connection
+     * @throws java.lang.Exception Thrown when there is an error retrieving a database connection, or
+     * when there is an error in the SQL, or when there is not a record
+     * in the database with that id
+     * @return Return object
+     */
     public RevenueSource read(String id, Connection conn) throws Exception{
         repair rp = new repair(id);
         
@@ -77,6 +94,13 @@ public class RepairDAO extends RSDAO{
 ///////////////////////////////////////////
 /// Save
     
+    /**
+     * Saves the Repair object to the database
+     * @param rsbo Repair object to be saved
+     * @param conn Connection
+     * @throws java.lang.Exception Thrown when there is an error retrieving a database connection, or
+     * when there is an error in the SQL
+     */
     public void save(RevenueSource rsbo, Connection conn) throws Exception{
         // check the dirty flag in the object.  if it is dirty,
         // run update or insert
@@ -93,6 +117,13 @@ public class RepairDAO extends RSDAO{
         }
     }
     
+    /**
+     * Insert a new Repair record in the database
+     * @param rsbo Repair object to be inserted into the database
+     * @param conn Connection
+     * @throws java.lang.Exception Thrown when there is an error retrieving a database connection, or
+     * when there is an error in the SQL
+     */
     public void insert(RevenueSource rsbo, Connection conn) throws Exception{
         System.out.println("inserting backup");
         repair rp = (repair)rsbo;
@@ -110,6 +141,13 @@ public class RepairDAO extends RSDAO{
         rsbo.setInDB(true);
     }
     
+    /**
+     * Updates an existing entry in the database
+     * @param rsbo Repair object to be updated in the database
+     * @param conn Connection
+     * @throws java.lang.Exception Thrown when there is an error retrieving a database connection, or
+     * when there is an error in the SQL
+     */
     public void update(RevenueSource rsbo, Connection conn) throws Exception{
         repair rp = (repair)rsbo;
         PreparedStatement update = conn.prepareStatement(
