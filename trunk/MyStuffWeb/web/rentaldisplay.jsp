@@ -17,6 +17,8 @@ on Libraries node in Projects view can be used to add the JSTL 1.1 library.
 String rentalid = null;
         rentalid = (String) session.getAttribute("rentaltx");
      Transaction rentaltx = TransactionDAO.getInstance().read(rentalid);
+     String storeid = (String) session.getAttribute("storerental");
+     Store store = StoreDAO.getInstance().read(storeid);
 %>
 
 <jsp:include page="header.jsp" />  
@@ -50,7 +52,7 @@ String rentalid = null;
         String txlinename = ConceptualRentalDAO.getInstance().getRentalName(fr);
         %> 
         <tr>
-            <td>Store</td>
+            <td><%=store.getName()%></td>
             <td><%=txlinename%></td>
             <td><%=txlineprice%></td>
             <td><select NAME="<%=txline.get(i).getId()%>">
