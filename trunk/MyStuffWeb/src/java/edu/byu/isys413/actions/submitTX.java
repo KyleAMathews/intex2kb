@@ -49,6 +49,22 @@ public class submitTX implements edu.byu.isys413.web.Action {
         email.add(tx.getCustomer().getEmail());
         email.add("tylerfarmer@gmail.com");
         
+        String type = tx.getType();
+        
+        //this is where we would send the text message to the store
+        if(type.matches("rental")){
+            String storeid = (String) session.getAttribute("storerental");
+        Store store = StoreDAO.getInstance().read(storeid);
+        String number = (store.getPhone() + "@2kmystuff.com");
+        /*this is where the text message should go.
+        //email.add(number);
+        //tyler
+        //email.add("8013689248@vtext.com");
+         */
+        }
+        
+        
+        
         formatNumber fmt = new formatNumber();
         
         String message = (tx.getCustomer().getFname() + " " + tx.getCustomer().getLname() + ":\n" +
@@ -60,7 +76,7 @@ public class submitTX implements edu.byu.isys413.web.Action {
         s.postMail(email,message);
         
         //clear out the current transaction
-        String type = tx.getType();
+        
         if(type.matches("rental")){
             session.setAttribute("rentaltx", null);
         }
