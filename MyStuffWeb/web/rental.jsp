@@ -104,9 +104,10 @@
             String id = txline.get(i).getRevenueSource().getId();
             System.out.println(id);
             Rental rn = (Rental)Cache.getInstance().get(id);
-            String frid = (String) session.getAttribute("frid");
-            System.out.println(frid);
-            ForRent fr = (ForRent)Cache.getInstance().get(frid);
+            ForRent fr = ForRentDAO.getInstance().getByRentalID(rn.getId());
+            //String frid = (String) session.getAttribute("frid");
+            //System.out.println(frid);
+            //ForRent fr = (ForRent)Cache.getInstance().get(frid);
             System.out.println("Here is the for rental guid");
             System.out.println(fr.getId());
             String txlinename = ConceptualRentalDAO.getInstance().getRentalName(fr);
