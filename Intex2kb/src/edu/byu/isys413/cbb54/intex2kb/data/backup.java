@@ -17,6 +17,7 @@ public class backup extends RevenueSource {
     
     private double size;
     private double lengthOfBackup;
+    private double bkPrice;
     
     /**
      * Creates a new instance of backup
@@ -56,6 +57,21 @@ public class backup extends RevenueSource {
      */
     public void setLengthOfBackup(double lengthOfBackup) {
         this.lengthOfBackup = lengthOfBackup;
+    }
+
+    public double getBkPrice() {
+        return bkPrice;
+    }
+
+    public void setBkPrice(double bkPrice) {
+        this.bkPrice = bkPrice;
+    }
+    
+    public void calcSubTotal(){
+        this.dirty = true;
+        double newPrice = getBkPrice() * getSize();
+        System.out.println(newPrice);
+        this.setPrice(newPrice);
     }
     
 }
