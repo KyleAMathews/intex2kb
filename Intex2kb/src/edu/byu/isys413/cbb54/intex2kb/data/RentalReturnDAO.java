@@ -12,7 +12,7 @@ import java.sql.*;
 import java.util.*;
 
 /**
- *
+ * Handles all interactions between the database and Rental Return objects
  * @author Bryan
  */
 public class RentalReturnDAO {
@@ -27,6 +27,11 @@ public class RentalReturnDAO {
     private RentalReturnDAO() {
     }
     
+    /**
+     * Returns a instance of RentalReturnDAO.  Singleton makes sure that only one
+     * instance is in use at a time
+     * @return RentalReturnDAO
+     */
     public static synchronized RentalReturnDAO getInstance() {
         if (instance == null) {
             instance = new RentalReturnDAO();
@@ -37,10 +42,12 @@ public class RentalReturnDAO {
     /////////////////////////////////
     ///   CREATE
     
-    /** 
-     * There's no need for two creates because we don't need
-     * a connection to create BOs.  We run the insert statement
-     * later, when it get's saved for the first time.
+    /**
+     * Creates a new Rental Return object
+     * @param rentalid GUID of rental
+     * @throws java.lang.Exception Thrown when there is an error retrieving a database connection, or
+     * when there is an error in the SQL
+     * @return Rental Return
      */
     public RentalReturn create(String rentalid) throws Exception{
         String id = null;
@@ -54,10 +61,11 @@ public class RentalReturnDAO {
      //////////////////////////////////
     ///   UPDATE
     
-    /** 
-     * This is the public save method.  It is what is called when
-     * the user (controller) code wants to save or update an object
-     * into the database.
+    /**
+     * Saves the Rental Return object to the database
+     * @param rr Rental Return
+     * @throws edu.byu.isys413.cbb54.intex2kb.data.DataException Thrown when there is an error retrieving a database connection, or
+     * when there is an error in the SQL
      */
     public synchronized void save(RentalReturn rr) throws DataException {
         
