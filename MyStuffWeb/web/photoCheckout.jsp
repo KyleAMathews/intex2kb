@@ -19,7 +19,7 @@ Customer cust = null;
 cust = m.getCustomer();
 Transaction tx = null;
 formatNumber fmt = new formatNumber();
-tx = TransactionDAO.getInstance().read((String)session.getAttribute("tx"));
+tx = TransactionDAO.getInstance().read((String)session.getAttribute("phototx"));
 List<TransactionLine> txLnList = tx.getTxLines();
 %>
 <jsp:include page="header.jsp" />
@@ -51,6 +51,7 @@ List<TransactionLine> txLnList = tx.getTxLines();
         %>
     </tbody>
 </table>
+<%session.setAttribute("tx",tx.getId());%>
 <%@ include file="checkout.jsp" %>
 <jsp:include page="footer.jsp" />
 </div><!--end bigcontainer-->

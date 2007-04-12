@@ -53,9 +53,8 @@ $(document).ready(function(){
                    
                 <div id="body">
                     <h1><%out.write(title);%></h1>
-                    <p>Your order has been submitted.  You will receive a confirmation e-mail shortly</p>
-                    <p>You can continue to buy products, rent items, develop pictures, or view file/picture backups by clicking on the appropriate link on the left</p>
-                    <p><%=session.getAttribute("membid")%></p>
+                    <p>Your order has been submitted.  You will receive a confirmation e-mail shortly</p><br><br>
+                    <p>You can continue to buy products, rent items, develop pictures, or view file/picture backups by clicking on the appropriate link on the left.</p>
                 </div><!--end body-->
             </div><!--end container-->
             <div id="footer">

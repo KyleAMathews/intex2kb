@@ -42,7 +42,7 @@ public class PhotoCheckout implements edu.byu.isys413.web.Action {
         List<Store> storeList = StoreDAO.getInstance().getByName((String)request.getParameter("group1"));
         Store store = storeList.get(0);
          
-        Transaction tx = TransactionDAO.getInstance().read((String)session.getAttribute("tx"));
+        Transaction tx = TransactionDAO.getInstance().read((String)session.getAttribute("phototx"));
         tx.setEmployee(emp);
         tx.setCustomer(cust);
         tx.setStore(store);
