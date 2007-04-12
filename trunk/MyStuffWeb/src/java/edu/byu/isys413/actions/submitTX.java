@@ -55,6 +55,17 @@ public class submitTX implements edu.byu.isys413.web.Action {
         sendMail s = new sendMail();
         s.postMail(email,message);
         
+        //clear out the current transaction
+        String type = tx.getType();
+        if(type.matches("rental")){
+            session.setAttribute("rentaltx", null);
+        }
+        if(type.matches("po")){
+            session.setAttribute("phototx", null);
+        }
+        if(type.matches("sale")){
+            session.setAttribute("saletx", null);
+        }
         tx = null;
         
         return "confirmation.jsp";
