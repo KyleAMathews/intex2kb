@@ -58,7 +58,7 @@ $(document).ready(function(){
     <h4>Actions:</h4>
     <ul>
         <li><a href="">View Slideshow</a></li>
-        <li><a href="">Upload File(s)</a></li>
+        <li><a href="fileupload.jsp">Upload File(s)</a></li>
         <li><a href="backuptx.jsp">Add Backup Space</a></li>
         <li><a href="">Help</a></li>
     </ul>

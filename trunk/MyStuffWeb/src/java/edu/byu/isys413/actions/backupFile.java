@@ -1,5 +1,5 @@
 /*
- * backup.java
+ * backupFile.java
  *
  * Created on April 12, 2007, 11:28 AM
  *
@@ -13,10 +13,12 @@ package edu.byu.isys413.actions;
  *
  * @author kyle
  */
-public class backup {
+public class backupFile {
     
-    /** Creates a new instance of backup */
-    public backup() {
+    /**
+     * Creates a new instance of backupFile
+     */
+    public backupFile() {
     }
     
 }
