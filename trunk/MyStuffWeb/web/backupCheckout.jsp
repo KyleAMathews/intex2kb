@@ -17,25 +17,30 @@ backup bckup = (backup)txLine1.getRevenueSource();
 <table>
     <thead>
         <tr>
-            <th>Backup Purchase Details</th>
+            <th>Details of Backup Purchase</th>
             
         </tr>
     </thead>
     <tbody>
         <tr>
             <td>
-               GBs purchase: <%=bckup.getSize()%>
+               GBs purchased
             </td>
-            <td>Price <%=txLine1.getRevenueSource().getPrice()%></td>
+            <td>
+                <%=bckup.getSize()%>
+            </td>
         </tr>
         <tr>
-            <td>Total (after tax)</td>
-            <td>$<%=tx.calculateTotal()%></td>
+            <td>Subtotal</td>
+            <td>Price $<%=fmt.fmt(txLine1.getRevenueSource().getPrice())%></td>
         </tr>
+        <tr>
+            <td>Total $/month (after tax)</td>
+            <td>$<%=fmt.fmt(tx.calculateTotal())%></td>
+        </tr>
+        
     </tbody>
 </table>
-<input style="float: right; margin-right: 5px; padding-right: 0px;" type="submit" value="Checkout">
-</form>
-
+<br />
 <%@ include file="checkout.jsp" %>
 <jsp:include page="footer.jsp" />
