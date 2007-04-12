@@ -22,14 +22,14 @@ public class backuptx implements edu.byu.isys413.web.Action{
     
     private Transaction tx;
     private Double GBs;
-    private backup bck;
+    
     /** Creates a new instance of backuptx */
     public backuptx() {
     }
     
     public String process(HttpServletRequest request, HttpServletResponse response) throws Exception {
         HttpSession session = request.getSession();
-        
+        backup bck = null;
         //retrieve transaction
         tx = TransactionDAO.getInstance().read((String)session.getAttribute("backuptx"));
         
