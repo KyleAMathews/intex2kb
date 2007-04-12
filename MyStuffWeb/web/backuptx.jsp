@@ -53,7 +53,7 @@ if (session.getAttribute("backuptx") == null) {
         <li><a href="">Upload File(s)</a></li>
         <li><a href="">Add Backup Space</a></li>
         <li><a href="">Help</a></li>
-        <li><a href="checkout.jsp">Checkout</a></li>
+        <li><a href="backupCheckout.jsp">Checkout</a></li>
     </ul>
 </div><!--end right column-->  
 <div id="body">
