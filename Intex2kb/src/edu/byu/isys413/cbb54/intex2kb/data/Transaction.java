@@ -13,7 +13,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 /**
- *
+ * Transaction holds information about each monitary interaction with customers
  * @author Cameron
  */
 public class Transaction {
@@ -30,16 +30,20 @@ public class Transaction {
     private boolean dirty = false;
     private boolean isInDB = false;
     
-    /** Creates a new instance of Transaction */
+    /**
+     * Creates a new instance of Transaction
+     * @param id GUID
+     */
     public Transaction(String id) {
         this.id = id;
         this.txLines = new LinkedList<TransactionLine>();
         this.orig = null;
     }
     
-    //** Creates a return Transaction */
     /**
-     * Creates a new instance of Transaction
+     * Creates a return Transaction
+     * @param id New transaction GUID
+     * @param orig Original Transaction
      */
     public Transaction(String id, Transaction orig){
         this.id = id;
@@ -52,6 +56,7 @@ public class Transaction {
 
     /**
      * Returns transactionID
+     * @return ID
      */
     public String getId() {
         return id;
@@ -59,13 +64,15 @@ public class Transaction {
 
     /**
      * Returns a list of transactionLines associated with the transaction
+     * @return List TransactionLines
      */
     public List<TransactionLine> getTxLines() {
         return txLines;
     }
 
     /**
-     * Reads TX lines from DB and sets them to a list on the TX object
+     * Sets the transaction lines for a transaction
+     * @param txLines List
      */
     public void setTxLines(List<TransactionLine> txLines) {
         this.dirty = true;
@@ -74,6 +81,7 @@ public class Transaction {
     
     /**
      * Adds a single TXLine to the list of TXLns on the object
+     * @param txln TransactionLine
      */
     public void addTxLine(TransactionLine txln){
         this.txLines.add(txln);
@@ -82,6 +90,7 @@ public class Transaction {
 
     /**
      * Returns the payment object associated with the TX
+     * @return Payment
      */
     public Payment getPayment() {
         return payment;
@@ -89,6 +98,7 @@ public class Transaction {
 
     /**
      * Sets the Payment Object for the transaction
+     * @param payment Object
      */
     public void setPayment(Payment payment) {
         this.dirty = true;
@@ -97,6 +107,7 @@ public class Transaction {
 
     /**
      * Returns the TX type
+     * @return Type
      */
     public String getType() {
         return type;
@@ -104,6 +115,7 @@ public class Transaction {
 
     /**
      * Sets the TX Type
+     * @param type String
      */
     public void setType(String type) {
         this.dirty = true;
@@ -112,6 +124,7 @@ public class Transaction {
 
     /**
      * Returns Transaction status
+     * @return Status
      */
     public String getStatus() {
         return status;
@@ -119,6 +132,7 @@ public class Transaction {
 
     /**
      * Sets transaction status
+     * @param status String
      */
     public void setStatus(String status) {
         this.dirty = true;
@@ -127,6 +141,7 @@ public class Transaction {
 
     /**
      * Returns customer
+     * @return Customer
      */
     public Customer getCustomer() {
         return customer;
@@ -134,6 +149,7 @@ public class Transaction {
 
     /**
      * Set customer
+     * @param customer Object
      */
     public void setCustomer(Customer customer) {
         this.dirty = true;
@@ -142,6 +158,7 @@ public class Transaction {
 
     /**
      * Return Employee
+     * @return Employee
      */
     public Employee getEmployee() {
         return employee;
@@ -149,6 +166,7 @@ public class Transaction {
 
     /**
      * Set Employee
+     * @param employee Object
      */
     public void setEmployee(Employee employee) {
         this.dirty = true;
@@ -157,6 +175,7 @@ public class Transaction {
 
     /**
      * Return Store
+     * @return Store
      */
     public Store getStore() {
         return store;
@@ -164,6 +183,7 @@ public class Transaction {
 
     /**
      * Set Store
+     * @param store Object
      */
     public void setStore(Store store) {
         this.dirty = true;
@@ -172,6 +192,7 @@ public class Transaction {
 
     /**
      * Return boolean flag to indicate whether or not the object has changed
+     * @return Boolean dirty
      */
     public boolean isDirty() {
         return dirty;
@@ -179,6 +200,7 @@ public class Transaction {
 
     /**
      * Boolean flag to indicate the object has changed
+     * @param dirty Boolean
      */
     public void setDirty(boolean dirty) {
         this.dirty = dirty;
@@ -186,6 +208,7 @@ public class Transaction {
 
     /**
      * Returns boolean flag to indicate if the object has been written to the DB
+     * @return Boolean
      */
     public boolean isInDB() {
         return isInDB;
@@ -193,6 +216,7 @@ public class Transaction {
 
     /**
      * Set boolean flag to indicate object has been written to DB
+     * @param isInDB Boolean
      */
     public void setInDB(boolean isInDB) {
         this.isInDB = isInDB;
@@ -200,6 +224,8 @@ public class Transaction {
     
     /**
      * Calculate subtotal of transaction by adding the subtotal of all txlines
+     * @throws edu.byu.isys413.cbb54.intex2kb.data.DataException Thrown when there is a error calculating the subtotal of the transaction
+     * @return Double
      */
     public double calculateSubtotal() throws DataException{
         double sub = 0.0;
@@ -216,6 +242,8 @@ public class Transaction {
     
     /**
      * Calculate tax for tx
+     * @throws edu.byu.isys413.cbb54.intex2kb.data.DataException Thrown when there is an error calculating the transaction tax
+     * @return Double
      */
     public double calculateTax() throws DataException{
         double tax = 0.0;
@@ -227,6 +255,8 @@ public class Transaction {
     
     /**
      * Add subtotal and tax to get total
+     * @throws edu.byu.isys413.cbb54.intex2kb.data.DataException Thrown when there is an error calculating the transaction tax and subtotal
+     * @return Double
      */
     public double calculateTotal() throws DataException{
         double sub = this.calculateSubtotal();
@@ -236,6 +266,7 @@ public class Transaction {
 
     /**
      * Return origional TX object if the tx is a return
+     * @return Transaction Original
      */
     public Transaction getOrig() {
         return orig;
@@ -243,6 +274,7 @@ public class Transaction {
 
     /**
      * Set origional TX object if the tx is a return
+     * @param orig Transaction
      */
     public void setOrig(Transaction orig) {
         this.dirty = true;
