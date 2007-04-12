@@ -24,33 +24,54 @@ public class Conceptual extends Product{
         this.setId(id);
     }
 
+    /**
+     * Returns the name
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     * Sets the name
+     */
     public void setName(String name) {
         this.setDirty(true);
         this.name = name;
     }
 
+    /**
+     * Returns the description
+     */
     public String getDesc() {
         return desc;
     }
 
+    /**
+     * Sets the description
+     */
     public void setDesc(String desc) {
         this.setDirty(true);
         this.desc = desc;
     }
 
+    /**
+     * Returns the average cost
+     */
     public double getAvgCost() {
         return avgCost;
     }
 
+    /**
+     * Sets the average cost
+     */
     public void setAvgCost(double avgCost) {
         this.setDirty(true);
         this.avgCost = avgCost;
     }
     
+    /**
+     * Returns the price
+     */
     public double getPrice(){
         return super.getPrice();
     }

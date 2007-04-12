@@ -27,6 +27,9 @@ public class ConceptualRentalDAO {
     private ConceptualRentalDAO() {
     }
     
+    /**
+     * Returns an instance of the DAO
+     */
     public static synchronized ConceptualRentalDAO getInstance() {
         if (instance == null) {
             instance = new ConceptualRentalDAO();
@@ -292,6 +295,9 @@ public class ConceptualRentalDAO {
     //////////////////////////////
     ///  SEARCH methods
     
+    /**
+     * Returns the rental price
+     */
     public double getRentalPrice(ForRent fr) throws SQLException, ConnectionPoolException{
         double price = 0.0;
         Connection conn = null;
@@ -326,6 +332,9 @@ public class ConceptualRentalDAO {
     return price;
     }//end method
     
+    /**
+     * Returns the rental name
+     */
     public String getRentalName(ForRent fr) throws SQLException, ConnectionPoolException{
         String name = "";
         Connection conn = null;

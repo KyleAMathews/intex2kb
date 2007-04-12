@@ -44,6 +44,9 @@ public class ConceptualDAO extends ProductDAO{
     ///////////////////////////////////////////
     /// Create
     
+    /**
+     * Create a new instance of a conceptual object
+     */
     public Product create() throws Exception{
         String id = GUID.generate();
         Product product = new Conceptual(id);
@@ -53,6 +56,9 @@ public class ConceptualDAO extends ProductDAO{
     
     ///////////////////////////////////////////
     /// Read
+    /**
+     * public read statement
+     */
     public Product read(String sku) throws Exception {
         Conceptual con = null;
         
@@ -95,6 +101,9 @@ public class ConceptualDAO extends ProductDAO{
         return prod;
     }
     
+    /**
+     * Private read statement called from the public read statement
+     */
     public Product read(String id, Connection conn) throws Exception{
         Conceptual concept = new Conceptual(id);
         
@@ -122,6 +131,9 @@ public class ConceptualDAO extends ProductDAO{
     ///////////////////////////////////////////
     /// Save
     
+    /**
+     * public save method
+     */
     public void save(Product product) throws Exception {
         Connection conn = null;
         
@@ -155,6 +167,9 @@ public class ConceptualDAO extends ProductDAO{
         }
     }
     
+    /**
+     * private save method called from the public save method
+     */
     public void save(Product prod, Connection conn) throws Exception{
         // check the dirty flag in the object.  if it is dirty,
         // run update or insert
@@ -168,6 +183,9 @@ public class ConceptualDAO extends ProductDAO{
         }
     }
     
+    /**
+     * Insert the conceptual object into the database
+     */
     public void insert(Product prod, Connection conn) throws Exception{
         System.out.println("inserting conceptual");
         Conceptual conc = (Conceptual)prod;
@@ -184,6 +202,9 @@ public class ConceptualDAO extends ProductDAO{
         prod.setDirty(false);
     }
     
+    /**
+     * Update the conceptual object information in the database
+     */
     public void update(Product prod, Connection conn) throws Exception{
         Conceptual conc = (Conceptual)prod;
         PreparedStatement update = conn.prepareStatement(
@@ -203,6 +224,9 @@ public class ConceptualDAO extends ProductDAO{
     //////////////////////////////////////////
     /// search
     
+    /**
+     * Returns a boolean if the object exists
+     */
     public boolean exists(String id) throws Exception{
         Boolean b = false;
         Connection conn = ConnectionPool.getInstance().get();
@@ -221,6 +245,9 @@ public class ConceptualDAO extends ProductDAO{
         return b;
     }
 
+    /**
+     * Returns a list of products by category
+     */
     public List<Conceptual> getProductsByCategory(String categoryID) throws Exception{
         List<Conceptual> list = new LinkedList<Conceptual>();
         
