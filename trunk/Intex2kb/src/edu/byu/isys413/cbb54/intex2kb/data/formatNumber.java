@@ -27,7 +27,7 @@ public class formatNumber {
      * @param number Double
      * @return formatted string
      */
-    public String fmt(double number) {
+    public static String fmt(double number) {
         DecimalFormat formatter = new DecimalFormat("###,##0.00");
         return formatter.format(number);
     }
