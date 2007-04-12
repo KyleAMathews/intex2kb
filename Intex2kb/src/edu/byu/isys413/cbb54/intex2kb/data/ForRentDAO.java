@@ -27,6 +27,9 @@ public class ForRentDAO {
     private ForRentDAO() {
     }
     
+    /**
+     * Returns an instance of the ForRentDAO
+     */
     public static synchronized ForRentDAO getInstance() {
         if (instance == null) {
             instance = new ForRentDAO();
@@ -289,6 +292,9 @@ public class ForRentDAO {
     
     //////////////////////////////
     ///  SEARCH methods
+    /**
+     * Returns a ForRent ID from a Serial #
+     */
     public String getBySerial(String serial) throws DataException {
          ForRent fr = null;
         
@@ -336,6 +342,9 @@ public class ForRentDAO {
         return id;
     }
     
+    /**
+     * Returns a list of forRent objects that have a specific physical product id
+     */
     public List getByID(List physical) throws DataException {
         List<String> list = new LinkedList<String>();
         
@@ -384,6 +393,9 @@ public class ForRentDAO {
         return list;
     }
     
+    /**
+     * Renturns a list of available rentals
+     */
      public List getAvailableRentals(List rentals) throws DataException {
         List<ForRent> list = new LinkedList<ForRent>();
         ForRent fr = null;
@@ -434,6 +446,9 @@ public class ForRentDAO {
         return list;
     }
      
+    /**
+     * Returns the ForRent object from a rental id
+     */
      public ForRent getByRentalID(String id) throws DataException {
         ForRent fr = null;
         

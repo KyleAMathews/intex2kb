@@ -26,40 +26,67 @@ public class ForRent {
         this.id = id;
     }
 
+    /**
+     * returns the id
+     */
     public String getId() {
         return id;
     }
 
+    /**
+     * returns the times rented of the object
+     */
     public int getTimesrented() {
         return timesrented;
     }
 
+    /**
+     * sets the times rented of the object
+     */
     public void setTimesrented(int timesrented) {
         this.timesrented = timesrented;
         this.dirty = true;
     }
 
+    /**
+     * returns the current rental id
+     */
     public String getCurrentrental() {
         return currentrental;
     }
 
+    /**
+     * sets the current rental id
+     */
     public void setCurrentrental(String currentrental) {
         this.currentrental = currentrental;
         this.dirty = true;
     }
 
+    /**
+     * returns the dirty variable
+     */
     public boolean isDirty() {
         return dirty;
     }
 
+    /**
+     * sets the dirty variable
+     */
     public void setDirty(boolean dirty) {
         this.dirty = dirty;
     }
 
+    /**
+     * returns the database variable
+     */
     public boolean isIndb() {
         return indb;
     }
 
+    /**
+     * sets the database variable
+     */
     public void setIndb(boolean indb) {
         this.indb = indb;
     }
