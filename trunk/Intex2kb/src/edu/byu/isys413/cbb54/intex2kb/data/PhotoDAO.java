@@ -146,7 +146,7 @@ public class PhotoDAO {
                 // Close prepared statement
                 read.close();
             }else{
-                throw new DataException("Object was not found in the database.");
+                throw new DataException("File was not found in the database.");
             }
         }
         
