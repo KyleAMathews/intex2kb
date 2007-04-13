@@ -13,6 +13,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.LinkedList;
+import java.util.List;
 import org.apache.commons.fileupload.FileItem;
 
 /**
@@ -31,7 +33,7 @@ public class PhotoDAO {
     }
     
     /**
-     * returns the instance of the dao
+     * returns instance of PhotoDAO -- singleton pattern
      */
     public static synchronized PhotoDAO getInstance() {
         if (instance == null) {
@@ -58,7 +60,7 @@ public class PhotoDAO {
     }
     
     /**
-     * the public read method of the photo object
+     * Reads photoBackupBO off of database using id
      */
     public synchronized photoBackupBO read(String id) throws DataException {
         photoBackupBO photo = null;
@@ -153,7 +155,7 @@ public class PhotoDAO {
     }
     
     /**
-     * the save method for photo object
+     * saves a photoBackupBO to database
      */
     public void save(photoBackupBO p, FileItem thumb, FileItem med, FileItem file) throws Exception {
         Connection conn = ConnectionPool.getInstance().get();
@@ -182,9 +184,71 @@ public class PhotoDAO {
         ConnectionPool.getInstance().release(conn);
     }
     
-    //public synchronized LinkedList readByMembId(String membid){
+    /**
+     * Generates a list of photoBackupBOs owned by a member.
+     */
+    public synchronized List<photoBackupBO> readByMembId(String membid) throws DataException{
+        List<String> fileIDs = new LinkedList<String>();
+        List<photoBackupBO> files = new LinkedList<photoBackupBO>();
+        System.out.println("inside photodao");
+        // grab list of pics
+        Connection conn = null;
+        try {
+            // retrieve a database connection from the pool
+            conn = ConnectionPool.getInstance().get();
+            
+            // select ids of files from database where membid = membid
+            PreparedStatement read = conn.prepareStatement(
+                    "SELECT \"id\" FROM \"photoBackup\" WHERE \"membid\" = ?");
+            read.setString(1, membid);
+            ResultSet rs = read.executeQuery();
+            conn.commit();
+            
+            // read and store and file ids
+            while (rs.next()) {
+                fileIDs.add(rs.getString("id"));
+                System.out.println("file id: " + rs.getString("id"));
+                // save to the cache
+            }
+            
+            // loop through creatting list of photoBackupBOs
+            for(String id: fileIDs){
+                photoBackupBO pb = read(id, conn);
+                files.add(pb);
+                Cache.getInstance().put(id, pb);
+            }
+            
+            
+            
+            
+            // Close prepared statement
+            read.close();
+            
+            // release the connection
+            conn.commit();
+            ConnectionPool.getInstance().release(conn);
+            
+        }catch (ConnectionPoolException e){
+            throw new DataException("Could not get a connection to the database.");
+            
+        }catch (SQLException e) {
+            // rollback
+            try {
+                conn.rollback();
+                ConnectionPool.getInstance().release(conn);
+            }catch (ConnectionPoolException ce){
+                throw new DataException("There was an error with the connection to the database", ce);
+            }catch (SQLException e2) {
+                throw new DataException("Big error: could not even release the connection", e2);
+            }
+            
+            throw new DataException("Could not retrieve record for id=" + membid, e);
+        }
         
-    //}
+        
+        // return
+        return files;
+    }
     
     
 }
