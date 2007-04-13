@@ -149,6 +149,9 @@ public class Main extends javax.swing.JFrame {
         calcsubtotal = new javax.swing.JButton();
         Return = new javax.swing.JPanel();
         jLabel15 = new javax.swing.JLabel();
+        jLabel25 = new javax.swing.JLabel();
+        serialnumber1 = new javax.swing.JTextField();
+        addRentalItem1 = new javax.swing.JButton();
         Repair = new javax.swing.JPanel();
         jLabel16 = new javax.swing.JLabel();
         Default = new javax.swing.JPanel();
@@ -243,7 +246,7 @@ public class Main extends javax.swing.JFrame {
                 .add(saleSKU, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .add(14, 14, 14)
                 .add(SaleQty, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(306, Short.MAX_VALUE))
+                .addContainerGap(308, Short.MAX_VALUE))
         );
         jPanel10.add(jPanel36);
 
@@ -287,7 +290,7 @@ public class Main extends javax.swing.JFrame {
         jPanel15Layout.setHorizontalGroup(
             jPanel15Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(jPanel15Layout.createSequentialGroup()
-                .addContainerGap(36, Short.MAX_VALUE)
+                .addContainerGap(38, Short.MAX_VALUE)
                 .add(jPanel15Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(org.jdesktop.layout.GroupLayout.TRAILING, jLabel2)
                     .add(org.jdesktop.layout.GroupLayout.TRAILING, jLabel19)
@@ -323,14 +326,14 @@ public class Main extends javax.swing.JFrame {
                 .add(jPanel16Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(jPanel16Layout.createSequentialGroup()
                         .add(sourceTypeInput, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 23, Short.MAX_VALUE))
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 24, Short.MAX_VALUE))
                     .add(jPanel16Layout.createSequentialGroup()
                         .add(destinationTypeInput, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 67, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .add(jPanel16Layout.createSequentialGroup()
-                        .add(numMinutesInput, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 9, Short.MAX_VALUE)
+                        .add(numMinutesInput, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 10, Short.MAX_VALUE)
                         .add(114, 114, 114)))
-                .addContainerGap(38, Short.MAX_VALUE))
+                .addContainerGap(39, Short.MAX_VALUE))
         );
         jPanel16Layout.setVerticalGroup(
             jPanel16Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -341,7 +344,7 @@ public class Main extends javax.swing.JFrame {
                 .add(destinationTypeInput, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .add(14, 14, 14)
                 .add(numMinutesInput, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(216, Short.MAX_VALUE))
+                .addContainerGap(213, Short.MAX_VALUE))
         );
         jPanel12.add(jPanel16);
 
@@ -412,7 +415,7 @@ public class Main extends javax.swing.JFrame {
         jPanel21Layout.setHorizontalGroup(
             jPanel21Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(jPanel21Layout.createSequentialGroup()
-                .addContainerGap(56, Short.MAX_VALUE)
+                .addContainerGap(58, Short.MAX_VALUE)
                 .add(jPanel21Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(org.jdesktop.layout.GroupLayout.TRAILING, jLabel7)
                     .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel21Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -462,7 +465,7 @@ public class Main extends javax.swing.JFrame {
                     .add(printTypeInput, 0, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .add(paperTypeInput, 0, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .add(sizeInput, 0, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(90, Short.MAX_VALUE))
+                .addContainerGap(93, Short.MAX_VALUE))
         );
         jPanel20Layout.setVerticalGroup(
             jPanel20Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -477,7 +480,7 @@ public class Main extends javax.swing.JFrame {
                 .add(numPhotosInput, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(quantityInput, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(41, Short.MAX_VALUE))
+                .addContainerGap(37, Short.MAX_VALUE))
         );
         jPanel23.add(jPanel20);
 
@@ -529,7 +532,7 @@ public class Main extends javax.swing.JFrame {
             .add(BackupLayout.createSequentialGroup()
                 .addContainerGap()
                 .add(jLabel13)
-                .addContainerGap(268, Short.MAX_VALUE))
+                .addContainerGap(272, Short.MAX_VALUE))
         );
         BackupLayout.setVerticalGroup(
             BackupLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -632,7 +635,7 @@ public class Main extends javax.swing.JFrame {
                 .add(jLabel21, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 24, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jLabel23)
-                .addContainerGap(14, Short.MAX_VALUE))
+                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel34.add(jPanel32);
 
@@ -673,7 +676,7 @@ public class Main extends javax.swing.JFrame {
                 .add(numberdays, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(subtotal, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(12, Short.MAX_VALUE))
         );
         jPanel34.add(jPanel33);
 
@@ -703,21 +706,49 @@ public class Main extends javax.swing.JFrame {
         Return.setMinimumSize(new java.awt.Dimension(250, 0));
         jLabel15.setText("Return");
 
+        jLabel25.setText("Serial #");
+
+        serialnumber1.setColumns(10);
+        serialnumber1.setText("Serial Number");
+
+        addRentalItem1.setText("Process Return");
+        addRentalItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addRentalItem1ActionPerformed(evt);
+            }
+        });
+
         org.jdesktop.layout.GroupLayout ReturnLayout = new org.jdesktop.layout.GroupLayout(Return);
         Return.setLayout(ReturnLayout);
         ReturnLayout.setHorizontalGroup(
             ReturnLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(ReturnLayout.createSequentialGroup()
-                .add(123, 123, 123)
-                .add(jLabel15)
-                .addContainerGap(156, Short.MAX_VALUE))
+                .add(ReturnLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(ReturnLayout.createSequentialGroup()
+                        .add(123, 123, 123)
+                        .add(jLabel15))
+                    .add(ReturnLayout.createSequentialGroup()
+                        .add(78, 78, 78)
+                        .add(jLabel25)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(serialnumber1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                    .add(ReturnLayout.createSequentialGroup()
+                        .add(106, 106, 106)
+                        .add(addRentalItem1)))
+                .addContainerGap(105, Short.MAX_VALUE))
         );
         ReturnLayout.setVerticalGroup(
             ReturnLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(ReturnLayout.createSequentialGroup()
                 .addContainerGap()
                 .add(jLabel15)
-                .addContainerGap(417, Short.MAX_VALUE))
+                .add(18, 18, 18)
+                .add(ReturnLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(jLabel25)
+                    .add(serialnumber1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .add(29, 29, 29)
+                .add(addRentalItem1)
+                .addContainerGap(328, Short.MAX_VALUE))
         );
         jPanel2.add(Return, "card7");
 
@@ -734,7 +765,7 @@ public class Main extends javax.swing.JFrame {
             .add(RepairLayout.createSequentialGroup()
                 .add(122, 122, 122)
                 .add(jLabel16)
-                .addContainerGap(159, Short.MAX_VALUE))
+                .addContainerGap(163, Short.MAX_VALUE))
         );
         RepairLayout.setVerticalGroup(
             RepairLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -753,7 +784,7 @@ public class Main extends javax.swing.JFrame {
         Default.setLayout(DefaultLayout);
         DefaultLayout.setHorizontalGroup(
             DefaultLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 312, Short.MAX_VALUE)
+            .add(0, 316, Short.MAX_VALUE)
         );
         DefaultLayout.setVerticalGroup(
             DefaultLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -929,6 +960,10 @@ public class Main extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void addRentalItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addRentalItem1ActionPerformed
+// TODO add your handling code here:
+    }//GEN-LAST:event_addRentalItem1ActionPerformed
     
     private void submitSaleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitSaleActionPerformed
         try{
@@ -1182,6 +1217,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JButton addConversion;
     private javax.swing.JButton addPrintOrder;
     private javax.swing.JButton addRentalItem;
+    private javax.swing.JButton addRentalItem1;
     private javax.swing.JButton calcsubtotal;
     private javax.swing.JComboBox destinationTypeInput;
     private javax.swing.JLabel jLabel1;
@@ -1201,6 +1237,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -1257,6 +1294,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JTextField quantityInput;
     private javax.swing.JTextField saleSKU;
     private javax.swing.JTextField serialnumber;
+    private javax.swing.JTextField serialnumber1;
     private javax.swing.JComboBox sizeInput;
     private javax.swing.JComboBox sourceTypeInput;
     private javax.swing.JButton submitSale;
