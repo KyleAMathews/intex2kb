@@ -46,6 +46,6 @@ $(document).ready(function(){
         <LI style="margin-top: 0;"><a href="sale.jsp">Sale</a></LI>
         <LI><a href="rental.jsp">Rental</a></LI>
         <LI><a href="photo.jsp">Photo</a></LI>
-        <LI><a href="backup.jsp">Backup</a></LI>
+        <LI><a href="edu.byu.isys413.actions.backupFile.action">Backup</a></LI>
     </ul>
 </div><!--end navigation-->

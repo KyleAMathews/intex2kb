@@ -37,8 +37,10 @@ if (session.getAttribute("backuptx") == null) {
     
     tx.setTxLines(txLineList);
     System.out.println("customer's name " + memb.getCustomer().getFname() + " " + memb.getBackupExpDate() + " " + memb.getBackupSize());
+    tx.setType("backup");
 }else{
     tx = TransactionDAO.getInstance().read((String)session.getAttribute("backuptx"));
+    tx.setType("backup");
     memb = MembershipDAO.getInstance().read((String)session.getAttribute("membid"));
     txLine1 = tx.getTxLines().get(0);
     
@@ -48,23 +50,11 @@ if (session.getAttribute("backuptx") == null) {
 %>
 
 
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-"http://www.w3.org/TR/html4/loose.dtd">
 <jsp:include page="header.jsp" />
 <%session.setAttribute("checkoutTxType","ba");%>
-<div id="rightcolumn">
-    <h4>MyStuff Backup</h4>
-    <p class="small">75% Used of 10GB</p>
-    <br />
-    <h4>Actions:</h4>
-    <ul>
-        <li><a href="">View Slideshow</a></li>
-        <li><a href="">Upload File(s)</a></li>
-        <li><a href="">Add Backup Space</a></li>
-        <li><a href="">Help</a></li>
-        <li><a href="backupCheckout.jsp">Checkout</a></li>
-    </ul>
-</div><!--end right column-->  
+
+<%@ include file="backuprc.jsp" %>  
+
 <div id="body">
 <h1>Add backup space to your account!</h1>
 <h3>Hi <%=tx.getCustomer().getFname()%></h3>

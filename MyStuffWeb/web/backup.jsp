@@ -1,6 +1,8 @@
 <%@page contentType="text/html"%>
 <%@page pageEncoding="UTF-8"%>
-<%@page import="edu.byu.isys413.views.backupView"%>
+<%@page import="edu.byu.isys413.views.*"%>
+<%@page import="edu.byu.isys413.cbb54.intex2kb.data.*"%>
+<%@page import="java.util.*"%>
 <%--
 The taglib directive below imports the JSTL library. If you uncomment it,
 you must also add the JSTL library to the project. The Add Library... action
@@ -12,9 +14,11 @@ on Libraries node in Projects view can be used to add the JSTL 1.1 library.
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
-<%String title = "Backup";%>
+<%List<photoBackupBO> pb = new LinkedList<photoBackupBO>();
+pb = (List<photoBackupBO>)session.getAttribute("files");
+%>
 <html>
-<head><TITLE>MyStuff.com: <%out.write(title);%></TITLE>
+<head><TITLE>MyStuff.com: File Backup</TITLE>
     <link rel="StyleSheet" type="text/css" media="all" href="style.css" />
     <link rel="stylesheet" href="thickbox.css" type="text/css" media="screen" />
     <script type="text/javascript" src="jquery.js"></script>
@@ -51,23 +55,12 @@ $(document).ready(function(){
         <LI><a href="backup.jsp">Backup</a></LI>
     </ul>
 </div><!--end navigation-->
-<div id="rightcolumn">
-    <h4>MyStuff Backup</h4>
-    <p class="small">75% Used of 10GB</p>
-    <br />
-    <h4>Actions:</h4>
-    <ul>
-        <li><a href="">View Slideshow</a></li>
-        <li><a href="fileupload.jsp">Upload File(s)</a></li>
-        <li><a href="backuptx.jsp">Add Backup Space</a></li>
-        <li><a href="">Help</a></li>
-    </ul>
-</div><!--end right column-->  
+<%@ include file="backuprc.jsp" %>  
 <div id="body">
-<h1><%out.write(title);%></h1>
-<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Quisque purus. Mauris sed arcu id felis vestibulum luctus. Praesent fringilla nonummy eros. Suspendisse eget ligula eu nisi luctus pulvinar. Morbi feugiat convallis nibh. Quisque suscipit, ligula eget molestie accumsan, quam velit pellentesque libero, id placerat urna ligula feugiat erat. Suspendisse et mauris tincidunt eros fermentum nonummy. Pellentesque sed nulla malesuada turpis pharetra faucibus. Aenean feugiat fringilla orci. Vestibulum dignissim pellentesque magna. Aliquam in sem at justo pretium elementum. Nunc ultricies velit eget urna. Duis massa.</p>
+<h1>My Stuff File Backup</h1>
+<%=pb.get(0).getFilesize()%>
+<p>Welcome to you My Stuff File Backup Page</p>
 <div><br />
-    <%out.print(session.getAttribute("membid"));%>
     <jsp:include page="filethumbs.jsp" />
 <table width="500px" cellpadding="5px" cellspacing="10px">
     <tr><th>Kyle in Snow</th><th>Kyle is snow isn't this a long title?</th><th>Baby J</th></tr>

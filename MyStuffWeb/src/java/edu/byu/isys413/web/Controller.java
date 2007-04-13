@@ -42,10 +42,14 @@ import javax.servlet.http.*;
 public class Controller extends HttpServlet {
   
    
-  /** Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
-   * @param request servlet request
-   * @param response servlet response
-   */
+  /**
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
+     * 
+     * @param request servlet request
+     * @param response servlet response
+     * @throws javax.servlet.ServletException 
+     * @throws java.io.IOException 
+     */
   protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     RequestDispatcher dispatcher = null;
     try {
