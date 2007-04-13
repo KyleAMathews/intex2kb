@@ -15,6 +15,7 @@ List<TransactionLine> transLines = null;
 
 if (session.getAttribute("saletx") == null){
     saletx = TransactionDAO.getInstance().create();
+    Cache.getInstance().put(saletx.getId(),saletx);
     Store store = new Store("010001117284553c0014b20b500444");
     store.setIsInDB(true);
     store.setDirty(false);
@@ -24,11 +25,13 @@ if (session.getAttribute("saletx") == null){
     emp.setInDB(true);
     emp.setDirty(false);
     saletx.setEmployee(emp);
-    session.setAttribute("saletx", saletx);
+    memb = MembershipDAO.getInstance().read((String)session.getAttribute("membid"));
+    saletx.setCustomer(memb.getCustomer());
+    session.setAttribute("saletx", saletx.getId());
 //TransactionLine txln = TransactionLineDAO.getInstance().create(tx, "rn");
 //rentaltx.addTxLine(txln);
 }else{
-    saletx = (Transaction)session.getAttribute("saletx");
+    saletx = (Transaction)TransactionDAO.getInstance().read((String)session.getAttribute("saletx"));
     transLines = saletx.getTxLines();
     memb = MembershipDAO.getInstance().read((String)session.getAttribute("membid"));
 }
@@ -51,19 +54,21 @@ if(request.getAttribute("products") != null){
 <div id="body">
     <h1><%out.write(title);%></h1>
 <div>
-    <table width="100%" cellpadding="3px" cellspacing="0">
-        <tr><th>Select Category</th><th>Select Product</th></tr>
+    <p>Please select items to purchase by selecting a category from the drop-down menu first and then selecting the individual item.  When you are satisfied with your cart's contents please click the "Checkout" button below.</p><br>
+    <table width="100%" cellpadding="0" cellspacing="0">
+        <tr><th colspan="2">Select Category</th><th>Select Product</th></tr>
     <tr>
-        <td width="25%" valign="top" align="center">
+        <td width="10%" valign="top" align="center">
             <form action="edu.byu.isys413.actions.GetItems.action" method="post" target=_parent>
-            <select NAME="category">
+            <select NAME="category" style="display: inline;">
                 <% 
             for(int i = 0; i<categoryList.size(); i++){
                    Category c = categoryList.get(i);
                     %>
                     <option VALUE="<%= c.getId() %>" <% if( (category != null) && (c.getId().matches((String)request.getParameter("category"))) ){out.print("selected");};%>><%= c.getName()%><br><%}%>
-              </select> 
-              <input type="submit" style="float:right" value="Get Items"><br>
+              </select> </td>
+              <td width="10%" valign="top"><input type="submit" style="float:right" value="Get Items">
+              
             </form>
         </td>	
         <td>
@@ -91,12 +96,12 @@ if(request.getAttribute("products") != null){
         </td>
     </tr>
     <tr>
-        <th colspan="2">Items in Cart</th>
+        <th colspan="3">Items in Cart</th>
     </tr>
     
     
     <tr>
-        <td colspan="2">
+        <td colspan="3">
             <table width="100%">
                 <% if(transLines != null){
                      for(int i=0; i < transLines.size(); i++){
