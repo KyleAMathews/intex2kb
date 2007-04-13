@@ -53,6 +53,7 @@ public class UpdateQuantity implements edu.byu.isys413.web.Action {
             TransactionLine txln = txLines.get(line);
             Sale s = (Sale)txln.getRevenueSource();
             s.setQuantity(q);
+            s.setPrice(s.getProduct().getPrice() * q);
         }
 
         
