@@ -47,6 +47,9 @@ public class GUID {
         return type.toString();
     }
     
+    /**
+     * Generates a guid
+     */
     public static synchronized String generate() throws Exception {
         
        // Initalize GUID string

@@ -43,6 +43,9 @@ public class PhotoSetDAO{
     ///////////////////////////////////////////
     /// Create
     
+    /**
+     * create a photo set
+     */
     public PhotoSet create() throws Exception{
         String id = GUID.generate();
         PhotoSet photoSet = new PhotoSet(id);
@@ -56,6 +59,9 @@ public class PhotoSetDAO{
     
     ///////////////////////////////////////////
     /// Read
+    /**
+     * public read of a photo set
+     */
         public PhotoSet read(String id) throws Exception {
         PhotoSet po = null;
         
@@ -90,6 +96,9 @@ public class PhotoSetDAO{
         return po;
     }
         
+    /**
+     * private read of a photo set
+     */
     public PhotoSet read(String id, Connection conn) throws Exception {
         PhotoSet po = null;
         
@@ -130,6 +139,9 @@ public class PhotoSetDAO{
 ///////////////////////////////////////////
 /// Save
     
+    /**
+     * private save of a photo set
+     */
     public synchronized void save(PhotoSet ps, Connection conn) throws SQLException, Exception {
         if (ps.getIsInDB() == true) {
             update(ps,conn);
@@ -138,6 +150,9 @@ public class PhotoSetDAO{
         }
     }
     
+    /**
+     * private save of a photoset
+     */
     public synchronized void save(PhotoSet ps) throws SQLException, Exception {
         Connection conn = ConnectionPool.getInstance().get();
         if (ps.getIsInDB() == true) {

@@ -31,6 +31,9 @@ public class PaymentDAO {
     private PaymentDAO() {
     }
     
+    /**
+     * return an instance of the dao
+     */
     public static synchronized PaymentDAO getInstance() {
         if (instance == null) {
             instance = new PaymentDAO();
@@ -56,6 +59,9 @@ public class PaymentDAO {
         return pmt;
     }
     
+    /**
+     * create a payment object
+     */
      public Payment create(Transaction transaction, double amount, String type) throws Exception{
         String id = null;
         id = GUID.generate();
@@ -316,6 +322,9 @@ public class PaymentDAO {
     //////////////////////////////
     ///  SEARCH methods
     
+    /**
+     * returns payment object by transaction
+     */
     public Payment getByTransaction(Transaction tx) throws DataException {
         Payment pmt = null;
         

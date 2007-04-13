@@ -42,6 +42,9 @@ public class PrintOrderDAO extends RSDAO{
     ///////////////////////////////////////////
     /// Create
     
+    /**
+     * creates a print order
+     */
     public RevenueSource create() throws Exception{
         String id = GUID.generate("po");
         String poid = GUID.generate();
@@ -60,6 +63,9 @@ public class PrintOrderDAO extends RSDAO{
     ///////////////////////////////////////////
     /// Read
     
+    /**
+     * read a print order
+     */
     public RevenueSource read(String id, Connection conn) throws Exception {
         printOrder po = new printOrder(id);
         
@@ -83,6 +89,9 @@ public class PrintOrderDAO extends RSDAO{
     ///////////////////////////////////////////
     /// Save
     
+    /**
+     * save a print order
+     */
     public void save(RevenueSource rsbo, Connection conn) throws Exception{
         // check the dirty flag in the object.  if it is dirty,
         // run update or insert
@@ -102,6 +111,9 @@ public class PrintOrderDAO extends RSDAO{
         }
     }
     
+    /**
+     * insert a print order object into the database
+     */
     public void insert(RevenueSource rsbo, Connection conn) throws Exception{
         printOrder po = (printOrder)rsbo;
         
@@ -117,6 +129,9 @@ public class PrintOrderDAO extends RSDAO{
         ps.close();
     }
     
+    /**
+     * update a print order object in the database
+     */
     public void update(RevenueSource rsbo, Connection conn) throws Exception{
         //We do not support the update function for a Revenue source.  All information
         //will be added and static at the time of creation.

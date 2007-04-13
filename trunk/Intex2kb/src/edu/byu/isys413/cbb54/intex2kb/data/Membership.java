@@ -208,18 +208,30 @@ public class Membership {
         this.customer = customer;
     }
 
+    /**
+     * return backup size
+     */
     public double getBackupSize() {
         return backupSize;
     }
 
+    /**
+     * sets backup size
+     */
     public void setBackupSize(double backUpsize) {
         this.backupSize = backupSize;
     }
 
+    /**
+     * returns backup experation date
+     */
     public long getBackupExpDate() {
         return backupExpDate;
     }
 
+    /**
+     * sets experation set
+     */
     public void setBackupExpDate(long expDate) {
         this.backupExpDate = backupExpDate;
     }

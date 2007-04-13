@@ -44,6 +44,9 @@ public class BackupDAO extends RSDAO{
     ///////////////////////////////////////////
     /// Create
     
+    /**
+     * Create's a new Backup object
+     */
     public RevenueSource create() throws Exception{
         String id = GUID.generate("ba");
         RevenueSource rs = new backup(id);
@@ -94,6 +97,9 @@ public class BackupDAO extends RSDAO{
 ///////////////////////////////////////////
 /// Read
 
+    /**
+     * Read's the backup object off the database
+     */
 public RevenueSource read(String id, Connection conn) throws Exception{
     backup bkup = new backup(id);
     
@@ -116,6 +122,9 @@ public RevenueSource read(String id, Connection conn) throws Exception{
 ///////////////////////////////////////////
 /// Save
 
+    /**
+     * Public save method
+     */
 public void save(RevenueSource rsbo, Connection conn) throws Exception{
     // check the dirty flag in the object.  if it is dirty,
     // run update or insert
@@ -132,6 +141,9 @@ public void save(RevenueSource rsbo, Connection conn) throws Exception{
     }
 }
 
+    /**
+     * private save method that insert's the object into the database
+     */
 public void insert(RevenueSource rsbo, Connection conn) throws Exception{
     rsbo.setInDB(true);
     backup bkup = (backup)rsbo;
@@ -145,6 +157,9 @@ public void insert(RevenueSource rsbo, Connection conn) throws Exception{
     insert.executeUpdate();
 }
 
+    /**
+     * private save method that updates the object database information
+     */
 public void update(RevenueSource rsbo, Connection conn) throws Exception{
     backup bkup = (backup)rsbo;
     PreparedStatement update = conn.prepareStatement(

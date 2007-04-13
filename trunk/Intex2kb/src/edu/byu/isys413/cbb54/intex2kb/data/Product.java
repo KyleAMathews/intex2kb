@@ -24,35 +24,59 @@ public abstract class Product {
     public Product() {
     }
 
+    /**
+     * returns the id of the product
+     */
     public String getId() {
         return id;
     }
 
+    /**
+     * returns the price of the product
+     */
     public double getPrice() {
         return price;
     }
 
+    /**
+     * sets the price of the product
+     */
     public void setPrice(double price) {
         this.setDirty(false);
         this.price = price;
     }
 
+    /**
+     * returns the database variable
+     */
     public boolean isInDB() {
         return inDB;
     }
 
+    /**
+     * sets the database variable
+     */
     public void setInDB(boolean inDB) {
         this.inDB = inDB;
     }
 
+    /**
+     * returns the dirty variable
+     */
     public boolean isDirty() {
         return dirty;
     }
 
+    /**
+     * sets the id
+     */
     public void setId(String id) {
         this.id = id;
     }
 
+    /**
+     * sets the dirty variable
+     */
     public void setDirty(boolean dirty) {
         this.dirty = dirty;
     }

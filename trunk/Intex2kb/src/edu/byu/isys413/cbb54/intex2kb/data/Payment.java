@@ -117,32 +117,53 @@ public class Payment {
         return isInDB;
     }
 
+    /**
+     * sets the database boolean
+     */
     public void setInDB(boolean isInDB) {
         this.isInDB = isInDB;
     }
 
+    /**
+     * returns the amount of the payment
+     */
     public Double getAmount() {
         return amount;
     }
 
+    /**
+     * sets the amount of the payment
+     */
     public void setAmount(Double amount) {
         this.dirty = true;
         this.amount = amount;
     }
 
+    /**
+     * return the creditcard number
+     */
     public String getCcNumber() {
         return ccNumber;
     }
 
+    /**
+     * sets the creditcard number
+     */
     public void setCcNumber(String ccNumber) {
         this.dirty = false;
         this.ccNumber = ccNumber;
     }
 
+    /**
+     * return the creditcard expiration date
+     */
     public String getCcExpiration() {
         return ccExpiration;
     }
 
+    /**
+     * sets the creditcard expiration date
+     */
     public void setCcExpiration(String ccExpiration) {
         this.dirty = true;
         this.ccExpiration = ccExpiration;

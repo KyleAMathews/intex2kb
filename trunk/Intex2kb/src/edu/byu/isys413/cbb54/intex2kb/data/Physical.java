@@ -25,37 +25,61 @@ public class Physical extends Product{
         this.setId(id);
     }
 
+    /**
+     * returns serial number
+     */
     public String getSerialNum() {
         return serialNum;
     }
     
+    /**
+     * set serial number
+     */
     public void setSerialNum(String serialNum) {
         this.serialNum = serialNum;
         this.setDirty(true);
     }
 
+    /**
+     * return shelf location
+     */
     public String getShelfLocation() {
         return shelfLocation;
     }
 
+    /**
+     * set shelf location
+     */
     public void setShelfLocation(String shelfLocation) {
         this.setDirty(true);
         this.shelfLocation = shelfLocation;
     }
 
+    /**
+     * return for sale variable
+     */
     public boolean isForSale() {
         return forSale;
     }
 
+    /**
+     * set for sale variable
+     */
     public void setForSale(boolean forSale) {
         this.setDirty(true);
         this.forSale = forSale;
     }
 
+    /**
+     * return conceptualid
+     */
     public String getConceptualid() {
         return conceptualid;
     }
 
+    /**
+     * set conceptualid
+     */
     public void setConceptualid(String conceptualid) {
         this.conceptualid = conceptualid;
     }

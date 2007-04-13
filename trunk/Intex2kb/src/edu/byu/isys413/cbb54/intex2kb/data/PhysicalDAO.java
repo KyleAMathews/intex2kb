@@ -44,6 +44,9 @@ public class PhysicalDAO extends ProductDAO{
     ///////////////////////////////////////////
     /// Create
     
+    /**
+     * create a physical object
+     */
     public Product create() throws Exception{
         String id = GUID.generate();
         Product product = new Physical(id);
@@ -53,6 +56,9 @@ public class PhysicalDAO extends ProductDAO{
     
     ///////////////////////////////////////////
     /// Read
+    /**
+     * public read of a physical object
+     */
     public Product read(String id) throws Exception {
         Physical phy = null;
         
@@ -96,6 +102,9 @@ public class PhysicalDAO extends ProductDAO{
     }
     
     
+    /**
+     * private read of a physical object
+     */
     public Product read(String id, Connection conn) throws Exception{
         Physical phy = new Physical(id);
         
@@ -121,6 +130,9 @@ public class PhysicalDAO extends ProductDAO{
     ///////////////////////////////////////////
     /// Save
 
+    /**
+     * public save of a product
+     */
     public void save(Product product) throws Exception {
         Connection conn = null;
         
@@ -154,6 +166,9 @@ public class PhysicalDAO extends ProductDAO{
         }
     }
         
+    /**
+     * private save method of a product
+     */
     public void save(Product prod, Connection conn) throws Exception{
         // check the dirty flag in the object.  if it is dirty,
         // run update or insert
@@ -167,6 +182,9 @@ public class PhysicalDAO extends ProductDAO{
         }
     }
     
+    /**
+     * insert a physical object into the database
+     */
     public void insert(Product prod, Connection conn) throws Exception{
         System.out.println("inserting physical");
         Physical phy = (Physical)prod;
@@ -183,6 +201,9 @@ public class PhysicalDAO extends ProductDAO{
         prod.setDirty(false);
     }
     
+    /**
+     * update a database record for a physical object
+     */
     public void update(Product prod, Connection conn) throws Exception{
         Physical phy = (Physical)prod;
         PreparedStatement update = conn.prepareStatement(
@@ -204,6 +225,9 @@ public class PhysicalDAO extends ProductDAO{
     /// SEARCH
     
        
+    /**
+     * check to see if a product exists
+     */
     public boolean exists(String id) throws Exception{
         Boolean b = false;
         Connection conn = ConnectionPool.getInstance().get();
@@ -222,6 +246,9 @@ public class PhysicalDAO extends ProductDAO{
         return b;
     }  
     
+    /**
+     * return a physical object via sku
+     */
      public Product getBySku(String sku) throws Exception {
         Physical phy = null;
                
@@ -259,6 +286,9 @@ public class PhysicalDAO extends ProductDAO{
     }
     
     
+    /**
+     * read a product by the sku
+     */
     public Product readSku(String sku, Connection conn) throws Exception{
         Physical phy = null;
         
@@ -287,6 +317,9 @@ public class PhysicalDAO extends ProductDAO{
         return product;
     }
 
+    /**
+     * get a product list by conceptual
+     */
     public List<String> getByConceptual(List productList) throws DataException {
         List<String> list = new LinkedList<String>();
         
