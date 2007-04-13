@@ -9,6 +9,8 @@ Membership memb = MembershipDAO.getInstance().read((String)session.getAttribute(
 TransactionLine txLine1 = tx.getTxLines().get(0);
 Customer cust = memb.getCustomer();
 backup bckup = (backup)txLine1.getRevenueSource();
+
+<%session.setAttribute("tx",session.getAttribute("backuptx"));%>
 %>
 
 <jsp:include page="header.jsp" />
