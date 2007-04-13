@@ -23,7 +23,10 @@ response.setContentType(pb.getFiletype());
 // an sql query.  the inputstream could come from the ResultSet
 // object
 InputStream istream = pb.getMediumPic(pb.getId());
-
+if (istream == null){
+    
+istream = new FileInputStream("/home/kyle/Desktop/emblem-photos.png");
+}
 // get the outputstream.  this goes directly to the user's browser.
 // note how i get the real stream from the response, not the decorated
 // one that is already in the "out" variable (which expects text not

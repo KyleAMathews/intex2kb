@@ -43,7 +43,7 @@ public class fileUpload implements edu.byu.isys413.web.Action {
         }//for
         
         // get a file from the request
-        List<FileItem> f = new LinkedList();
+        List<FileItem> f = new LinkedList<FileItem>();
         
         if(((FileItem)params.get("datafile1")).getName() != ""){
             f.add((FileItem)params.get("datafile1"));
@@ -70,6 +70,8 @@ public class fileUpload implements edu.byu.isys413.web.Action {
             photo.setFiletype(f.get(i).getContentType());
             photo.setM((String)session.getAttribute("membid"));
             photo.setStatus("0"); // 0 = backup file | 1 = photo to be printed
+            
+            // if photo convert to thumbnails/medium
             
             //save photo to DB
             PhotoDAO.getInstance().save(photo,null,null,f.get(i));

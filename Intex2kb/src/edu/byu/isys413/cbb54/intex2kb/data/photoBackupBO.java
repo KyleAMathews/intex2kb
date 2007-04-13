@@ -9,6 +9,13 @@
 
 package edu.byu.isys413.cbb54.intex2kb.data;
 
+import java.io.FileInputStream;
+import java.io.InputStream;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import org.apache.commons.fileupload.FileItem;
+
 /**
  * Photo Backup is a service of backing up photos
  * @author Cameron
@@ -40,7 +47,7 @@ public class photoBackupBO {
     public String getId() {
         return id;
     }
-
+    
     
     /**
      * Returns a boolean indicating if the photo backup object has
@@ -50,7 +57,7 @@ public class photoBackupBO {
     public boolean isDirty() {
         return dirty;
     }
-
+    
     /**
      * Sets the dirty value
      * @param dirty Boolean
@@ -58,7 +65,7 @@ public class photoBackupBO {
     public void setDirty(boolean dirty) {
         this.dirty = dirty;
     }
-
+    
     /**
      * Returns a boolean indicating if the object is saved in the database
      * @return Boolean inDB
@@ -66,7 +73,7 @@ public class photoBackupBO {
     public boolean isInDB() {
         return isInDB;
     }
-
+    
     /**
      * Sets the boolean representing the object is in the database
      * @param isInDB Boolean
@@ -74,7 +81,7 @@ public class photoBackupBO {
     public void setInDB(boolean isInDB) {
         this.isInDB = isInDB;
     }
-
+    
     /**
      * Returns the membership id of the owner of the backup
      * @return String member id
@@ -82,7 +89,7 @@ public class photoBackupBO {
     public String getM() {
         return m;
     }
-
+    
     /**
      * Sets the membership id of the owner of the backup
      * @param m String Membership id
@@ -91,7 +98,7 @@ public class photoBackupBO {
         this.m = m;
         this.dirty = true;
     }
-
+    
     /**
      * Returns the caption associated with the photo
      * @return String Caption
@@ -99,7 +106,7 @@ public class photoBackupBO {
     public String getCaption() {
         return caption;
     }
-
+    
     /**
      * Sets the caption associated with a backup photo
      * @param caption String Caption
@@ -108,7 +115,7 @@ public class photoBackupBO {
         this.caption = caption;
         this.dirty = true;
     }
-
+    
     /**
      * Returns the file name of the photo
      * @return File Name
@@ -116,7 +123,7 @@ public class photoBackupBO {
     public String getFilename() {
         return filename;
     }
-
+    
     /**
      * Sets the file name of a backup photo
      * @param filename String
@@ -125,7 +132,7 @@ public class photoBackupBO {
         this.filename = filename;
         this.dirty = true;
     }
-
+    
     /**
      * Returns the file type of a backup
      * @return String Type
@@ -133,7 +140,7 @@ public class photoBackupBO {
     public String getFiletype() {
         return filetype;
     }
-
+    
     /**
      * Sets the type of a backup file
      * @param filetype String
@@ -142,7 +149,7 @@ public class photoBackupBO {
         this.filetype = filetype;
         this.dirty = true;
     }
-
+    
     /**
      * Returns the file size of a backup
      * @return String
@@ -150,7 +157,7 @@ public class photoBackupBO {
     public String getFilesize() {
         return filesize;
     }
-
+    
     /**
      * Sets the file size of a backup
      * @param filesize String
@@ -159,7 +166,7 @@ public class photoBackupBO {
         this.filesize = filesize;
         this.dirty = true;
     }
-
+    
     /**
      * Returns the status of a backup
      * @return String Status
@@ -167,7 +174,7 @@ public class photoBackupBO {
     public String getStatus() {
         return status;
     }
-
+    
     /**
      * Sets the status of a backup
      * @param status String
@@ -176,6 +183,52 @@ public class photoBackupBO {
         this.status = status;
         this.dirty = true;
     }
-
+    public InputStream getThumbnail(String id) throws Exception{
+        Connection conn = ConnectionPool.getInstance().get();
+        PreparedStatement ps = conn.prepareStatement("SELECT \"thumbnail\" FROM \"photoBackup\" WHERE \"id\" = ?");
+        ps.setString(1, id);
+        ResultSet rs = ps.executeQuery();
+        InputStream thumb = null;
+        if (rs.next()){
+            thumb = rs.getBinaryStream("thumbnail");
+        }
+        
+        conn.commit();
+        ConnectionPool.getInstance().release(conn);
+        
+        return thumb;
+    }
+    
+    public InputStream getMediumPic(String id) throws Exception{
+        Connection conn = ConnectionPool.getInstance().get();
+        PreparedStatement ps = conn.prepareStatement("SELECT \"mediumpic\" FROM \"photoBackup\" WHERE \"id\" = ?");
+        ps.setString(1, id);
+        ResultSet rs = ps.executeQuery();
+        InputStream thumb = null;
+        if (rs.next()){
+            thumb = rs.getBinaryStream("mediumpic");
+        }
+        
+        conn.commit();
+        ConnectionPool.getInstance().release(conn);
+        
+        return thumb;
+    }
+    
+    public InputStream getOriginal(String id) throws Exception{
+        Connection conn = ConnectionPool.getInstance().get();
+        PreparedStatement ps = conn.prepareStatement("SELECT \"originalpic\" FROM \"photoBackup\" WHERE \"id\" = ?");
+        ps.setString(1, id);
+        ResultSet rs = ps.executeQuery();
+        InputStream thumb = null;
+        if (rs.next()){
+            thumb = rs.getBinaryStream("originalpic");
+        }
+        
+        conn.commit();
+        ConnectionPool.getInstance().release(conn);
+        
+        return thumb;
+    }
     
 }
