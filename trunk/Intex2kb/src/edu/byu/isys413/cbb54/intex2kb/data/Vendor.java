@@ -147,7 +147,7 @@ public class Vendor {
      * @return Order
      */
     public PurchaseOrder getOrder() {
-        return purchaseOrder;
+        return getPurchaseOrder();
     }
 
     /**
@@ -155,7 +155,15 @@ public class Vendor {
      * @param po PurchaseOrder
      */
     public void setOrder(PurchaseOrder po) {
-        this.purchaseOrder = po;
+        this.setPurchaseOrder(po);
+    }
+
+    public PurchaseOrder getPurchaseOrder() {
+        return purchaseOrder;
+    }
+
+    public void setPurchaseOrder(PurchaseOrder purchaseOrder) {
+        this.purchaseOrder = purchaseOrder;
     }
     
 }

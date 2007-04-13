@@ -9,6 +9,7 @@
 
 package edu.byu.isys413.cbb54.intex2kb.data;
 
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -20,7 +21,7 @@ public class PurchaseOrder {
     private String id;
     private long date;
     private Vendor vendor;
-    private List<OrderLine> OrderLines;
+    private List<OrderLine> OrderLines = new LinkedList<OrderLine>();
     private Store store;
     private boolean dirty;
     private boolean inDB;
@@ -72,7 +73,7 @@ public class PurchaseOrder {
      * returns the order lines
      */
     public List<OrderLine> getOrderLines() {
-        return OrderLines;
+        return this.OrderLines;
     }
 
     /**
@@ -87,7 +88,7 @@ public class PurchaseOrder {
      * add orderline to the list
      */
     public void addOrderLine(OrderLine ol) {
-        OrderLines.add(ol);
+        this.OrderLines.add(ol);
         this.dirty = true;
     }
 
