@@ -34,7 +34,7 @@ public class GetItems implements edu.byu.isys413.web.Action {
         // Create list to hold Conceptual product of a category
         List<Conceptual> productList = new LinkedList<Conceptual>();
         
-        // Retieve category ID
+        // Retrieve category ID
         String category = request.getParameter("category");
         
         //get list of conceptual products in specified category
