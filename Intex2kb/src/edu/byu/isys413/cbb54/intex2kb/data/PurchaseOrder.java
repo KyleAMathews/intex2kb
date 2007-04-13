@@ -32,7 +32,7 @@ public class PurchaseOrder {
     }
 
     /**
-     * returns the id of a purchase order
+     * Returns the GUID of the PurchaseOrder
      */
     public String getId() {
         return id;
