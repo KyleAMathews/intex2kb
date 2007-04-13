@@ -30,13 +30,13 @@ if (session.getAttribute("saletx") == null){
 }else{
     saletx = (Transaction)session.getAttribute("saletx");
     transLines = saletx.getTxLines();
-    request.setAttribute("transLines", transLines);
     memb = MembershipDAO.getInstance().read((String)session.getAttribute("membid"));
 }
 
 
 if (request.getAttribute("category") != null){
     category = (String)request.getAttribute("category");
+    request.setAttribute("category", category);
 }
 
 if(request.getAttribute("products") != null){
@@ -94,21 +94,23 @@ if(request.getAttribute("products") != null){
         <th colspan="2">Items in Cart</th>
     </tr>
     
-    <% if(transLines != null){%>
+    
     <tr>
         <td colspan="2">
             <table width="100%">
-                    <% for(int i=0; i < transLines.size(); i++){
+                <% if(transLines != null){
+                     for(int i=0; i < transLines.size(); i++){
                         TransactionLine tl = transLines.get(i); 
                         Sale s = (Sale)tl.getRevenueSource();
                         Conceptual c = (Conceptual)s.getProduct();%>
-                    <tr><form action="edu.byu.isys413.actions.UpdateQuantity.action" method="post" target="_parent">
-                        <td width="3"><input type="text" size=1 name="quantity" value="<%=s.getQuantity() %>"></td>
-                        <td width="5"><input type="hidden" value="<%=i %>" name="update"><input type="submit" value="Update Qty"></td>
-                        <td><%=c.getName() %></td>
-                        <td align="right"><%=formatNumber.fmt(c.getPrice()) %></td>
+                        <tr><form action="edu.byu.isys413.actions.UpdateQuantity.action" method="post" target="_parent"><input type="hidden" name="category" value="<%=category %>">
+                                <td width="3"><input type="text" size=1 name="quantity" value="<%=s.getQuantity() %>"></td>
+                                <td width="5"><input type="hidden" value="<%=i %>" name="update"><input type="submit" value="Update Qty"></td>
+                                <td><%=c.getName() %></td>
+                            <td align="right"><%=formatNumber.fmt(tl.calculateSubtotal()) %></td></form>
                     </tr>
-                    <% } %>
+                    <% } 
+                } %>
                     <tr>
                         <td colspan="4" align="right" style="border-top: 1"><b>Subtotal&nbsp;&nbsp; $<%=formatNumber.fmt(saletx.calculateSubtotal()) %></b></td>
                     </tr>
@@ -121,7 +123,6 @@ if(request.getAttribute("products") != null){
             </table>
         </td>
     </tr>
-    <% } %>
 </table>
 
 
