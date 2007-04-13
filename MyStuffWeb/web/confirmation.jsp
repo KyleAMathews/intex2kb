@@ -11,7 +11,7 @@ on Libraries node in Projects view can be used to add the JSTL 1.1 library.
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
-<%String title = "Account Page";%>
+<%String title = "Confirmation";%>
 <html>
     <head><TITLE>MyStuff.com: <%out.write(title);%></TITLE>
         <link rel="StyleSheet" type="text/css" media="all" href="style.css" />
@@ -52,7 +52,7 @@ $(document).ready(function(){
                 </div><!--end navigation-->
                    
                 <div id="body">
-                    <h1><%out.write(title);%></h1>
+                    <h1><%out.write(title);%></h1><br>
                     <p>Your order has been submitted.  You will receive a confirmation e-mail shortly</p><br><br>
                     <p>You can continue to buy products, rent items, develop pictures, or view file/picture backups by clicking on the appropriate link on the left.</p>
                 </div><!--end body-->
