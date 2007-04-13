@@ -158,7 +158,7 @@ public class TransactionDAO {
             if (rs.next()) {
                 trans = new Transaction(id);
                 trans.setType(rs.getString("type"));
-                trans.setStatus(rs.getString("status"));         
+                trans.setStatus(rs.getString("status"));    
                 trans.setInDB(true);
                 trans.setDirty(false);
                 
