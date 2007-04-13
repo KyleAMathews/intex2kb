@@ -21,7 +21,11 @@ public class getCustomer extends javax.swing.JFrame {
     public getCustomer(String empid1, String storeid1) {
         empid = empid1;
         storeid = storeid1;
-        
+        try {
+            Session session = new Session(StoreDAO.getInstance().read(storeid1), EmployeeDAO.getInstance().read(empid1));
+        } catch (DataException ex) {
+            ex.printStackTrace();
+        }
         initComponents();
         createCust.setVisible(false);
         custPhoneInput.setText("8013786198");
@@ -92,7 +96,7 @@ public class getCustomer extends javax.swing.JFrame {
 
     private void createCustActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createCustActionPerformed
         this.dispose();
-        createCustomer c = new createCustomer(this);
+        customerCreate c = new customerCreate();
         c.setVisible(true);
     }//GEN-LAST:event_createCustActionPerformed
     
@@ -100,13 +104,14 @@ public class getCustomer extends javax.swing.JFrame {
         try {
             List<Customer> custList = CustomerDAO.getInstance().getByPhone(custPhoneInput.getText());
             try{
-                custList.get(0);
                 Main m = new Main(empid, storeid, custList.get(0));
                 this.dispose();
                 m.setVisible(true);
             }catch (Exception e){
                 custPhoneInput.setText("No customer found");
-                createCust.setVisible(true);
+                customerCreate c = new customerCreate();
+                this.dispose();
+                c.setVisible(true);
             }
         } catch (DataException ex) {
             ex.printStackTrace();
