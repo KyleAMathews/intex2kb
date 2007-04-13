@@ -75,7 +75,6 @@ public class fileUpload implements edu.byu.isys413.web.Action {
             
             //save photo to DB
             PhotoDAO.getInstance().save(photo,null,null,f.get(i));
-            session.setAttribute(Integer.toString(i + 1),photo.getFilename());
         }
         
         // the fileitem also has the bytes of the file.  you could easily call
@@ -83,7 +82,7 @@ public class fileUpload implements edu.byu.isys413.web.Action {
         // gives you an input stream, which is what setBinaryStream wants.
         
         
-        return "backup.jsp";
+        return "edu.byu.isys413.actions.backupFile.action";
     }//process
     
     

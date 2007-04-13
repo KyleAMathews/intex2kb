@@ -24,7 +24,7 @@
                 <td>Your credit card will be charged: $<%=fmt.fmt(tx.calculateTotal())%></td>
             </tr>
             <tr>
-                <td><input type="submit" value="Submit" class="buttonSubmit" /></td>
+                <td><input type="submit" value="Submit" action="edu.byu.isys413.actions. class="buttonSubmit" /></td>
                 <td></td>
             </tr>
         </tbody>
