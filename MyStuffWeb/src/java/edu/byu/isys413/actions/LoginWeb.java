@@ -17,7 +17,7 @@ import javax.servlet.http.HttpSession;
  */
 
 /**
- *
+ * Checks email and password against the login table on the database to allow only legitamate members into website.
  * @author kyle
  */
 public class LoginWeb implements edu.byu.isys413.web.Action{
@@ -33,7 +33,11 @@ public class LoginWeb implements edu.byu.isys413.web.Action{
         
     }
     /**
-     * Process LoginWeb
+     * retrives parameters "email" and "password" from form @ login.jsp.  
+     * Passes those into validateLogin.java which returns a boolean saying
+     * the login is valid or not valid. If the username and password are valid,
+     * the user is passed to the account page. If not, the user is returned to the login.jsp page.
+     * @return jsp page
      */
     public String process(HttpServletRequest request, HttpServletResponse response) throws Exception {
         HttpSession session = request.getSession();
@@ -49,11 +53,13 @@ public class LoginWeb implements edu.byu.isys413.web.Action{
         System.out.println("validation value = " + pass);
         
         if(pass == true){
+            
             // set login guid (not yet implemented)
             System.out.println(session.getId());
             session.invalidate();
             session = request.getSession(true);
             System.out.println(session.getId());
+            
             // set customerid in cookie
             session.setAttribute("membid", membid);
             return "account.jsp"; // returns account page
