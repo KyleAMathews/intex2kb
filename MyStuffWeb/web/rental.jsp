@@ -51,7 +51,7 @@
     </td>	
     <td>
         
-        <input type="radio" name="Store" value="000001117284553c0014b20a500442"> Provo<br>
+        <input type="radio" name="Store" value="000001117284553c0014b20a500442" CHECKED> Provo<br>
         <input type="radio" name="Store" value="000001117284553c0014b20a500443"> Logan<br>
         <input type="radio" name="Store" value="000001117284553c0014b20a500444"> Murray<br>
         
