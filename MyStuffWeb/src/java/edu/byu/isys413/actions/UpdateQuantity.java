@@ -9,11 +9,7 @@
 
 package edu.byu.isys413.actions;
 
-import edu.byu.isys413.cbb54.intex2kb.data.Conceptual;
-import edu.byu.isys413.cbb54.intex2kb.data.ConceptualDAO;
-import edu.byu.isys413.cbb54.intex2kb.data.Sale;
-import edu.byu.isys413.cbb54.intex2kb.data.Transaction;
-import edu.byu.isys413.cbb54.intex2kb.data.TransactionLine;
+import edu.byu.isys413.cbb54.intex2kb.data.*;
 import java.util.LinkedList;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
@@ -30,11 +26,15 @@ public class UpdateQuantity implements edu.byu.isys413.web.Action {
     public UpdateQuantity() {
     }
     
+    /**
+     * Updates the quantity for a TransactionLine unless the quantity is zero, in which
+     * case it removes the TransactionLine from the transaction.
+     */
     public String process(HttpServletRequest request, HttpServletResponse response) throws Exception {      
         // Retrieve variables
         HttpSession session = request.getSession();
         String category = request.getParameter("category");
-        Transaction saletx = (Transaction)session.getAttribute("saletx");
+        Transaction saletx = (Transaction)TransactionDAO.getInstance().read((String)session.getAttribute("saletx"));
         int q = Integer.parseInt(request.getParameter("quantity"));
         int line = Integer.parseInt(request.getParameter("update"));
         List<Conceptual> productList = new LinkedList<Conceptual>();

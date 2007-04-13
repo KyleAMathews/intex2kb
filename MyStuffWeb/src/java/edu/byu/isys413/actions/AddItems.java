@@ -26,11 +26,14 @@ public class AddItems implements edu.byu.isys413.web.Action {
     public AddItems() {
     }
     
+    /**
+     * Creates a TransactionLine for the revenue source and adds it to the Transaction
+     */
     public String process(HttpServletRequest request, HttpServletResponse response) throws Exception {      
         // Retrieve variables
         HttpSession session = request.getSession();
         String category = request.getParameter("category");
-        Transaction saletx = (Transaction)session.getAttribute("saletx");
+        Transaction saletx = (Transaction)TransactionDAO.getInstance().read((String)session.getAttribute("saletx"));
         String productID = request.getParameter("item");
         List<Conceptual> productList = new LinkedList<Conceptual>();
         

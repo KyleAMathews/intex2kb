@@ -86,6 +86,7 @@ public class submitTX implements edu.byu.isys413.web.Action {
         if(type.matches("sale")){
             session.setAttribute("saletx", null);
         }
+        session.setAttribute("tx", null);
         tx = null;
         
         return "confirmation.jsp";
