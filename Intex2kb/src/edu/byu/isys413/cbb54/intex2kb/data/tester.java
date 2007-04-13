@@ -23,6 +23,9 @@ import java.util.*;
  */
 public class tester {
     
+    /**
+     * main class for tester
+     */
     public void main(String args[]) {
         
         try {

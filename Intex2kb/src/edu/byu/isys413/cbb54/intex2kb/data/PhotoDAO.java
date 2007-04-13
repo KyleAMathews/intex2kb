@@ -30,6 +30,9 @@ public class PhotoDAO {
     private PhotoDAO() {
     }
     
+    /**
+     * returns the instance of the dao
+     */
     public static synchronized PhotoDAO getInstance() {
         if (instance == null) {
             instance = new PhotoDAO();
@@ -54,6 +57,9 @@ public class PhotoDAO {
         return p;
     }
     
+    /**
+     * the public read method of the photo object
+     */
     public synchronized photoBackupBO read(String id) throws DataException {
         photoBackupBO photo = null;
         
@@ -146,6 +152,9 @@ public class PhotoDAO {
         return photo;
     }
     
+    /**
+     * the save method for photo object
+     */
     public void save(photoBackupBO p, FileItem thumb, FileItem med, FileItem file) throws Exception {
         Connection conn = ConnectionPool.getInstance().get();
         PreparedStatement ps = conn.prepareStatement("INSERT INTO photobackup (id,membid,caption,thumbnail,mediumpic,originalpic,filename,filetype,filesize,status) values (?,?,?,?,?,?,?,?,?,?)");

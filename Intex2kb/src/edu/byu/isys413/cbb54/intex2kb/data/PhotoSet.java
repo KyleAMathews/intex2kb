@@ -26,40 +26,67 @@ public class PhotoSet{
         this.id = id;
     }
 
+    /**
+     * returns the id
+     */
     public String getId() {
         return id;
     }
 
+    /**
+     * returns the description
+     */
     public String getDescription() {
         return description;
     }
 
+    /**
+     * sets the description
+     */
     public void setDescription(String description) {
         this.description = description;
         this.setDirty(true);
     }
 
+    /**
+     * returns the number of photos
+     */
     public int getNumPhotos() {
         return numPhotos;
     }
 
+    /**
+     * sets the number of photos
+     */
     public void setNumPhotos(int numPhotos) {
         this.numPhotos = numPhotos;
         this.setDirty(true);
     }
 
+    /**
+     * returns the dirty boolean
+     */
     public boolean getIsDirty() {
         return dirty;
     }
 
+    /**
+     * returns the database boolean
+     */
     public boolean getIsInDB() {
         return inDB;
     }
 
+    /**
+     * sets the database boolean
+     */
     public void setInDB(boolean inDB) {
         this.inDB = inDB;
     }
 
+    /**
+     * sets the dirty boolean
+     */
     public void setDirty(boolean dirty) {
         this.dirty = dirty;
     }

@@ -23,6 +23,9 @@ import java.util.*;
  */
 public class newTester {
     
+    /**
+     * main method of new tester
+     */
     public void main(String args[]) {
         try {
             
