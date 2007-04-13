@@ -14,6 +14,9 @@ on Libraries node in Projects view can be used to add the JSTL 1.1 library.
 
 <%List<photoBackupBO> pb = new LinkedList<photoBackupBO>();
 pb = (List<photoBackupBO>)session.getAttribute("files");
+if (pb.isEmpty()) {pb.add(new photoBackupBO("No Pictures"));
+pb.get(0).setCaption("No Picture");
+}
 %>
 
 <jsp:include page="header.jsp" />
@@ -38,35 +41,46 @@ pb = (List<photoBackupBO>)session.getAttribute("files");
 <%=pb.get(0).getM()%>
 <p>Welcome to you My Stuff File Backup Page</p>
 <div><br />
-<%
-Iterator<photoBackupBO> it = pb.iterator();
-
-// outer loop
-while(it.hasNext()){
-    out.write("<table width=\"500px\" cellpadding=\"5px\" cellspacing=\"10px\"> ");
+<% if (pb != null){
+    Iterator<photoBackupBO> it = pb.iterator();
     
-// inner loop
-    for (int i = 0; i < 4; i++){
-        if(it.hasNext()) {photoBackupBO pbBO = it.next();
+// outer loop
+    while(it.hasNext()){
+        out.write("<table width=\"500px\" cellpadding=\"5px\" cellspacing=\"10px\"> ");
+        
         List<String> id = new LinkedList<String>();
         List<String> caption = new LinkedList<String>();
-        id.add(pbBO.getId());
-        String caption = pbBO.getCaption();
-        if (caption == null){caption = "caption";}
+        String caption1 = null;
+        photoBackupBO pbBO = null;
+        int j = 0;
+// inner loop
+        for (int i = 0; i < 4; i++){
+            if(it.hasNext()) {pbBO = it.next();
+            id.add(pbBO.getId());
+            caption1 = pbBO.getCaption();
+            if (caption1 == null){caption1 = "caption";}
+            caption.add(caption1);
+            j++;
+            } else{break;}
+            
         }
-        caption.add(caption);
-        
-    }
-    for (int i = 0; i < 4; i++){
-        out.write("<th>");
-        out.write("   " + caption);
-        out.write("</th>");
-        out.write("<td><a href=\"showimage.jsp?id=" + pbBO.getId() + "\" class=\"thickbox\" rel=\"gallery\"><img class=\"thickbox\" src=\"showthumbnail.jsp?id=" + pbBO.getId() + "\" title=" + pbBO.getCaption() + "\" /></a><br /><a href=\"downloadfile.jsp?id=" + pbBO.getId() + "\">Download</a><a href=\"deletefile.jsp?id=" + pbBO.getId() + "\">Delete</a></td>");
+        out.write("<tr>");
+        for (int i = 0; i < j; i++){
+            
+            out.write("<th>");
+            out.write("   " + caption.get(i));
+            out.write("</th>");
+            
+        }
+        out.write("</tr>");
+        out.write("<tr>");
+        for (int i = 0; i < j; i++){
+            out.write("<td><a href=\"showimage.jsp?id=" + id.get(i) + "\" class=\"thickbox\" rel=\"gallery\"><img class=\"thickbox\" src=\"showthumbnail.jsp?id=" + id.get(i) + "\" title=" + caption.get(i) + "\" /></a><br /><a href=\"downloadfile.jsp?id=" + id.get(i) + "\">Download</a><a href=\"deletefile.jsp?id=" + id.get(i) + "\">Delete</a></td>");
+        }
+        out.write("</tr>");
+        out.write("</table>");
     }
 }
-out.write("</table>");
-}
-
 %>
 <table width="500px" cellpadding="5px" cellspacing="10px">
     <tr><th>Kyle in Snow</th><th>Kyle is snow isn't this a long title?</th><th>Baby J</th></tr>
