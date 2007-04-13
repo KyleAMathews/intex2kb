@@ -32,14 +32,14 @@ public class Main {
         // TODO code application logic here
         //new tester().main(args    );
 //        try{
-            BatchOrder bo = new BatchOrder();
+//            BatchOrder bo = new BatchOrder();
 //        }catch(DataException e){
 //              System.out.println(e);
 //        }
-            //Login lo = new Login();
-            //lo.setVisible(true);
-            //new Login().setVisible(true);//creates and loads the gui
-        // new NewJFrame().setVisible(true);
+            Login lo = new Login();
+            lo.setVisible(true);
+//            new Login().setVisible(true);//creates and loads the gui
+//         new NewJFrame().setVisible(true);
             
 //            printConvBatch.getInstance().getReady();
             
