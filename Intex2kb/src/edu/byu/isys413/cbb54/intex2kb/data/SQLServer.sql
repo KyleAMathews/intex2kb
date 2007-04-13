@@ -431,6 +431,22 @@ INSERT INTO "physical" VALUES('tgfdsgrewgfdgwe', '5543256543569', 'shelf 32', 's
 INSERT INTO "product" VALUES('tgfdsgrewgfdgwe',4.65);
 INSERT INTO "physical" VALUES('asdfasdfw4s4', '5543256543570', 'shelf 32', 'sdkfjlk4fg76f784398', 0);
 INSERT INTO "product" VALUES('asdfasdfw4s4',6.45);
+INSERT INTO "physical" VALUES('asdfasdfw4s45', '55432565435701', 'shelf 32', 'kddfjlk4fg76f784398', 0);
+INSERT INTO "product" VALUES('asdfasdfw4s45',6.45);
+INSERT INTO "physical" VALUES('asdfasdfw4s455', '554325654357011', 'shelf 32', 'kdsfjlk4fg76f784398', 0);
+INSERT INTO "product" VALUES('asdfasdfw4s455',6.45);
+INSERT INTO "physical" VALUES('asdfasdfw4s454', '554325654357011', 'shelf 32', 'kdsfjlk4fg76f784398', 0);
+INSERT INTO "product" VALUES('asdfasdfw4s454',6.45);
+INSERT INTO "physical" VALUES('asdfasdfw4s4555', '5543256543570111', 'shelf 32', 'kdddfjlk4fg76f784398', 0);
+INSERT INTO "product" VALUES('asdfasdfw4s4555',6.45);
+INSERT INTO "physical" VALUES('asdfasdfw4s45555', '55432565435701111', 'shelf 32', 'kddddfjlk4fg76f784398', 0);
+INSERT INTO "product" VALUES('asdfasdfw4s45555',6.45);
+INSERT INTO "physical" VALUES('asdfasdfw4s455555', '55432565435701111', 'shelf 32', 'kddddfjlk4fg76f784398', 0);
+INSERT INTO "product" VALUES('asdfasdfw4s455555',6.45);
+INSERT INTO "physical" VALUES('asdfasdfw4s4555556', '55432565435701111', 'shelf 32', 'kddddfjlk4fg76f784398', 0);
+INSERT INTO "product" VALUES('asdfasdfw4s4555556',6.45);
+INSERT INTO "physical" VALUES('asdfasdfw4s45555567', '55432565435701111', 'shelf 32', 'kddddfjlk4fg76f784398', 0);
+INSERT INTO "product" VALUES('asdfasdfw4s45555567',6.45);
 
 INSERT INTO "forrent" VALUES('54322345', 3, '3245643212342');
 INSERT INTO "forrent" VALUES('6543643', 5, '');
@@ -438,6 +454,14 @@ INSERT INTO "forrent" VALUES('5jy4354wet', 4, '');
 INSERT INTO "forrent" VALUES('fds890h4oqt', 5, '');
 INSERT INTO "forrent" VALUES('tgfdsgrewgfdgwe', 5, '');
 INSERT INTO "forrent" VALUES('asdfasdfw4s4', 2, '');
+INSERT INTO "forrent" VALUES('asdfasdfw4s454', 2, '');
+INSERT INTO "forrent" VALUES('asdfasdfw4s45', 2, '');
+INSERT INTO "forrent" VALUES('asdfasdfw4s45555567', 2, '');
+INSERT INTO "forrent" VALUES('asdfasdfw4s455', 2, '');
+INSERT INTO "forrent" VALUES('asdfasdfw4s4555', 2, '');
+INSERT INTO "forrent" VALUES('asdfasdfw4s45555', 2, '');
+INSERT INTO "forrent" VALUES('asdfasdfw4s455556', 2, '');
+INSERT INTO "forrent" VALUES('asdfasdfw4s455555', 2, '');
 
 INSERT INTO "forsale" VALUES('321423421', 1);
 
@@ -490,11 +514,24 @@ INSERT INTO "conceptual" VALUES('skdfjlk32kgjk23k34k','ISO 300 Color film - 36 E
 INSERT INTO "product" VALUES('skdfjlk32kgjk23k34k',23.43);
 INSERT INTO "conceptual" VALUES('sdkfjlk4fg76f784398','DVD+R Media - 50 Pack','Blank DVD media',12.39,'00000114123b9144eb018b64001000');
 INSERT INTO "product" VALUES('sdkfjlk4fg76f784398',54.32);
+INSERT INTO "conceptual" VALUES('kdsfjlk4fg76f784398','Sony Handycam DSC-90','Video Camera',239.87,'00000111123b9144eb018b64001000');
+INSERT INTO "product" VALUES('kdsfjlk4fg76f784398',54.32);
+INSERT INTO "conceptual" VALUES('kddfjlk4fg76f784398','Sony FX-1','Video Camera',2239.87,'00000111123b9144eb018b64001000');
+INSERT INTO "product" VALUES('kddfjlk4fg76f784398',54.32);
+INSERT INTO "conceptual" VALUES('kdddfjlk4fg76f784398','Sony Cybershot 100','5 mp Digital Camera',439.87,'00000110123b9144eb018b64001000');
+INSERT INTO "product" VALUES('kdddfjlk4fg76f784398',54.32);
+INSERT INTO "conceptual" VALUES('kddddfjlk4fg76f784398','Olympus Digital Camera 200','7.6 mp Digital Camera',739.87,'00000110123b9144eb018b64001000');
+INSERT INTO "product" VALUES('kddddfjlk4fg76f784398',54.32);
 
+
+INSERT INTO "conceptualrental" VALUES('kddfjlk4fg76f784398', 79.99, 2499.99, 34.99, 5, 10);
+INSERT INTO "conceptualrental" VALUES('kdsfjlk4fg76f784398', 24.99, 249.99, 14.99, 5, 10);
+INSERT INTO "conceptualrental" VALUES('kdddfjlk4fg76f784398', 19.99, 449.99, 14.99, 5, 10);
+INSERT INTO "conceptualrental" VALUES('kddddfjlk4fg76f784398', 19.99, 439.99, 14.99, 5, 10);
 INSERT INTO "conceptualrental" VALUES('kkdsjl2k3lk3kjk3dkj', 29.99, 249.99, 14.99, 5, 10);
 INSERT INTO "conceptualrental" VALUES('skldfjksdflkdker38f', 19.99, 229.99, 9.99, 5, 10);
 INSERT INTO "conceptualrental" VALUES('lskdjfk32jfgkge8f7e', 9.99, 49.99, 4.99, 5, 10);
-INSERT INTO "conceptualrental" VALUES('sdkfjlk4fg76f784398', 99.99, 11249.99, 44.99, 5, 10);
+INSERT INTO "conceptualrental" VALUES('sdkfjlk4fg76f784398', 9.99, 9.99, 4.99, 5, 10);
 INSERT INTO "conceptualrental" VALUES('skdfjlkjn23ndlkfjs3', 19.99, 229.99, 9.99, 5, 10);
 INSERT INTO "conceptualrental" VALUES('skdfjlk32kgjk23k34k', 19.99, 229.99, 9.99, 5, 10);
 
@@ -518,13 +555,22 @@ INSERT INTO "storeproduct" VALUES('000001117284553c0014b20a500442','skdjf4f8g7df
 INSERT INTO "storeproduct" VALUES('000001117284553c0014b20a500442','lskdjfk32jfgkge8f7e',43,'Film Rack',40,60,0);
 INSERT INTO "storeproduct" VALUES('000001117284553c0014b20a500442','skdfjlk32kgjk23k34k',38,'Film Rack',35,50,0);
 INSERT INTO "storeproduct" VALUES('000001117284553c0014b20a500442','sdkfjlk4fg76f784398',29,'Blank Media',30,50,50);
+INSERT INTO "storeproduct" VALUES('000001117284553c0014b20a500442','kddfjlk4fg76f784398',29,'Video Camera',30,50,50);
+INSERT INTO "storeproduct" VALUES('000001117284553c0014b20a500442','kdsfjlk4fg76f784398',29,'Video Camera',30,50,50);
+INSERT INTO "storeproduct" VALUES('000001117284553c0014b20a500442','kdddfjlk4fg76f784398',29,'Video Camera',30,50,50);
+INSERT INTO "storeproduct" VALUES('000001117284553c0014b20a500442','kddddfjlk4fg76f784398',29,'Video Camera',30,50,50);
 
 INSERT INTO "storeproduct" VALUES('000001117284553c0014b20a500443','skdjf4f8g7dfgwk3rj3',32,'Blank Media',20,50,0);
 INSERT INTO "storeproduct" VALUES('000001117284553c0014b20a500443','lskdjfk32jfgkge8f7e',43,'Film Rack',40,60,0);
 INSERT INTO "storeproduct" VALUES('000001117284553c0014b20a500443','skdfjlk32kgjk23k34k',38,'Film Rack',35,50,0);
 INSERT INTO "storeproduct" VALUES('000001117284553c0014b20a500443','sdkfjlk4fg76f784398',29,'Blank Media',30,50,50);
+INSERT INTO "storeproduct" VALUES('000001117284553c0014b20a500443','kdddfjlk4fg76f784398',29,'Blank Media',30,50,50);
+INSERT INTO "storeproduct" VALUES('000001117284553c0014b20a500443','kddddfjlk4fg76f784398',29,'Blank Media',30,50,50);
 
 INSERT INTO "storeproduct" VALUES('000001117284553c0014b20a500444','skdjf4f8g7dfgwk3rj3',32,'Blank Media',20,50,0);
 INSERT INTO "storeproduct" VALUES('000001117284553c0014b20a500444','lskdjfk32jfgkge8f7e',43,'Film Rack',40,60,0);
 INSERT INTO "storeproduct" VALUES('000001117284553c0014b20a500444','skdfjlk32kgjk23k34k',38,'Film Rack',35,50,0);
 INSERT INTO "storeproduct" VALUES('000001117284553c0014b20a500444','sdkfjlk4fg76f784398',29,'Blank Media',30,50,50);
+INSERT INTO "storeproduct" VALUES('000001117284553c0014b20a500444','kddfjlk4fg76f784398',29,'Video Camera',30,50,50);
+INSERT INTO "storeproduct" VALUES('000001117284553c0014b20a500444','kdddfjlk4fg76f784398',29,'Video Camera',30,50,50);
+INSERT INTO "storeproduct" VALUES('000001117284553c0014b20a500444','kddddfjlk4fg76f784398',29,'Video Camera',30,50,50);

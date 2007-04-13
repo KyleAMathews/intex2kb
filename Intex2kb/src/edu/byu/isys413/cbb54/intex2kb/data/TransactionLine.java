@@ -127,6 +127,7 @@ public class TransactionLine {
         if(coupon != null){
             sub -= coupon.getAmount();
         }
+        formatNumber.fmt(sub);
         return sub;
     }
 
