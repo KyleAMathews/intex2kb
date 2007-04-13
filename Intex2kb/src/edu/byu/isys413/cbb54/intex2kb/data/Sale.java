@@ -87,4 +87,12 @@ public class Sale extends RevenueSource {
     public void setPrice(double price){
         super.price = price;
     }
+    
+    /**
+     * gets the price of the sale
+     * @return price Double
+     */
+    public double setPrice(){
+        return super.price;
+    }
 }
