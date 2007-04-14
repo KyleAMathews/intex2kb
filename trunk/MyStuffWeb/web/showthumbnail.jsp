@@ -6,7 +6,7 @@
 photoBackupBO pb = PhotoDAO.getInstance().read(request.getParameter("id"));
 
 response.setContentType(pb.getFiletype());
-
+System.out.println("mime type = " + pb.getFiletype());
 // it is important that you do not have any white space in here
 // (in the HTML part of the file -- it's ok in the script area),
 // because it will be sent to the browser.  so I have no leading
@@ -22,11 +22,18 @@ response.setContentType(pb.getFiletype());
 // here, but you could just as easily load it from your db using
 // an sql query.  the inputstream could come from the ResultSet
 // object
-InputStream istream = pb.getMediumPic(pb.getId());
-if (istream == null){
-    
-istream = new FileInputStream("/home/kyle/Desktop/emblem-photos.png");
+//InputStream istream = pb.getThumbnail(pb.getId()); // didn't get jmagick working'
+if (pb.getFiletype().equalsIgnoreCase("image/jpeg") | pb.getFiletype().equalsIgnoreCase("image/png") | pb.getFiletype().equalsIgnoreCase("image/gif")){
+    istream = new FileInputStream("images/emblem-photos.png");
+    System.out.println("using photo icon");
+}else if (pb.getFiletype().equalsIgnoreCase("application/msword")) {
+    istream = new FileInputStream("images/x-office-spreadsheet.png");
+    System.out.println("using office icon");
+}else {
+    istream = new FileInputStream("images/text-x-generic.png");
+    System.out.println("using text icon");
 }
+
 // get the outputstream.  this goes directly to the user's browser.
 // note how i get the real stream from the response, not the decorated
 // one that is already in the "out" variable (which expects text not
