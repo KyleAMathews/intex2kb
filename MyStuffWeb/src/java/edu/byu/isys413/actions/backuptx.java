@@ -32,7 +32,10 @@ public class backuptx implements edu.byu.isys413.web.Action{
         backup bck = null;
         //retrieve transaction
         tx = TransactionDAO.getInstance().read((String)session.getAttribute("backuptx"));
-        
+        Store store = new Store("010001117284553c0014b20b500444");
+        store.setIsInDB(true);
+        store.setDirty(false);
+        tx.setStore(store);
         // grab how many gbs and set on revenue source
         GBs = Double.valueOf(request.getParameter("numGBs"));
         bck = (backup)tx.getTxLines().get(0).getRevenueSource();

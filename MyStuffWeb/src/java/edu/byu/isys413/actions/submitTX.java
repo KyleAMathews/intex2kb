@@ -25,15 +25,17 @@ public class submitTX implements edu.byu.isys413.web.Action {
      */
     public submitTX() {
     }
-  
+    
     /**
      * Processes a subitTX
      */
-    public String process(HttpServletRequest request, HttpServletResponse response) throws Exception {        
+    public String process(HttpServletRequest request, HttpServletResponse response) throws Exception {
         HttpSession session = request.getSession();
         
         Transaction tx = TransactionDAO.getInstance().read((String)session.getAttribute("tx"));
         System.out.println("tx attributes in the submittx.java: " + tx.getId() + " " + tx.getCustomer().getFname() + " " + tx.getTxLines().get(0).getRevenueSource().getPrice());
+        Employee emp = new Employee("120001117284553c0014b60a500442");
+        tx.setEmployee(emp);
         Payment pmt = PaymentDAO.getInstance().create(tx);
         pmt.setAmount(tx.calculateTotal());
         pmt.setCcExpiration(tx.getCustomer().getMembership().getCcExpiration());
@@ -54,8 +56,8 @@ public class submitTX implements edu.byu.isys413.web.Action {
         //this is where we would send the text message to the store
         if(type.matches("rental")){
             String storeid = (String) session.getAttribute("storerental");
-        Store store = StoreDAO.getInstance().read(storeid);
-        String number = (store.getPhone() + "@2kmystuff.com");
+            Store store = StoreDAO.getInstance().read(storeid);
+            String number = (store.getPhone() + "@2kmystuff.com");
         /*this is where the text message should go.
         //email.add(number);
         //tyler
