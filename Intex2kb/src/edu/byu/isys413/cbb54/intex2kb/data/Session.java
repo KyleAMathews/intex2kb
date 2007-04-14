@@ -19,6 +19,23 @@ public class Session {
     private Store store;
     private Employee employee;
     
+    private static Session instance = null;
+    
+    /** Creates a new instance of RSSFeedDAO */
+    private Session() {
+    }
+    
+    /**
+     * Singleton Pattern to allow only one instance of ProductDAO
+     * @return ProductDAO
+     */
+    public static synchronized Session getInstance() {
+        if (instance == null) {
+            instance = new Session();
+        }
+        return instance;
+    }
+    
     /**
      * Creates a new instance of Session
      * @param store GUID
