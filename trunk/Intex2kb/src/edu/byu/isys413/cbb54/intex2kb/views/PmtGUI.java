@@ -98,6 +98,7 @@ public class PmtGUI extends javax.swing.JFrame {
 
         Default.setBackground(new java.awt.Color(255, 255, 255));
         Default.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        Default.setPreferredSize(new java.awt.Dimension(264, 285));
         jLabel2.setText("Payment Type:");
 
         paymentTypeInput.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Cash", "Credit Card" }));
@@ -119,36 +120,26 @@ public class PmtGUI extends javax.swing.JFrame {
         DefaultLayout.setHorizontalGroup(
             DefaultLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(DefaultLayout.createSequentialGroup()
+                .addContainerGap()
+                .add(DefaultLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
+                    .add(jLabel6)
+                    .add(jLabel3)
+                    .add(jLabel2)
+                    .add(jLabel7)
+                    .add(jLabel8)
+                    .add(jLabel4)
+                    .add(jLabel5))
+                .add(19, 19, 19)
                 .add(DefaultLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(DefaultLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .add(DefaultLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
-                            .add(jLabel6)
-                            .add(jLabel3)
-                            .add(jLabel2)
-                            .add(jLabel7)
-                            .add(jLabel8)))
-                    .add(DefaultLayout.createSequentialGroup()
-                        .add(34, 34, 34)
-                        .add(DefaultLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
-                            .add(jLabel4)
-                            .add(DefaultLayout.createSequentialGroup()
-                                .add(jLabel5)
-                                .add(4, 4, 4)))))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(DefaultLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(DefaultLayout.createSequentialGroup()
-                        .add(7, 7, 7)
-                        .add(DefaultLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                            .add(ccExpInput, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 107, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                            .add(ccNumInput, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 220, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
                     .add(total, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 106, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(paymentTypeInput, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(DefaultLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING, false)
                         .add(org.jdesktop.layout.GroupLayout.LEADING, subtotalAmountInput)
                         .add(org.jdesktop.layout.GroupLayout.LEADING, taxtAmountInput, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 106, Short.MAX_VALUE))
-                    .add(paymentAmountInput, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 106, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(186, Short.MAX_VALUE))
+                    .add(paymentAmountInput, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 106, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(ccNumInput, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 123, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(ccExpInput, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 48, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
         DefaultLayout.setVerticalGroup(
             DefaultLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -174,14 +165,14 @@ public class PmtGUI extends javax.swing.JFrame {
                     .add(jLabel8)
                     .add(paymentAmountInput, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .add(17, 17, 17)
-                .add(DefaultLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
+                .add(DefaultLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(jLabel4)
                     .add(ccNumInput, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(DefaultLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(ccExpInput, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(jLabel5))
-                .addContainerGap(183, Short.MAX_VALUE))
+                    .add(jLabel5, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 17, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(210, Short.MAX_VALUE))
         );
         jPanel2.add(Default, "card9");
 
@@ -275,7 +266,7 @@ public class PmtGUI extends javax.swing.JFrame {
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addContainerGap(598, Short.MAX_VALUE)
+                .addContainerGap(600, Short.MAX_VALUE)
                 .add(cancel)
                 .add(16, 16, 16)
                 .add(finish)

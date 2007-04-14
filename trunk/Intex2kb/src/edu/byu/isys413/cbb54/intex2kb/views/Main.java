@@ -113,8 +113,8 @@ public class Main extends javax.swing.JFrame {
         printTypeInput = new javax.swing.JComboBox();
         numPhotosInput = new javax.swing.JTextField();
         quantityInput = new javax.swing.JTextField();
-        jPanel22 = new javax.swing.JPanel();
         jPanel25 = new javax.swing.JPanel();
+        jPanel38 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         jPanel24 = new javax.swing.JPanel();
         photosetDesc = new javax.swing.JTextArea();
@@ -186,7 +186,7 @@ public class Main extends javax.swing.JFrame {
         Sale.setMinimumSize(new java.awt.Dimension(250, 100));
         Sale.setPreferredSize(new java.awt.Dimension(250, 0));
         jPanel9.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel12.setFont(new java.awt.Font("Tahoma", 0, 14));
+        jLabel12.setFont(new java.awt.Font("Tahoma", 1, 18));
         jLabel12.setText("Sale");
         jPanel9.add(jLabel12);
 
@@ -205,7 +205,7 @@ public class Main extends javax.swing.JFrame {
         jPanel37Layout.setHorizontalGroup(
             jPanel37Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(jPanel37Layout.createSequentialGroup()
-                .addContainerGap(95, Short.MAX_VALUE)
+                .addContainerGap(53, Short.MAX_VALUE)
                 .add(jPanel37Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(org.jdesktop.layout.GroupLayout.TRAILING, jLabel18)
                     .add(org.jdesktop.layout.GroupLayout.TRAILING, jLabel17)))
@@ -217,7 +217,7 @@ public class Main extends javax.swing.JFrame {
                 .add(jLabel18)
                 .add(19, 19, 19)
                 .add(jLabel17)
-                .addContainerGap(311, Short.MAX_VALUE))
+                .addContainerGap(236, Short.MAX_VALUE))
         );
         jPanel10.add(jPanel37);
 
@@ -237,7 +237,7 @@ public class Main extends javax.swing.JFrame {
                 .add(jPanel36Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(SaleQty, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 33, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(saleSKU, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(58, Short.MAX_VALUE))
+                .addContainerGap(34, Short.MAX_VALUE))
         );
         jPanel36Layout.setVerticalGroup(
             jPanel36Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -246,7 +246,7 @@ public class Main extends javax.swing.JFrame {
                 .add(saleSKU, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .add(14, 14, 14)
                 .add(SaleQty, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(308, Short.MAX_VALUE))
+                .addContainerGap(231, Short.MAX_VALUE))
         );
         jPanel10.add(jPanel36);
 
@@ -290,7 +290,7 @@ public class Main extends javax.swing.JFrame {
         jPanel15Layout.setHorizontalGroup(
             jPanel15Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(jPanel15Layout.createSequentialGroup()
-                .addContainerGap(38, Short.MAX_VALUE)
+                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .add(jPanel15Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(org.jdesktop.layout.GroupLayout.TRAILING, jLabel2)
                     .add(org.jdesktop.layout.GroupLayout.TRAILING, jLabel19)
@@ -306,14 +306,14 @@ public class Main extends javax.swing.JFrame {
                 .add(jLabel19)
                 .add(23, 23, 23)
                 .add(jLabel3)
-                .addContainerGap(219, Short.MAX_VALUE))
+                .addContainerGap(113, Short.MAX_VALUE))
         );
         jPanel12.add(jPanel15);
 
         jPanel16.setBackground(new java.awt.Color(255, 255, 255));
         destinationTypeInput.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "DVD", "CD" }));
 
-        numMinutesInput.setColumns(5);
+        numMinutesInput.setColumns(7);
 
         sourceTypeInput.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "VHS", "Film" }));
 
@@ -324,16 +324,10 @@ public class Main extends javax.swing.JFrame {
             .add(jPanel16Layout.createSequentialGroup()
                 .addContainerGap()
                 .add(jPanel16Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(jPanel16Layout.createSequentialGroup()
-                        .add(sourceTypeInput, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 24, Short.MAX_VALUE))
-                    .add(jPanel16Layout.createSequentialGroup()
-                        .add(destinationTypeInput, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 67, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .add(jPanel16Layout.createSequentialGroup()
-                        .add(numMinutesInput, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 10, Short.MAX_VALUE)
-                        .add(114, 114, 114)))
-                .addContainerGap(39, Short.MAX_VALUE))
+                    .add(sourceTypeInput, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(destinationTypeInput, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 67, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(numMinutesInput, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 41, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(55, Short.MAX_VALUE))
         );
         jPanel16Layout.setVerticalGroup(
             jPanel16Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -344,7 +338,7 @@ public class Main extends javax.swing.JFrame {
                 .add(destinationTypeInput, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .add(14, 14, 14)
                 .add(numMinutesInput, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(213, Short.MAX_VALUE))
+                .addContainerGap(110, Short.MAX_VALUE))
         );
         jPanel12.add(jPanel16);
 
@@ -352,7 +346,7 @@ public class Main extends javax.swing.JFrame {
 
         jPanel13.setBackground(new java.awt.Color(255, 255, 255));
         jLabel4.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel4.setFont(new java.awt.Font("Lucida Grande", 1, 18));
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 18));
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setText("Conversion Order");
 
@@ -388,7 +382,8 @@ public class Main extends javax.swing.JFrame {
         PrintOrder.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         PrintOrder.setMaximumSize(new java.awt.Dimension(300, 2147483647));
         PrintOrder.setMinimumSize(new java.awt.Dimension(250, 0));
-        jLabel5.setFont(new java.awt.Font("Lucida Grande", 1, 18));
+        jPanel17.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 18));
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("Print Order");
         jPanel17.add(jLabel5);
@@ -397,9 +392,13 @@ public class Main extends javax.swing.JFrame {
 
         jPanel18.setLayout(new javax.swing.BoxLayout(jPanel18, javax.swing.BoxLayout.Y_AXIS));
 
+        jPanel18.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel18.setMinimumSize(new java.awt.Dimension(110, 60));
         jPanel23.setLayout(new javax.swing.BoxLayout(jPanel23, javax.swing.BoxLayout.X_AXIS));
 
-        jPanel21.setPreferredSize(new java.awt.Dimension(125, 100));
+        jPanel23.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel21.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel21.setPreferredSize(new java.awt.Dimension(125, 160));
         jLabel7.setText("Size:");
 
         jLabel10.setText("Paper Type:");
@@ -414,15 +413,14 @@ public class Main extends javax.swing.JFrame {
         jPanel21.setLayout(jPanel21Layout);
         jPanel21Layout.setHorizontalGroup(
             jPanel21Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jPanel21Layout.createSequentialGroup()
-                .addContainerGap(58, Short.MAX_VALUE)
-                .add(jPanel21Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jLabel7)
-                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel21Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                        .add(jLabel11)
-                        .add(jLabel10))
-                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jLabel8)
-                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jLabel9))
+            .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel21Layout.createSequentialGroup()
+                .addContainerGap(25, Short.MAX_VALUE)
+                .add(jPanel21Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
+                    .add(jLabel9)
+                    .add(jLabel10)
+                    .add(jLabel11)
+                    .add(jLabel7)
+                    .add(jLabel8))
                 .addContainerGap())
         );
         jPanel21Layout.setVerticalGroup(
@@ -430,19 +428,20 @@ public class Main extends javax.swing.JFrame {
             .add(jPanel21Layout.createSequentialGroup()
                 .add(26, 26, 26)
                 .add(jLabel7)
-                .add(16, 16, 16)
-                .add(jLabel10)
-                .add(18, 18, 18)
-                .add(jLabel11)
-                .add(14, 14, 14)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jLabel10, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 22, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jLabel11, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 22, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jLabel8)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 35, Short.MAX_VALUE)
+                .add(14, 14, 14)
                 .add(jLabel9)
-                .add(8, 8, 8))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
         jPanel23.add(jPanel21);
 
-        jPanel20.setPreferredSize(new java.awt.Dimension(125, 100));
+        jPanel20.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel20.setPreferredSize(new java.awt.Dimension(125, 160));
         sizeInput.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "4x6", "5x7" }));
 
         paperTypeInput.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Matte", "Glossy" }));
@@ -465,7 +464,7 @@ public class Main extends javax.swing.JFrame {
                     .add(printTypeInput, 0, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .add(paperTypeInput, 0, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .add(sizeInput, 0, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(93, Short.MAX_VALUE))
+                .addContainerGap(59, Short.MAX_VALUE))
         );
         jPanel20Layout.setVerticalGroup(
             jPanel20Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -480,32 +479,36 @@ public class Main extends javax.swing.JFrame {
                 .add(numPhotosInput, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(quantityInput, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(37, Short.MAX_VALUE))
+                .addContainerGap(14, Short.MAX_VALUE))
         );
         jPanel23.add(jPanel20);
 
         jPanel18.add(jPanel23);
 
-        jPanel22.setLayout(new javax.swing.BoxLayout(jPanel22, javax.swing.BoxLayout.Y_AXIS));
+        jPanel25.setLayout(new java.awt.BorderLayout());
 
-        jPanel22.setPreferredSize(new java.awt.Dimension(250, 100));
+        jPanel25.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel38.setBackground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("PhotoSet Description");
-        jPanel25.add(jLabel6);
+        jPanel38.add(jLabel6);
 
+        jPanel25.add(jPanel38, java.awt.BorderLayout.NORTH);
+
+        jPanel24.setBackground(new java.awt.Color(255, 255, 255));
         jPanel24.setMinimumSize(new java.awt.Dimension(110, 14));
         jPanel24.setPreferredSize(new java.awt.Dimension(50, 14));
-        jPanel25.add(jPanel24);
-
         photosetDesc.setColumns(30);
         photosetDesc.setRows(5);
-        jPanel25.add(photosetDesc);
+        photosetDesc.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jPanel24.add(photosetDesc);
 
-        jPanel22.add(jPanel25);
+        jPanel25.add(jPanel24, java.awt.BorderLayout.CENTER);
 
-        jPanel18.add(jPanel22);
+        jPanel18.add(jPanel25);
 
         PrintOrder.add(jPanel18, java.awt.BorderLayout.CENTER);
 
+        jPanel19.setBackground(new java.awt.Color(255, 255, 255));
         addPrintOrder.setText("Add to TX");
         addPrintOrder.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -523,6 +526,7 @@ public class Main extends javax.swing.JFrame {
         Backup.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         Backup.setMaximumSize(new java.awt.Dimension(300, 2147483647));
         Backup.setMinimumSize(new java.awt.Dimension(250, 0));
+        jLabel13.setFont(new java.awt.Font("Tahoma", 1, 18));
         jLabel13.setText("Backup");
 
         org.jdesktop.layout.GroupLayout BackupLayout = new org.jdesktop.layout.GroupLayout(Backup);
@@ -532,14 +536,14 @@ public class Main extends javax.swing.JFrame {
             .add(BackupLayout.createSequentialGroup()
                 .addContainerGap()
                 .add(jLabel13)
-                .addContainerGap(272, Short.MAX_VALUE))
+                .addContainerGap(239, Short.MAX_VALUE))
         );
         BackupLayout.setVerticalGroup(
             BackupLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(BackupLayout.createSequentialGroup()
                 .addContainerGap()
                 .add(jLabel13)
-                .addContainerGap(417, Short.MAX_VALUE))
+                .addContainerGap(409, Short.MAX_VALUE))
         );
         jPanel2.add(Backup, "card4");
 
@@ -550,7 +554,7 @@ public class Main extends javax.swing.JFrame {
         Rental.setMaximumSize(new java.awt.Dimension(300, 2147483647));
         Rental.setMinimumSize(new java.awt.Dimension(250, 0));
         jPanel26.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel24.setFont(new java.awt.Font("Tahoma", 0, 14));
+        jLabel24.setFont(new java.awt.Font("Tahoma", 1, 18));
         jLabel24.setText("Rental");
         jPanel26.add(jLabel24);
 
@@ -616,7 +620,7 @@ public class Main extends javax.swing.JFrame {
         jPanel32Layout.setHorizontalGroup(
             jPanel32Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(jPanel32Layout.createSequentialGroup()
-                .addContainerGap(45, Short.MAX_VALUE)
+                .addContainerGap(47, Short.MAX_VALUE)
                 .add(jPanel32Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(org.jdesktop.layout.GroupLayout.TRAILING, jLabel23)
                     .add(org.jdesktop.layout.GroupLayout.TRAILING, jLabel20)
@@ -635,7 +639,7 @@ public class Main extends javax.swing.JFrame {
                 .add(jLabel21, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 24, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jLabel23)
-                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(14, Short.MAX_VALUE))
         );
         jPanel34.add(jPanel32);
 
@@ -663,7 +667,7 @@ public class Main extends javax.swing.JFrame {
                     .add(numberdays, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(priceperday, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(todaysdate, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(58, Short.MAX_VALUE))
+                .addContainerGap(60, Short.MAX_VALUE))
         );
         jPanel33Layout.setVerticalGroup(
             jPanel33Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -676,7 +680,7 @@ public class Main extends javax.swing.JFrame {
                 .add(numberdays, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(subtotal, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(12, Short.MAX_VALUE))
+                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel34.add(jPanel33);
 
@@ -704,6 +708,7 @@ public class Main extends javax.swing.JFrame {
         Return.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         Return.setMaximumSize(new java.awt.Dimension(300, 2147483647));
         Return.setMinimumSize(new java.awt.Dimension(250, 0));
+        jLabel15.setFont(new java.awt.Font("Tahoma", 1, 18));
         jLabel15.setText("Return");
 
         jLabel25.setText("Serial #");
@@ -748,7 +753,7 @@ public class Main extends javax.swing.JFrame {
                     .add(serialnumber1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .add(29, 29, 29)
                 .add(addRentalItem1)
-                .addContainerGap(328, Short.MAX_VALUE))
+                .addContainerGap(319, Short.MAX_VALUE))
         );
         jPanel2.add(Return, "card7");
 
@@ -756,6 +761,7 @@ public class Main extends javax.swing.JFrame {
         Repair.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         Repair.setMaximumSize(new java.awt.Dimension(300, 2147483647));
         Repair.setMinimumSize(new java.awt.Dimension(250, 0));
+        jLabel16.setFont(new java.awt.Font("Tahoma", 1, 18));
         jLabel16.setText("Repair");
 
         org.jdesktop.layout.GroupLayout RepairLayout = new org.jdesktop.layout.GroupLayout(Repair);
@@ -765,14 +771,14 @@ public class Main extends javax.swing.JFrame {
             .add(RepairLayout.createSequentialGroup()
                 .add(122, 122, 122)
                 .add(jLabel16)
-                .addContainerGap(163, Short.MAX_VALUE))
+                .addContainerGap(135, Short.MAX_VALUE))
         );
         RepairLayout.setVerticalGroup(
             RepairLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(RepairLayout.createSequentialGroup()
                 .addContainerGap()
                 .add(jLabel16)
-                .addContainerGap(417, Short.MAX_VALUE))
+                .addContainerGap(409, Short.MAX_VALUE))
         );
         jPanel2.add(Repair, "card8");
 
@@ -1259,7 +1265,6 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel20;
     private javax.swing.JPanel jPanel21;
-    private javax.swing.JPanel jPanel22;
     private javax.swing.JPanel jPanel23;
     private javax.swing.JPanel jPanel24;
     private javax.swing.JPanel jPanel25;
@@ -1276,6 +1281,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel35;
     private javax.swing.JPanel jPanel36;
     private javax.swing.JPanel jPanel37;
+    private javax.swing.JPanel jPanel38;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;

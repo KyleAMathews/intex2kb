@@ -15,8 +15,8 @@ import java.sql.SQLException;
  * @author  Cameron
  */
 public class customerCreate extends javax.swing.JFrame {
-    String empid = null;
-    String storeid = null;
+    Employee employee = Session.getInstance().getEmployee();
+    Store store = Session.getInstance().getStore();
     
     
     /**
@@ -262,7 +262,9 @@ public class customerCreate extends javax.swing.JFrame {
     }//GEN-LAST:event_membershipAddActionPerformed
 
     private void cancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelActionPerformed
-        setVisible(false);
+        this.setVisible(false);
+        getCustomer g = new getCustomer();
+        g.setVisible(true);
     }//GEN-LAST:event_cancelActionPerformed
 
     private void submitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitActionPerformed
@@ -281,7 +283,8 @@ public class customerCreate extends javax.swing.JFrame {
             CustomerDAO.getInstance().setHoldCustomer(cust);
             this.dispose();
             
-            Main m = new Main(empid, storeid, cust);
+            Main m = new Main(employee.getId(), store.getId(), cust);
+            m.setVisible(true);
         } catch (SQLException e) {
             e.printStackTrace();
         } catch (Exception e2) {

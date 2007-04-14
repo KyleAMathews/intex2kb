@@ -137,7 +137,9 @@ public class Login extends javax.swing.JFrame {
             if(pass == true){
                 System.out.print("Login passed");
                 this.dispose();
-                getCustomer g = new getCustomer(empid, storeid);
+                getCustomer g = new getCustomer();
+                Session.getInstance().setStore(StoreDAO.getInstance().read(storeid));
+                Session.getInstance().setEmployee(EmployeeDAO.getInstance().read(empid));
                 //Main m = new Main(empid, storeid);
                 g.setVisible(true);
             }else{
