@@ -20,13 +20,14 @@ import javax.swing.UIManager;
 public class Main extends javax.swing.JFrame {
     
     private TableModel model;
-    private Transaction tx;
+    public Transaction tx;
     private String empid = null;
     private String storeid = null;
     private Customer cust = null;
     double price = 0.0;
     double subtot = 0.0;
     
+
     /** Creates new form Main */
     public Main(String empid1, String storeid1, Customer cust1) {
         //        frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
@@ -52,6 +53,7 @@ public class Main extends javax.swing.JFrame {
         setVisible(8);
         try {
             tx = TransactionDAO.getInstance().create();
+            model.updateTable(tx);
             tx.setEmployee(EmployeeDAO.getInstance().read(empid));
             tx.setStore(StoreDAO.getInstance().read(storeid));
             tx.setCustomer(cust);

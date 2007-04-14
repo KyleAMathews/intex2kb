@@ -108,7 +108,7 @@
                         <DimensionLayout dim="0">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
-                                  <EmptySpace pref="53" max="32767" attributes="0"/>
+                                  <EmptySpace pref="88" max="32767" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="jLabel18" alignment="1" min="-2" max="-2" attributes="0"/>
                                       <Component id="jLabel17" alignment="1" min="-2" max="-2" attributes="0"/>
@@ -123,7 +123,7 @@
                                   <Component id="jLabel18" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
                                   <Component id="jLabel17" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace pref="236" max="32767" attributes="0"/>
+                                  <EmptySpace pref="306" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -157,7 +157,7 @@
                                       <Component id="SaleQty" alignment="0" min="-2" pref="33" max="-2" attributes="0"/>
                                       <Component id="saleSKU" alignment="0" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace pref="34" max="32767" attributes="0"/>
+                                  <EmptySpace pref="69" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -168,7 +168,7 @@
                                   <Component id="saleSKU" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
                                   <Component id="SaleQty" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace pref="231" max="32767" attributes="0"/>
+                                  <EmptySpace pref="301" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -279,7 +279,7 @@
                         <DimensionLayout dim="0">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
-                                  <EmptySpace max="32767" attributes="0"/>
+                                  <EmptySpace pref="45" max="32767" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="jLabel2" alignment="1" min="-2" max="-2" attributes="0"/>
                                       <Component id="jLabel19" alignment="1" min="-2" max="-2" attributes="0"/>
@@ -298,7 +298,7 @@
                                   <Component id="jLabel19" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
                                   <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace pref="113" max="32767" attributes="0"/>
+                                  <EmptySpace pref="219" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -338,7 +338,7 @@
                                       <Component id="destinationTypeInput" alignment="0" min="-2" pref="67" max="-2" attributes="1"/>
                                       <Component id="numMinutesInput" alignment="0" min="-2" pref="41" max="-2" attributes="1"/>
                                   </Group>
-                                  <EmptySpace pref="55" max="32767" attributes="0"/>
+                                  <EmptySpace pref="89" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -351,7 +351,7 @@
                                   <Component id="destinationTypeInput" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
                                   <Component id="numMinutesInput" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace pref="110" max="32767" attributes="0"/>
+                                  <EmptySpace pref="216" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -543,7 +543,7 @@
                             <DimensionLayout dim="0">
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" alignment="1" attributes="0">
-                                      <EmptySpace pref="25" max="32767" attributes="0"/>
+                                      <EmptySpace pref="58" max="32767" attributes="0"/>
                                       <Group type="103" groupAlignment="1" attributes="0">
                                           <Component id="jLabel9" alignment="1" min="-2" max="-2" attributes="0"/>
                                           <Component id="jLabel10" alignment="1" min="-2" max="-2" attributes="0"/>
@@ -623,7 +623,7 @@
                                           <Component id="paperTypeInput" alignment="0" max="32767" attributes="1"/>
                                           <Component id="sizeInput" alignment="0" max="32767" attributes="1"/>
                                       </Group>
-                                      <EmptySpace pref="59" max="32767" attributes="0"/>
+                                      <EmptySpace pref="92" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                             </DimensionLayout>
