@@ -36,10 +36,8 @@ pb.get(0).setCaption("No Picture");
 
 <div id="body">
 <h1>My Stuff File Backup</h1>
-<%=pb.get(0).getFilesize()%>
-<%=pb.get(0).getId()%>
-<%=pb.get(0).getM()%>
-<p>Welcome to you My Stuff File Backup Page</p>
+
+<p>Welcome to your MyStuff File Backup Page</p>
 <div><br />
 <% if (pb != null){
     Iterator<photoBackupBO> it = pb.iterator();
@@ -94,18 +92,6 @@ pb.get(0).setCaption("No Picture");
     </td>
 </table>
 
-<table width="500px" cellpadding="5px" cellspacing="10px">
-    <tr><th>Kyle in Snow</th><th>Kyle is snow isn't this a long title?</th><th>Baby J</th></tr>
-    <tr>
-    <td>
-    <img src="images/pic1.jpg" /><br /><a href="download.action">Download</a><a href="deletepic.action">Delete</a></td>	
-    <td>
-        <img src="images/pic2.jpg" /><br /><a href="download.action">Download</a><a href="deletepic.action">Delete</a>
-    </td>
-    <TD><img src="images/pic3.jpg" /><br /><a href="download.action">Download</a><a href="deletepic.action">Delete</a></TD>
-    </td> 
-</table>
-</div>
 
 </div><!--end body-->
 
