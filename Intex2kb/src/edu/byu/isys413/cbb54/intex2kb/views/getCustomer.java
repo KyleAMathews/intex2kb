@@ -14,21 +14,15 @@ import java.util.List;
  */
 public class getCustomer extends javax.swing.JFrame {
     
-    String empid = null;
-    String storeid = null;
+    Employee employee = null;
+    Store store = null;
     
     /** Creates new form getCustomer */
-    public getCustomer(String empid1, String storeid1) {
-        empid = empid1;
-        storeid = storeid1;
-        try {
-            Session session = new Session(StoreDAO.getInstance().read(storeid1), EmployeeDAO.getInstance().read(empid1));
-        } catch (DataException ex) {
-            ex.printStackTrace();
-        }
+    public getCustomer() {
         initComponents();
         createCust.setVisible(false);
         custPhoneInput.setText("8013786198");
+        
     }
     
     /** This method is called from within the constructor to
@@ -93,7 +87,7 @@ public class getCustomer extends javax.swing.JFrame {
         );
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    
     private void createCustActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createCustActionPerformed
         this.dispose();
         customerCreate c = new customerCreate();
@@ -102,17 +96,26 @@ public class getCustomer extends javax.swing.JFrame {
     
     private void submitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitActionPerformed
         try {
+            Customer cust = null;
             List<Customer> custList = CustomerDAO.getInstance().getByPhone(custPhoneInput.getText());
-            try{
-                Main m = new Main(empid, storeid, custList.get(0));
+            if (custList.size() > 0){
+                cust = custList.get(0);
+                
+                employee = Session.getInstance().getEmployee();
+                store = Session.getInstance().getStore();
+               
+                Main m = new Main(employee.getId(), store.getId(), cust);
                 this.dispose();
                 m.setVisible(true);
-            }catch (Exception e){
+                
+            }else{
                 custPhoneInput.setText("No customer found");
                 customerCreate c = new customerCreate();
                 this.dispose();
                 c.setVisible(true);
             }
+            
+            
         } catch (DataException ex) {
             ex.printStackTrace();
         }

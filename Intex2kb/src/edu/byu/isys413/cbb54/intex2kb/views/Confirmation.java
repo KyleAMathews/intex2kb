@@ -47,10 +47,9 @@ public class Confirmation extends javax.swing.JFrame {
         //set summary fields
         custName.setText(tx.getCustomer().getFname() + " " + tx.getCustomer().getLname());
         double txTotalDbl = tx.calculateTotal();
-        txTotal.setText(Double.toString(txTotalDbl));
-        pmtAmount.setText(Double.toString((tx.getPayment().getAmount())));
-        change.setText(fmtNum.fmt(tx1.getPayment().getChange()));
-//        change.setText(Double.toString(tx.getPayment().getChange()));
+        txTotal.setText(formatNumber.fmt(txTotalDbl));
+        pmtAmount.setText(formatNumber.fmt(tx.getPayment().getAmount()));
+        change.setText(formatNumber.fmt(tx1.getPayment().getChange()));
     }
     
     /** This method is called from within the constructor to
@@ -92,6 +91,7 @@ public class Confirmation extends javax.swing.JFrame {
 
         Default.setBackground(new java.awt.Color(255, 255, 255));
         Default.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        Default.setPreferredSize(new java.awt.Dimension(264, 285));
         custName.setText("jLabel2");
 
         txTotal.setText("jLabel2");
@@ -125,7 +125,7 @@ public class Confirmation extends javax.swing.JFrame {
                     .add(custName)
                     .add(pmtAmount)
                     .add(change))
-                .addContainerGap(418, Short.MAX_VALUE))
+                .addContainerGap(58, Short.MAX_VALUE))
         );
         DefaultLayout.setVerticalGroup(
             DefaultLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -146,7 +146,7 @@ public class Confirmation extends javax.swing.JFrame {
                 .add(DefaultLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(jLabel5)
                     .add(change))
-                .addContainerGap(320, Short.MAX_VALUE))
+                .addContainerGap(334, Short.MAX_VALUE))
         );
         jPanel2.add(Default, "card9");
 
@@ -232,7 +232,7 @@ public class Confirmation extends javax.swing.JFrame {
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addContainerGap(705, Short.MAX_VALUE)
+                .addContainerGap(709, Short.MAX_VALUE)
                 .add(finish)
                 .addContainerGap())
         );
@@ -250,7 +250,7 @@ public class Confirmation extends javax.swing.JFrame {
     
     private void finishActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_finishActionPerformed
         this.dispose();
-        getCustomer g = new getCustomer(tx.getEmployee().getId(),tx.getStore().getId());
+        getCustomer g = new getCustomer();
         g.setVisible(true);
     }//GEN-LAST:event_finishActionPerformed
     

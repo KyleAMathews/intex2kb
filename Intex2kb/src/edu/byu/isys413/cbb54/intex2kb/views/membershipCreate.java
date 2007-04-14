@@ -209,7 +209,6 @@ public class membershipCreate extends javax.swing.JFrame {
             mem.setCreditCard(cc.getText());
             mem.setCcExpiration(ccExp.getText());
             mem.setStartDate(fmt.format(System.currentTimeMillis()));
-            //mem.setNewsletter(newsletter.g);
             
             if(newsletter.isSelected()){
                 mem.setNewsletter(true);
