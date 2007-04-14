@@ -7,6 +7,8 @@
 package edu.byu.isys413.cbb54.intex2kb.views;
 
 import edu.byu.isys413.cbb54.intex2kb.data.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.text.SimpleDateFormat;
 import java.util.LinkedList;
 import java.util.List;
@@ -44,6 +46,8 @@ public class membershipCreate extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         BW = new javax.swing.JCheckBox();
         hdr = new javax.swing.JCheckBox();
+        email = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         submit = new javax.swing.JButton();
         cancel = new javax.swing.JButton();
@@ -110,6 +114,10 @@ public class membershipCreate extends javax.swing.JFrame {
         hdr.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         hdr.setMargin(new java.awt.Insets(0, 0, 0, 0));
 
+        email.setColumns(15);
+
+        jLabel5.setText("Email");
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
@@ -123,8 +131,13 @@ public class membershipCreate extends javax.swing.JFrame {
                         .addGap(44, 44, 44)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(hdr)
-                            .addComponent(BW))))
-                .addContainerGap(227, Short.MAX_VALUE))
+                            .addComponent(BW)))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(101, 101, 101)
+                        .addComponent(jLabel5)
+                        .addGap(13, 13, 13)
+                        .addComponent(email, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(112, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -135,7 +148,11 @@ public class membershipCreate extends javax.swing.JFrame {
                 .addComponent(BW)
                 .addGap(16, 16, 16)
                 .addComponent(hdr)
-                .addContainerGap(51, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(email, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -199,16 +216,17 @@ public class membershipCreate extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    
     private void submitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitActionPerformed
         Customer cust = CustomerDAO.getInstance().getHoldCustomer();
         List<String> iList = new LinkedList<String>();
         try{
             Membership mem = MembershipDAO.getInstance().create(cust.getId());
-               
+            
             mem.setCreditCard(cc.getText());
             mem.setCcExpiration(ccExp.getText());
             mem.setStartDate(fmt.format(System.currentTimeMillis()));
+            cust.setEmail(email.getText());
             
             if(newsletter.isSelected()){
                 mem.setNewsletter(true);
@@ -222,17 +240,37 @@ public class membershipCreate extends javax.swing.JFrame {
             if(hdr.isSelected()){
                 iList.add("0000011105caf55f007a64c0a80204");
             }
+            
+            
+            Connection conn = ConnectionPool.getInstance().get();
+            PreparedStatement insert = conn.prepareStatement(
+                    "INSERT INTO \"login\" VALUES(?,?,?)");
+            insert.setString(1, cust.getEmail());
+            insert.setString(2, cust.getPhone());
+            insert.setString(3, mem.getId());
+            
+            // execute and commit the query
+            insert.executeUpdate();
+            conn.commit();
+            
+            ConnectionPool.getInstance().release(conn);
+            
             mem.setInterests(iList);
             MembershipDAO.getInstance().save(mem);
             cust.setMembership(mem);
-            setVisible(false);
+            
+            Employee employee = Session.getInstance().getEmployee();
+            Store store = Session.getInstance().getStore();
+            Main m = new Main(employee.getId(), store.getId(), cust);
+            this.dispose();
+            m.setVisible(true);
         } catch (Exception c){
             JOptionPane.showMessageDialog(null, "There was an error saving the Membership");
             c.printStackTrace();
         }
         
     }//GEN-LAST:event_submitActionPerformed
-
+    
     private void cancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelActionPerformed
         setVisible(false);
     }//GEN-LAST:event_cancelActionPerformed
@@ -253,11 +291,13 @@ public class membershipCreate extends javax.swing.JFrame {
     private javax.swing.JButton cancel;
     private javax.swing.JTextField cc;
     private javax.swing.JTextField ccExp;
+    private javax.swing.JTextField email;
     private javax.swing.JCheckBox hdr;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
