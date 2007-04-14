@@ -33,7 +33,7 @@ public class submitTX implements edu.byu.isys413.web.Action {
         HttpSession session = request.getSession();
         
         Transaction tx = TransactionDAO.getInstance().read((String)session.getAttribute("tx"));
-        
+        System.out.println("tx attributes in the submittx.java: " + tx.getId() + " " + tx.getCustomer().getFname() + " " + tx.getTxLines().get(0).getRevenueSource().getPrice());
         Payment pmt = PaymentDAO.getInstance().create(tx);
         pmt.setAmount(tx.calculateTotal());
         pmt.setCcExpiration(tx.getCustomer().getMembership().getCcExpiration());
