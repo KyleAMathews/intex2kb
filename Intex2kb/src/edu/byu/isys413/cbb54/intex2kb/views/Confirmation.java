@@ -8,6 +8,7 @@ package edu.byu.isys413.cbb54.intex2kb.views;
 //import com.sun.tools.javac.tree.Tree.Return;
 import edu.byu.isys413.cbb54.intex2kb.data.*;
 import edu.byu.isys413.cbb54.intex2kb.data.Payment;
+import edu.byu.isys413.cbb54.intex2kb.views.*;
 
 import java.awt.Color;
 import javax.swing.UIManager;
