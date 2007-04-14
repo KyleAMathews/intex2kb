@@ -29,7 +29,7 @@ import org.xml.sax.*;
 public class TableModel extends AbstractTableModel{
     
     private List<String> header = new LinkedList<String>(); // List to hold header information
-    static List<List> data = new LinkedList<List>();        // List to hold song information
+    static List<List> data = new LinkedList<List>();        // List to hold transaction line information
     static Connection conn = connection();
     static Statement stmt = null;
     boolean change = false;
@@ -57,29 +57,6 @@ public class TableModel extends AbstractTableModel{
         header.add("#");
         header.add("Description");
         header.add("Price");
-        
-        
-        
-//        try{
-//
-//
-//            stmt = conn.createStatement();
-//            ResultSet srs = stmt.executeQuery("SELECT * FROM data");
-//
-//            while (srs.next()) {
-//                List<String> list = new LinkedList<String>();
-//                list.add(srs.getString("guid"));
-//                list.add(srs.getString("title"));
-//                list.add(srs.getString("artist"));
-//                list.add(srs.getString("album"));
-//
-//                addRow(list);
-//            }
-//
-//             stmt.close();
-//        } catch (Exception c){
-//            c.printStackTrace();
-//        }
         
         
     }
