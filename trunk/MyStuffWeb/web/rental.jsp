@@ -66,7 +66,7 @@ The following items are available for rent
                     
                     <td>Select Product</td>
                     <td>Name</td>
-                    <td>Price</td>
+                    <td>Price Per Day</td>
                 </tr>
                 <%if (request.getAttribute("forrent") != null) {
                 List<ForRent> rental = new LinkedList<ForRent>();
