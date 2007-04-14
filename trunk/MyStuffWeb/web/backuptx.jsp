@@ -46,7 +46,9 @@ if (session.getAttribute("backuptx") == null) {
     
 //cast for backup object
     bck = (backup)txLine1.getRevenueSource();
-} 
+}
+
+session.setAttribute("tx", (String)session.getAttribute("backuptx"));
 %>
 
 
