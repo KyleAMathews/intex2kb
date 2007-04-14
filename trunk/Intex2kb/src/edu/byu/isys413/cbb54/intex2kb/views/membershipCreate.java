@@ -257,6 +257,7 @@ public class membershipCreate extends javax.swing.JFrame {
             
             mem.setInterests(iList);
             MembershipDAO.getInstance().save(mem);
+            CustomerDAO.getInstance().save(cust);
             cust.setMembership(mem);
             
             Employee employee = Session.getInstance().getEmployee();
