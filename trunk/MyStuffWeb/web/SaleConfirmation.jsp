@@ -11,11 +11,19 @@ Membership memb = null;
 Customer cust = null;
 List<TransactionLine> transLines = null;
 
-
+// retieve the transaction
 tx = (Transaction)TransactionDAO.getInstance().read((String)session.getAttribute("saletx"));
+
+// retieve the transactionlines from the transaction
 transLines = tx.getTxLines();
+
+// retrieve the membership from the transaction
 memb = MembershipDAO.getInstance().read((String)session.getAttribute("membid"));
+
+// retrieve the customer from the membership
 cust = memb.getCustomer();
+
+// set the transaction and customer to the session
 session.setAttribute("tx",tx.getId());
 session.setAttribute("cust",cust.getId());
 %>
@@ -35,7 +43,10 @@ session.setAttribute("cust",cust.getId());
             <th colspan="3">Shopping Cart</th>
         </tr>
         
-       <% for(int i=0; i < transLines.size(); i++){
+       <% 
+            // loop through the transactionlines and create a new table row with item information for each
+                        
+            for(int i=0; i < transLines.size(); i++){
             TransactionLine tl = transLines.get(i); 
             Sale s = (Sale)tl.getRevenueSource();
             Conceptual c = (Conceptual)s.getProduct();%>
