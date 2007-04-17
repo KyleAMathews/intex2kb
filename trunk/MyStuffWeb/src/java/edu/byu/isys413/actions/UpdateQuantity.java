@@ -27,7 +27,7 @@ public class UpdateQuantity implements edu.byu.isys413.web.Action {
     }
     
     /**
-     * Updates the quantity for a TransactionLine unless the quantity is zero, in which
+     * Updates the quantity for a TransactionLine unless the new quantity is zero, in which
      * case it removes the TransactionLine from the transaction.
      */
     public String process(HttpServletRequest request, HttpServletResponse response) throws Exception {      
@@ -44,8 +44,11 @@ public class UpdateQuantity implements edu.byu.isys413.web.Action {
         ConceptualDAO cDAO = (ConceptualDAO) ConceptualDAO.getInstance();
         productList = cDAO.getProductsByCategory(category);
         
+        // get and set the transactionlines for the transaction
         txLines = saletx.getTxLines();
         
+        // update the quantity
+        // if the new quantity equals zero, remove the transactionline from the transaction
         if(q == 0){
             txLines.remove(line);
             saletx.setTxLines(txLines);
