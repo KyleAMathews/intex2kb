@@ -24,13 +24,13 @@ System.out.println("mime type = " + pb.getFiletype());
 // object
 //InputStream istream = pb.getThumbnail(pb.getId()); // didn't get jmagick working'
 if (pb.getFiletype().equalsIgnoreCase("image/jpeg") | pb.getFiletype().equalsIgnoreCase("image/png") | pb.getFiletype().equalsIgnoreCase("image/gif")){
-    istream = new FileInputStream("images/emblem-photos.png");
+    istream = new FileInputStream("/images/emblem-photos.png");
     System.out.println("using photo icon");
 }else if (pb.getFiletype().equalsIgnoreCase("application/msword")) {
-    istream = new FileInputStream("images/x-office-spreadsheet.png");
+    istream = new FileInputStream("/images/x-office-spreadsheet.png");
     System.out.println("using office icon");
 }else {
-    istream = new FileInputStream("images/text-x-generic.png");
+    istream = new FileInputStream("/images/text-x-generic.png");
     System.out.println("using text icon");
 }
 
