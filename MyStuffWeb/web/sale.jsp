@@ -5,6 +5,8 @@
 <%@page import="java.util.*" %>
 
 <%
+
+// initialize variables
 String title = "Sale";
 Transaction saletx = null;
 Membership memb = null;
@@ -13,6 +15,7 @@ List<Conceptual> productlist = null;
 List<Category> categoryList = CategoryDAO.getInstance().getCategorys();
 List<TransactionLine> transLines = null;
 
+// create a new sale transaction for the session if one does not already exist
 if (session.getAttribute("saletx") == null){
     saletx = TransactionDAO.getInstance().create();
     Cache.getInstance().put(saletx.getId(),saletx);
@@ -28,8 +31,8 @@ if (session.getAttribute("saletx") == null){
     memb = MembershipDAO.getInstance().read((String)session.getAttribute("membid"));
     saletx.setCustomer(memb.getCustomer());
     session.setAttribute("saletx", saletx.getId());
-//TransactionLine txln = TransactionLineDAO.getInstance().create(tx, "rn");
-//rentaltx.addTxLine(txln);
+    
+// retrieve the transaction, transactionlines, and membership from the session    
 }else{
     saletx = (Transaction)TransactionDAO.getInstance().read((String)session.getAttribute("saletx"));
     transLines = saletx.getTxLines();
@@ -37,11 +40,13 @@ if (session.getAttribute("saletx") == null){
 }
 
 
+// catch and pass the category if it exists
 if (request.getAttribute("category") != null){
     category = (String)request.getAttribute("category");
     request.setAttribute("category", category);
 }
 
+// catch and pass the products if they exists
 if(request.getAttribute("products") != null){
     productlist = (List)request.getAttribute("products");
 }
@@ -62,6 +67,7 @@ if(request.getAttribute("products") != null){
             <form action="edu.byu.isys413.actions.GetItems.action" method="post" target=_parent>
             <select NAME="category" style="display: inline;">
                 <% 
+            // loop through category list and populate the category drop-down
             for(int i = 0; i<categoryList.size(); i++){
                    Category c = categoryList.get(i);
                     %>
@@ -72,7 +78,9 @@ if(request.getAttribute("products") != null){
             </form>
         </td>	
         <td>
-            <% if(productlist != null){ %>
+            <% 
+            // display the products for the category if they exist
+            if(productlist != null){ %>
             <form action="edu.byu.isys413.actions.AddItems.action" method="post" target="_parent">
                 <input type="hidden" name="category" value="<%=category %>">
                 <table width="100%"><% for(int i = 0; i < productlist.size(); i++){Conceptual conc = (Conceptual)productlist.get(i); %>
@@ -103,7 +111,9 @@ if(request.getAttribute("products") != null){
     <tr>
         <td colspan="3">
             <table width="100%">
-                <% if(transLines != null){
+                <% 
+                     // loop through the transaction lines and display
+                 if(transLines != null){
                      for(int i=0; i < transLines.size(); i++){
                         TransactionLine tl = transLines.get(i); 
                         Sale s = (Sale)tl.getRevenueSource();
