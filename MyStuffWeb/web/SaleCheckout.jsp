@@ -10,9 +10,13 @@ Transaction saletx = null;
 Membership memb = null;
 List<TransactionLine> transLines = null;
 
-
+// retrieve the transaction
 saletx = (Transaction)TransactionDAO.getInstance().read((String)session.getAttribute("saletx"));
+
+// retrieve the transactionlines for the transaction
 transLines = saletx.getTxLines();
+
+// retrieve the member from the transaction
 memb = MembershipDAO.getInstance().read((String)session.getAttribute("membid"));
 
 %>
@@ -32,7 +36,10 @@ memb = MembershipDAO.getInstance().read((String)session.getAttribute("membid"));
         <tr>
             <td colspan="2">
                 <table width="100%">
-                    <% for(int i=0; i < transLines.size(); i++){
+                    <% 
+                        // loop through the transactionlines and create a new table row with item information for each
+                        
+                        for(int i=0; i < transLines.size(); i++){
                         TransactionLine tl = transLines.get(i); 
                         Sale s = (Sale)tl.getRevenueSource();
                         Conceptual c = (Conceptual)s.getProduct();%>
