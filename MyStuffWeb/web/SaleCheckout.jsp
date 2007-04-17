@@ -42,7 +42,13 @@ memb = MembershipDAO.getInstance().read((String)session.getAttribute("membid"));
                             <td align="right"><%=formatNumber.fmt(tl.calculateSubtotal()) %></td></form>
                         </tr><% } %>
                         <tr>
-                            <td colspan="3" align="right" style="border-top: 1"><b>Subtotal&nbsp;&nbsp; $<%=formatNumber.fmt(saletx.calculateSubtotal()) %></b></td>
+                            <td colspan="3" align="right" style="border-top: 1">Subtotal&nbsp;&nbsp; $<%=formatNumber.fmt(saletx.calculateSubtotal()) %></td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" align="right">Tax&nbsp;&nbsp; $<%=formatNumber.fmt(saletx.calculateTax()) %></td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" align="right"><b>Total&nbsp;&nbsp; $<%=formatNumber.fmt(saletx.calculateTotal()) %></b></td>
                         </tr>
                         <tr>
                             <td colspan="2" align="left"><form action="sale.jsp" methode="post" target="_parent"><input type="submit" value="Edit Cart"></form></td>
