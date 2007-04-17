@@ -44,18 +44,20 @@ public class AddItems implements edu.byu.isys413.web.Action {
         // Retrieve Product
         Conceptual product = (Conceptual)ConceptualDAO.getInstance().read(productID);
         
+        // create new sale revenue source
         Sale s = (Sale)SaleDAO.getInstance().create();
         s.setProduct(product);
         s.setPrice(product.getPrice());
         s.setProductType("Bulk");
         s.setQuantity(1);
         
-        
+        // create new transactionaline and set revenue source
         TransactionLine txln = TransactionLineDAO.getInstance().create(saletx, product.getId());
         txln.setRevenueSource(s);
         txln.setRsType("Online Sale");
-        saletx.addTxLine(txln);
         
+        // add transactionline to transaction
+        saletx.addTxLine(txln);
         
         // Return category ID to next page
         request.setAttribute("category", category);
